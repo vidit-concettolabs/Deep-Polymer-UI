@@ -1,0 +1,114 @@
+@page "/masters/raw-material"
+
+<div class="masters-container">
+    <!-- Top Tabs Row -->
+    <div class="masters-tabs-row">
+        <a class="tab-btn" href="/masters/customer">Customer Master</a>
+        <a class="tab-btn" href="/masters/color">Color Master</a>
+        <a class="tab-btn active" href="/masters/raw-material">Raw Material Master</a>
+    </div>
+
+    <!-- Filter/Search Section -->
+    <div class="masters-filter-row">
+        <div class="filter-spacer"></div>
+        
+        <!-- Search Material Dropdown -->
+        <div class="filter-item">
+            <select class="filter-select">
+                <option selected disabled>Search Material</option>
+            </select>
+            <span class="filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <!-- Add Material Button -->
+        <button class="add-customer-btn" type="button">Add Material</button>
+    </div>
+
+    <!-- Material Table Wrapper -->
+    <div class="masters-table-wrapper">
+        <table class="masters-table">
+            <thead>
+                <tr>
+                    <th class="text-start">Material Name</th>
+                    <th>Rate(₹)</th>
+                    <th>Updated Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var mat in Materials)
+                {
+                    <tr>
+                        <td class="text-start">@mat.Name</td>
+                        <td>@mat.Rate</td>
+                        <td>@mat.UpdatedDate</td>
+                        <td>
+                            <div class="actions-container">
+                                <button class="action-edit-btn" type="button" title="Edit Material">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="action-delete-btn" type="button" title="Delete Material">
+                                    <svg viewBox="0 0 24 24">
+                                        <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                        <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Table Footer / Pagination Row -->
+        <div class="masters-pagination-row">
+            <span class="pagination-info">Showing 1-10 of 12 list</span>
+            <div class="pagination-nav">
+                <button class="pagination-btn disabled" type="button" title="Previous Page">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button class="pagination-btn active" type="button">1</button>
+                <button class="pagination-btn" type="button">2</button>
+                <button class="pagination-btn" type="button" title="Next Page">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private class MaterialModel
+    {
+        public string Name { get; set; }
+        public string Rate { get; set; }
+        public string UpdatedDate { get; set; }
+    }
+
+    private List<MaterialModel> Materials = new()
+    {
+        new() { Name = "ANTIOXIDENT-B215", Rate = "280.00", UpdatedDate = "11-05-2026" },
+        new() { Name = "ANTIOXIDENT-B 225", Rate = "285.00", UpdatedDate = "26-04-2026" },
+        new() { Name = "ANTIOXIDENT-KINOX30", Rate = "669.18", UpdatedDate = "15-04-2026" },
+        new() { Name = "ANTI OXIDENT-RADINT GRUNELES", Rate = "211.00", UpdatedDate = "02-03-2026" },
+        new() { Name = "ANTIOXIDENT-CYBERA", Rate = "300.50", UpdatedDate = "20-06-2026" },
+        new() { Name = "ANTIOXIDENT-OMEGA-9", Rate = "450.75", UpdatedDate = "09-07-2026" },
+        new() { Name = "ANTIOXIDENT-ZENITH", Rate = "520.00", UpdatedDate = "18-08-2026" },
+        new() { Name = "ANTIOXIDENT-NEUTRA-B", Rate = "395.80", UpdatedDate = "05-09-2026" },
+        new() { Name = "ANTIOXIDENT-PREMIER-5", Rate = "675.00", UpdatedDate = "12-10-2026" },
+        new() { Name = "ANTIOXIDENT-ULTRA-SHIELD", Rate = "399.99", UpdatedDate = "27-11-2026" }
+    };
+}

@@ -1,0 +1,128 @@
+@page "/masters"
+@page "/masters/customer"
+
+<div class="masters-container">
+    <!-- Top Tabs Row -->
+    <div class="masters-tabs-row">
+        <a class="tab-btn active" href="/masters/customer">Customer Master</a>
+        <a class="tab-btn" href="/masters/color">Color Master</a>
+        <a class="tab-btn" href="/masters/raw-material">Raw Material Master</a>
+    </div>
+
+    <!-- Filter/Search Section -->
+    <div class="masters-filter-row">
+        <div class="filter-spacer"></div>
+         
+        <!-- Search Customer Name Dropdown -->
+        <div class="filter-item">
+            <select class="filter-select">
+                <option selected disabled>Search Customer Name</option>
+            </select>
+            <span class="filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <!-- Search Company Name Dropdown -->
+        <div class="filter-item">
+            <select class="filter-select">
+                <option selected disabled>Search Company Name</option>
+            </select>
+            <span class="filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <!-- Add Customer Button -->
+        <button class="add-customer-btn" type="button">Add Customer</button>
+    </div>
+
+    <!-- Customer Table Wrapper -->
+    <div class="masters-table-wrapper">
+        <table class="masters-table">
+            <thead>
+                <tr>
+                    <th class="text-start">Customer Name</th>
+                    <th class="text-start">Company Name</th>
+                    <th class="text-start">Email Address</th>
+                    <th class="text-start">Contact Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cust in Customers)
+                {
+                    <tr>
+                        <td class="text-start"><span class="customer-link">@cust.Name</span></td>
+                        <td class="text-start">@cust.Company</td>
+                        <td class="text-start">@cust.Email</td>
+                        <td class="text-start">@cust.Contact</td>
+                        <td>
+                            <div class="actions-container">
+                                <button class="action-view-btn" type="button" title="View Customer Details">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="action-edit-btn" type="button" title="Edit Customer Details">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Table Footer / Pagination Row -->
+        <div class="masters-pagination-row">
+            <span class="pagination-info">Showing 1-10 of 12 list</span>
+            <div class="pagination-nav">
+                <button class="pagination-btn disabled" type="button" title="Previous Page">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button class="pagination-btn active" type="button">1</button>
+                <button class="pagination-btn" type="button">2</button>
+                <button class="pagination-btn" type="button" title="Next Page">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private class CustomerModel
+    {
+        public string Name { get; set; }
+        public string Company { get; set; }
+        public string Email { get; set; }
+        public string Contact { get; set; }
+    }
+
+    private List<CustomerModel> Customers = new()
+    {
+        new() { Name = "Ramesh Patel", Company = "Shree Packaging Pvt Ltd", Email = "contact@shreepackaging.com", Contact = "+91 98765 43210" },
+        new() { Name = "Priya Mehta", Company = "Nova Plastics Industries", Email = "sales@novaplastics.in", Contact = "+91 98254 11876" },
+        new() { Name = "Karan Desai", Company = "Prime Polymer Solutions", Email = "info@primepolymer.com", Contact = "+91 98980 55421" },
+        new() { Name = "Neha Joshi", Company = "EcoPack Innovations", Email = "support@ecopackinnovations.com", Contact = "+91 98456 78901" },
+        new() { Name = "Vivek Trivedi", Company = "GreenWrap Technologies", Email = "hello@greenwraptech.com", Contact = "+91 97531 24680" },
+        new() { Name = "Dhruv Parmar", Company = "FlexiPack Solutions", Email = "contact@flexipacksolutions.com", Contact = "+91 99887 65432" },
+        new() { Name = "Hitesh Shah", Company = "PackSmart Industries", Email = "info@packsmartind.com", Contact = "+91 99000 12345" },
+        new() { Name = "Rahul Mehta", Company = "BioBase Packaging", Email = "service@biobasepack.com", Contact = "+91 99111 23456" },
+        new() { Name = "Pooja Patel", Company = "SecureSeal Packaging", Email = "sales@securesealpack.com", Contact = "+91 99222 34567" },
+        new() { Name = "Amit Shah", Company = "OptiWrap Solutions", Email = "contact@optiwrapsolutions.com", Contact = "+91 99333 45678" }
+    };
+}

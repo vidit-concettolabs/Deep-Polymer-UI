@@ -117,8 +117,8 @@
 }
 
 .filter-chevron svg {
-    width: 8px;
-    height: 8px;
+    width: 20px;
+    height: 20px;
     fill: none;
     stroke: currentColor;
     stroke-width: 2.2;
@@ -319,39 +319,41 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 28px;
-    min-width: 28px;
-    padding: 0 6px;
+    width: 32px;
+    height: 32px;
     font-size: 11px;
     font-weight: 600;
-    color: #4a5568;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    border: 1px solid #d9e0e7;
+    border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
     box-sizing: border-box;
-    transition: background-color 0.15s, color 0.15s;
+    transition: all 0.15s ease;
 }
 
 .pagination-btn:hover:not(.active):not(.disabled) {
-    background-color: #f1f5f9;
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
 }
 
 .pagination-btn.active {
     background-color: #ff0000;
+    border-color: #ff0000;
     color: #ffffff;
 }
 
 .pagination-btn.disabled {
     color: #cbd5e1;
+    border-color: #e2e8f0;
     cursor: not-allowed;
 }
 
 .pagination-btn svg {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     fill: none;
     stroke: currentColor;
-    stroke-width: 2.2;
+    stroke-width: 2.5;
 }
