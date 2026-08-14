@@ -1,0 +1,176 @@
+/* Figma Canvas Sidebar/NavMenu Styles (260x1080) */
+
+.sidebar-container {
+    width: 260px;
+    min-width: 260px;
+    max-width: 260px;
+    height: 100vh;
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+body.sidebar-collapsed .sidebar-container {
+    transform: translateX(-260px);
+}
+
+.logo-area {
+    width: 260px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 10px;
+}
+
+.logo-img {
+    width: 136px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+}
+
+.menu-items-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 12px;
+    gap: 6px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Custom scrollbar for menu wrapper */
+.menu-items-wrapper::-webkit-scrollbar {
+    width: 4px;
+}
+.menu-items-wrapper::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 2px;
+}
+
+.menu-item-link {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    color: #4a4a4a;
+    text-decoration: none !important;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.15s, color 0.15s;
+    line-height: 42px;
+    height: 42px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.menu-item-link:hover {
+    background-color: #f5f5f5;
+    color: #111111;
+}
+
+.menu-item-link.active {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+}
+
+.menu-item-link.active .menu-icon svg {
+    stroke: #ffffff;
+    fill: none;
+}
+.menu-item-link.active .menu-icon svg.fill-icon {
+    fill: #ffffff;
+    stroke: none;
+}
+
+.menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.menu-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: #555555;
+    stroke-width: 1.8;
+}
+
+.menu-icon svg.fill-icon {
+    fill: #555555;
+    stroke: none;
+}
+
+.menu-text {
+    flex: 1;
+    white-space: nowrap;
+}
+
+.expand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
+    margin-left: auto;
+    flex-shrink: 0;
+    color: #777777;
+}
+
+.expand-icon svg {
+    width: 8px;
+    height: 8px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+}
+
+.settings-area {
+    padding: 16px 12px;
+    border-top: 1px solid #f0f0f0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .sidebar-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .logo-area {
+        margin: 0 auto;
+    }
+    .menu-items-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 8px;
+        gap: 6px;
+    }
+    .menu-item-link {
+        height: auto;
+        padding: 6px 12px;
+        line-height: 1.5;
+    }
+    .settings-area {
+        border-top: none;
+        padding: 8px;
+    }
+}

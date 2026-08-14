@@ -1,0 +1,132 @@
+/* =========================================
+   MAIN APPLICATION LAYOUT
+   Figma: 1920 × 1080
+   Sidebar: 260px
+   Header: 1660px × 80px
+   ========================================= */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.page {
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   SIDEBAR CONTAINER
+   ========================================= */
+
+.sidebar {
+    width: 260px;
+    min-width: 260px;
+    max-width: 260px;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #ffffff;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+body.sidebar-collapsed .sidebar {
+    transform: translateX(-260px);
+}
+
+/* =========================================
+   MAIN AREA
+   ========================================= */
+
+main {
+    width: calc(100% - 260px);
+    min-width: 0;
+    min-height: 100vh;
+    margin-left: 260px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+body.sidebar-collapsed main {
+    margin-left: 0;
+    width: 100%;
+}
+
+    /* =========================================
+   HEADER
+   Header = 1660 × 80 on 1920px screen
+   ========================================= */
+
+    main > header {
+        width: 100%;
+        height: 80px;
+        min-height: 80px;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.content {
+    width: 100%;
+    min-width: 0;
+    min-height: calc(100vh - 80px);
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   REMOVE DEFAULT BLAZOR STYLES
+   ========================================= */
+
+.top-row {
+    display: none;
+}
+
+/* =========================================
+   BLAZOR ERROR
+   ========================================= */
+
+#blazor-error-ui {
+    color-scheme: light only;
+    background: lightyellow;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: none;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }

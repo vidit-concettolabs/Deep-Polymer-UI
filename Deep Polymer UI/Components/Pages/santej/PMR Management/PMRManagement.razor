@@ -1,0 +1,331 @@
+@page "/pmr-management"
+@page "/"
+
+<PageTitle>PMR Management</PageTitle>
+
+<div class="pmr-container">
+    <!-- PMR Page Header -->
+    <div class="pmr-header">
+        <h1 class="pmr-title">PMR Management</h1>
+        <p class="pmr-desc">Manage, review, and process all PMR requests from a centralized admin panel.</p>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="pmr-filter-row">
+        <div class="filter-item">
+            <select class="filter-select">
+                <option selected disabled>PMR</option>
+            </select>
+            <span class="filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="filter-item">
+            <select class="filter-select">
+                <option selected disabled>Customer Name</option>
+            </select>
+            <span class="filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="filter-item">
+            <select class="filter-select">
+                <option selected disabled>Product Name</option>
+            </select>
+            <span class="filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="filter-item">
+            <select class="filter-select">
+                <option selected disabled>Colour Name</option>
+            </select>
+            <span class="filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="filter-item">
+            <select class="filter-select">
+                <option selected disabled>Colour Code</option>
+            </select>
+            <span class="filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="filter-item">
+            <select class="filter-select">
+                <option selected disabled>Status</option>
+            </select>
+            <span class="filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+    </div>
+
+    <!-- PMR Table Section -->
+    <div class="pmr-table-wrapper">
+        <table class="pmr-table">
+            <thead>
+                <tr>
+                    <th>PMR No.</th>
+                    <th>Customer Name</th>
+                    <th>Product Name</th>
+                    <th>Colour Name</th>
+                    <th>Colour Code</th>
+                    <th>Total Cost</th>
+                    <th>Submitted Date</th>
+                    <th style="text-align: center;">Request Status</th>
+                    <th style="text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 1 -->
+                <tr>
+                    <td>PMR-001</td>
+                    <td>Ramesh Patel</td>
+                    <td><span class="product-link">HD Polymer Mix</span></td>
+                    <td>Ocean Blue</td>
+                    <td>OB-102</td>
+                    <td>-</td>
+                    <td>19-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-material-added">Material Added</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-001">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                    <td>PMR-002</td>
+                    <td>Karan Desai</td>
+                    <td><span class="product-link">Flexi Compound</span></td>
+                    <td>Dark Grey</td>
+                    <td>SG-310</td>
+                    <td>-</td>
+                    <td>18-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-submitted">Submitted</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-002">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                    <td>PMR-003</td>
+                    <td>Priya Mehta</td>
+                    <td><span class="product-link">Eco Resin Blend</span></td>
+                    <td>Leaf Green</td>
+                    <td>LG-118</td>
+                    <td>₹15,900</td>
+                    <td>17-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-costing-done">Costing Done</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-003">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                    <td>PMR-004</td>
+                    <td>Nisha Joshi</td>
+                    <td><span class="product-link">Vibrant Coating</span></td>
+                    <td>Crimson Red</td>
+                    <td>OB-102</td>
+                    <td>₹12,500</td>
+                    <td>18-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-negotiating">Negotiating</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-004">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Row 5 -->
+                <tr>
+                    <td>PMR-005</td>
+                    <td>Vivek Trivedi</td>
+                    <td><span class="product-link">Thermal Shield</span></td>
+                    <td>Steel Grey</td>
+                    <td>SG-310</td>
+                    <td>₹20,500</td>
+                    <td>19-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-price-approved">Price Approved</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-005">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Row 6 -->
+                <tr>
+                    <td>PMR-006</td>
+                    <td>Dhruv Parmar</td>
+                    <td><span class="product-link">Biodegradable Blend</span></td>
+                    <td>Natural Brown</td>
+                    <td>NB-405</td>
+                    <td>₹16,300</td>
+                    <td>19-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-in-production">In Production</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-006">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Row 7 -->
+                <tr>
+                    <td>PMR-007</td>
+                    <td>Hitesh Shah</td>
+                    <td><span class="product-link">Clear View Resin</span></td>
+                    <td>Crystal Clear</td>
+                    <td>CW-501</td>
+                    <td>₹21,800</td>
+                    <td>19-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-completed">Completed</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-007">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Row 8 -->
+                <tr>
+                    <td>PMR-008</td>
+                    <td>Rahul Mehta</td>
+                    <td><span class="product-link">Lightweight Composite</span></td>
+                    <td>Sky Blue</td>
+                    <td>SB-209</td>
+                    <td>₹28,400</td>
+                    <td>18-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-lab-revised">Lab Revised</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-008">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Row 9 -->
+                <tr>
+                    <td>PMR-009</td>
+                    <td>Pooja Patel</td>
+                    <td><span class="product-link">Ultra Strong Polymer</span></td>
+                    <td>Jet Black</td>
+                    <td>JB-118</td>
+                    <td>₹30,000</td>
+                    <td>19-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-prod-revised">Prod Revised</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-009">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Row 10 -->
+                <tr>
+                    <td>PMR-010</td>
+                    <td>Amit Shah</td>
+                    <td><span class="product-link">Scratch Resistant Finish</span></td>
+                    <td>Metallic Silver</td>
+                    <td>MS-223</td>
+                    <td>₹17,250</td>
+                    <td>19-05-2026</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-discarded">Discarded</span>
+                    </td>
+                    <td class="action-cell">
+                        <button class="action-view-btn" type="button" title="View PMR-010">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table Pagination Footer -->
+        <div class="pmr-pagination-row">
+            <span class="pagination-info">Showing 1-10 of 12 list</span>
+            <nav class="pagination-nav">
+                <button class="pagination-btn disabled" type="button" title="Previous Page" disabled>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="pagination-btn active" type="button">1</button>
+                <button class="pagination-btn" type="button">2</button>
+                <button class="pagination-btn" type="button" title="Next Page">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>
