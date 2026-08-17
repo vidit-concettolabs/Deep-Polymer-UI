@@ -39,15 +39,16 @@
 
 .pmr-title {
     font-size: 20px;
-    font-weight: 600;
-    color: #111111;
+    font-weight: 700;
+    color: #1a1a2e;
     margin: 0 0 4px 0;
     line-height: 1.2;
 }
 
 .pmr-desc {
     font-size: 12px;
-    color: #888888;
+    font-weight: 400;
+    color: #9ca3af;
     margin: 0;
     line-height: 1.3;
 }

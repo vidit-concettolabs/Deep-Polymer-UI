@@ -86,6 +86,7 @@ body.sidebar-collapsed .sidebar-container {
     border-left: 3px solid var(--primary-color) !important;
     padding-left: 11px; /* 14px - 3px border to keep text aligned */
     border-radius: 6px;
+    font-weight: 700 !important;
 }
 
 .menu-item-link.active .menu-icon svg {
