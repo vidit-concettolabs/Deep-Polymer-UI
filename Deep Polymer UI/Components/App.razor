@@ -14,9 +14,16 @@
     <link rel="stylesheet" href="@Assets["css/pmr-management.css"]" />
     <link rel="stylesheet" href="@Assets["css/main-layout.css"]" />
     <link rel="stylesheet" href="@Assets["css/masters.css"]" />
+    <link rel="stylesheet" href="@Assets["css/polymer-master.css"]" />
     <ImportMap />
     <link rel="icon" type="image/png" href="favicon.png" />
     <HeadOutlet />
+    <style>
+        :root {
+            --primary-color: @(ColorConstant.PrimaryColor);
+            --primary-bg: @(ColorConstant.PrimaryBg);
+        }
+    </style>
 </head>
 
 <body>

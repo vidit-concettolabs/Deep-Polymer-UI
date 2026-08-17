@@ -21,6 +21,14 @@
     gap: 8px;
     box-sizing: border-box;
     position: relative; /* Base for horizontal line */
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.masters-tabs-row::-webkit-scrollbar {
+    display: none;
 }
 
 /* Continuous horizontal grey line under all tabs */
@@ -56,13 +64,13 @@
 }
 
 .tab-btn:hover {
-    color: #ff0000;
+    color: var(--primary-color);
 }
 
 .tab-btn.active {
-    color: #ff0000 !important;
+    color: var(--primary-color) !important;
     font-weight: 600;
-    background-color: #FFE5E5;
+    background-color: var(--primary-bg);
     border-radius: 6px;
 }
 
@@ -74,7 +82,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #ff0000;
+    background-color: var(--primary-color);
     border-radius: 0 0 6px 6px;
     z-index: 3;
 }
@@ -150,7 +158,7 @@
 /* Add Customer Button */
 .add-customer-btn {
     height: 36px;
-    background-color: #ff0000;
+    background-color: var(--primary-color);
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -161,12 +169,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.15s;
+    transition: background-color 0.15s, filter 0.15s;
     white-space: nowrap;
 }
 
 .add-customer-btn:hover {
-    background-color: #d01818;
+    background-color: var(--primary-color);
+    filter: brightness(90%);
 }
 
 /* Table Design */
@@ -277,15 +286,15 @@
 }
 
 .action-delete-btn:hover {
-    background-color: #fee2e2;
-    border-color: #f87171;
+    background-color: var(--primary-bg);
+    border-color: var(--primary-color);
 }
 
 .action-delete-btn svg {
     width: 14px;
     height: 14px;
     fill: none;
-    stroke: #ef4444;
+    stroke: var(--primary-color);
     stroke-width: 2;
 }
 
@@ -363,8 +372,8 @@
 }
 
 .pagination-btn.active {
-    background-color: #ff0000;
-    border-color: #ff0000;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
     color: #ffffff;
 }
 

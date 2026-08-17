@@ -1,0 +1,24 @@
+@using DeepPolymer.Constants
+
+<div class="masters-tabs-row">
+    <a class="tab-btn @(ActiveTab == "customer" ? "active" : "")" href="/masters/customer">Customer Master</a>
+    <a class="tab-btn @(ActiveTab == "color" ? "active" : "")" href="/masters/color">Color Master</a>
+    <a class="tab-btn @(ActiveTab == "raw-material" ? "active" : "")" href="/masters/raw-material">Raw Material Master</a>
+    
+    @if (ColorConstant.BranchFlag == 2)
+    {
+        <a class="tab-btn @(ActiveTab == "polymer" ? "active" : "")" href="/masters/polymer">Polymer Master</a>
+        <a class="tab-btn @(ActiveTab == "cross-section" ? "active" : "")" href="/masters/cross-section">Cross Section Master</a>
+        <a class="tab-btn @(ActiveTab == "yarn-structure" ? "active" : "")" href="/masters/yarn-structure">Yarn Structure Master</a>
+        <a class="tab-btn @(ActiveTab == "twist" ? "active" : "")" href="/masters/twist">Twist Master</a>
+        <a class="tab-btn @(ActiveTab == "lustre" ? "active" : "")" href="/masters/lustre">Lustre Master</a>
+        <a class="tab-btn @(ActiveTab == "x-section" ? "active" : "")" href="/masters/x-section">X Section Master</a>
+        <a class="tab-btn @(ActiveTab == "denier" ? "active" : "")" href="/masters/denier">Denier Master</a>
+        <a class="tab-btn @(ActiveTab == "filament" ? "active" : "")" href="/masters/filament">Filament Master</a>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string ActiveTab { get; set; } = "";
+}
