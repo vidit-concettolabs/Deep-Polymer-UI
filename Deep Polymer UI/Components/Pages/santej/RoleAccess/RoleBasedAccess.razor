@@ -1,4 +1,5 @@
 @page "/role-access"
+@rendermode InteractiveServer
 
 <div class="role-page">
     <!-- Page Header -->
@@ -7,8 +8,10 @@
             <h1 class="role-page-title">Role Based Access</h1>
             <p class="role-page-subtitle">Manage user roles and permission access across the platform.</p>
         </div>
-        <button class="role-add-btn" id="btn-add-role">Add Role</button>
+        <button class="role-add-btn" id="btn-add-role" @onclick="() => showAddDialog = true">Add Role</button>
     </div>
+
+    <AddRoleDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Table Card -->
     <div class="role-card">
@@ -89,3 +92,6 @@
     </div>
 </div>
 
+@code {
+    private bool showAddDialog = false;
+}

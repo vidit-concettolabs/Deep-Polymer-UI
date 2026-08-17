@@ -1,0 +1,54 @@
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card" @onclick:stopPropagation="true">
+            <div class="dialog-header">
+                <h3 class="dialog-title">Assign Role</h3>
+                <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+            <div class="dialog-body">
+                <div class="dialog-form-group">
+                    <label class="dialog-label">
+                        Role Name <span class="required-star">*</span>
+                    </label>
+                    <input class="dialog-input" type="text" placeholder="Role" @bind="RoleName" />
+                </div>
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Location <span class="required-star">*</span> </label>
+                    <select class="dialog-select" @bind="SelectedLocation">
+                        <option value="Rakanpur">Rakanpur</option>
+                        <option value="Hajipur">Hajipur</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="dialog-footer">
+                <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                <button class="dialog-submit-btn" type="button" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private string RoleName { get; set; } = "";
+    private string SelectedLocation { get; set; } = "";
+    private bool IsActive { get; set; } = true;
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}
+

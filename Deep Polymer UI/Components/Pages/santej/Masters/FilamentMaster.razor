@@ -1,4 +1,5 @@
 @page "/masters/filament"
+@rendermode InteractiveServer
 
 <div class="masters-container">
     <MastersTabs ActiveTab="filament" />
@@ -24,8 +25,10 @@
         </div>
 
         <!-- Add Filament Master Button -->
-        <button class="add-customer-btn" type="button">Filament Master</button>
+        <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add Filament Master</button>
     </div>
+
+    <AddFilamentMasterDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Filament Table Wrapper -->
     <div class="masters-table-wrapper filament-table">
@@ -95,6 +98,8 @@
 </div>
 
 @code {
+    private bool showAddDialog = false;
+
     private class FilamentModel
     {
         public string Name { get; set; } = "";

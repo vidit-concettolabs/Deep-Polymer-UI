@@ -1,0 +1,44 @@
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card" @onclick:stopPropagation="true">
+            <div class="dialog-header">
+                <h3 class="dialog-title">Add Location</h3>
+                <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+            <div class="dialog-body">
+                <div class="dialog-form-group">
+                    <label class="dialog-label">
+                        Location Name <span class="required-star">*</span>
+                    </label>
+                    <input class="dialog-input" type="text" placeholder="Location Name" @bind="LocationName" />
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                <button class="dialog-submit-btn" type="button" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private string LocationName { get; set; } = "";
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}
+

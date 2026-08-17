@@ -1,4 +1,5 @@
 @page "/locations"
+@rendermode InteractiveServer
 
 <div class="locations-page">
     <!-- Page Header -->
@@ -7,8 +8,10 @@
             <h1 class="locations-page-title">Manage Locations</h1>
             <p class="locations-page-subtitle">Manage business locations used across PMR workflows and operations.</p>
         </div>
-        <button class="locations-add-btn" id="btn-add-location">Add Location</button>
+        <button class="locations-add-btn" id="btn-add-location" @onclick="() => showAddDialog = true">Add Location</button>
     </div>
+
+    <AddLocationDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Table Card -->
     <div class="locations-card">
@@ -96,3 +99,6 @@
     </div>
 </div>
 
+@code {
+    private bool showAddDialog = false;
+}

@@ -1,4 +1,5 @@
 @page "/ip-addresses"
+@rendermode InteractiveServer
 
 <div class="ip-page">
     <!-- Page Header -->
@@ -7,8 +8,10 @@
             <h1 class="ip-page-title">Manage IP Addresses</h1>
             <p class="ip-page-subtitle">Control and manage secure device access for authorized users.</p>
         </div>
-        <button class="ip-add-btn" id="btn-add-ip">Add IP Address</button>
+        <button class="ip-add-btn" id="btn-add-ip" @onclick="() => showAddDialog = true">Add IP Address</button>
     </div>
+
+    <AddIPAddressDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Table Card -->
     <div class="ip-card">
@@ -141,3 +144,6 @@
     </div>
 </div>
 
+@code {
+    private bool showAddDialog = false;
+}

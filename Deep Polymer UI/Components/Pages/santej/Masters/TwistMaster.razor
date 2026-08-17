@@ -1,4 +1,5 @@
 @page "/masters/twist"
+@rendermode InteractiveServer
 
 <div class="masters-container">
     <MastersTabs ActiveTab="twist" />
@@ -24,8 +25,10 @@
         </div>
 
         <!-- Add Twist Master Button -->
-        <button class="add-customer-btn" type="button">Add Twist Master</button>
+        <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add Twist Master</button>
     </div>
+
+    <AddTwistMasterDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Twist Table Wrapper -->
     <div class="masters-table-wrapper twist-table">
@@ -95,6 +98,8 @@
 </div>
 
 @code {
+    private bool showAddDialog = false;
+
     private class TwistModel
     {
         public string Name { get; set; } = "";

@@ -1,4 +1,5 @@
 @page "/masters/yarn-structure"
+@rendermode InteractiveServer
 
 <div class="masters-container">
     <MastersTabs ActiveTab="yarn-structure" />
@@ -24,8 +25,10 @@
         </div>
 
         <!-- Add Yarn Structure Button -->
-        <button class="add-customer-btn" type="button">Add Yarn Structure</button>
+        <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add Yarn Structure</button>
     </div>
+
+    <AddYarnStructureDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Yarn Structure Table Wrapper -->
     <div class="masters-table-wrapper yarn-structure-table">
@@ -93,6 +96,8 @@
 </div>
 
 @code {
+    private bool showAddDialog = false;
+
     private class YarnStructureModel
     {
         public string Name { get; set; } = "";

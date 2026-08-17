@@ -1,0 +1,72 @@
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card" @onclick:stopPropagation="true">
+            <div class="dialog-header">
+                <h3 class="dialog-title">Create User</h3>
+                <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+            <div class="dialog-body">
+                <div class="dialog-form-group">
+                    <label class="dialog-label">
+                        User Name <span class="required-star">*</span>
+                    </label>
+                    <input class="dialog-input" type="text" placeholder="User Name" @bind="UserName" />
+                </div>
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Select Role <span class="required-star">*</span> </label>
+                    <select class="dialog-select" @bind="SelectedRole">
+                        <option value="Select Role">Select Role</option>
+                        <option value="CEO">CEO</option>
+                        <option value="PMR Generator">PMR Generator</option>
+                        <option value="Lab User">Lab User</option>
+                    </select>
+                </div>
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Select IP Address <span class="required-star">*</span> </label>
+                    <select class="dialog-select" @bind="IPAddress">
+                        <option value="Select IP Address">Select IP Address</option>
+                        <option value="192.168.1.1">192.168.1.1</option>
+                        <option value="0.0.0.0">0.0.0.0</option>
+                    </select>
+                </div>
+                <div class="dialog-status-wrapper">
+                    <label class="dialog-label">Bypass IP</label>
+                    <label class="dialog-toggle">
+                        <input type="checkbox" @bind="BypassIP" />
+                        <span class="dialog-toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                <button class="dialog-submit-btn" type="button" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private string UserName { get; set; } = "";
+    private string SelectedRole { get; set; } = "";
+    private string IPAddress { get; set; } = "";
+    private bool IsActive { get; set; } = true;
+    private bool BypassIP { get; set; } = false;
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}
+

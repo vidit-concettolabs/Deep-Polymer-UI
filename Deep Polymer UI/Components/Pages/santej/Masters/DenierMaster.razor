@@ -1,4 +1,5 @@
 @page "/masters/denier"
+@rendermode InteractiveServer
 
 <div class="masters-container">
     <MastersTabs ActiveTab="denier" />
@@ -24,8 +25,10 @@
         </div>
 
         <!-- Add Denier Master Button -->
-        <button class="add-customer-btn" type="button">Denier Master</button>
+        <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add Denier Master</button>
     </div>
+
+    <AddDenierMasterDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Denier Table Wrapper -->
     <div class="masters-table-wrapper denier-table">
@@ -95,6 +98,8 @@
 </div>
 
 @code {
+    private bool showAddDialog = false;
+
     private class DenierModel
     {
         public string Name { get; set; } = "";

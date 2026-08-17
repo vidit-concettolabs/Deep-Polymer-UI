@@ -1,4 +1,5 @@
 @page "/users"
+@rendermode InteractiveServer
 
 <div class="user-page">
     <!-- Page Header -->
@@ -7,8 +8,10 @@
             <h1 class="user-page-title">User Management</h1>
             <p class="user-page-subtitle">Manage user accounts, roles, and platform access permissions.</p>
         </div>
-        <button class="user-create-btn" id="btn-create-user">Create User</button>
+        <button class="user-create-btn" id="btn-create-user" @onclick="() => showCreateDialog = true">Create User</button>
     </div>
+
+    <CreateUserDialog @bind-IsOpen="showCreateDialog" />
 
     <!-- Table Card -->
     <div class="user-card">
@@ -113,3 +116,6 @@
     </div>
 </div>
 
+@code {
+    private bool showCreateDialog = false;
+}

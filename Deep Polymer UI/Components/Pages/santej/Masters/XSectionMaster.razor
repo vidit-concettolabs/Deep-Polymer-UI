@@ -1,4 +1,5 @@
 @page "/masters/x-section"
+@rendermode InteractiveServer
 
 <div class="masters-container">
     <MastersTabs ActiveTab="x-section" />
@@ -24,8 +25,10 @@
         </div>
 
         <!-- Add X Section Master Button -->
-        <button class="add-customer-btn" type="button">Add X Section Master</button>
+        <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add X Section Master</button>
     </div>
+
+    <AddXSectionDialog @bind-IsOpen="showAddDialog" />
 
     <!-- X Section Table Wrapper -->
     <div class="masters-table-wrapper x-section-table">
@@ -95,6 +98,8 @@
 </div>
 
 @code {
+    private bool showAddDialog = false;
+
     private class XSectionModel
     {
         public string Name { get; set; } = "";

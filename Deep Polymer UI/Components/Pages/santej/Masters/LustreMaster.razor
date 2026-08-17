@@ -1,4 +1,5 @@
 @page "/masters/lustre"
+@rendermode InteractiveServer
 
 <div class="masters-container">
     <MastersTabs ActiveTab="lustre" />
@@ -24,8 +25,10 @@
         </div>
 
         <!-- Add Lustre Master Button -->
-        <button class="add-customer-btn" type="button">Add Lustre Master</button>
+        <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add Lustre Master</button>
     </div>
+
+    <AddLustreMasterDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Lustre Table Wrapper -->
     <div class="masters-table-wrapper lustre-table">
@@ -95,6 +98,8 @@
 </div>
 
 @code {
+    private bool showAddDialog = false;
+
     private class LustreModel
     {
         public string Name { get; set; } = "";
