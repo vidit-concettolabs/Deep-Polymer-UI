@@ -81,16 +81,19 @@ body.sidebar-collapsed .sidebar-container {
 }
 
 .menu-item-link.active {
-    background-color: #111111 !important;
-    color: #ffffff !important;
+    background-color: var(--primary-bg) !important;
+    color: var(--primary-color) !important;
+    border-left: 3px solid var(--primary-color) !important;
+    padding-left: 11px; /* 14px - 3px border to keep text aligned */
+    border-radius: 6px;
 }
 
 .menu-item-link.active .menu-icon svg {
-    stroke: #ffffff;
+    stroke: var(--primary-color);
     fill: none;
 }
 .menu-item-link.active .menu-icon svg.fill-icon {
-    fill: #ffffff;
+    fill: var(--primary-color);
     stroke: none;
 }
 
