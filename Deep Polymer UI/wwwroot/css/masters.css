@@ -15,12 +15,6 @@
     border-radius: 6px;
     border: 1px solid #d9e0e7;
     height: 50px;
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    gap: 8px;
-    box-sizing: border-box;
-    position: relative; /* Base for horizontal line */
     overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: none; /* Hide scrollbar for Firefox */
@@ -31,8 +25,19 @@
     display: none;
 }
 
+.masters-tabs-content {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 16px;
+    gap: 8px;
+    position: relative; /* Base for horizontal line */
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
 /* Continuous horizontal grey line under all tabs */
-.masters-tabs-row::after {
+.masters-tabs-content::after {
     content: '';
     position: absolute;
     bottom: 9px; /* Aligns exactly with the bottom of the centered tab buttons */
