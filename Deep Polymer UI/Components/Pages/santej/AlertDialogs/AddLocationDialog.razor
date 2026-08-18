@@ -1,3 +1,5 @@
+@using DeepPolymer.Constants
+
 @if (IsOpen)
 {
     <div class="dialog-overlay" @onclick="Close">
@@ -16,7 +18,7 @@
             </div>
             <div class="dialog-footer">
                 <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
-                <button class="dialog-submit-btn" type="button" @onclick="Submit">Submit</button>
+                <button class="dialog-submit-btn" style="background-color: @ColorConstant.PrimaryColor;" type="button" @onclick="Submit">Submit</button>
             </div>
         </div>
     </div>

@@ -1,3 +1,5 @@
+@using DeepPolymer.Constants
+
 @if (IsOpen)
 {
     <div class="dialog-overlay" @onclick="Close">
@@ -7,24 +9,34 @@
                 <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
             </div>
             <div class="dialog-body">
+                <!-- Role -->
                 <div class="dialog-form-group">
                     <label class="dialog-label">
-                        Role Name <span class="required-star">*</span>
+                        Role <span class="required-star">*</span>
                     </label>
                     <input class="dialog-input" type="text" placeholder="Role" @bind="RoleName" />
                 </div>
+
+                <!-- Select Location -->
                 <div class="dialog-form-group">
-                    <label class="dialog-label">Location <span class="required-star">*</span> </label>
-                    <select class="dialog-select" @bind="SelectedLocation">
-                        <option value="Rakanpur">Rakanpur</option>
-                        <option value="Hajipur">Hajipur</option>
-                    </select>
+                    <label class="dialog-label">Select Location <span class="required-star">*</span></label>
+                    <div class="dialog-select-wrapper">
+                        <select class="dialog-select" @bind="SelectedLocation">
+                            <option value="">Select Location</option>
+                            <option value="Rakanpur">Rakanpur</option>
+                            <option value="Hajipur">Hajipur</option>
+                        </select>
+                        <span class="dialog-select-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
                 </div>
-                
             </div>
             <div class="dialog-footer">
                 <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
-                <button class="dialog-submit-btn" type="button" @onclick="Submit">Submit</button>
+                <button class="dialog-submit-btn" style="background-color: @ColorConstant.PrimaryColor;" type="button" @onclick="Submit">Submit</button>
             </div>
         </div>
     </div>

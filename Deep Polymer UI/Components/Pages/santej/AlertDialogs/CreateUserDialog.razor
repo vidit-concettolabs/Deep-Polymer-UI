@@ -1,3 +1,5 @@
+@using DeepPolymer.Constants
+
 @if (IsOpen)
 {
     <div class="dialog-overlay" @onclick="Close">
@@ -7,31 +9,54 @@
                 <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
             </div>
             <div class="dialog-body">
+                <!-- User Name -->
                 <div class="dialog-form-group">
                     <label class="dialog-label">
                         User Name <span class="required-star">*</span>
                     </label>
                     <input class="dialog-input" type="text" placeholder="User Name" @bind="UserName" />
                 </div>
+
+                <!-- Select Role -->
                 <div class="dialog-form-group">
-                    <label class="dialog-label">Select Role <span class="required-star">*</span> </label>
-                    <select class="dialog-select" @bind="SelectedRole">
-                        <option value="Select Role">Select Role</option>
-                        <option value="CEO">CEO</option>
-                        <option value="PMR Generator">PMR Generator</option>
-                        <option value="Lab User">Lab User</option>
-                    </select>
+                    <label class="dialog-label">Select Role <span class="required-star">*</span></label>
+                    <div class="dialog-select-wrapper">
+                        <select class="dialog-select" @bind="SelectedRole">
+                            <option value="">Select Role</option>
+                            <option value="CEO">CEO</option>
+                            <option value="PMR Generator">PMR Generator</option>
+                            <option value="Lab User">Lab User</option>
+                        </select>
+                        <span class="dialog-select-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
                 </div>
+
+                <!-- Select IP Address -->
                 <div class="dialog-form-group">
-                    <label class="dialog-label">Select IP Address <span class="required-star">*</span> </label>
-                    <select class="dialog-select" @bind="IPAddress">
-                        <option value="Select IP Address">Select IP Address</option>
-                        <option value="192.168.1.1">192.168.1.1</option>
-                        <option value="0.0.0.0">0.0.0.0</option>
-                    </select>
+                    <label class="dialog-label">Select IP Address <span class="required-star">*</span></label>
+                    <div class="dialog-select-wrapper">
+                        <select class="dialog-select" @bind="IPAddress">
+                            <option value="">Select IP Address</option>
+                            <option value="192.168.1.1">192.168.1.1</option>
+                            <option value="192.168.1.101">192.168.1.101</option>
+                            <option value="192.168.1.102">192.168.1.102</option>
+                            <option value="192.168.1.103">192.168.1.103</option>
+                        </select>
+                        <span class="dialog-select-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
                 </div>
-                <div class="dialog-status-wrapper">
-                    <label class="dialog-label">Bypass IP</label>
+
+                <!-- Bypass IP toggle -->
+                <div class="dialog-inline-toggle-row">
+                    <label class="dialog-label mb-0">Bypass IP</label>
                     <label class="dialog-toggle">
                         <input type="checkbox" @bind="BypassIP" />
                         <span class="dialog-toggle-slider"></span>
@@ -40,7 +65,10 @@
             </div>
             <div class="dialog-footer">
                 <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
-                <button class="dialog-submit-btn" type="button" @onclick="Submit">Submit</button>
+                <button class="dialog-submit-btn"
+                        style="background-color: @ColorConstant.PrimaryColor;"
+                        type="button"
+                        @onclick="Submit">Submit</button>
             </div>
         </div>
     </div>
@@ -54,7 +82,6 @@
     private string UserName { get; set; } = "";
     private string SelectedRole { get; set; } = "";
     private string IPAddress { get; set; } = "";
-    private bool IsActive { get; set; } = true;
     private bool BypassIP { get; set; } = false;
 
     private async Task Close()

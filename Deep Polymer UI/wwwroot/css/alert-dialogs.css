@@ -112,7 +112,7 @@
     border-radius: 6px;
     padding: 9px 12px;
     font-size: 13px;
-    color: #1f2937;
+    color: #151515;
     background-color: #ffffff;
     outline: none;
     box-sizing: border-box;
@@ -221,5 +221,49 @@
 
 .dialog-submit-btn:hover {
     opacity: 0.9;
+}
+
+/* =========================================
+   CUSTOM SELECT WRAPPER (chevron overlay)
+   ========================================= */
+
+.dialog-select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dialog-select-wrapper .dialog-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 36px; /* room for chevron */
+}
+
+.dialog-select-chevron {
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    color: #6b7280;
+}
+
+.dialog-select-chevron svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* =========================================
+   INLINE TOGGLE ROW (label + toggle side-by-side)
+   ========================================= */
+
+.dialog-inline-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dialog-inline-toggle-row .dialog-label {
+    margin-bottom: 0;
 }
 
