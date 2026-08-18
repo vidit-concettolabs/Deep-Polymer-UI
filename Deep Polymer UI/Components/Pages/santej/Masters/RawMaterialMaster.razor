@@ -1,4 +1,5 @@
 @page "/masters/raw-material"
+@rendermode InteractiveServer
 
 <div class="masters-container">
     <!-- Top Tabs Row -->
@@ -21,8 +22,10 @@
         </div>
 
         <!-- Add Material Button -->
-        <button class="add-customer-btn" type="button">Add Material</button>
+        <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add Material</button>
     </div>
+
+    <AddRawMaterialDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Material Table Wrapper -->
     <div class="masters-table-wrapper">
@@ -87,6 +90,8 @@
 </div>
 
 @code {
+    private bool showAddDialog = false;
+
     private class MaterialModel
     {
         public string Name { get; set; }

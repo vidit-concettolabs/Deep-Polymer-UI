@@ -254,8 +254,138 @@
 }
 
 /* =========================================
-   INLINE TOGGLE ROW (label + toggle side-by-side)
+   ADD CUSTOMER DIALOG — wider card
    ========================================= */
+
+.add-customer-dialog-card {
+    width: 680px;
+}
+
+/* Two-column grid row */
+.dialog-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* =========================================
+   EMAIL TAG INPUT
+   ========================================= */
+
+.dialog-tag-input-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 6px 10px;
+    background-color: #ffffff;
+    cursor: text;
+    box-sizing: border-box;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dialog-tag-input-box:focus-within {
+    border-color: var(--primary-color, #0405AB);
+    box-shadow: 0 0 0 2px rgba(4, 5, 171, 0.1);
+}
+
+.dialog-email-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #ffffff;
+    border: 1px solid var(--primary-color, #0405AB);
+    color: var(--primary-color, #0405AB);
+    border-radius: 20px;
+    padding: 2px 8px 2px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.dialog-tag-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color, #0405AB);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.dialog-tag-input {
+    flex: 1;
+    min-width: 80px;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    color: #151515;
+    background: transparent;
+    padding: 0;
+}
+
+.dialog-tag-input::placeholder {
+    color: #808080;
+}
+
+/* =========================================
+   RADIO BUTTONS (Local / Outside)
+   ========================================= */
+
+.dialog-radio-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.dialog-radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+}
+
+.dialog-radio-label input[type="radio"] {
+    display: none;
+}
+
+.dialog-radio-custom {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #d1d5db;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.15s;
+}
+
+.dialog-radio-custom::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--radio-color, #0405AB);
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.dialog-radio-label input[type="radio"]:checked + .dialog-radio-custom {
+    border-color: var(--radio-color, #0405AB);
+}
+
+.dialog-radio-label input[type="radio"]:checked + .dialog-radio-custom::after {
+    opacity: 1;
+}
 
 .dialog-inline-toggle-row {
     display: flex;

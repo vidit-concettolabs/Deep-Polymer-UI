@@ -1,0 +1,56 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card" @onclick:stopPropagation="true">
+            <div class="dialog-header">
+                <h3 class="dialog-title">Add Material</h3>
+                <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+            <div class="dialog-body">
+
+                <!-- Material Name -->
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Material Name <span class="required-star">*</span></label>
+                    <input class="dialog-input" type="text" placeholder="Material Name" @bind="MaterialName" />
+                </div>
+
+                <!-- Rate -->
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Rate(₹) <span class="required-star">*</span></label>
+                    <input class="dialog-input" type="text" placeholder="Rate(₹)" @bind="Rate" />
+                </div>
+
+            </div>
+            <div class="dialog-footer">
+                <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                <button class="dialog-submit-btn"
+                        style="background-color: @ColorConstant.PrimaryColor;"
+                        type="button"
+                        @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private string MaterialName { get; set; } = "";
+    private string Rate { get; set; } = "";
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}

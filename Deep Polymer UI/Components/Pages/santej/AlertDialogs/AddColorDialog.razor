@@ -1,0 +1,66 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card" @onclick:stopPropagation="true">
+            <div class="dialog-header">
+                <h3 class="dialog-title">Add Color</h3>
+                <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+            <div class="dialog-body">
+
+                <!-- Color Name -->
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Color Name <span class="required-star">*</span></label>
+                    <input class="dialog-input" type="text" placeholder="Color Name" @bind="ColorName" />
+                </div>
+
+                <!-- Color Code -->
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Color Code <span class="required-star">*</span></label>
+                    <input class="dialog-input" type="text" placeholder="Color Code" @bind="ColorCode" />
+                </div>
+
+                <!-- Code No — only visible when BranchFlag = 2 -->
+                @if (ColorConstant.BranchFlag == 2)
+                {
+                    <div class="dialog-form-group">
+                        <label class="dialog-label">Code No <span class="required-star">*</span></label>
+                        <input class="dialog-input" type="text" placeholder="Code No" @bind="CodeNo" />
+                    </div>
+                }
+
+            </div>
+            <div class="dialog-footer">
+                <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                <button class="dialog-submit-btn"
+                        style="background-color: @ColorConstant.PrimaryColor;"
+                        type="button"
+                        @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private string ColorName { get; set; } = "";
+    private string ColorCode { get; set; } = "";
+    private string CodeNo { get; set; } = "";
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}

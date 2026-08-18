@@ -1,5 +1,6 @@
 @page "/masters"
 @page "/masters/customer"
+@rendermode InteractiveServer
 
 <div class="masters-container">
     <!-- Top Tabs Row -->
@@ -34,8 +35,10 @@
         </div>
 
         <!-- Add Customer Button -->
-        <button class="add-customer-btn" type="button">Add Customer</button>
+        <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add Customer</button>
     </div>
+
+    <AddCustomerDialog @bind-IsOpen="showAddDialog" />
 
     <!-- Customer Table Wrapper -->
     <div class="masters-table-wrapper">
@@ -100,6 +103,8 @@
 </div>
 
 @code {
+    private bool showAddDialog = false;
+
     private class CustomerModel
     {
         public string Name { get; set; }

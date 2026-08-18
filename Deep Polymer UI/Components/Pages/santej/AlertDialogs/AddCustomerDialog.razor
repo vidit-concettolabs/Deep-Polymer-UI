@@ -1,0 +1,154 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card add-customer-dialog-card" @onclick:stopPropagation="true">
+            <div class="dialog-header">
+                <h3 class="dialog-title">Add Customer</h3>
+                <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+            <div class="dialog-body">
+
+                <!-- Row 1: Customer Name + Company Name -->
+                <div class="dialog-two-col">
+                    <div class="dialog-form-group">
+                        <label class="dialog-label">Customer Name <span class="required-star">*</span></label>
+                        <input class="dialog-input" type="text" placeholder="Customer Name" @bind="CustomerName" />
+                    </div>
+                    <div class="dialog-form-group">
+                        <label class="dialog-label">Company Name <span class="required-star">*</span></label>
+                        <input class="dialog-input" type="text" placeholder="Company Name" @bind="CompanyName" />
+                    </div>
+                </div>
+
+                <!-- Row 2: Email Address (tag input) + Contact Number -->
+                <div class="dialog-two-col">
+                    <div class="dialog-form-group">
+                        <label class="dialog-label">Email Address <span class="required-star">*</span></label>
+                        <div class="dialog-tag-input-box" @onclick="FocusEmailInput">
+                            @foreach (var email in EmailTags)
+                            {
+                                <span class="dialog-email-tag">
+                                    @email
+                                    <button type="button" class="dialog-tag-remove" @onclick="() => RemoveEmail(email)" @onclick:stopPropagation="true">&times;</button>
+                                </span>
+                            }
+                            <input class="dialog-tag-input"
+                                   type="text"
+                                   placeholder="@(EmailTags.Count == 0 ? "Email Address" : "")"
+                                   @bind="EmailInput"
+                                   @bind:event="oninput"
+                                   @onkeydown="HandleEmailKeyDown"
+                                   @ref="EmailInputRef" />
+                        </div>
+                    </div>
+                    <div class="dialog-form-group">
+                        <label class="dialog-label">Contact Number <span class="required-star">*</span></label>
+                        <input class="dialog-input" type="text" placeholder="Contact Number" @bind="ContactNumber" />
+                    </div>
+                </div>
+
+                <!-- Row 3: City + Region -->
+                <div class="dialog-two-col">
+                    <div class="dialog-form-group">
+                        <label class="dialog-label">City <span class="required-star">*</span></label>
+                        <input class="dialog-input" type="text" placeholder="City" @bind="City" />
+                    </div>
+                    <div class="dialog-form-group">
+                        <label class="dialog-label">Region <span class="required-star">*</span></label>
+                        <input class="dialog-input" type="text" placeholder="Region" @bind="Region" />
+                    </div>
+                </div>
+
+                <!-- Row 4: Local / Outside radio -->
+                <div class="dialog-radio-row">
+                    <label class="dialog-radio-label">
+                        <input type="radio" name="customerType" value="Local"
+                               checked="@(CustomerType == "Local")"
+                               @onchange="SetLocal" />
+                        <span class="dialog-radio-custom" style="--radio-color: @ColorConstant.PrimaryColor;"></span>
+                        Local
+                    </label>
+                    <label class="dialog-radio-label">
+                        <input type="radio" name="customerType" value="Outside"
+                               checked="@(CustomerType == "Outside")"
+                               @onchange="SetOutside" />
+                        <span class="dialog-radio-custom" style="--radio-color: @ColorConstant.PrimaryColor;"></span>
+                        Outside
+                    </label>
+                </div>
+
+            </div>
+            <div class="dialog-footer">
+                <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                <button class="dialog-submit-btn"
+                        style="background-color: @ColorConstant.PrimaryColor;"
+                        type="button"
+                        @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private string CustomerName { get; set; } = "";
+    private string CompanyName { get; set; } = "";
+    private string ContactNumber { get; set; } = "";
+    private string City { get; set; } = "";
+    private string Region { get; set; } = "";
+    private string CustomerType { get; set; } = "Local";
+
+    private List<string> EmailTags { get; set; } = new();
+    private string EmailInput { get; set; } = "";
+    private ElementReference EmailInputRef;
+
+    private async Task FocusEmailInput()
+    {
+        await EmailInputRef.FocusAsync();
+    }
+
+    private void HandleEmailKeyDown(KeyboardEventArgs e)
+    {
+        if ((e.Key == "Enter" || e.Key == "," || e.Key == " ") && !string.IsNullOrWhiteSpace(EmailInput))
+        {
+            var trimmed = EmailInput.Trim().TrimEnd(',');
+            if (!string.IsNullOrEmpty(trimmed) && !EmailTags.Contains(trimmed))
+                EmailTags.Add(trimmed);
+            EmailInput = "";
+        }
+        else if (e.Key == "Backspace" && string.IsNullOrEmpty(EmailInput) && EmailTags.Count > 0)
+        {
+            EmailTags.RemoveAt(EmailTags.Count - 1);
+        }
+    }
+
+    private void RemoveEmail(string email) => EmailTags.Remove(email);
+
+    private void SetLocal(ChangeEventArgs _) => CustomerType = "Local";
+    private void SetOutside(ChangeEventArgs _) => CustomerType = "Outside";
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        // Commit any partially typed email on submit
+        if (!string.IsNullOrWhiteSpace(EmailInput))
+        {
+            var trimmed = EmailInput.Trim().TrimEnd(',');
+            if (!EmailTags.Contains(trimmed))
+                EmailTags.Add(trimmed);
+            EmailInput = "";
+        }
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}
