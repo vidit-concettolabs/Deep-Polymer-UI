@@ -1,0 +1,223 @@
+@if (IsOpen)
+{
+    <div class="hpmr-dialog-overlay" @onclick="Close">
+        <div class="hpmr-dialog-card" @onclick:stopPropagation="true">
+
+            <!-- Header -->
+            <div class="hpmr-dialog-header">
+                <h3 class="hpmr-dialog-title">PMR Details - #@(string.IsNullOrEmpty(PmrNo) ? "1" : PmrNo)</h3>
+                <button class="hpmr-dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+
+            <!-- Body (Scrollable) -->
+            <div class="hpmr-dialog-body">
+
+                <!-- 4-Column Grid -->
+                <div class="hpmr-specs-grid">
+
+                    <!-- Row 1 -->
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Customer Color Ref. Name/Number</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Customer Color Ref. Name/Number" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Color Name</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Color Name" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Color Code</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Color Code" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Sample Color Name</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Sample Color Name" />
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Sample Type</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Sample Type" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">%LDR</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="%LDR" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">No of Cones Reqd</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="No of Cones Reqd" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Cone Weight</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Cone Weight" />
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">No of Card Strip Required</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="No of Card Strip Required" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">No of Dev Option</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="No of Dev Option" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Specific Requirement</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Specific Requirement" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Functional prop = FR/Anti-Microbial</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Functional prop = FR/Anti-Microbial" />
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Fastness Required</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Fastness Required" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">End Use</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="End Use" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Market</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Market" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Fastness Required</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Fastness Required" />
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Fastness Required</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Fastness Required" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Fastness Required</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Fastness Required" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Fastness Required</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Fastness Required" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Spectro Needed</label>
+                        <div class="hpmr-radio-group">
+                            <label class="hpmr-radio-label">
+                                <input type="radio" name="spectroNeeded_@UniqueId" value="Yes" checked />
+                                Yes
+                            </label>
+                            <label class="hpmr-radio-label">
+                                <input type="radio" name="spectroNeeded_@UniqueId" value="No" />
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Row 6 -->
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Light Source</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Light Source" />
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Azo Free</label>
+                        <div class="hpmr-radio-group">
+                            <label class="hpmr-radio-label">
+                                <input type="radio" name="azoFree_@UniqueId" value="Yes" checked />
+                                Yes
+                            </label>
+                            <label class="hpmr-radio-label">
+                                <input type="radio" name="azoFree_@UniqueId" value="No" />
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hpmr-spec-item">
+                        <label class="hpmr-spec-label">Remark</label>
+                        <input type="text" class="hpmr-spec-input" placeholder="Remark" />
+                    </div>
+                    <div class="hpmr-spec-item"></div>
+
+                </div>
+
+                <!-- Bottom Table Section -->
+                <div class="hpmr-planning-table-wrapper">
+                    <table class="hpmr-planning-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">Type</th>
+                                <th style="width: 37.5%;">Customer Details</th>
+                                <th style="width: 37.5%;">Deep Planning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Polymer</td>
+                                <td>
+                                    <div class="hpmr-table-select-wrapper">
+                                        <select class="hpmr-table-select">
+                                            <option selected disabled>Select Polymer</option>
+                                            <option>PET Polymer</option>
+                                            <option>PBT Polymer</option>
+                                            <option>Nylon Polymer</option>
+                                        </select>
+                                        <span class="hpmr-table-select-chevron">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="hpmr-table-select-wrapper">
+                                        <select class="hpmr-table-select">
+                                            <option selected disabled>Select Polymer</option>
+                                            <option>PET Polymer</option>
+                                            <option>PBT Polymer</option>
+                                            <option>Nylon Polymer</option>
+                                        </select>
+                                        <span class="hpmr-table-select-chevron">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>POY Den/Filaments</td>
+                                <td>
+                                    <input type="text" class="hpmr-table-input" placeholder="Enter POY Den/Filaments" />
+                                </td>
+                                <td>
+                                    <input type="text" class="hpmr-table-input" placeholder="Enter POY Den/Filaments" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="hpmr-dialog-footer">
+                <button class="hpmr-dialog-footer-close-btn" type="button" @onclick="Close">Close</button>
+            </div>
+
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string PmrNo { get; set; } = "1";
+
+    private string UniqueId = Guid.NewGuid().ToString("N");
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

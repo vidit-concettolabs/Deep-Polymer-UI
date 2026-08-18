@@ -227,6 +227,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-001">
 
                                 <svg viewBox="0 0 24 24">
@@ -262,6 +263,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-001">
 
                                 <svg viewBox="0 0 24 24">
@@ -297,6 +299,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-002">
 
                                 <svg viewBox="0 0 24 24">
@@ -332,6 +335,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-003">
 
                                 <svg viewBox="0 0 24 24">
@@ -367,6 +371,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-004">
 
                                 <svg viewBox="0 0 24 24">
@@ -402,6 +407,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-001">
 
                                 <svg viewBox="0 0 24 24">
@@ -437,6 +443,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-005">
 
                                 <svg viewBox="0 0 24 24">
@@ -472,6 +479,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-006">
 
                                 <svg viewBox="0 0 24 24">
@@ -507,6 +515,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-007">
 
                                 <svg viewBox="0 0 24 24">
@@ -542,6 +551,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-008">
 
                                 <svg viewBox="0 0 24 24">
@@ -577,6 +587,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
+                                    @onclick="() => OpenDetailsDialog()"
                                     title="View PMR-009">
 
                                 <svg viewBox="0 0 24 24">
@@ -649,5 +660,19 @@
 
         </div>
 
+        <!-- PMR Details Dialog -->
+        <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@selectedPmrNo" />
+
     </div>
+}
+
+@code {
+    private bool showDetailsDialog = false;
+    private string selectedPmrNo = "1";
+
+    private void OpenDetailsDialog(string pmrNo = "1")
+    {
+        selectedPmrNo = pmrNo;
+        showDetailsDialog = true;
+    }
 }
