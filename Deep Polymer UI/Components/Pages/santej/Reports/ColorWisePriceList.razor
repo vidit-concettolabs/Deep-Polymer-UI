@@ -1,0 +1,147 @@
+@page "/reports/color-price-list"
+@using DeepPolymer.Constants
+@rendermode InteractiveServer
+
+<div class="rpt-container">
+
+    <!-- Page Header -->
+    <div class="rpt-page-header">
+        <div>
+            <h1 class="rpt-page-title">Color Wise Price List</h1>
+            <p class="rpt-page-subtitle">View and manage product pricing organized by color, with detailed cost breakdowns and color variant information.</p>
+        </div>
+        <div class="cwpl-header-actions">
+            <button class="cwpl-btn-outline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="7 10 12 15 17 10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="12" y1="15" x2="12" y2="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                import
+            </button>
+            <button class="cwpl-btn-outline">Change Rate</button>
+            <button class="cwpl-btn-primary" style="background-color:@ColorConstant.PrimaryColor;">Add Rate</button>
+        </div>
+    </div>
+
+    <!-- Filter / Generate Row -->
+    <div class="rpt-filter-bar">
+        <div class="rpt-filter-left">
+            <span class="rpt-filter-label">Generate Report By:</span>
+
+            <!-- Radio: By PMR No. -->
+            <button class="rpt-radio-button @(selectedReportBy == "pmrno" ? "rpt-radio-active" : "")" @onclick="@(() => SelectReportBy("pmrno"))">
+                <span class="rpt-radio-dot-outer">
+                    <span class="rpt-radio-dot-inner"></span>
+                </span>
+                By PMR No.
+            </button>
+
+            <!-- Radio: Color Name -->
+            <button class="rpt-radio-button @(selectedReportBy == "colorname" ? "rpt-radio-active" : "")" @onclick="@(() => SelectReportBy("colorname"))">
+                <span class="rpt-radio-dot-outer">
+                    <span class="rpt-radio-dot-inner"></span>
+                </span>
+                Color Name
+            </button>
+
+            <!-- Radio: Color Code -->
+            <button class="rpt-radio-button @(selectedReportBy == "colorcode" ? "rpt-radio-active" : "")" @onclick="@(() => SelectReportBy("colorcode"))">
+                <span class="rpt-radio-dot-outer">
+                    <span class="rpt-radio-dot-inner"></span>
+                </span>
+                Color Code
+            </button>
+
+            <div class="rpt-select-wrapper">
+                <select class="rpt-select" @bind="selectedFilterValue">
+                    <option value="">Select</option>
+                    <option value="PMR-001">PMR-001</option>
+                    <option value="PMR-004">PMR-004</option>
+                    <option value="PMR-015">PMR-015</option>
+                </select>
+                <span class="rpt-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <button class="rpt-generate-btn" @onclick="GenerateReport">Generate</button>
+        </div>
+
+        <div class="rpt-filter-right">
+            <button class="rpt-export-btn rpt-export-excel">
+                <img src="assets/image/excel.svg" alt="Export Excel" class="rpt-export-icon" />
+                Export Excel
+            </button>
+            <button class="rpt-export-btn rpt-export-pdf">
+                <img src="assets/image/pdf.svg" alt="Export PDF" class="rpt-export-icon" />
+                Export PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="rpt-table-wrapper">
+        <table class="rpt-table">
+            <thead>
+                <tr>
+                    <th>Colour Name</th>
+                    <th>Colour Code</th>
+                    <th>Product Name</th>
+                    <th>PMR No.</th>
+                    <th>Price (Selling Price)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ocean Blue-A</td>
+                    <td>OB-102</td>
+                    <td>HD Polymer Mix</td>
+                    <td>PMR-001</td>
+                    <td>₹1,000</td>
+                </tr>
+                <tr>
+                    <td>Leaf Green</td>
+                    <td>GN-118</td>
+                    <td>HD Polymer Mix</td>
+                    <td>PMR-004</td>
+                    <td>₹800</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="rpt-pagination-row">
+            <span class="rpt-pagination-info">Showing 1-10 of 12 list</span>
+            <nav class="rpt-pagination-nav">
+                <button class="rpt-pg-btn rpt-pg-disabled" disabled>
+                    <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="rpt-pg-btn rpt-pg-active" style="background-color:@ColorConstant.PrimaryColor;">1</button>
+                <button class="rpt-pg-btn">2</button>
+                <button class="rpt-pg-btn">
+                    <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    private string selectedReportBy = "pmrno";
+    private string selectedFilterValue = "";
+
+    private void SelectReportBy(string option)
+    {
+        selectedReportBy = option;
+        selectedFilterValue = "";
+    }
+
+    private void GenerateReport()
+    {
+        // Static HTML rendering
+    }
+}

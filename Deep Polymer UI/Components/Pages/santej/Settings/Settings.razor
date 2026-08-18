@@ -1,0 +1,53 @@
+@page "/settings"
+@using DeepPolymer.Constants
+@rendermode InteractiveServer
+
+<div class="settings-page-container">
+
+    <!-- Page Header -->
+    <div class="settings-page-header">
+        <h1 class="settings-page-title">Settings</h1>
+        <p class="settings-page-subtitle">Configure and manage system-wide preferences, defaults, and behavior across the entire platform.</p>
+    </div>
+
+    <!-- Settings Card -->
+    <div class="settings-card">
+
+        <!-- Profit Margin field -->
+        <div class="settings-field-group">
+            <label class="settings-label">
+                Profit Margin(%)<span class="settings-required">*</span>
+            </label>
+            <input class="settings-input"
+                   type="number"
+                   placeholder="Enter Profit margin percentage"
+                   @bind="ProfitMargin" />
+        </div>
+
+        <!-- Footer / Warning Row -->
+        <div class="settings-footer-row">
+            <!-- Warning note -->
+            <div class="settings-warning-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="12" y1="8" x2="12" y2="12" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Note: Once submitted, this will affect profit margins globally.</span>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="settings-actions">
+                <button class="settings-cancel-btn" type="button">Cancel</button>
+                <button class="settings-save-btn" type="button"
+                        style="background-color:@ColorConstant.PrimaryColor;">Save</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@code {
+    private decimal? ProfitMargin { get; set; }
+}

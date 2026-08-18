@@ -12,10 +12,9 @@
         <div class="filter-item">
             <select class="filter-select">
                 <option selected disabled>Search Filament Master Name</option>
-                @foreach (var fi in Filaments)
-                {
-                    <option value="@fi.Name">@fi.Name</option>
-                }
+                <option value="X Section Name">X Section Name</option>
+                <option value="Y Integration">Y Integration</option>
+                <option value="Z User Analytics">Z User Analytics</option>
             </select>
             <span class="filter-chevron">
                 <svg viewBox="0 0 24 24">
@@ -42,37 +41,34 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var fi in Filaments.Take(10))
-                {
-                    <tr>
-                        <td class="text-start">@fi.Name</td>
-                        <td class="text-start">@fi.Description</td>
-                        <td class="text-center">
-                            <label class="status-switch">
-                                <input type="checkbox" checked="@fi.IsActive" @onchange="(e) => ToggleStatus(fi, e)" />
-                                <span class="status-slider"></span>
-                            </label>
-                        </td>
-                        <td class="text-center">
-                            <div class="actions-container">
-                                <button class="action-edit-btn" type="button" title="Edit Filament">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                                <button class="action-delete-btn" type="button" title="Delete Filament">
-                                    <svg viewBox="0 0 24 24">
-                                        <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
-                                        <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
-                                        <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                }
+                <tr>
+                    <td class="text-start">X Section Name</td>
+                    <td class="text-start">Description</td>
+                    <td class="text-center">
+                        <label class="status-switch">
+                            <input type="checkbox" checked />
+                            <span class="status-slider"></span>
+                        </label>
+                    </td>
+                    <td class="text-center">
+                        <div class="actions-container">
+                            <button class="action-edit-btn" type="button" title="Edit Filament">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="action-delete-btn" type="button" title="Delete Filament">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -99,35 +95,4 @@
 
 @code {
     private bool showAddDialog = false;
-
-    private class FilamentModel
-    {
-        public string Name { get; set; } = "";
-        public string Description { get; set; } = "";
-        public bool IsActive { get; set; } = true;
-    }
-
-    private List<FilamentModel> Filaments = new()
-    {
-        new() { Name = "X Section Name", Description = "Description", IsActive = true },
-        new() { Name = "Y Integration", Description = "Connect your app with third-party services to automate workflow", IsActive = true },
-        new() { Name = "Z User Analytics", Description = "Track user behavior and engagement metrics to optimize your", IsActive = true },
-        new() { Name = "A Accessibility", Description = "Ensure your product is usable by people with diverse abilities through", IsActive = true },
-        new() { Name = "B Security", Description = "Implement robust data protection measures to safeguard user information.", IsActive = true },
-        new() { Name = "C Performance", Description = "Optimize load times and responsiveness for a seamless user experience.", IsActive = true },
-        new() { Name = "D Onboarding", Description = "Guide new users through features with interactive tutorials and tips.", IsActive = true },
-        new() { Name = "E Notifications", Description = "Manage alerts and updates to keep users informed without overwhelm", IsActive = true },
-        new() { Name = "F Collaboration", Description = "Enable multiple users to work together efficiently within the platform.", IsActive = true },
-        new() { Name = "G Customization", Description = "Allow users to tailor settings and preferences to fit their needs.", IsActive = true },
-        new() { Name = "H Globalization", Description = "Support multiple languages, currencies, and localized formatting.", IsActive = true },
-        new() { Name = "I Optimization", Description = "Continuous tuning of infrastructure to minimize latency.", IsActive = true }
-    };
-
-    private void ToggleStatus(FilamentModel item, ChangeEventArgs e)
-    {
-        if (e.Value is bool val)
-        {
-            item.IsActive = val;
-        }
-    }
 }

@@ -12,10 +12,9 @@
         <div class="filter-item">
             <select class="filter-select">
                 <option selected disabled>Search Lustre Master Name</option>
-                @foreach (var lu in Lustres)
-                {
-                    <option value="@lu.Name">@lu.Name</option>
-                }
+                <option value="Matte">Matte</option>
+                <option value="Glossy">Glossy</option>
+                <option value="Satin">Satin</option>
             </select>
             <span class="filter-chevron">
                 <svg viewBox="0 0 24 24">
@@ -42,37 +41,34 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var lu in Lustres.Take(10))
-                {
-                    <tr>
-                        <td class="text-start">@lu.Name</td>
-                        <td class="text-start">@lu.Description</td>
-                        <td class="text-center">
-                            <label class="status-switch">
-                                <input type="checkbox" checked="@lu.IsActive" @onchange="(e) => ToggleStatus(lu, e)" />
-                                <span class="status-slider"></span>
-                            </label>
-                        </td>
-                        <td class="text-center">
-                            <div class="actions-container">
-                                <button class="action-edit-btn" type="button" title="Edit Lustre">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                                <button class="action-delete-btn" type="button" title="Delete Lustre">
-                                    <svg viewBox="0 0 24 24">
-                                        <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
-                                        <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
-                                        <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                }
+                <tr>
+                    <td class="text-start">Matte</td>
+                    <td class="text-start">A non-reflective, flat finish that diffuses light softly</td>
+                    <td class="text-center">
+                        <label class="status-switch">
+                            <input type="checkbox" checked />
+                            <span class="status-slider"></span>
+                        </label>
+                    </td>
+                    <td class="text-center">
+                        <div class="actions-container">
+                            <button class="action-edit-btn" type="button" title="Edit Lustre">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="action-delete-btn" type="button" title="Delete Lustre">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -99,35 +95,4 @@
 
 @code {
     private bool showAddDialog = false;
-
-    private class LustreModel
-    {
-        public string Name { get; set; } = "";
-        public string Description { get; set; } = "";
-        public bool IsActive { get; set; } = true;
-    }
-
-    private List<LustreModel> Lustres = new()
-    {
-        new() { Name = "Lustre Name", Description = "Description", IsActive = true },
-        new() { Name = "Matte", Description = "A non-reflective, flat finish that diffuses light softly", IsActive = true },
-        new() { Name = "Glossy", Description = "A shiny, reflective surface that enhances color vibrancy", IsActive = true },
-        new() { Name = "Satin", Description = "A smooth finish with soft sheen, between matte and glossy", IsActive = true },
-        new() { Name = "Pearlescent", Description = "Iridescent finish that mimics the look of pearls, with subtle color shifts", IsActive = true },
-        new() { Name = "Metallic", Description = "A lustrous finish that simulates the appearance of metal", IsActive = true },
-        new() { Name = "Silky", Description = "A smooth, soft finish with gentle sheen, resembling silk fabric", IsActive = true },
-        new() { Name = "Velvet", Description = "A rich, soft finish with a slightly plush texture and muted sheen", IsActive = true },
-        new() { Name = "Crackle", Description = "A textured finish with intentional cracks that create an antique effect", IsActive = true },
-        new() { Name = "Chalky", Description = "A matte finish with a powdery texture that resembles chalk", IsActive = true },
-        new() { Name = "Luminous", Description = "A bright, glowing finish that emits soft light visibility.", IsActive = true },
-        new() { Name = "Shimmer", Description = "A sparkling finish containing small reflective particles.", IsActive = true }
-    };
-
-    private void ToggleStatus(LustreModel item, ChangeEventArgs e)
-    {
-        if (e.Value is bool val)
-        {
-            item.IsActive = val;
-        }
-    }
 }

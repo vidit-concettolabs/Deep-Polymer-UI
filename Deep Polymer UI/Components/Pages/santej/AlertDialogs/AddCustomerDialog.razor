@@ -140,14 +140,6 @@
 
     private async Task Submit()
     {
-        // Commit any partially typed email on submit
-        if (!string.IsNullOrWhiteSpace(EmailInput))
-        {
-            var trimmed = EmailInput.Trim().TrimEnd(',');
-            if (!EmailTags.Contains(trimmed))
-                EmailTags.Add(trimmed);
-            EmailInput = "";
-        }
         await OnSubmit.InvokeAsync();
         await Close();
     }

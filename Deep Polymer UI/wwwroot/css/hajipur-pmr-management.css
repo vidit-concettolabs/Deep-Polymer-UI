@@ -1,0 +1,231 @@
+/* =============================================
+   HAJIPUR PMR MANAGEMENT — Page Styles
+   ============================================= */
+
+.hpmr-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+/* =============================================
+   FILTER ROW
+   ============================================= */
+
+.hpmr-filter-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #d9e0e7;
+    box-sizing: border-box;
+    min-height: 56px;
+    overflow-x: auto;
+}
+
+.hpmr-filter-item {
+    flex: 1;
+    min-width: 90px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.hpmr-filter-select {
+    width: 100%;
+    height: 34px;
+    padding: 0 24px 0 10px;
+    font-size: 11px;
+    color: #555555;
+    background-color: #ffffff;
+    border: 1px solid #d9e0e7;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hpmr-filter-select:focus {
+    outline: none;
+    border-color: var(--primary-color, #0405AB);
+}
+
+.hpmr-filter-chevron {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    color: #999999;
+}
+
+.hpmr-filter-chevron svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.2;
+}
+
+/* =============================================
+   TABLE WRAPPER
+   ============================================= */
+
+.hpmr-table-wrapper {
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #e1e5ea;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.hpmr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    text-align: left;
+    min-width: 900px;
+}
+
+.hpmr-table th {
+    background-color: #f8fafc;
+    color: #555555;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e1e5ea;
+    white-space: nowrap;
+    height: 44px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.hpmr-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #333333;
+    white-space: nowrap;
+    vertical-align: middle;
+    height: 50px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.hpmr-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status column — center align */
+.hpmr-table th:nth-child(9),
+.hpmr-table td:nth-child(9),
+.hpmr-table th:nth-child(10),
+.hpmr-table td:nth-child(10) {
+    text-align: center;
+}
+
+/* =============================================
+   STATUS BADGES
+   ============================================= */
+
+.hpmr-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    min-width: 110px;
+    height: 28px;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+.hpmr-status-material-added {
+    background-color: #f2f2f2;
+    border: 1px solid #737373;
+    color: #999999;
+}
+
+.hpmr-status-costing-done {
+    background-color: #F3E8FA;
+    border: 1px solid #8E44AD;
+    color: #8E44AD;
+}
+
+.hpmr-status-negotiating {
+    background-color: #F4EFED;
+    border: 1px solid #8D6E63;
+    color: #8D6E63;
+}
+
+.hpmr-status-price-approved {
+    background-color: #FDE6F1;
+    border: 1px solid #E84393;
+    color: #E84393;
+}
+
+.hpmr-status-in-production {
+    background-color: #FBE9E9;
+    border: 1px solid #E87F7F;
+    color: #CC00CF;
+}
+
+.hpmr-status-invoice-sent {
+    background-color: #F0F0FF;
+    border: 1px solid #5959FF;
+    color: #5B8DEF;
+}
+
+.hpmr-status-dispatched {
+    background-color: #F9FFCE;
+    border: 1px solid #8B9D05;
+    color: #85C000;
+}
+
+.hpmr-status-completed {
+    background-color: #E8F6ED;
+    border: 1px solid #16A34A;
+    color: #16A34A;
+}
+
+/* =============================================
+   ACTION BUTTON
+   ============================================= */
+
+.hpmr-view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #EAEAEA;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.hpmr-view-btn:hover {
+    background-color: #fee2e2;
+    border-color: #f87171;
+}
+
+.hpmr-view-btn svg {
+    width: 13px;
+    height: 13px;
+    fill: none;
+    stroke: #ef4444;
+    stroke-width: 2;
+}

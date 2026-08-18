@@ -1,0 +1,653 @@
+@page "/hajipur/pmr-management"
+@using DeepPolymer.Constants
+@rendermode InteractiveServer
+
+<PageTitle>PMR Management</PageTitle>
+
+@if (ColorConstant.BranchFlag == 2)
+{
+    <div class="hpmr-container">
+
+        <!-- Page Header -->
+        <div class="pmr-header">
+            <h1 class="pmr-title">PMR Management</h1>
+            <p class="pmr-desc">
+                Manage, review, and process all PMR requests from a centralized admin panel.
+            </p>
+        </div>
+
+        <!-- Filter Row -->
+        <div class="hpmr-filter-row">
+
+            <div class="hpmr-filter-item">
+                <select class="hpmr-filter-select">
+                    <option value="">PMR</option>
+                    <option>PMR-001</option>
+                    <option>PMR-002</option>
+                    <option>PMR-003</option>
+                </select>
+
+                <span class="hpmr-filter-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9l6 6 6-6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <div class="hpmr-filter-item">
+                <select class="hpmr-filter-select">
+                    <option value="">Customer Name</option>
+                    <option>Ramesh Patel</option>
+                    <option>Anjali Verma</option>
+                    <option>Kiran Desai</option>
+                </select>
+
+                <span class="hpmr-filter-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9l6 6 6-6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <div class="hpmr-filter-item">
+                <select class="hpmr-filter-select">
+                    <option value="">Colour Name</option>
+                    <option>Ocean Blue</option>
+                    <option>Sunset Orange</option>
+                    <option>Forest Green</option>
+                    <option>Crimson Red</option>
+                </select>
+
+                <span class="hpmr-filter-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9l6 6 6-6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <div class="hpmr-filter-item">
+                <select class="hpmr-filter-select">
+                    <option value="">Colour Code</option>
+                    <option>NB-405</option>
+                    <option>NB-406</option>
+                    <option>NB-407</option>
+                    <option>NB-408</option>
+                </select>
+
+                <span class="hpmr-filter-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9l6 6 6-6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <div class="hpmr-filter-item">
+                <select class="hpmr-filter-select">
+                    <option value="">Product Name</option>
+                    <option>PET BKY 20-1166</option>
+                    <option>PET BKY 20-1187</option>
+                    <option>PET BKY 20-1201</option>
+                    <option>PET BKY 20-1223</option>
+                </select>
+
+                <span class="hpmr-filter-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9l6 6 6-6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <div class="hpmr-filter-item">
+                <select class="hpmr-filter-select">
+                    <option value="">Product Code</option>
+                    <option>BE20-1166</option>
+                    <option>BE20-1187</option>
+                    <option>BE20-1201</option>
+                    <option>BE20-1223</option>
+                </select>
+
+                <span class="hpmr-filter-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9l6 6 6-6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <div class="hpmr-filter-item">
+                <select class="hpmr-filter-select">
+                    <option value="">Sample Type</option>
+                    <option>Fabric</option>
+                    <option>Yarn</option>
+                    <option>Material</option>
+                </select>
+
+                <span class="hpmr-filter-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9l6 6 6-6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <div class="hpmr-filter-item">
+                <select class="hpmr-filter-select">
+                    <option value="">LDR %</option>
+                    <option>1%</option>
+                    <option>2%</option>
+                    <option>3%</option>
+                    <option>4%</option>
+                    <option>5%</option>
+                    <option>6%</option>
+                    <option>7%</option>
+                    <option>8%</option>
+                </select>
+
+                <span class="hpmr-filter-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9l6 6 6-6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <div class="hpmr-filter-item">
+                <select class="hpmr-filter-select">
+                    <option value="">Status</option>
+                    <option>Material Added</option>
+                    <option>Costing Done</option>
+                    <option>Negotiating</option>
+                    <option>Price Approved</option>
+                    <option>In Production</option>
+                    <option>Invoice Sent</option>
+                    <option>Dispatched</option>
+                    <option>Completed</option>
+                </select>
+
+                <span class="hpmr-filter-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9l6 6 6-6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+        </div>
+
+        <!-- Table -->
+        <div class="hpmr-table-wrapper">
+
+            <table class="hpmr-table">
+
+                <thead>
+                    <tr>
+                        <th>PMR No.</th>
+                        <th>Customer Name</th>
+                        <th>Colour Name</th>
+                        <th>Colour Code</th>
+                        <th>Product Name</th>
+                        <th>Product Code</th>
+                        <th>Sample Type</th>
+                        <th>LDR %</th>
+                        <th>Request Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>PMR-001</td>
+                        <td>Ramesh Patel</td>
+                        <td>Ocean Blue</td>
+                        <td>NB-405</td>
+                        <td>PET BKY 20-1166</td>
+                        <td>BE20-1166</td>
+                        <td>Fabric</td>
+                        <td>3%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-material-added">
+                                Material Added
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-001">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-001</td>
+                        <td>Ramesh Patel</td>
+                        <td>Ocean Blue</td>
+                        <td>NB-405</td>
+                        <td>PET BKY 20-1166</td>
+                        <td>BE20-1166</td>
+                        <td>Fabric</td>
+                        <td>3%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-costing-done">
+                                Costing Done
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-001">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-002</td>
+                        <td>Anjali Verma</td>
+                        <td>Sunset Orange</td>
+                        <td>NB-406</td>
+                        <td>PET BKY 20-1187</td>
+                        <td>BE20-1187</td>
+                        <td>Fabric</td>
+                        <td>5%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-negotiating">
+                                Negotiating
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-002">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-003</td>
+                        <td>Kiran Desai</td>
+                        <td>Forest Green</td>
+                        <td>NB-407</td>
+                        <td>PET BKY 20-1201</td>
+                        <td>BE20-1201</td>
+                        <td>Fabric</td>
+                        <td>2%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-price-approved">
+                                Price Approved
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-003">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-004</td>
+                        <td>Sneha Kulkarni</td>
+                        <td>Crimson Red</td>
+                        <td>NB-408</td>
+                        <td>PET BKY 20-1223</td>
+                        <td>BE20-1223</td>
+                        <td>Fabric</td>
+                        <td>7%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-in-production">
+                                In Production
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-004">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-001</td>
+                        <td>Ramesh Patel</td>
+                        <td>Ocean Blue</td>
+                        <td>NB-405</td>
+                        <td>PET BKY 20-1166</td>
+                        <td>BE20-1166</td>
+                        <td>Fabric</td>
+                        <td>3%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-invoice-sent">
+                                Invoice Sent
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-001">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-005</td>
+                        <td>Rahul Singh</td>
+                        <td>Midnight Black</td>
+                        <td>NB-409</td>
+                        <td>PET BKY 20-1245</td>
+                        <td>BE20-1245</td>
+                        <td>Fabric</td>
+                        <td>4%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-dispatched">
+                                Dispatched
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-005">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-006</td>
+                        <td>Priya Nair</td>
+                        <td>Lavender Purple</td>
+                        <td>NB-410</td>
+                        <td>PET BKY 20-1267</td>
+                        <td>BE20-1267</td>
+                        <td>Fabric</td>
+                        <td>6%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-completed">
+                                Completed
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-006">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-007</td>
+                        <td>Vikram Joshi</td>
+                        <td>Sky Grey</td>
+                        <td>NB-411</td>
+                        <td>PET BKY 20-1289</td>
+                        <td>BE20-1289</td>
+                        <td>Fabric</td>
+                        <td>3%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-material-added">
+                                Material Added
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-007">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-008</td>
+                        <td>Meera Rao</td>
+                        <td>Golden Yellow</td>
+                        <td>NB-412</td>
+                        <td>PET BKY 20-1300</td>
+                        <td>BE20-1300</td>
+                        <td>Fabric</td>
+                        <td>8%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-material-added">
+                                Material Added
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-008">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>PMR-009</td>
+                        <td>Arjun Mehta</td>
+                        <td>Coral Pink</td>
+                        <td>NB-413</td>
+                        <td>PET BKY 20-1321</td>
+                        <td>BE20-1321</td>
+                        <td>Fabric</td>
+                        <td>1%</td>
+                        <td>
+                            <span class="hpmr-status hpmr-status-material-added">
+                                Material Added
+                            </span>
+                        </td>
+                        <td>
+                            <button class="hpmr-view-btn"
+                                    type="button"
+                                    title="View PMR-009">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round" />
+
+                                    <circle cx="12"
+                                            cy="12"
+                                            r="3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <!-- Pagination Footer -->
+            <div class="pmr-pagination-row">
+
+                <span class="pagination-info">
+                    Showing 1-10 of 12 list
+                </span>
+
+                <nav class="pagination-nav">
+
+                    <button class="pagination-btn disabled"
+                            type="button"
+                            title="Previous Page"
+                            disabled>
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M15 19l-7-7 7-7"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+
+                    </button>
+
+                    <button class="pagination-btn active"
+                            type="button">
+                        1
+                    </button>
+
+                    <button class="pagination-btn"
+                            type="button">
+                        2
+                    </button>
+
+                    <button class="pagination-btn"
+                            type="button"
+                            title="Next Page">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 5l7 7-7 7"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+
+                    </button>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+    </div>
+}

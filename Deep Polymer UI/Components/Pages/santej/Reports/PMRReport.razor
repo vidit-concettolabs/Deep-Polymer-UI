@@ -1,0 +1,142 @@
+@page "/reports/pmr"
+@using DeepPolymer.Constants
+@rendermode InteractiveServer
+
+<div class="rpt-container">
+
+    <!-- Page Header -->
+    <div class="rpt-page-header">
+        <div>
+            <h1 class="rpt-page-title">PMR Report</h1>
+            <p class="rpt-page-subtitle">Generate detailed PMR reports with product, costing, and workflow information.</p>
+        </div>
+    </div>
+
+    <!-- Filter / Generate Row -->
+    <div class="rpt-filter-bar">
+        <div class="rpt-filter-left">
+            <span class="rpt-filter-label">Generate Report By:</span>
+
+            <!-- Radio: By Marketing User -->
+            <button class="rpt-radio-button @(selectedReportBy == "marketing" ? "rpt-radio-active" : "")" @onclick="@(() => SelectReportBy("marketing"))">
+                <span class="rpt-radio-dot-outer">
+                    <span class="rpt-radio-dot-inner"></span>
+                </span>
+                By Marketing User
+            </button>
+
+            <!-- Radio: By City -->
+            <button class="rpt-radio-button @(selectedReportBy == "city" ? "rpt-radio-active" : "")" @onclick="@(() => SelectReportBy("city"))">
+                <span class="rpt-radio-dot-outer">
+                    <span class="rpt-radio-dot-inner"></span>
+                </span>
+                By City
+            </button>
+
+            <!-- Radio: By Region -->
+            <button class="rpt-radio-button @(selectedReportBy == "region" ? "rpt-radio-active" : "")" @onclick="@(() => SelectReportBy("region"))">
+                <span class="rpt-radio-dot-outer">
+                    <span class="rpt-radio-dot-inner"></span>
+                </span>
+                By Region
+            </button>
+
+            <!-- Select dropdown -->
+            <div class="rpt-select-wrapper">
+                <select class="rpt-select" @bind="selectedFilterValue">
+                    <option value="">Select</option>
+                    <option value="Ramesh Patel">Ramesh Patel</option>
+                    <option value="Priya Mehta">Priya Mehta</option>
+                    <option value="Karan Desai">Karan Desai</option>
+                </select>
+                <span class="rpt-chevron">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <button class="rpt-generate-btn" @onclick="GenerateReport">Generate</button>
+        </div>
+
+        <div class="rpt-filter-right">
+            <button class="rpt-export-btn rpt-export-excel">
+                <img src="assets/image/excel.svg" alt="Export Excel" class="rpt-export-icon" />
+                Export Excel
+            </button>
+            <button class="rpt-export-btn rpt-export-pdf">
+                <img src="assets/image/pdf.svg" alt="Export PDF" class="rpt-export-icon" />
+                Export PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="rpt-table-wrapper">
+        <table class="rpt-table">
+            <thead>
+                <tr>
+                    <th>PMR No.</th>
+                    <th>Colour Name</th>
+                    <th>Colour Code</th>
+                    <th>Customer Name</th>
+                    <th>Product Name</th>
+                    <th>Sample Request Date</th>
+                    <th>Submitted Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PMR-001</td>
+                    <td>Ocean Blue-A</td>
+                    <td>OB-102</td>
+                    <td>Ramesh Patel</td>
+                    <td>HD Polymer Mix</td>
+                    <td>15-05-2026</td>
+                    <td>19-05-2026</td>
+                </tr>
+                <tr>
+                    <td>PMR-004</td>
+                    <td>Leaf Green</td>
+                    <td>GN-118</td>
+                    <td>Priya Mehta</td>
+                    <td>HD Polymer Mix</td>
+                    <td>15-05-2026</td>
+                    <td>22-05-2026</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="rpt-pagination-row">
+            <span class="rpt-pagination-info">Showing 1-10 of 12 list</span>
+            <nav class="rpt-pagination-nav">
+                <button class="rpt-pg-btn rpt-pg-disabled" disabled>
+                    <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="rpt-pg-btn rpt-pg-active" style="background-color:@ColorConstant.PrimaryColor;">1</button>
+                <button class="rpt-pg-btn">2</button>
+                <button class="rpt-pg-btn">
+                    <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    private string selectedReportBy = "marketing";
+    private string selectedFilterValue = "";
+
+    private void SelectReportBy(string option)
+    {
+        selectedReportBy = option;
+        selectedFilterValue = "";
+    }
+
+    private void GenerateReport()
+    {
+        // Static HTML rendering
+    }
+}

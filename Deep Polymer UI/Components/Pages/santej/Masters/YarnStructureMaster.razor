@@ -12,10 +12,9 @@
         <div class="filter-item">
             <select class="filter-select">
                 <option selected disabled>Search Yarn Structure Name</option>
-                @foreach (var ys in YarnStructures)
-                {
-                    <option value="@ys.Name">@ys.Name</option>
-                }
+                <option value="Yarn Structure Name">Yarn Structure Name</option>
+                <option value="Ring Spun Yarn">Ring Spun Yarn</option>
+                <option value="Open-End Yarn">Open-End Yarn</option>
             </select>
             <span class="filter-chevron">
                 <svg viewBox="0 0 24 24">
@@ -42,35 +41,32 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var ys in YarnStructures.Take(10))
-                {
-                    <tr>
-                        <td class="text-start">@ys.Name</td>
-                        <td class="text-start">@ys.Description</td>
-                        <td class="text-center">
-                            <label class="status-switch">
-                                <input type="checkbox" checked="@ys.IsActive" @onchange="(e) => ToggleStatus(ys, e)" />
-                                <span class="status-slider"></span>
-                            </label>
-                        </td>
-                        <td class="text-center">
-                            <div class="actions-container">
-                                <button class="action-edit-btn" type="button" title="Edit Yarn Structure">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                                <button class="action-view-btn" type="button" title="View Yarn Structure">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                }
+                <tr>
+                    <td class="text-start">Yarn Structure Name</td>
+                    <td class="text-start">Description</td>
+                    <td class="text-center">
+                        <label class="status-switch">
+                            <input type="checkbox" checked />
+                            <span class="status-slider"></span>
+                        </label>
+                    </td>
+                    <td class="text-center">
+                        <div class="actions-container">
+                            <button class="action-edit-btn" type="button" title="Edit Yarn Structure">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="action-view-btn" type="button" title="View Yarn Structure">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -97,35 +93,4 @@
 
 @code {
     private bool showAddDialog = false;
-
-    private class YarnStructureModel
-    {
-        public string Name { get; set; } = "";
-        public string Description { get; set; } = "";
-        public bool IsActive { get; set; } = true;
-    }
-
-    private List<YarnStructureModel> YarnStructures = new()
-    {
-        new() { Name = "Yarn Structure Name", Description = "Description", IsActive = true },
-        new() { Name = "Ring Spun Yarn", Description = "Made by twisting and thinning cotton strands to create a fine, strong yarn", IsActive = true },
-        new() { Name = "Open-End Yarn", Description = "Produced by a rotor spinning technique that is faster and less expensive, of", IsActive = true },
-        new() { Name = "Air-Jet Yarn", Description = "Manufactured using an air jet to insert the fiber into the yarn structure, resul", IsActive = true },
-        new() { Name = "Compact Yarn", Description = "A variation of ring spun yarn with fibers condensed before twisting to e", IsActive = true },
-        new() { Name = "Core-Spun Yarn", Description = "Consists of a core filament wrapped with staple fibers to combin", IsActive = true },
-        new() { Name = "Slub Yarn", Description = "Deliberately spun with thick and thin sections to create texture an", IsActive = true },
-        new() { Name = "Bouclé Yarn", Description = "Made with looped or curled fibers to produce a textured,", IsActive = true },
-        new() { Name = "Chenille Yarn", Description = "Has a fuzzy pile effect created by short fibers p", IsActive = true },
-        new() { Name = "Metallic Yarn", Description = "Incorporates metallic fibers or films for decorative pu", IsActive = true },
-        new() { Name = "Textured Yarn", Description = "Filament yarn that has been processed to introduce crimp, loops, or coils.", IsActive = true },
-        new() { Name = "Fancy Yarn", Description = "Yarn made with irregular profiles or colorations for decorative effects.", IsActive = true }
-    };
-
-    private void ToggleStatus(YarnStructureModel item, ChangeEventArgs e)
-    {
-        if (e.Value is bool val)
-        {
-            item.IsActive = val;
-        }
-    }
 }

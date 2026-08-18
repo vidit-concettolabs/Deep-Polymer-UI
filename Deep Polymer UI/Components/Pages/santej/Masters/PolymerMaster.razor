@@ -38,37 +38,34 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var poly in Polymers)
-                {
-                    <tr>
-                        <td class="text-start">@poly.Name</td>
-                        <td class="text-start">@poly.Description</td>
-                        <td class="text-center">
-                            <label class="status-switch">
-                                <input type="checkbox" checked="@poly.IsActive" @onchange="(e) => ToggleStatus(poly, e)" />
-                                <span class="status-slider"></span>
-                            </label>
-                        </td>
-                        <td class="text-center">
-                            <div class="actions-container">
-                                <button class="action-edit-btn" type="button" title="Edit Polymer">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                                <button class="action-delete-btn" type="button" title="Delete Polymer">
-                                    <svg viewBox="0 0 24 24">
-                                        <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
-                                        <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
-                                        <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                }
+                <tr>
+                    <td class="text-start">Polyethylene</td>
+                    <td class="text-start">A common thermoplastic used in packaging and containers, known</td>
+                    <td class="text-center">
+                        <label class="status-switch">
+                            <input type="checkbox" checked />
+                            <span class="status-slider"></span>
+                        </label>
+                    </td>
+                    <td class="text-center">
+                        <div class="actions-container">
+                            <button class="action-edit-btn" type="button" title="Edit Polymer">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="action-delete-btn" type="button" title="Delete Polymer">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -95,32 +92,4 @@
 
 @code {
     private bool showAddDialog = false;
-
-    private class PolymerModel
-    {
-        public string Name { get; set; } = "";
-        public string Description { get; set; } = "";
-        public bool IsActive { get; set; } = true;
-    }
-
-    private List<PolymerModel> Polymers = new()
-    {
-        new() { Name = "Polyethylene", Description = "A common thermoplastic used in packaging and containers, known", IsActive = true },
-        new() { Name = "Polyvinyl Chloride (PVC)", Description = "A versatile polymer used in pipes, cables, and clothing; resistant to", IsActive = true },
-        new() { Name = "Polystyrene", Description = "A rigid, transparent polymer used in disposable cutlery, CD cases,", IsActive = true },
-        new() { Name = "Polypropylene", Description = "A lightweight, durable polymer used in automotive parts, textiles, a", IsActive = true },
-        new() { Name = "Polycarbonate", Description = "A strong, impact-resistant polymer used in eyewear lenses, bulletpro", IsActive = true },
-        new() { Name = "Polytetrafluoroethylene (PTFE)", Description = "Known by the brand name Teflon, used for non-stick coatings and e", IsActive = true },
-        new() { Name = "Polyamide (Nylon)", Description = "A synthetic fiber used in textiles, automotive components, and m", IsActive = true },
-        new() { Name = "Polyethylene Terephthalate (PET)", Description = "A thermoplastic polymer commonly used in beverage bottles and food", IsActive = true },
-        new() { Name = "Polymethyl Methacrylate (PMMA)", Description = "Also known as acrylic or Plexiglas, used as a lightweight, shatter-resistan", IsActive = true }
-    };
-
-    private void ToggleStatus(PolymerModel polymer, ChangeEventArgs e)
-    {
-        if (e.Value is bool val)
-        {
-            polymer.IsActive = val;
-        }
-    }
 }

@@ -1,10 +1,18 @@
-<div class="sidebar-container">
+@using DeepPolymer.Constants
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+@implements IDisposable
+
+<div class="sidebar-container @(ColorConstant.BranchFlag == 2 ? "hajipur-nav" : "")">
     <div class="logo-area">
         <img src="@ColorConstant.LogoUrl" alt="DEEP MASTERBATCHES" class="logo-img" />
     </div>
-    
+
     <div class="menu-items-wrapper">
-        <NavLink class="menu-item-link" href="pmr-management" Match="NavLinkMatch.All">
+
+        <!-- PMR Management -->
+        <a class="menu-item-link @(IsActive(PmrHref) ? "nav-active" : "")"
+           href="@PmrHref">
             <span class="menu-icon">
                 <svg viewBox="0 0 24 24">
                     <rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -14,18 +22,22 @@
                 </svg>
             </span>
             <span class="menu-text">PMR Management</span>
-        </NavLink>
-        
-        <NavLink class="menu-item-link" href="masters">
+        </a>
+
+        <!-- Master's -->
+        <a class="menu-item-link @(IsActive("masters") ? "nav-active" : "")"
+           href="masters">
             <span class="menu-icon">
                 <svg class="fill-icon" viewBox="0 0 24 24">
                     <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm0 4c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/>
                 </svg>
             </span>
             <span class="menu-text">Master's</span>
-        </NavLink>
-        
-        <NavLink class="menu-item-link" href="locations">
+        </a>
+
+        <!-- Manage Locations -->
+        <a class="menu-item-link @(IsActive("locations") ? "nav-active" : "")"
+           href="locations">
             <span class="menu-icon">
                 <svg viewBox="0 0 24 24">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke-linecap="round" stroke-linejoin="round"/>
@@ -33,9 +45,11 @@
                 </svg>
             </span>
             <span class="menu-text">Manage Locations</span>
-        </NavLink>
-        
-        <NavLink class="menu-item-link" href="ip-addresses">
+        </a>
+
+        <!-- Manage IP Addresses -->
+        <a class="menu-item-link @(IsActive("ip-addresses") ? "nav-active" : "")"
+           href="ip-addresses">
             <span class="menu-icon">
                 <svg viewBox="0 0 24 24">
                     <rect x="2" y="4" width="20" height="7" rx="1.5" stroke-linecap="round"/>
@@ -45,9 +59,11 @@
                 </svg>
             </span>
             <span class="menu-text">Manage IP Addresses</span>
-        </NavLink>
-        
-        <NavLink class="menu-item-link" href="role-access">
+        </a>
+
+        <!-- Role Based Access -->
+        <a class="menu-item-link @(IsActive("role-access") ? "nav-active" : "")"
+           href="role-access">
             <span class="menu-icon">
                 <svg viewBox="0 0 24 24">
                     <circle cx="8" cy="14" r="4"/>
@@ -55,20 +71,24 @@
                 </svg>
             </span>
             <span class="menu-text">Role Based Access</span>
-        </NavLink>
-        
-        <NavLink class="menu-item-link" href="users">
+        </a>
+
+        <!-- User Management -->
+        <a class="menu-item-link @(IsActive("users") ? "nav-active" : "")"
+           href="users">
             <span class="menu-icon">
                 <svg class="fill-icon" viewBox="0 0 24 24">
                     <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
                 </svg>
             </span>
             <span class="menu-text">User Management</span>
-        </NavLink>
+        </a>
 
         @if (ColorConstant.BranchFlag != 2)
         {
-            <NavLink class="menu-item-link" href="reports">
+            <!-- Reports (collapsible) — active when any sub-route is active -->
+            <button class="menu-item-link menu-collapse-btn @(IsReportsActive ? "nav-active" : "")"
+                    type="button" @onclick="ToggleReports">
                 <span class="menu-icon">
                     <svg viewBox="0 0 24 24">
                         <line x1="18" y1="20" x2="18" y2="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -77,14 +97,26 @@
                     </svg>
                 </span>
                 <span class="menu-text">Reports</span>
-                <span class="expand-icon">
+                <span class="expand-icon @(reportsOpen ? "expanded" : "")">
                     <svg viewBox="0 0 24 24">
-                        <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </span>
-            </NavLink>
+            </button>
 
-            <NavLink class="menu-item-link" href="settings">
+            @if (reportsOpen)
+            {
+                <div class="menu-sub-items">
+                    <a class="menu-sub-link @(IsActive("reports/pmr") ? "menu-sub-active" : "")"
+                       href="reports/pmr">PMR Reports</a>
+                    <a class="menu-sub-link @(IsActive("reports/color-price-list") ? "menu-sub-active" : "")"
+                       href="reports/color-price-list">Color Wise Price List</a>
+                </div>
+            }
+
+            <!-- Settings -->
+            <a class="menu-item-link @(IsActive("settings") ? "nav-active" : "")"
+               href="settings">
                 <span class="menu-icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="3" />
@@ -92,7 +124,63 @@
                     </svg>
                 </span>
                 <span class="menu-text">Settings</span>
-            </NavLink>
+            </a>
         }
+
     </div>
 </div>
+
+@code {
+    private bool reportsOpen = false;
+
+    private string PmrHref => ColorConstant.BranchFlag == 2
+        ? "hajipur/pmr-management"
+        : "santej/pmr-management";
+
+    // True when current URL contains the given segment
+    private bool IsActive(string href)
+    {
+        var currentPath = NavigationManager.ToBaseRelativePath(NavigationManager.Uri)
+                              .TrimStart('/').ToLowerInvariant();
+        href = href.TrimStart('/').ToLowerInvariant();
+
+        // Exact match OR starts-with for section prefixes (masters/*, reports/*)
+        return currentPath == href || currentPath.StartsWith(href + "/");
+    }
+
+    // Reports parent is active when any sub-route is active
+    private bool IsReportsActive =>
+        IsActive("reports/pmr") || IsActive("reports/color-price-list");
+
+    private void ToggleReports()
+    {
+        // If not on a reports sub-route, navigate to default PMR Reports
+        if (!IsReportsActive)
+        {
+            reportsOpen = true;
+            NavigationManager.NavigateTo("reports/pmr");
+        }
+        else
+        {
+            reportsOpen = !reportsOpen;
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        // Auto-open reports collapse if landing on a reports sub-route
+        if (IsReportsActive) reportsOpen = true;
+        NavigationManager.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        if (IsReportsActive) reportsOpen = true;
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= OnLocationChanged;
+    }
+}
