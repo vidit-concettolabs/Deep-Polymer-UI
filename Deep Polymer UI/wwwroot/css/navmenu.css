@@ -114,6 +114,11 @@ body.sidebar-collapsed .sidebar-container {
     stroke: none;
 }
 
+/* Santej active icon — turn white */
+.menu-item-link.nav-active .nav-icon {
+    filter: brightness(0) invert(1);
+}
+
 .menu-item-link.nav-active .expand-icon {
     color: #ffffff;
 }
@@ -143,6 +148,17 @@ body.sidebar-collapsed .sidebar-container {
 .menu-icon svg.fill-icon {
     fill: #555555;
     stroke: none;
+}
+
+/* SVG img icon */
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: block;
+    /* default: keep original SVG colors */
+    filter: none;
+    transition: filter 0.15s;
 }
 
 .menu-text {
@@ -265,6 +281,12 @@ body.sidebar-collapsed .sidebar-container {
 
 .hajipur-nav .menu-item-link.nav-active .expand-icon {
     color: #1A2DB5 !important;
+}
+
+/* Hajipur active icon — turn purple/dark-blue */
+.hajipur-nav .menu-item-link.nav-active .nav-icon {
+    /* invert(21%) sepia(96%) saturate(2000%) hue-rotate(214deg) = approx #1A2DB5 */
+    filter: invert(21%) sepia(96%) saturate(700%) hue-rotate(214deg) brightness(80%) !important;
 }
 
 .hajipur-nav .menu-item-link:hover:not(.nav-active) {

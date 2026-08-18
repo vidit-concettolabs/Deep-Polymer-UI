@@ -14,12 +14,7 @@
         <a class="menu-item-link @(IsActive(PmrHref) ? "nav-active" : "")"
            href="@PmrHref">
             <span class="menu-icon">
-                <svg viewBox="0 0 24 24">
-                    <rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <line x1="8" y1="9" x2="16" y2="9" stroke-linecap="round" />
-                    <line x1="8" y1="13" x2="16" y2="13" stroke-linecap="round" />
-                    <line x1="8" y1="17" x2="13" y2="17" stroke-linecap="round" />
-                </svg>
+                <img src="assets/image/pmr_management.svg" class="nav-icon" alt="PMR Management" />
             </span>
             <span class="menu-text">PMR Management</span>
         </a>
@@ -28,9 +23,7 @@
         <a class="menu-item-link @(IsActive("masters") ? "nav-active" : "")"
            href="masters">
             <span class="menu-icon">
-                <svg class="fill-icon" viewBox="0 0 24 24">
-                    <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm0 4c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/>
-                </svg>
+                <img src="assets/image/master.svg" class="nav-icon" alt="Master's" />
             </span>
             <span class="menu-text">Master's</span>
         </a>
@@ -39,10 +32,7 @@
         <a class="menu-item-link @(IsActive("locations") ? "nav-active" : "")"
            href="locations">
             <span class="menu-icon">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="12" cy="9" r="2.5" />
-                </svg>
+                <img src="assets/image/manage_location.svg" class="nav-icon" alt="Manage Locations" />
             </span>
             <span class="menu-text">Manage Locations</span>
         </a>
@@ -51,12 +41,7 @@
         <a class="menu-item-link @(IsActive("ip-addresses") ? "nav-active" : "")"
            href="ip-addresses">
             <span class="menu-icon">
-                <svg viewBox="0 0 24 24">
-                    <rect x="2" y="4" width="20" height="7" rx="1.5" stroke-linecap="round"/>
-                    <rect x="2" y="13" width="20" height="7" rx="1.5" stroke-linecap="round"/>
-                    <line x1="6" y1="7.5" x2="6.01" y2="7.5" stroke-linecap="round" stroke-width="2.5"/>
-                    <line x1="6" y1="16.5" x2="6.01" y2="16.5" stroke-linecap="round" stroke-width="2.5"/>
-                </svg>
+                <img src="assets/image/manage_ip.svg" class="nav-icon" alt="Manage IP Addresses" />
             </span>
             <span class="menu-text">Manage IP Addresses</span>
         </a>
@@ -65,10 +50,7 @@
         <a class="menu-item-link @(IsActive("role-access") ? "nav-active" : "")"
            href="role-access">
             <span class="menu-icon">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="8" cy="14" r="4"/>
-                    <path d="M11 11l6-6 4 4-2 2-3-3-2 2-3-3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <img src="assets/image/role_based_acess.svg" class="nav-icon" alt="Role Based Access" />
             </span>
             <span class="menu-text">Role Based Access</span>
         </a>
@@ -77,9 +59,7 @@
         <a class="menu-item-link @(IsActive("users") ? "nav-active" : "")"
            href="users">
             <span class="menu-icon">
-                <svg class="fill-icon" viewBox="0 0 24 24">
-                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                </svg>
+                <img src="assets/image/user_management.svg" class="nav-icon" alt="User Management" />
             </span>
             <span class="menu-text">User Management</span>
         </a>
@@ -90,11 +70,7 @@
             <button class="menu-item-link menu-collapse-btn @(IsReportsActive ? "nav-active" : "")"
                     type="button" @onclick="ToggleReports">
                 <span class="menu-icon">
-                    <svg viewBox="0 0 24 24">
-                        <line x1="18" y1="20" x2="18" y2="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <line x1="12" y1="20" x2="12" y2="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        <line x1="6" y1="20" x2="6" y2="14" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <img src="assets/image/reports.svg" class="nav-icon" alt="Reports" />
                 </span>
                 <span class="menu-text">Reports</span>
                 <span class="expand-icon @(reportsOpen ? "expanded" : "")">
@@ -118,10 +94,7 @@
             <a class="menu-item-link @(IsActive("settings") ? "nav-active" : "")"
                href="settings">
                 <span class="menu-icon">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="3" />
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    <img src="assets/image/settings.svg" class="nav-icon" alt="Settings" />
                 </span>
                 <span class="menu-text">Settings</span>
             </a>
