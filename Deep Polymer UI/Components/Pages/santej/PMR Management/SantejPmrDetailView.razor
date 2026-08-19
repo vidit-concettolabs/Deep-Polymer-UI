@@ -232,8 +232,13 @@
         <!-- ===== RIGHT COLUMN: Cost Summary ===== -->
         <div class="spdv-right-col">
             <div class="spdv-card spdv-cost-card">
-                <div class="spdv-card-title-row">
+                <div class="spdv-card-title-row spdv-cost-title-row">
                     <h2 class="spdv-card-title">Cost Summary</h2>
+                    <div class="spdv-cost-action-icons">
+                        <button type="button" class="spdv-icon-btn" title="Negotiation" @onclick="OpenNegotiationDialog">
+                            <img src="assets/image/negotiation_icon_santej.svg" alt="N" class="spdv-action-icon" />
+                        </button>
+                    </div>
                 </div>
                 <p class="spdv-cost-card-subtitle">Review the final product costing and additional charges before submission.</p>
 
@@ -293,7 +298,10 @@
     </div>
 
     <!-- PMR Details Dialog (opened via info icon) -->
-    <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@PmrNo" />
+    <SantejPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@PmrNo" />
+
+    <!-- Santej Negotiation Dialog (opened via N icon) -->
+    <SantejNegotiationDialog @bind-IsOpen="showNegotiationDialog" />
 
     <!-- Bottom white card with 3 Action Buttons -->
     <div class="spdv-footer-card">
@@ -309,9 +317,15 @@
     [Parameter] public EventCallback OnBack { get; set; }
 
     private bool showDetailsDialog = false;
+    private bool showNegotiationDialog = false;
 
     private void OpenDetailsDialog()
     {
         showDetailsDialog = true;
+    }
+
+    private void OpenNegotiationDialog()
+    {
+        showNegotiationDialog = true;
     }
 }

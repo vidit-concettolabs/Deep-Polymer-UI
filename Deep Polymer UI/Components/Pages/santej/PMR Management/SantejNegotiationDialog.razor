@@ -1,0 +1,120 @@
+@if (IsOpen)
+{
+    <div class="hnd-overlay" @onclick="Close">
+        <div class="hnd-modal" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="hnd-header">
+                <h3 class="hnd-title">Negotiation</h3>
+                <button type="button" class="hnd-close-btn" @onclick="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="hnd-body">
+
+                <!-- Progress Stepper -->
+                <div class="hnd-stepper-wrapper">
+                    <!-- Step 1 -->
+                    <div class="hnd-step-node">
+                        <div class="hnd-circle hnd-circle-green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M20 6L9 17l-5-5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="hnd-step-label hnd-text-dark">Waiting For Customer</span>
+                    </div>
+
+                    <!-- Line 1-2 (Green) -->
+                    <div class="hnd-connector hnd-line-green"></div>
+
+                    <!-- Step 2 -->
+                    <div class="hnd-step-node">
+                        <div class="hnd-circle hnd-circle-green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M20 6L9 17l-5-5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="hnd-step-label hnd-text-dark">Negotiation</span>
+                    </div>
+
+                    <!-- Line 2-3 (Gray) -->
+                    <div class="hnd-connector hnd-line-gray"></div>
+
+                    <!-- Step 3 -->
+                    <div class="hnd-step-node">
+                        <div class="hnd-circle hnd-circle-gray">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M20 6L9 17l-5-5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="hnd-step-label hnd-text-gray">Admin Approval</span>
+                    </div>
+
+                    <!-- Line 3-4 (Gray) -->
+                    <div class="hnd-connector hnd-line-gray"></div>
+
+                    <!-- Step 4 -->
+                    <div class="hnd-step-node">
+                        <div class="hnd-circle hnd-circle-gray">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M20 6L9 17l-5-5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="hnd-step-label hnd-text-gray">Revised Email Sent</span>
+                    </div>
+                </div>
+
+                <!-- History Table (Santej Branch: 4 Columns: Date, Negotiated Cost, Cost Difference, Note) -->
+                <div class="hnd-table-wrap">
+                    <table class="hnd-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Negotiated Cost</th>
+                                <th>Cost Difference</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>17-05-2026</td>
+                                <td>&#8377;12,500</td>
+                                <td>&#8377;1,000</td>
+                                <td>Notes</td>
+                            </tr>
+                            <tr>
+                                <td>17-05-2026</td>
+                                <td>&#8377;12,500</td>
+                                <td>&#8377;1,000</td>
+                                <td>Notes</td>
+                            </tr>
+                            <tr>
+                                <td>17-05-2026</td>
+                                <td>&#8377;12,500</td>
+                                <td>&#8377;1,000</td>
+                                <td>Notes</td>
+                            </tr>
+                            <tr>
+                                <td>17-05-2026</td>
+                                <td>&#8377;12,500</td>
+                                <td>&#8377;1,000</td>
+                                <td>Notes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}
