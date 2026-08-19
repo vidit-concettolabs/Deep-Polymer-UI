@@ -10,7 +10,7 @@
 
     <div class="menu-items-wrapper">
 
-        <!-- PMR Management -->
+        <!-- PMR Management (Always visible) -->
         <a class="menu-item-link @(IsActive(PmrHref) ? "nav-active" : "")"
            href="@PmrHref">
             <span class="menu-icon">
@@ -19,85 +19,104 @@
             <span class="menu-text">PMR Management</span>
         </a>
 
-        <!-- Master's -->
-        <a class="menu-item-link @(IsActive("masters") ? "nav-active" : "")"
-           href="masters">
-            <span class="menu-icon">
-                <img src="assets/image/master.svg" class="nav-icon" alt="Master's" />
-            </span>
-            <span class="menu-text">Master's</span>
-        </a>
-
-        <!-- Manage Locations -->
-        <a class="menu-item-link @(IsActive("locations") ? "nav-active" : "")"
-           href="locations">
-            <span class="menu-icon">
-                <img src="assets/image/manage_location.svg" class="nav-icon" alt="Manage Locations" />
-            </span>
-            <span class="menu-text">Manage Locations</span>
-        </a>
-
-        <!-- Manage IP Addresses -->
-        <a class="menu-item-link @(IsActive("ip-addresses") ? "nav-active" : "")"
-           href="ip-addresses">
-            <span class="menu-icon">
-                <img src="assets/image/manage_ip.svg" class="nav-icon" alt="Manage IP Addresses" />
-            </span>
-            <span class="menu-text">Manage IP Addresses</span>
-        </a>
-
-        <!-- Role Based Access -->
-        <a class="menu-item-link @(IsActive("role-access") ? "nav-active" : "")"
-           href="role-access">
-            <span class="menu-icon">
-                <img src="assets/image/role_based_acess.svg" class="nav-icon" alt="Role Based Access" />
-            </span>
-            <span class="menu-text">Role Based Access</span>
-        </a>
-
-        <!-- User Management -->
-        <a class="menu-item-link @(IsActive("users") ? "nav-active" : "")"
-           href="users">
-            <span class="menu-icon">
-                <img src="assets/image/user_management.svg" class="nav-icon" alt="User Management" />
-            </span>
-            <span class="menu-text">User Management</span>
-        </a>
-
-        @if (ColorConstant.BranchFlag != 2)
+        @if (ColorConstant.IsPmrGenerator)
         {
-            <!-- Reports (collapsible) — active when any sub-route is active -->
-            <button class="menu-item-link menu-collapse-btn @(IsReportsActive ? "nav-active" : "")"
-                    type="button" @onclick="ToggleReports">
-                <span class="menu-icon">
-                    <img src="assets/image/reports.svg" class="nav-icon" alt="Reports" />
-                </span>
-                <span class="menu-text">Reports</span>
-                <span class="expand-icon @(reportsOpen ? "expanded" : "")">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-            </button>
-
-            @if (reportsOpen)
+            @if (ColorConstant.BranchFlag != 2)
             {
-                <div class="menu-sub-items">
-                    <a class="menu-sub-link @(IsActive("reports/pmr") ? "menu-sub-active" : "")"
-                       href="reports/pmr">PMR Reports</a>
-                    <a class="menu-sub-link @(IsActive("reports/color-price-list") ? "menu-sub-active" : "")"
-                       href="reports/color-price-list">Color Wise Price List</a>
-                </div>
+                <!-- Santej PMR Generator: 2nd Menu is Customers -->
+                <a class="menu-item-link @(IsActive("masters/customer") ? "nav-active" : "")"
+                   href="masters/customer">
+                    <span class="menu-icon">
+                        <img src="assets/image/master.svg" class="nav-icon" alt="Customers" />
+                    </span>
+                    <span class="menu-text">Customers</span>
+                </a>
             }
+        }
+        else
+        {
+            <!-- Admin Role: Show Full Navigation Menu -->
 
-            <!-- Settings -->
-            <a class="menu-item-link @(IsActive("settings") ? "nav-active" : "")"
-               href="settings">
+            <!-- Master's -->
+            <a class="menu-item-link @(IsActive("masters") ? "nav-active" : "")"
+               href="masters">
                 <span class="menu-icon">
-                    <img src="assets/image/settings.svg" class="nav-icon" alt="Settings" />
+                    <img src="assets/image/master.svg" class="nav-icon" alt="Master's" />
                 </span>
-                <span class="menu-text">Settings</span>
+                <span class="menu-text">Master's</span>
             </a>
+
+            <!-- Manage Locations -->
+            <a class="menu-item-link @(IsActive("locations") ? "nav-active" : "")"
+               href="locations">
+                <span class="menu-icon">
+                    <img src="assets/image/manage_location.svg" class="nav-icon" alt="Manage Locations" />
+                </span>
+                <span class="menu-text">Manage Locations</span>
+            </a>
+
+            <!-- Manage IP Addresses -->
+            <a class="menu-item-link @(IsActive("ip-addresses") ? "nav-active" : "")"
+               href="ip-addresses">
+                <span class="menu-icon">
+                    <img src="assets/image/manage_ip.svg" class="nav-icon" alt="Manage IP Addresses" />
+                </span>
+                <span class="menu-text">Manage IP Addresses</span>
+            </a>
+
+            <!-- Role Based Access -->
+            <a class="menu-item-link @(IsActive("role-access") ? "nav-active" : "")"
+               href="role-access">
+                <span class="menu-icon">
+                    <img src="assets/image/role_based_acess.svg" class="nav-icon" alt="Role Based Access" />
+                </span>
+                <span class="menu-text">Role Based Access</span>
+            </a>
+
+            <!-- User Management -->
+            <a class="menu-item-link @(IsActive("users") ? "nav-active" : "")"
+               href="users">
+                <span class="menu-icon">
+                    <img src="assets/image/user_management.svg" class="nav-icon" alt="User Management" />
+                </span>
+                <span class="menu-text">User Management</span>
+            </a>
+
+            @if (ColorConstant.BranchFlag != 2)
+            {
+                <!-- Reports (collapsible) — active when any sub-route is active -->
+                <button class="menu-item-link menu-collapse-btn @(IsReportsActive ? "nav-active" : "")"
+                        type="button" @onclick="ToggleReports">
+                    <span class="menu-icon">
+                        <img src="assets/image/reports.svg" class="nav-icon" alt="Reports" />
+                    </span>
+                    <span class="menu-text">Reports</span>
+                    <span class="expand-icon @(reportsOpen ? "expanded" : "")">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </button>
+
+                @if (reportsOpen)
+                {
+                    <div class="menu-sub-items">
+                        <a class="menu-sub-link @(IsActive("reports/pmr") ? "menu-sub-active" : "")"
+                           href="reports/pmr">PMR Reports</a>
+                        <a class="menu-sub-link @(IsActive("reports/color-price-list") ? "menu-sub-active" : "")"
+                           href="reports/color-price-list">Color Wise Price List</a>
+                    </div>
+                }
+
+                <!-- Settings -->
+                <a class="menu-item-link @(IsActive("settings") ? "nav-active" : "")"
+                   href="settings">
+                    <span class="menu-icon">
+                        <img src="assets/image/settings.svg" class="nav-icon" alt="Settings" />
+                    </span>
+                    <span class="menu-text">Settings</span>
+                </a>
+            }
         }
 
     </div>

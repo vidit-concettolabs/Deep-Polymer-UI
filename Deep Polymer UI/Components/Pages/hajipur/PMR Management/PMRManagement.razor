@@ -10,16 +10,29 @@
     {
         <HajipurPmrDetailView PmrNo="@selectedPmrNo" OnBack="EventCallback.Factory.Create(this, BackToTable)" />
     }
+    else if (showCreatePmrPage)
+    {
+        <Deep_Polymer_UI.Components.Pages.hajipur.PMR_Generator.CreatePmr OnBack="BackToTable" />
+    }
     else
     {
         <div class="hpmr-container">
 
         <!-- Page Header -->
-        <div class="pmr-header">
-            <h1 class="pmr-title">PMR Management</h1>
-            <p class="pmr-desc">
-                Manage, review, and process all PMR requests from a centralized admin panel.
-            </p>
+        <div class="pmr-header flex-header">
+            <div>
+                <h1 class="pmr-title">PMR Management</h1>
+                <p class="pmr-desc">
+                    Manage, review, and process all PMR requests from a centralized admin panel.
+                </p>
+            </div>
+
+            @if (ColorConstant.BranchFlag == 2 && ColorConstant.IsPmrGenerator)
+            {
+                <div class="pmr-header-actions">
+                    <button type="button" class="pmr-btn-create hajipur-create-btn" @onclick="OpenCreatePmrPage">Create PMR</button>
+                </div>
+            }
         </div>
 
         <!-- Filter Row -->
@@ -676,6 +689,7 @@
 @code {
     private bool showDetailsDialog = false;
     private bool showDetailPage = false;
+    private bool showCreatePmrPage = false;
     private string selectedPmrNo = "PMR-001";
 
     private void OpenDetailsDialog(string pmrNo = "1")
@@ -690,8 +704,14 @@
         showDetailPage = true;
     }
 
+    private void OpenCreatePmrPage()
+    {
+        showCreatePmrPage = true;
+    }
+
     private void BackToTable()
     {
         showDetailPage = false;
+        showCreatePmrPage = false;
     }
 }

@@ -1,0 +1,341 @@
+/* ================================================================
+   HAJIPUR CREATE PMR / DESIGN INPUT PAGE STYLES (Figma/Mockup)
+   ================================================================ */
+
+.cpmr-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1a1a2e;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Main Rounded White Box for Customer Details & Design Input */
+.cpmr-main-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 24px 28px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Customer Details Header */
+.cpmr-header-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.cpmr-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.cpmr-badge-rh {
+    background-color: #e5e7eb;
+    color: #0405AB;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+}
+
+.cpmr-subtitle {
+    font-size: 12.5px;
+    color: #9ca3af;
+    margin: 0 0 20px 0;
+}
+
+/* 4-Column Form Grid */
+.cpmr-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 1200px) {
+    .cpmr-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .cpmr-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cpmr-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cpmr-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.cpmr-label .required-star {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+.cpmr-input,
+.cpmr-select {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 13px;
+    color: #111827;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease;
+}
+
+.cpmr-input:focus,
+.cpmr-select:focus {
+    border-color: #0405AB;
+}
+
+.cpmr-select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cpmr-select-wrapper .cpmr-select {
+    appearance: none;
+    padding-right: 32px;
+}
+
+.cpmr-select-chevron {
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+}
+
+.cpmr-select-chevron svg {
+    width: 16px;
+    height: 16px;
+}
+
+.cpmr-rh-icon {
+    height: 22px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Outer Soft Lavender Wrapper for Design Input Section (#F5F5FF) */
+.cpmr-design-section-wrapper {
+    background-color: #F5F5FF;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Design Input Banner Inside Lavender Wrapper */
+.cpmr-design-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+}
+
+.cpmr-design-banner-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0405AB;
+    margin: 0;
+}
+
+.cpmr-btn-add-new {
+    background-color: #ffffff;
+    color: #111827;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.cpmr-btn-add-new:hover {
+    border-color: #0405AB;
+    color: #0405AB;
+}
+
+/* Design Input Item Card (White box inside Lavender container) */
+.cpmr-design-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.cpmr-design-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.cpmr-design-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.cpmr-design-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cpmr-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ef4444;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.cpmr-chevron-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+}
+
+/* Radio Group Row */
+.cpmr-radio-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 40px;
+}
+
+.cpmr-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #374151;
+    cursor: pointer;
+}
+
+.cpmr-radio-label input[type="radio"] {
+    accent-color: #0405AB;
+}
+
+
+/* Custom Table matching media_1787160814986.png */
+.cpmr-table-wrapper {
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 16px;
+    background: #ffffff;
+}
+
+.cpmr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.cpmr-table th {
+    background-color: #EBEBFF;
+    color: #111827;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.cpmr-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.cpmr-table tr:last-child td {
+    border-bottom: none;
+}
+
+.cpmr-table-type-cell {
+    font-weight: 600;
+    color: #374151;
+    width: 20%;
+}
+
+/* Submit Actions Outside Card */
+.cpmr-submit-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.cpmr-btn-cancel {
+    background-color: #ffffff;
+    color: #111827;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.cpmr-btn-cancel:hover {
+    border-color: #9ca3af;
+    background-color: #f9fafb;
+}
+
+.cpmr-btn-submit {
+    background-color: #0405AB;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.cpmr-btn-submit:hover {
+    background-color: #03048a;
+}

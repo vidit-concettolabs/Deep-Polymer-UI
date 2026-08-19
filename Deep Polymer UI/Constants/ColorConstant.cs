@@ -5,6 +5,13 @@ public static class ColorConstant
     // 1 for Santej, 2 for Hajipur
     public const int BranchFlag = 2;
 
+    // 1 for Admin, 2 for PMR Generator
+    public const int RoleFlag = 2;
+
+    // Helper properties
+    public static bool IsAdmin => RoleFlag == 1;
+    public static bool IsPmrGenerator => RoleFlag == 2;
+
     // Santej Colors
     public const string SantejPrimaryColor = "#ff0000";
     public const string SantejPrimaryBg = "#FFE5E5";

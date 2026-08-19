@@ -1,0 +1,416 @@
+@using DeepPolymer.Constants
+
+<div class="cpmr-container">
+    <!-- Single Main White Card wrapping Customer Details & Design Input Section -->
+    <div class="cpmr-main-card">
+        <!-- Customer Details Header -->
+        <div class="cpmr-header-title-row">
+            <h2 class="cpmr-title">Customer Details</h2>
+            <img src="assets/image/rh_icon.svg" class="cpmr-rh-icon" alt="RH" />
+        </div>
+        <p class="cpmr-subtitle">Add and manage customer details for new PMR.</p>
+
+        <!-- Customer Form Fields (Row 1) -->
+        <div class="cpmr-grid-4">
+            <div class="cpmr-form-group">
+                <label class="cpmr-label">Customer Name <span class="required-star">*</span></label>
+                <input type="text" class="cpmr-input" placeholder="Customer Name" @bind="customerName" />
+            </div>
+
+            <div class="cpmr-form-group">
+                <label class="cpmr-label">Customer Code <span class="required-star">*</span></label>
+                <input type="text" class="cpmr-input" placeholder="Customer Code" @bind="customerCode" />
+            </div>
+
+            <div class="cpmr-form-group">
+                <label class="cpmr-label">City <span class="required-star">*</span></label>
+                <div class="cpmr-select-wrapper">
+                    <select class="cpmr-select" @bind="city">
+                        <option value="">Select City</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Surat">Surat</option>
+                        <option value="Hajipur">Hajipur</option>
+                        <option value="Mumbai">Mumbai</option>
+                    </select>
+                    <span class="cpmr-select-chevron">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="cpmr-form-group">
+                <label class="cpmr-label">Received From <span class="required-star">*</span></label>
+                <input type="text" class="cpmr-input" placeholder="Received From" @bind="receivedFrom" />
+            </div>
+        </div>
+
+        <!-- Customer Form Fields (Row 2) -->
+        <div class="cpmr-grid-4" style="margin-bottom: 0;">
+            <div class="cpmr-form-group">
+                <label class="cpmr-label">Region <span class="required-star">*</span></label>
+                <div class="cpmr-select-wrapper">
+                    <select class="cpmr-select" @bind="region">
+                        <option value="">Select Region</option>
+                        <option value="West">West</option>
+                        <option value="North">North</option>
+                        <option value="East">East</option>
+                        <option value="South">South</option>
+                    </select>
+                    <span class="cpmr-select-chevron">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="cpmr-form-group">
+                <label class="cpmr-label">Sample Request Date <span class="required-star">*</span></label>
+                <input type="date" class="cpmr-input" @bind="requestDate" />
+            </div>
+        </div>
+
+        <!-- Design Input Lavender Container (#F5F5FF) Inside Main White Card -->
+        <div class="cpmr-design-section-wrapper">
+            <!-- Design Input Banner -->
+            <div class="cpmr-design-banner">
+                <h3 class="cpmr-design-banner-title">Design Input</h3>
+                <button type="button" class="cpmr-btn-add-new" @onclick="AddDesignInput">Add New</button>
+            </div>
+
+            <!-- Design Input Cards List -->
+            @for (int i = 0; i < designInputCount; i++)
+            {
+                int index = i + 1;
+                <div class="cpmr-design-card">
+                    <div class="cpmr-design-card-header">
+                        <h4 class="cpmr-design-card-title">Design Input @index</h4>
+                        <div class="cpmr-design-card-actions">
+                            @if (designInputCount > 1)
+                            {
+                                <button type="button" class="cpmr-icon-btn" title="Delete" @onclick="RemoveDesignInput">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            }
+                            <button type="button" class="cpmr-chevron-btn" title="Toggle" @onclick="() => ToggleCollapse(index)">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="@(IsCollapsed(index) ? "transform: rotate(-90deg);" : "")">
+                                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    @if (!IsCollapsed(index))
+                    {
+                        <!-- Form Row 1 -->
+                        <div class="cpmr-grid-4">
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Customer Color Ref. Name/Number</label>
+                                <input type="text" class="cpmr-input" placeholder="Customer Color Ref. Name/Number" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Color Name</label>
+                                <div class="cpmr-select-wrapper">
+                                    <select class="cpmr-select">
+                                        <option value="">Color Name</option>
+                                        <option value="Red">Red</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Green">Green</option>
+                                    </select>
+                                    <span class="cpmr-select-chevron">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Color Code</label>
+                                <input type="text" class="cpmr-input" placeholder="Color Code" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Sample Color Name</label>
+                                <input type="text" class="cpmr-input" placeholder="Sample Color Name" />
+                            </div>
+                        </div>
+
+                        <!-- Form Row 2 -->
+                        <div class="cpmr-grid-4">
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Sample Type</label>
+                                <input type="text" class="cpmr-input" placeholder="Sample Type" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">%LDR</label>
+                                <input type="text" class="cpmr-input" placeholder="%LDR" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">No of Cones Reqd</label>
+                                <input type="text" class="cpmr-input" placeholder="No of Cones Reqd" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Cone Weight</label>
+                                <input type="text" class="cpmr-input" placeholder="Cone Weight" />
+                            </div>
+                        </div>
+
+                        <!-- Form Row 3 -->
+                        <div class="cpmr-grid-4">
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">No of Card Strip Required</label>
+                                <input type="text" class="cpmr-input" placeholder="No of Card Strip Required" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">No of Dev Option</label>
+                                <input type="text" class="cpmr-input" placeholder="No of Dev Option" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Specific Requirement</label>
+                                <input type="text" class="cpmr-input" placeholder="Specific Requirement" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Functional prop = FR/Anti-Microbial</label>
+                                <input type="text" class="cpmr-input" placeholder="Functional prop = FR/Anti-Microbial" />
+                            </div>
+                        </div>
+
+                        <!-- Form Row 4 -->
+                        <div class="cpmr-grid-4">
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Fastness Required</label>
+                                <input type="text" class="cpmr-input" placeholder="Fastness Required" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">End Use</label>
+                                <input type="text" class="cpmr-input" placeholder="End Use" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Market</label>
+                                <input type="text" class="cpmr-input" placeholder="Market" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Spectro Needed</label>
+                                <div class="cpmr-radio-row">
+                                    <label class="cpmr-radio-label">
+                                        <input type="radio" name="spectro_@index" value="yes" checked /> Yes
+                                    </label>
+                                    <label class="cpmr-radio-label">
+                                        <input type="radio" name="spectro_@index" value="no" /> No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Row 5 -->
+                        <div class="cpmr-grid-4">
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Light Source</label>
+                                <input type="text" class="cpmr-input" placeholder="Light Source" />
+                            </div>
+                            <div class="cpmr-form-group">
+                                <label class="cpmr-label">Azo Free</label>
+                                <div class="cpmr-radio-row">
+                                    <label class="cpmr-radio-label">
+                                        <input type="radio" name="azofree_@index" value="yes" checked /> Yes
+                                    </label>
+                                    <label class="cpmr-radio-label">
+                                        <input type="radio" name="azofree_@index" value="no" /> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="cpmr-form-group" style="grid-column: span 2;">
+                                <label class="cpmr-label">Remark</label>
+                                <input type="text" class="cpmr-input" placeholder="Remark" />
+                            </div>
+                        </div>
+
+                        <!-- Section Divider -->
+                        <hr class="cpmr-divider" />
+
+                        <!-- Details Table -->
+                        <div class="cpmr-table-wrapper">
+                            <table class="cpmr-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20%;">Type</th>
+                                        <th style="width: 40%;">Customer Details</th>
+                                        <th style="width: 40%;">Deep Planning</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="cpmr-table-type-cell">Polymer</td>
+                                        <td>
+                                            <div class="cpmr-select-wrapper">
+                                                <select class="cpmr-select">
+                                                    <option value="">Select Polymer</option>
+                                                    <option value="Polymer A">Polymer A</option>
+                                                    <option value="Polymer B">Polymer B</option>
+                                                </select>
+                                                <span class="cpmr-select-chevron">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cpmr-select-wrapper">
+                                                <select class="cpmr-select">
+                                                    <option value="">Select Polymer</option>
+                                                    <option value="Polymer A">Polymer A</option>
+                                                    <option value="Polymer B">Polymer B</option>
+                                                </select>
+                                                <span class="cpmr-select-chevron">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cpmr-table-type-cell">POY Denier</td>
+                                        <td><input type="text" class="cpmr-input" placeholder="Enter POY Denier" /></td>
+                                        <td><input type="text" class="cpmr-input" placeholder="Enter POY Denier" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cpmr-table-type-cell">Final Denier</td>
+                                        <td><input type="text" class="cpmr-input" placeholder="Enter Final Filaments" /></td>
+                                        <td><input type="text" class="cpmr-input" placeholder="Enter Final Filaments" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cpmr-table-type-cell">Filaments</td>
+                                        <td><input type="text" class="cpmr-input" placeholder="Filaments" /></td>
+                                        <td><input type="text" class="cpmr-input" placeholder="Filaments" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cpmr-table-type-cell">Cross-Sec.</td>
+                                        <td>
+                                            <div class="cpmr-select-wrapper">
+                                                <select class="cpmr-select">
+                                                    <option value="">Select Cross-Sec.</option>
+                                                    <option value="Round">Round</option>
+                                                    <option value="Trilobal">Trilobal</option>
+                                                </select>
+                                                <span class="cpmr-select-chevron">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cpmr-select-wrapper">
+                                                <select class="cpmr-select">
+                                                    <option value="">Select Cross-Sec.</option>
+                                                    <option value="Round">Round</option>
+                                                    <option value="Trilobal">Trilobal</option>
+                                                </select>
+                                                <span class="cpmr-select-chevron">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cpmr-table-type-cell">Yarn Structue</td>
+                                        <td>
+                                            <div class="cpmr-select-wrapper">
+                                                <select class="cpmr-select">
+                                                    <option value="">Select Yarn Structue</option>
+                                                    <option value="Structure 1">Structure 1</option>
+                                                </select>
+                                                <span class="cpmr-select-chevron">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cpmr-select-wrapper">
+                                                <select class="cpmr-select">
+                                                    <option value="">Select Yarn Structue</option>
+                                                    <option value="Structure 1">Structure 1</option>
+                                                </select>
+                                                <span class="cpmr-select-chevron">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cpmr-table-type-cell">Sample requirement</td>
+                                        <td><input type="text" class="cpmr-input" placeholder="Enter Sample requirement" /></td>
+                                        <td><input type="text" class="cpmr-input" placeholder="Enter Sample requirement" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Footer Submit Actions -->
+    <div class="cpmr-submit-actions">
+        <button type="button" class="cpmr-btn-cancel" @onclick="Close">Cancel</button>
+        <button type="button" class="cpmr-btn-submit" @onclick="Close">Submit Design Input</button>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnBack { get; set; }
+
+    private string customerName = "";
+    private string customerCode = "";
+    private string city = "";
+    private string receivedFrom = "";
+    private string region = "";
+    private DateTime requestDate = DateTime.Now;
+
+    private int designInputCount = 1;
+    private HashSet<int> collapsedItems = new();
+
+    private void AddDesignInput()
+    {
+        designInputCount++;
+    }
+
+    private void RemoveDesignInput()
+    {
+        if (designInputCount > 1)
+        {
+            designInputCount--;
+        }
+    }
+
+    private void ToggleCollapse(int index)
+    {
+        if (collapsedItems.Contains(index))
+        {
+            collapsedItems.Remove(index);
+        }
+        else
+        {
+            collapsedItems.Add(index);
+        }
+    }
+
+    private bool IsCollapsed(int index) => collapsedItems.Contains(index);
+
+    private async Task Close()
+    {
+        await OnBack.InvokeAsync();
+    }
+}

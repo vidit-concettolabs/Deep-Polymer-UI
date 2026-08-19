@@ -1,6 +1,8 @@
 @page "/santej/pmr-management"
 @rendermode InteractiveServer
 
+@using DeepPolymer.Constants
+
 <PageTitle>PMR Management</PageTitle>
 
 @if (showDetailPage)
@@ -11,9 +13,19 @@ else
 {
     <div class="pmr-container">
         <!-- PMR Page Header -->
-        <div class="pmr-header">
-            <h1 class="pmr-title">PMR Management</h1>
-            <p class="pmr-desc">Manage, review, and process all PMR requests from a centralized admin panel.</p>
+        <div class="pmr-header flex-header">
+            <div>
+                <h1 class="pmr-title">PMR Management</h1>
+                <p class="pmr-desc">Create, manage, and track product matching requests efficiently.</p>
+            </div>
+            
+            @if (ColorConstant.BranchFlag == 1 && ColorConstant.IsPmrGenerator)
+            {
+                <div class="pmr-header-actions">
+                    <button type="button" class="pmr-btn-email">Email to Marketing User</button>
+                    <button type="button" class="pmr-btn-create">Create PMR</button>
+                </div>
+            }
         </div>
 
         <!-- Filter Section -->
