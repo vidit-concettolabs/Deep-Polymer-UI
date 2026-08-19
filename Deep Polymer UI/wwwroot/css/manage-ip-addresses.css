@@ -107,32 +107,26 @@
 
 .ip-table th:nth-child(1),
 .ip-table td:nth-child(1) {
-    width: 22%;
+    width: 35%;
     padding-left: 24px;
     text-align: left;
 }
 
 .ip-table th:nth-child(2),
 .ip-table td:nth-child(2) {
-    width: 22%;
-    text-align: left;
+    width: 25%;
+    text-align: center !important;
 }
 
 .ip-table th:nth-child(3),
 .ip-table td:nth-child(3) {
-    width: 20%;
-    text-align: center !important;
+    width: 22%;
+    text-align: left;
 }
 
 .ip-table th:nth-child(4),
 .ip-table td:nth-child(4) {
-    width: 20%;
-    text-align: left;
-}
-
-.ip-table th:nth-child(5),
-.ip-table td:nth-child(5) {
-    width: 16%;
+    width: 18%;
     padding-right: 24px;
     text-align: center !important;
 }

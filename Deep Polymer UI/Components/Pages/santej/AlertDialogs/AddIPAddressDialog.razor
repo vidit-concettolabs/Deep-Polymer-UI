@@ -16,26 +16,6 @@
                     </label>
                     <input class="dialog-input" type="text" placeholder="IP Address" @bind="IPAddress" />
                 </div>
-
-                <!-- Select User -->
-                <div class="dialog-form-group">
-                    <label class="dialog-label">Select User <span class="required-star">*</span></label>
-                    <div class="dialog-select-wrapper">
-                        <select class="dialog-select" @bind="UserName">
-                            <option value="">Select User</option>
-                            <option value="John Doe">John Doe</option>
-                            <option value="Sarah Smith">Sarah Smith</option>
-                            <option value="Mike Johnson">Mike Johnson</option>
-                            <option value="Emily Davis">Emily Davis</option>
-                            <option value="David Brown">David Brown</option>
-                        </select>
-                        <span class="dialog-select-chevron">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </span>
-                    </div>
-                </div>
             </div>
             <div class="dialog-footer">
                 <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
@@ -51,7 +31,6 @@
     [Parameter] public EventCallback OnSubmit { get; set; }
 
     private string IPAddress { get; set; } = "";
-    private string UserName { get; set; } = "";
     private bool IsActive { get; set; } = true;
 
     private async Task Close()

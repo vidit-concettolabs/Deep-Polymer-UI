@@ -3,7 +3,7 @@ namespace DeepPolymer.Constants;
 public static class ColorConstant
 {
     // 1 for Santej, 2 for Hajipur
-    public const int BranchFlag = 1;
+    public const int BranchFlag = 2;
 
     // Santej Colors
     public const string SantejPrimaryColor = "#ff0000";
