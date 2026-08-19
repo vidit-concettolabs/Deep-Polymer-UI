@@ -54,13 +54,13 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="text-start"><span class="customer-link">Ramesh Patel</span></td>
+                    <td class="text-start"><span class="customer-link" @onclick="() => showDetailsDialog = true" style="cursor: pointer;">Ramesh Patel</span></td>
                     <td class="text-start">Shree Packaging Pvt Ltd</td>
                     <td class="text-start">contact@shreepackaging.com</td>
                     <td class="text-start">+91 98765 43210</td>
                     <td>
                         <div class="actions-container">
-                            <button class="action-view-btn" type="button" title="View Customer Details">
+                            <button class="action-view-btn" type="button" title="View Customer Details" @onclick="() => showDetailsDialog = true">
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -77,6 +77,9 @@
                 </tr>
             </tbody>
         </table>
+
+        <!-- Customer Details Dialog -->
+        <CustomerDetailsDialog @bind-IsOpen="showDetailsDialog" CustomerId="1" />
 
         <!-- Table Footer / Pagination Row -->
         <div class="masters-pagination-row">
@@ -101,4 +104,5 @@
 
 @code {
     private bool showAddDialog = false;
+    private bool showDetailsDialog = false;
 }

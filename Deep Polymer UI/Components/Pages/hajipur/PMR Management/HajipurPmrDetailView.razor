@@ -258,7 +258,20 @@
         <!-- ===== RIGHT COLUMN: Cost Summary ===== -->
         <div class="hpdv-right-col">
             <div class="hpdv-card hpdv-cost-card">
-                <h2 class="hpdv-card-title">Cost Summary</h2>
+                <div class="hpdv-card-title-row hpdv-cost-title-row">
+                    <h2 class="hpdv-card-title">Cost Summary</h2>
+                    <div class="hpdv-cost-action-icons">
+                        <button type="button" class="hpdv-icon-btn" title="Revised Rate" @onclick="OpenRevisedRateDialog">
+                            <img src="assets/image/revised_rate_icon.svg" alt="R" class="hpdv-action-icon" />
+                        </button>
+                        <button type="button" class="hpdv-icon-btn" title="Negotiation" @onclick="OpenNegotiationDialog">
+                            <img src="assets/image/negotiation_icon.svg" alt="N" class="hpdv-action-icon" />
+                        </button>
+                    </div>
+
+                    <!-- Revised Rate Popover (anchored under R/N icons) -->
+                    <HajipurRevisedRateDialog @bind-IsOpen="showRevisedRateDialog" />
+                </div>
                 <p class="hpdv-card-subtitle">Review the final product costing and additional charges before submission.</p>
 
                 <div class="hpdv-cost-list">
@@ -291,6 +304,9 @@
     <!-- PMR Details Dialog (opened via info icon) -->
     <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@PmrNo" />
 
+    <!-- Negotiation Dialog (opened via N icon) -->
+    <HajipurNegotiationDialog @bind-IsOpen="showNegotiationDialog" />
+
     <!-- Bottom white card with Submit button (in page flow, not sticky) -->
     <div class="hpdv-footer-card">
         <button class="hpdv-submit-btn" type="button">Submit to Production Head</button>
@@ -303,9 +319,21 @@
     [Parameter] public EventCallback OnBack { get; set; }
 
     private bool showDetailsDialog = false;
+    private bool showRevisedRateDialog = false;
+    private bool showNegotiationDialog = false;
 
     private void OpenDetailsDialog()
     {
         showDetailsDialog = true;
+    }
+
+    private void OpenRevisedRateDialog()
+    {
+        showRevisedRateDialog = true;
+    }
+
+    private void OpenNegotiationDialog()
+    {
+        showNegotiationDialog = true;
     }
 }

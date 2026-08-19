@@ -1,0 +1,70 @@
+@if (IsOpen)
+{
+    <div class="cdd-overlay" @onclick="Close">
+        <div class="cdd-modal" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="cdd-header">
+                <h3 class="cdd-title">Customer Details - #@(string.IsNullOrEmpty(CustomerId) ? "1" : CustomerId)</h3>
+                <button type="button" class="cdd-close-btn" @onclick="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="cdd-body">
+                <div class="cdd-grid">
+                    <!-- Row 1 -->
+                    <div class="cdd-item">
+                        <span class="cdd-label">Customer Name</span>
+                        <span class="cdd-value">Ramesh Patel</span>
+                    </div>
+                    <div class="cdd-item">
+                        <span class="cdd-label">Company Name</span>
+                        <span class="cdd-value">Shree Packaging</span>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="cdd-item">
+                        <span class="cdd-label">Email Address</span>
+                        <span class="cdd-value">contact@shreepackaging.com</span>
+                    </div>
+                    <div class="cdd-item">
+                        <span class="cdd-label">Contact Number</span>
+                        <span class="cdd-value">+91 98765 43210</span>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="cdd-item">
+                        <span class="cdd-label">City</span>
+                        <span class="cdd-value">Ahmedabad</span>
+                    </div>
+                    <div class="cdd-item">
+                        <span class="cdd-label">Region</span>
+                        <span class="cdd-value">Gujarat</span>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="cdd-item">
+                        <span class="cdd-label">Local/Outside?</span>
+                        <span class="cdd-value">Local</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="cdd-footer">
+                <button type="button" class="cdd-btn-close" @onclick="Close">Close</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string CustomerId { get; set; } = "1";
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

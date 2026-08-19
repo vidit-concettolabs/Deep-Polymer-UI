@@ -1,0 +1,43 @@
+@if (IsOpen)
+{
+    <!-- Backdrop for closing on outside click -->
+    <div class="hrrd-backdrop" @onclick="Close"></div>
+
+    <!-- Anchored Popover Box directly under [R] and [N] icons -->
+    <div class="hrrd-popover" @onclick:stopPropagation="true">
+        <div class="hrrd-header">
+            <h3 class="hrrd-title">Revised Rate</h3>
+            <button type="button" class="hrrd-close-btn" @onclick="Close">&times;</button>
+        </div>
+        <div class="hrrd-body">
+            <!-- Top Split Row: Quoted Price & Difference -->
+            <div class="hrrd-split-row">
+                <div class="hrrd-col">
+                    <span class="hrrd-val-dark">&#8377;12,500</span>
+                    <span class="hrrd-label">Quoted Price</span>
+                </div>
+                <div class="hrrd-col hrrd-col-bordered">
+                    <span class="hrrd-val-blue">&#8377;1,000</span>
+                    <span class="hrrd-label">Difference</span>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Selling Price -->
+            <div class="hrrd-bottom-row">
+                <span class="hrrd-val-dark">&#8377;13,500</span>
+                <span class="hrrd-label">Selling Price</span>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}
