@@ -409,7 +409,7 @@ input.hpdv-plain-val:focus {
 
 .hpdv-cost-label {
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     color: #151515;
     font-family: inherit;
     flex-shrink: 0;

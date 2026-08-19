@@ -1,0 +1,317 @@
+@using Microsoft.AspNetCore.Components.Sections
+@using Deep_Polymer_UI.Components.Pages.hajipur.PMR_Management
+
+<!-- Inject ← Back into the main header slot -->
+<SectionContent SectionName="header-back-slot">
+    <button class="header-back-btn" type="button" @onclick="OnBack">
+        <svg viewBox="0 0 24 24">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Back
+    </button>
+</SectionContent>
+
+<div class="spdv-page">
+
+    <!-- LEFT + RIGHT two-column grid -->
+    <div class="spdv-grid">
+
+        <!-- ===== LEFT COLUMN ===== -->
+        <div class="spdv-left-col">
+
+            <!-- PMR Information Card -->
+            <div class="spdv-card">
+                <div class="spdv-card-title-row">
+                    <h2 class="spdv-card-title">PMR Information</h2>
+                    <button class="spdv-info-badge-btn" type="button" title="View PMR Details" @onclick="OpenDetailsDialog">
+                        <img src="assets/image/information_icon_santej.svg" alt="Info" class="spdv-info-icon" />
+                    </button>
+                </div>
+
+                <div class="spdv-info-grid">
+                    <div class="spdv-info-item">
+                        <span class="spdv-info-label">PMR Number</span>
+                        <span class="spdv-info-value">@(string.IsNullOrEmpty(PmrNo) ? "PMR-001" : PmrNo)</span>
+                    </div>
+                    <div class="spdv-info-item">
+                        <span class="spdv-info-label">Product Name</span>
+                        <span class="spdv-info-value">HD Polymer Mix</span>
+                    </div>
+                    <div class="spdv-info-item">
+                        <span class="spdv-info-label">Colour Name</span>
+                        <span class="spdv-info-value">Ocean Blue - A</span>
+                    </div>
+                    <div class="spdv-info-item">
+                        <span class="spdv-info-label">Colour Code</span>
+                        <span class="spdv-info-value">OB-102</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Raw Material Weights Card -->
+            <div class="spdv-card">
+                <div class="spdv-card-title-row">
+                    <div class="spdv-rm-title-group">
+                        <h2 class="spdv-card-title">Raw Material Weights</h2>
+                        <span class="status-badge status-lab-revised">Lab Revised</span>
+                        <span class="status-badge status-prod-revised">Prod Revised</span>
+                    </div>
+                    <button class="spdv-btn-add-material" type="button">Add Material</button>
+                </div>
+
+                <p class="spdv-card-subtitle">Add and manage raw material weights for the selected PMR.</p>
+
+                <!-- Scrollable Table -->
+                <div class="spdv-rm-table-wrap">
+                    <table class="spdv-rm-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 32%;">Raw Material</th>
+                                <th style="width: 15%;">
+                                    Rate(&#8377;)
+                                    <img src="assets/image/edit_sanej.svg" alt="edit" class="spdv-pencil-icon" />
+                                </th>
+                                <th style="width: 17%;">
+                                    Formula Weight(kg)
+                                    <img src="assets/image/edit_sanej.svg" alt="edit" class="spdv-pencil-icon" />
+                                </th>
+                                <th style="width: 16%;">New Weight(kg)</th>
+                                <th style="width: 15%;">Total Cost(&#8377;)</th>
+                                <th style="width: 5%; text-align: center;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1 -->
+                            <tr>
+                                <td>
+                                    <div class="spdv-select-wrap">
+                                        <select class="spdv-rm-select">
+                                            <option selected>Titanium Dioxide</option>
+                                        </select>
+                                        <span class="spdv-select-chevron">
+                                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td><input type="text" class="spdv-rm-input" value="180.00" /></td>
+                                <td><input type="text" class="spdv-rm-input" value="22.22" /></td>
+                                <td><input type="text" class="spdv-rm-input spdv-input-purple" value="20.75" /></td>
+                                <td><div class="spdv-box-red">3960.00</div></td>
+                                <td style="text-align: center;">
+                                    <button class="spdv-btn-delete" type="button" title="Delete">
+                                        <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr>
+                                <td>
+                                    <div class="spdv-select-wrap">
+                                        <select class="spdv-rm-select">
+                                            <option selected>Titanium Dioxide</option>
+                                        </select>
+                                        <span class="spdv-select-chevron">
+                                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td><input type="text" class="spdv-rm-input" value="150.00" /></td>
+                                <td><input type="text" class="spdv-rm-input" value="15.00" /></td>
+                                <td><input type="text" class="spdv-rm-input spdv-input-purple" value="20.75" /></td>
+                                <td><div class="spdv-box-red">180.00</div></td>
+                                <td style="text-align: center;">
+                                    <button class="spdv-btn-delete" type="button" title="Delete">
+                                        <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr>
+                                <td>
+                                    <div class="spdv-select-wrap">
+                                        <select class="spdv-rm-select">
+                                            <option selected>Titanium Dioxide</option>
+                                        </select>
+                                        <span class="spdv-select-chevron">
+                                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td><input type="text" class="spdv-rm-input" value="180.00" /></td>
+                                <td><input type="text" class="spdv-rm-input" value="22.22" /></td>
+                                <td><input type="text" class="spdv-rm-input spdv-input-purple" value="20.75" /></td>
+                                <td><div class="spdv-box-red">3960.00</div></td>
+                                <td style="text-align: center;">
+                                    <button class="spdv-btn-delete" type="button" title="Delete">
+                                        <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr>
+                                <td>
+                                    <div class="spdv-select-wrap">
+                                        <select class="spdv-rm-select">
+                                            <option selected>Titanium Dioxide</option>
+                                        </select>
+                                        <span class="spdv-select-chevron">
+                                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td><input type="text" class="spdv-rm-input" value="180.00" /></td>
+                                <td><input type="text" class="spdv-rm-input" value="22.22" /></td>
+                                <td><input type="text" class="spdv-rm-input spdv-input-purple" value="20.75" /></td>
+                                <td><div class="spdv-box-red">3960.00</div></td>
+                                <td style="text-align: center;">
+                                    <button class="spdv-btn-delete" type="button" title="Delete">
+                                        <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 5 -->
+                            <tr>
+                                <td>
+                                    <div class="spdv-select-wrap">
+                                        <select class="spdv-rm-select">
+                                            <option selected>Titanium Dioxide</option>
+                                        </select>
+                                        <span class="spdv-select-chevron">
+                                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td><input type="text" class="spdv-rm-input" value="150.00" /></td>
+                                <td><input type="text" class="spdv-rm-input" value="15.00" /></td>
+                                <td><input type="text" class="spdv-rm-input spdv-input-purple" value="20.75" /></td>
+                                <td><div class="spdv-box-red">180.00</div></td>
+                                <td style="text-align: center;">
+                                    <button class="spdv-btn-delete" type="button" title="Delete">
+                                        <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 6 -->
+                            <tr>
+                                <td>
+                                    <div class="spdv-select-wrap">
+                                        <select class="spdv-rm-select">
+                                            <option selected>Titanium Dioxide</option>
+                                        </select>
+                                        <span class="spdv-select-chevron">
+                                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td><input type="text" class="spdv-rm-input" value="180.00" /></td>
+                                <td><input type="text" class="spdv-rm-input" value="22.22" /></td>
+                                <td><input type="text" class="spdv-rm-input spdv-input-purple" value="20.75" /></td>
+                                <td><div class="spdv-box-red">3960.00</div></td>
+                                <td style="text-align: center;">
+                                    <button class="spdv-btn-delete" type="button" title="Delete">
+                                        <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Total Weight & RM Cost Separator Row -->
+                <div class="spdv-total-row">
+                    <span class="spdv-total-label">Total Weight(kgs) &amp; Raw Material Cost(&#8377;):</span>
+                    <div class="spdv-total-box spdv-total-box-plain">24.00</div>
+                    <div class="spdv-total-box spdv-total-box-plain">22.22</div>
+                    <div class="spdv-total-box spdv-total-box-purple">20.75</div>
+                    <div class="spdv-total-box spdv-total-box-red">3960.00</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== RIGHT COLUMN: Cost Summary ===== -->
+        <div class="spdv-right-col">
+            <div class="spdv-card spdv-cost-card">
+                <div class="spdv-card-title-row">
+                    <h2 class="spdv-card-title">Cost Summary</h2>
+                </div>
+                <p class="spdv-cost-card-subtitle">Review the final product costing and additional charges before submission.</p>
+
+                <div class="spdv-cost-list">
+                    <!-- Defined Total Cost -->
+                    <div class="spdv-cost-row">
+                        <span class="spdv-cost-label">Defined Total Cost:</span>
+                        <input type="text" class="spdv-cost-input-md" value="310.00" />
+                    </div>
+
+                    <!-- Fixed Charges -->
+                    <div class="spdv-cost-row">
+                        <span class="spdv-cost-label">Fixed Charges:</span>
+                        <div class="spdv-cost-row-right">
+                            <input type="text" class="spdv-cost-input-sm" value="20" />
+                            <input type="text" class="spdv-cost-input-md" value="1000.00" />
+                        </div>
+                    </div>
+
+                    <!-- Misc Charges -->
+                    <div class="spdv-cost-row">
+                        <span class="spdv-cost-label">Misc. Charges:</span>
+                        <input type="text" class="spdv-cost-input-md" value="0.00" />
+                    </div>
+
+                    <!-- Profit -->
+                    <div class="spdv-cost-row">
+                        <span class="spdv-cost-label">Profit:</span>
+                        <div class="spdv-cost-row-right">
+                            <input type="text" class="spdv-cost-input-sm" value="15.00" />
+                            <span class="spdv-cost-percent-sign">%</span>
+                            <input type="text" class="spdv-cost-input-md" value="2022.24" />
+                        </div>
+                    </div>
+
+                    <!-- Total Cost -->
+                    <div class="spdv-cost-row">
+                        <span class="spdv-cost-label">Total Cost(&#8377;):</span>
+                        <div class="spdv-cost-pill-red">15503.84</div>
+                    </div>
+
+                    <!-- Cost per Kg -->
+                    <div class="spdv-cost-row">
+                        <span class="spdv-cost-label">Cost per Kg:</span>
+                        <div class="spdv-cost-pill-gray">310.15</div>
+                    </div>
+
+                    <!-- Selling Amount -->
+                    <div class="spdv-cost-row">
+                        <span class="spdv-cost-label">Selling Amount:</span>
+                        <input type="text" class="spdv-cost-input-md" value="17000.00" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PMR Details Dialog (opened via info icon) -->
+    <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@PmrNo" />
+
+    <!-- Bottom white card with 3 Action Buttons -->
+    <div class="spdv-footer-card">
+        <button class="spdv-btn-white" type="button">Send Back to Lab User</button>
+        <button class="spdv-btn-black" type="button">Share Negotiated Rate to PMR User</button>
+        <button class="spdv-btn-red" type="button">Submit to Production User</button>
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public string PmrNo { get; set; } = "PMR-001";
+    [Parameter] public EventCallback OnBack { get; set; }
+
+    private bool showDetailsDialog = false;
+
+    private void OpenDetailsDialog()
+    {
+        showDetailsDialog = true;
+    }
+}

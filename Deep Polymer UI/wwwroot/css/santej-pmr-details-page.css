@@ -1,0 +1,499 @@
+/* ================================================================
+   SANTEJ PMR DETAIL VIEW STYLES - Exact Figma Design Reproduction
+   ================================================================ */
+
+.spdv-page {
+    font-family: inherit;
+    color: #151515;
+    background-color: transparent;
+    min-height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Two Column Layout: Left (~74%), Right Cost Summary (~26%) */
+.spdv-grid {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    width: 100%;
+}
+
+.spdv-left-col {
+    flex: 1 1 74%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+.spdv-right-col {
+    flex: 0 0 26%;
+    display: flex;
+    flex-direction: column;
+    min-width: 280px;
+}
+
+/* Card Base */
+.spdv-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5EE;
+    border-radius: 8px;
+    padding: 14px 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    box-sizing: border-box;
+}
+
+.spdv-card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.spdv-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #151515;
+    margin: 0;
+}
+
+/* Red Info Badge Button */
+.spdv-info-badge-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spdv-info-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+/* PMR Info Grid (1 row x 4 cols) */
+.spdv-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding-top: 4px;
+}
+
+.spdv-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.spdv-info-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.spdv-info-value {
+    font-size: 13px;
+    font-weight: 400;
+    color: #808080;
+}
+
+/* Raw Material Weights Card Header Elements */
+.spdv-rm-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.spdv-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    background-color: #FFFFFF;
+    border: 1px solid #8090FE;
+    color: #3449D8;
+    line-height: 1.2;
+}
+
+.spdv-btn-add-material {
+    background-color: #FFFFFF;
+    border: 1px solid #D9E0E7;
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #151515;
+    cursor: pointer;
+    margin-left: auto;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+.spdv-btn-add-material:hover {
+    background-color: #F8F9FA;
+    border-color: #CBD5E1;
+}
+
+.spdv-card-subtitle {
+    font-size: 12px;
+    color: #808080;
+    margin: -4px 0 14px 0;
+    font-weight: 400;
+}
+
+/* Raw Material Table Wrapper */
+.spdv-rm-table-wrap {
+    border: 1px solid #F0F0F5;
+    border-radius: 6px;
+    max-height: 250px;
+    overflow-y: auto;
+    background-color: #FFFFFF;
+}
+
+.spdv-rm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.spdv-rm-table th {
+    background-color: #FFFFFF;
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #808080;
+    text-align: left;
+    border-bottom: 1px solid #E5E5EE;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.spdv-pencil-icon {
+    width: 12px;
+    height: 12px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.spdv-rm-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #F5F5F8;
+    vertical-align: middle;
+}
+
+.spdv-select-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.spdv-rm-select {
+    width: 100%;
+    height: 32px;
+    padding: 0 24px 0 10px;
+    border: 1px solid #E5E5EE;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #151515;
+    background-color: #FFFFFF;
+    appearance: none;
+    cursor: pointer;
+}
+
+.spdv-select-chevron {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #808080;
+}
+.spdv-select-chevron svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+.spdv-rm-input {
+    width: 100%;
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid #E5E5EE;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #151515;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    text-align: right;
+}
+.spdv-rm-input:focus {
+    outline: none;
+    border-color: #3449D8;
+}
+
+.spdv-input-purple {
+    background-color: #F4F3FF;
+    border: 1px solid #E0DBFF;
+    color: #151515;
+    font-weight: 600;
+}
+
+.spdv-box-red {
+    height: 32px;
+    padding: 0 10px;
+    background-color: #FFF0F2;
+    border: 1px solid #FFE0E4;
+    border-radius: 6px;
+    color: #FF0022;
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.spdv-btn-delete {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #CBD5E1;
+    line-height: 0;
+    transition: color 0.15s;
+}
+.spdv-btn-delete:hover {
+    color: #FF2D55;
+}
+.spdv-btn-delete svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+/* Total Weights & RM Cost Row */
+.spdv-total-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px 4px 10px;
+    margin-top: 8px;
+    border-top: 1px solid #E5E5EE;
+    gap: 10px;
+}
+
+.spdv-total-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #151515;
+    margin-right: auto;
+}
+
+.spdv-total-box {
+    width: 85px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+
+.spdv-total-box-plain {
+    background-color: #F4F4F8;
+    border: 1px solid #E5E5EE;
+    color: #151515;
+}
+
+.spdv-total-box-purple {
+    background-color: #F4F3FF;
+    border: 1px solid #E0DBFF;
+    color: #151515;
+}
+
+.spdv-total-box-red {
+    background-color: #FFF0F2;
+    border: 1px solid #FFE0E4;
+    color: #FF0022;
+    font-weight: 700;
+}
+
+/* ================================================================
+   RIGHT COLUMN: Cost Summary Card Styles
+   ================================================================ */
+.spdv-cost-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.spdv-cost-card-subtitle {
+    font-size: 12px;
+    color: #808080;
+    margin: -4px 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F0F0F5;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.spdv-cost-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.spdv-cost-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.spdv-cost-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #151515;
+    white-space: nowrap;
+}
+
+.spdv-cost-row-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.spdv-cost-input-sm {
+    width: 44px;
+    height: 32px;
+    padding: 0 6px;
+    border: 1px solid #E5E5EE;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #151515;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.spdv-cost-input-md {
+    width: 100px;
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid #E5E5EE;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #151515;
+    background-color: #FFFFFF;
+    text-align: right;
+}
+
+.spdv-cost-percent-sign {
+    font-size: 12px;
+    color: #808080;
+}
+
+.spdv-cost-pill-red {
+    width: 100px;
+    height: 32px;
+    padding: 0 10px;
+    background-color: #FFF0F2;
+    border: 1px solid #FFE0E4;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FF0022;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+
+.spdv-cost-pill-gray {
+    width: 100px;
+    height: 32px;
+    padding: 0 10px;
+    background-color: #F4F4F8;
+    border: 1px solid #E5E5EE;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #151515;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+
+/* ================================================================
+   BOTTOM FOOTER BUTTONS CARD (In-Page Flow)
+   ================================================================ */
+.spdv-footer-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5EE;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin-top: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.spdv-btn-white {
+    background-color: #FFFFFF;
+    border: 1px solid #D9E0E7;
+    border-radius: 6px;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #151515;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+.spdv-btn-white:hover {
+    background-color: #F8F9FA;
+    border-color: #CBD5E1;
+}
+
+.spdv-btn-black {
+    background-color: #151515;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+.spdv-btn-black:hover {
+    background-color: #2D2D2D;
+}
+
+.spdv-btn-red {
+    background-color: #FF0022;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+.spdv-btn-red:hover {
+    background-color: #D9001B;
+}
