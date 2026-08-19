@@ -1,0 +1,531 @@
+/* =====================================================================
+   HAJIPUR PMR DETAIL VIEW — CSS matching reference screenshot
+   Font: inherited from app (same as all other pages)
+   ===================================================================== */
+
+/* ---- Header back button (injected via SectionContent) ---- */
+.header-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: #0A0A0A;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: inherit;
+    transition: color 0.12s;
+    line-height: 1;
+}
+.header-back-btn:hover { color: #1a2db5; }
+.header-back-btn svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* ================================================================
+   PAGE ROOT
+   ================================================================ */
+.hpdv-page {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 6px 10px 20px 10px;
+    box-sizing: border-box;
+    font-family: inherit;
+    background: transparent; /* page bg from app */
+    min-height: calc(100vh - 78px);
+}
+
+/* ================================================================
+   MAIN TWO-COLUMN GRID
+   ================================================================ */
+.hpdv-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.hpdv-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.hpdv-right-col {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+}
+
+/* ================================================================
+   CARDS
+   ================================================================ */
+.hpdv-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E5EE;
+    border-radius: 8px;
+    padding: 14px 16px;
+    box-sizing: border-box;
+}
+
+/* Cost Summary stretches full height */
+.hpdv-cost-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================================================================
+   CARD TITLE ROW
+   ================================================================ */
+.hpdv-card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.hpdv-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0A0A0A;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+    font-family: inherit;
+}
+
+.hpdv-card-title-row .hpdv-card-title {
+    margin: 0;
+}
+
+/* Info icon button next to title */
+.hpdv-info-badge-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    line-height: 0;
+    border-radius: 50%;
+    transition: opacity 0.15s;
+}
+.hpdv-info-badge-btn:hover { opacity: 0.7; }
+.hpdv-info-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+/* Card subtitle */
+.hpdv-card-subtitle {
+    font-size: 11px;
+    color: #808080;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+    font-family: inherit;
+}
+
+/* ================================================================
+   PMR INFORMATION — 4-column info grid
+   ================================================================ */
+.hpdv-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    row-gap: 12px;
+}
+
+.hpdv-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.hpdv-info-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #151515;
+    line-height: 1.3;
+    font-family: inherit;
+}
+
+.hpdv-info-value {
+    font-size: 12px;
+    font-weight: 400;
+    color: #808080;
+    line-height: 1.4;
+    font-family: inherit;
+}
+
+/* ================================================================
+   RAW MATERIAL WEIGHTS CARD
+   ================================================================ */
+.hpdv-rm-card {
+    padding: 14px 16px 14px 16px;
+    overflow: hidden; /* so total row bg clips to card border-radius */
+}
+
+.hpdv-rm-table-wrap {
+    border: 1px solid #E5E5EE;
+    border-radius: 6px;
+    overflow-y: auto;
+    max-height: 215px;
+    margin-top: 4px;
+}
+
+/* ---- Table ---- */
+.hpdv-rm-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: inherit;
+}
+
+/* Column proportions matching screenshot */
+.hpdv-col-material { width: 46%; }
+.hpdv-col-pct      { width: 18%; }
+.hpdv-col-price    { width: 18%; }
+.hpdv-col-cost     { width: 18%; }
+
+/* Header — sticky on scroll */
+.hpdv-tr-head {
+    background-color: #F8F9FA;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.hpdv-th {
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #808080;
+    border-bottom: 1px solid #E5E5EE;
+    white-space: nowrap;
+    background-color: #F8F9FA;
+    font-family: inherit;
+    line-height: 1.3;
+}
+.hpdv-th-left   { text-align: left; }
+.hpdv-th-center { text-align: center; }
+
+/* Edit pencil icon inside Percentage header */
+img.hpdv-edit-icon,
+.hpdv-edit-icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-left: 4px;
+    position: relative;
+    top: -1px;
+}
+
+/* Data rows */
+.hpdv-tr {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #F0F1F5;
+}
+.hpdv-tr-last {
+    border-bottom: none;
+}
+
+.hpdv-td {
+    padding: 8px 12px;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #0A0A0A;
+    font-family: inherit;
+}
+.hpdv-td-center { text-align: center; }
+
+/* ---- Raw Material Dropdown ---- */
+.hpdv-select-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.hpdv-select {
+    width: 100%;
+    height: 28px;
+    padding: 0 26px 0 10px;
+    font-size: 12px;
+    color: #808080;
+    background: #FFFFFF;
+    border: 1px solid #E2E2E6;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.hpdv-chevron {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #808080;
+    display: flex;
+    align-items: center;
+}
+.hpdv-chevron svg {
+    width: 12px;
+    height: 12px;
+    stroke-width: 2;
+}
+
+/* ---- Plain values (Percentage & RM Price) — interactive input controls ---- */
+input.hpdv-plain-val,
+.hpdv-plain-val {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    width: 80px;
+    padding: 0 8px;
+    font-size: 12px;
+    color: #808080;
+    font-weight: 400;
+    font-family: inherit;
+    border: 1px solid #E0E0E6;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input.hpdv-plain-val:focus {
+    border-color: #3449D8;
+    color: #151515;
+    background-color: #FFFFFF;
+}
+
+/* ---- RM Cost/Kg pill (lavender bg, red text) ---- */
+.hpdv-rm-cost-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 28px;
+    width: 80px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FF2D55;
+    background-color: #F3F4FF;
+    border-radius: 5px;
+    text-align: right;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/* ---- Total Row — full card width, separate grey separator ---- */
+.hpdv-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px 14px 16px;
+    margin-top: 14px;
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-bottom: -14px;
+    border-top: 1px solid #E5E5EE;
+    background-color: #FFFFFF;
+}
+
+.hpdv-total-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #151515;
+    font-family: inherit;
+}
+
+.hpdv-total-pills {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Grey total pill (weight) */
+.hpdv-total-pill-grey {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 28px;
+    width: 80px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #808080;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    text-align: right;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/* ================================================================
+   COST SUMMARY ROWS
+   ================================================================ */
+.hpdv-cost-card .hpdv-card-subtitle {
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #F0F0F5;
+}
+
+.hpdv-cost-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 2px;
+}
+
+.hpdv-cost-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    min-height: 32px;
+}
+
+.hpdv-cost-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #151515;
+    font-family: inherit;
+    flex-shrink: 0;
+    margin-right: 8px;
+}
+
+/* RMC value — light gray rectangular field */
+input.hpdv-cost-input,
+.hpdv-cost-input {
+    width: 90px;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #808080;
+    background-color: #EFEFEF;
+    border: none;
+    border-radius: 6px;
+    text-align: right;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: background-color 0.15s;
+}
+input.hpdv-cost-input:focus {
+    background-color: #E5E5E8;
+    color: #151515;
+}
+
+/* Opp Cost — lavender field, blue text */
+.hpdv-cost-pill-blue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 30px;
+    width: 90px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #3449D8;
+    background-color: #F2F3FF;
+    border-radius: 6px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/* White bordered rectangular input boxes (Profit/Margin, Min price, Quoted Price) */
+input.hpdv-cost-plain-val,
+.hpdv-cost-plain-val {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 30px;
+    width: 90px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #808080;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5EE;
+    border-radius: 6px;
+    text-align: right;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+}
+input.hpdv-cost-plain-val:focus {
+    border-color: #3449D8;
+    color: #151515;
+}
+
+/* ================================================================
+   BOTTOM FOOTER CARD (in page flow, NOT fixed)
+   ================================================================ */
+.hpdv-footer-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E5EE;
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.hpdv-submit-btn {
+    background-color: #0808AE;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 28px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.2px;
+    transition: background-color 0.12s;
+    white-space: nowrap;
+}
+.hpdv-submit-btn:hover { background-color: #0606a0; }
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 860px) {
+    .hpdv-grid {
+        grid-template-columns: 3fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .hpdv-grid {
+        grid-template-columns: 1fr;
+    }
+    .hpdv-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

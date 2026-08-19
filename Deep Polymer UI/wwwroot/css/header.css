@@ -19,6 +19,36 @@
 .header-left {
     display: flex;
     align-items: center;
+    gap: 12px;
+}
+
+.header-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: #0A0A0A;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: color 0.12s;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.header-back-btn:hover {
+    background-color: #f1f5f9;
+    color: #0c1e91;
+}
+
+.header-back-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
 }
 
 .hamburger-btn {

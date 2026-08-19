@@ -6,7 +6,13 @@
 
 @if (ColorConstant.BranchFlag == 2)
 {
-    <div class="hpmr-container">
+    @if (showDetailPage)
+    {
+        <HajipurPmrDetailView PmrNo="@selectedPmrNo" OnBack="EventCallback.Factory.Create(this, BackToTable)" />
+    }
+    else
+    {
+        <div class="hpmr-container">
 
         <!-- Page Header -->
         <div class="pmr-header">
@@ -210,7 +216,7 @@
 
                 <tbody>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-001</td>
                         <td>Ramesh Patel</td>
                         <td>Ocean Blue</td>
@@ -227,7 +233,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+                                    @onclick:stopPropagation="true"
                                     title="View PMR-001">
 
                                 <svg viewBox="0 0 24 24">
@@ -246,7 +252,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-001</td>
                         <td>Ramesh Patel</td>
                         <td>Ocean Blue</td>
@@ -263,7 +269,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+                                    @onclick:stopPropagation="true"
                                     title="View PMR-001">
 
                                 <svg viewBox="0 0 24 24">
@@ -282,7 +288,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-002</td>
                         <td>Anjali Verma</td>
                         <td>Sunset Orange</td>
@@ -299,7 +305,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+        
                                     title="View PMR-002">
 
                                 <svg viewBox="0 0 24 24">
@@ -318,7 +324,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-003</td>
                         <td>Kiran Desai</td>
                         <td>Forest Green</td>
@@ -335,7 +341,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+        
                                     title="View PMR-003">
 
                                 <svg viewBox="0 0 24 24">
@@ -354,7 +360,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-004</td>
                         <td>Sneha Kulkarni</td>
                         <td>Crimson Red</td>
@@ -371,7 +377,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+        
                                     title="View PMR-004">
 
                                 <svg viewBox="0 0 24 24">
@@ -390,7 +396,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-001</td>
                         <td>Ramesh Patel</td>
                         <td>Ocean Blue</td>
@@ -407,7 +413,8 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+        
+                                    @onclick:stopPropagation="true"
                                     title="View PMR-001">
 
                                 <svg viewBox="0 0 24 24">
@@ -426,7 +433,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-005</td>
                         <td>Rahul Singh</td>
                         <td>Midnight Black</td>
@@ -443,7 +450,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+        
                                     title="View PMR-005">
 
                                 <svg viewBox="0 0 24 24">
@@ -462,7 +469,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-006</td>
                         <td>Priya Nair</td>
                         <td>Lavender Purple</td>
@@ -479,7 +486,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+        
                                     title="View PMR-006">
 
                                 <svg viewBox="0 0 24 24">
@@ -498,7 +505,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-007</td>
                         <td>Vikram Joshi</td>
                         <td>Sky Grey</td>
@@ -515,7 +522,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+        
                                     title="View PMR-007">
 
                                 <svg viewBox="0 0 24 24">
@@ -534,7 +541,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-008</td>
                         <td>Meera Rao</td>
                         <td>Golden Yellow</td>
@@ -551,7 +558,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+        
                                     title="View PMR-008">
 
                                 <svg viewBox="0 0 24 24">
@@ -570,7 +577,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="hpmr-clickable-row" @onclick='() => OpenDetailPage("PMR-001")'>
                         <td>PMR-009</td>
                         <td>Arjun Mehta</td>
                         <td>Coral Pink</td>
@@ -587,7 +594,7 @@
                         <td>
                             <button class="hpmr-view-btn"
                                     type="button"
-                                    @onclick="() => OpenDetailsDialog()"
+        
                                     title="View PMR-009">
 
                                 <svg viewBox="0 0 24 24">
@@ -660,19 +667,32 @@
 
         </div>
 
-        <!-- PMR Details Dialog -->
-        <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@selectedPmrNo" />
+        </div>
+    }
 
-    </div>
+    <!-- PMR Details Dialog -->
+    <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@selectedPmrNo" />
 }
 
 @code {
     private bool showDetailsDialog = false;
-    private string selectedPmrNo = "1";
+    private bool showDetailPage = false;
+    private string selectedPmrNo = "PMR-001";
 
     private void OpenDetailsDialog(string pmrNo = "1")
     {
         selectedPmrNo = pmrNo;
         showDetailsDialog = true;
+    }
+
+    private void OpenDetailPage(string pmrNo = "PMR-001")
+    {
+        selectedPmrNo = pmrNo;
+        showDetailPage = true;
+    }
+
+    private void BackToTable()
+    {
+        showDetailPage = false;
     }
 }

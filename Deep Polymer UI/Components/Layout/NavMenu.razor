@@ -110,24 +110,27 @@
         ? "hajipur/pmr-management"
         : "santej/pmr-management";
 
-    // True when current URL contains the given segment
     private bool IsActive(string href)
     {
-        var currentPath = NavigationManager.ToBaseRelativePath(NavigationManager.Uri)
-                              .TrimStart('/').ToLowerInvariant();
+        var uri = NavigationManager.Uri;
+        var baseUri = NavigationManager.BaseUri.TrimEnd('/');
+        var currentPath = uri.StartsWith(baseUri)
+            ? uri.Substring(baseUri.Length).TrimStart('/').ToLowerInvariant()
+            : NavigationManager.ToBaseRelativePath(uri).TrimStart('/').ToLowerInvariant();
+
         href = href.TrimStart('/').ToLowerInvariant();
 
-        // Exact match OR starts-with for section prefixes (masters/*, reports/*)
+        if (string.IsNullOrEmpty(href))
+            return string.IsNullOrEmpty(currentPath);
+
         return currentPath == href || currentPath.StartsWith(href + "/");
     }
 
-    // Reports parent is active when any sub-route is active
     private bool IsReportsActive =>
         IsActive("reports/pmr") || IsActive("reports/color-price-list");
 
     private void ToggleReports()
     {
-        // If not on a reports sub-route, navigate to default PMR Reports
         if (!IsReportsActive)
         {
             reportsOpen = true;
@@ -141,7 +144,6 @@
 
     protected override void OnInitialized()
     {
-        // Auto-open reports collapse if landing on a reports sub-route
         if (IsReportsActive) reportsOpen = true;
         NavigationManager.LocationChanged += OnLocationChanged;
     }
