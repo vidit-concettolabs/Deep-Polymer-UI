@@ -72,17 +72,21 @@
             </div>
         </div>
     </div>
+
+    <ConfirmIpBypassDialog @bind-IsOpen="showBypassConfirmDialog" Branch="@Branch" OnConfirm="HandleBypassConfirm" />
 }
 
 @code {
     [Parameter] public bool IsOpen { get; set; }
     [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
     [Parameter] public EventCallback OnSubmit { get; set; }
+    [Parameter] public string Branch { get; set; } = "santej";
 
     private string UserName { get; set; } = "";
     private string SelectedRole { get; set; } = "";
     private string IPAddress { get; set; } = "";
     private bool BypassIP { get; set; } = false;
+    private bool showBypassConfirmDialog { get; set; } = false;
 
     private async Task Close()
     {
@@ -91,6 +95,19 @@
     }
 
     private async Task Submit()
+    {
+        if (BypassIP)
+        {
+            showBypassConfirmDialog = true;
+        }
+        else
+        {
+            await OnSubmit.InvokeAsync();
+            await Close();
+        }
+    }
+
+    private async Task HandleBypassConfirm()
     {
         await OnSubmit.InvokeAsync();
         await Close();

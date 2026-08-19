@@ -15,7 +15,7 @@
                         <thead>
                             <tr>
                                 <th style="width: 40px; text-align: center;">
-                                    <input type="checkbox" class="cr-checkbox" @bind="selectAll" @bind:after="ToggleSelectAll" />
+                                    <input type="checkbox" class="cr-checkbox" />
                                 </th>
                                 <th>Colour Name</th>
                                 <th>Product Name</th>
@@ -26,22 +26,123 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in rateItems)
-                            {
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <input type="checkbox" class="cr-checkbox" @bind="item.IsSelected" @bind:after="OnItemChanged" />
-                                    </td>
-                                    <td>@item.ColourName</td>
-                                    <td>@item.ProductName</td>
-                                    <td>@item.PmrNo</td>
-                                    <td>@item.ColourCode</td>
-                                    <td>@item.Price</td>
-                                    <td>
-                                        <input type="text" class="cr-input" placeholder="Enter" @bind="item.NewPrice" />
-                                    </td>
-                                </tr>
-                            }
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="cr-checkbox" />
+                                </td>
+                                <td>Ocean Blue-A</td>
+                                <td>HD Polymer Mix</td>
+                                <td>PMR-001</td>
+                                <td>OB-102</td>
+                                <td>₹1000</td>
+                                <td>
+                                    <input type="text" class="cr-input" placeholder="Enter" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="cr-checkbox" />
+                                </td>
+                                <td>Ruby Red</td>
+                                <td>HD Polymer Mix</td>
+                                <td>PMR-015</td>
+                                <td>RD-205</td>
+                                <td>₹750</td>
+                                <td>
+                                    <input type="text" class="cr-input" placeholder="Enter" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="cr-checkbox" />
+                                </td>
+                                <td>Sunset Orange</td>
+                                <td>HD Polymer Mix</td>
+                                <td>PMR-023</td>
+                                <td>SO-310</td>
+                                <td>₹800</td>
+                                <td>
+                                    <input type="text" class="cr-input" placeholder="Enter" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="cr-checkbox" />
+                                </td>
+                                <td>Ocean Wave</td>
+                                <td>HD Polymer Mix</td>
+                                <td>PMR-032</td>
+                                <td>OW-457</td>
+                                <td>₹1000</td>
+                                <td>
+                                    <input type="text" class="cr-input" placeholder="Enter" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="cr-checkbox" />
+                                </td>
+                                <td>Mountain Gray</td>
+                                <td>HD Polymer Mix</td>
+                                <td>PMR-041</td>
+                                <td>MG-512</td>
+                                <td>₹800</td>
+                                <td>
+                                    <input type="text" class="cr-input" placeholder="Enter" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="cr-checkbox" />
+                                </td>
+                                <td>Desert Sand</td>
+                                <td>HD Polymer Mix</td>
+                                <td>PMR-050</td>
+                                <td>DS-678</td>
+                                <td>₹750</td>
+                                <td>
+                                    <input type="text" class="cr-input" placeholder="Enter" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="cr-checkbox" />
+                                </td>
+                                <td>Berry Purple</td>
+                                <td>HD Polymer Mix</td>
+                                <td>PMR-059</td>
+                                <td>BP-345</td>
+                                <td>₹820</td>
+                                <td>
+                                    <input type="text" class="cr-input" placeholder="Enter" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="cr-checkbox" />
+                                </td>
+                                <td>Twilight Blue</td>
+                                <td>HD Polymer Mix</td>
+                                <td>PMR-067</td>
+                                <td>TB-218</td>
+                                <td>₹800</td>
+                                <td>
+                                    <input type="text" class="cr-input" placeholder="Enter" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="cr-checkbox" />
+                                </td>
+                                <td>Pine Green</td>
+                                <td>HD Polymer Mix</td>
+                                <td>PMR-075</td>
+                                <td>PG-119</td>
+                                <td>₹1000</td>
+                                <td>
+                                    <input type="text" class="cr-input" placeholder="Enter" />
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -51,16 +152,18 @@
                     <label class="dialog-label">
                         New Price(%) <span class="required-star">*</span>
                     </label>
-                    <input type="text" class="dialog-input cr-percent-input" placeholder="Enter percentage" @bind="newPricePercent" />
+                    <input type="text" class="dialog-input cr-percent-input" placeholder="Enter percentage" />
                 </div>
             </div>
 
             <div class="dialog-footer">
                 <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
-                <button class="dialog-submit-btn red-btn" type="button" @onclick="Submit">Submit</button>
+                <button class="dialog-submit-btn red-btn" type="button" @onclick="OpenConfirmDialog">Submit</button>
             </div>
         </div>
     </div>
+
+    <ConfirmPriceChangeDialog @bind-IsOpen="showConfirmDialog" OnConfirm="HandleConfirm" />
 }
 
 @code {
@@ -68,55 +171,22 @@
     [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
     [Parameter] public EventCallback OnSubmit { get; set; }
 
-    private bool selectAll = false;
-    private string newPricePercent = "";
+    private bool showConfirmDialog = false;
 
-    private List<RateItem> rateItems = new()
+    private void OpenConfirmDialog()
     {
-        new RateItem { ColourName = "Ocean Blue-A", ProductName = "HD Polymer Mix", PmrNo = "PMR-001", ColourCode = "OB-102", Price = "₹1000" },
-        new RateItem { ColourName = "Ruby Red", ProductName = "HD Polymer Mix", PmrNo = "PMR-015", ColourCode = "RD-205", Price = "₹750" },
-        new RateItem { ColourName = "Sunset Orange", ProductName = "HD Polymer Mix", PmrNo = "PMR-023", ColourCode = "SO-310", Price = "₹800" },
-        new RateItem { ColourName = "Ocean Wave", ProductName = "HD Polymer Mix", PmrNo = "PMR-032", ColourCode = "OW-457", Price = "₹1000" },
-        new RateItem { ColourName = "Mountain Gray", ProductName = "HD Polymer Mix", PmrNo = "PMR-041", ColourCode = "MG-512", Price = "₹800" },
-        new RateItem { ColourName = "Desert Sand", ProductName = "HD Polymer Mix", PmrNo = "PMR-050", ColourCode = "DS-678", Price = "₹750" },
-        new RateItem { ColourName = "Berry Purple", ProductName = "HD Polymer Mix", PmrNo = "PMR-059", ColourCode = "BP-345", Price = "₹820" },
-        new RateItem { ColourName = "Twilight Blue", ProductName = "HD Polymer Mix", PmrNo = "PMR-067", ColourCode = "TB-218", Price = "₹800" },
-        new RateItem { ColourName = "Pine Green", ProductName = "HD Polymer Mix", PmrNo = "PMR-075", ColourCode = "PG-119", Price = "₹1000" }
-    };
-
-    private void ToggleSelectAll()
-    {
-        foreach (var item in rateItems)
-        {
-            item.IsSelected = selectAll;
-        }
+        showConfirmDialog = true;
     }
 
-    private void OnItemChanged()
+    private async Task HandleConfirm()
     {
-        selectAll = rateItems.All(i => i.IsSelected);
+        await OnSubmit.InvokeAsync();
+        await Close();
     }
 
     private async Task Close()
     {
         IsOpen = false;
         await IsOpenChanged.InvokeAsync(false);
-    }
-
-    private async Task Submit()
-    {
-        await OnSubmit.InvokeAsync();
-        await Close();
-    }
-
-    public class RateItem
-    {
-        public bool IsSelected { get; set; }
-        public string ColourName { get; set; } = "";
-        public string ProductName { get; set; } = "";
-        public string PmrNo { get; set; } = "";
-        public string ColourCode { get; set; } = "";
-        public string Price { get; set; } = "";
-        public string NewPrice { get; set; } = "";
     }
 }

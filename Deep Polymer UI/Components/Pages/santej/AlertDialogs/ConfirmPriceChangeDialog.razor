@@ -1,0 +1,61 @@
+@if (IsOpen)
+{
+    <div class="cpsd-overlay" @onclick="Close">
+        <div class="cpsd-modal" @onclick:stopPropagation="true">
+            <button type="button" class="cpsd-close-btn" @onclick="Close">&times;</button>
+            
+            <div class="cpsd-body">
+                <!-- Price Tag Icon -->
+                <div class="cpc-icon-wrap">
+                    @if (!isIconError)
+                    {
+                        <img src="assets/image/price_change_dialog_icon_santej.svg" alt="Confirm Price Change" class="cpc-icon-img" @onerror="OnIconError" />
+                    }
+                    else
+                    {
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff0000" stroke-width="2" class="cpc-icon">
+                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="7" y1="7" x2="7.01" y2="7" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    }
+                </div>
+
+                <!-- Title and Description -->
+                <h3 class="cpsd-title">Confirm Price Change</h3>
+                <p class="cpsd-desc">Please verify the new price. Changes will take effect immediately after confirmation.</p>
+
+                <!-- Buttons -->
+                <div class="cpsd-actions">
+                    <button type="button" class="cpsd-btn-discard" @onclick="Close">Cancel</button>
+                    <button type="button" class="cpsd-btn-submit" @onclick="Confirm">Yes, Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnConfirm { get; set; }
+
+    private bool isIconError = false;
+
+    private void OnIconError()
+    {
+        isIconError = true;
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Confirm()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+        await OnConfirm.InvokeAsync();
+    }
+}

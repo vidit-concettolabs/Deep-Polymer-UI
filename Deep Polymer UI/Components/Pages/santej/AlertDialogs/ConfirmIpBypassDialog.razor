@@ -1,0 +1,87 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="cpsd-overlay" @onclick="Close">
+        <div class="cpsd-modal" @onclick:stopPropagation="true">
+            <button type="button" class="cpsd-close-btn" @onclick="Close">&times;</button>
+            
+            <div class="cpsd-body">
+                <!-- Icon container branch-wise -->
+                <div class="cib-icon-wrap @(IsHajipur ? "cib-hajipur" : "cib-santej")">
+                    @if (!isIconError)
+                    {
+                        <img src="@GetIconPath()"
+                             alt="Confirm IP Bypass"
+                             class="cib-icon-img"
+                             @onerror="OnIconError" />
+                    }
+                    else
+                    {
+                        <!-- Fallback Globe IP SVG -->
+                        <svg viewBox="0 0 48 48" fill="none" class="cib-icon-svg">
+                            <circle cx="20" cy="22" r="14" stroke="@(IsHajipur ? "#0405AB" : "#FF0000")" stroke-width="2.2" />
+                            <ellipse cx="20" cy="22" rx="6" ry="14" stroke="@(IsHajipur ? "#0405AB" : "#FF0000")" stroke-width="2.2" />
+                            <line x1="6" y1="22" x2="34" y2="22" stroke="@(IsHajipur ? "#0405AB" : "#FF0000")" stroke-width="2.2" />
+                            <line x1="9" y1="14" x2="31" y2="14" stroke="@(IsHajipur ? "#0405AB" : "#FF0000")" stroke-width="1.8" />
+                            <line x1="9" y1="30" x2="31" y2="30" stroke="@(IsHajipur ? "#0405AB" : "#FF0000")" stroke-width="1.8" />
+                            <rect x="28" y="24" width="16" height="16" rx="8" fill="@(IsHajipur ? "#0405AB" : "#FF0000")" />
+                            <text x="36" y="35" fill="#FFFFFF" font-size="8" font-weight="bold" text-anchor="middle">IP</text>
+                        </svg>
+                    }
+                </div>
+
+                <!-- Title and Subtitle -->
+                <h3 class="cpsd-title">Confirm IP Bypass</h3>
+                <p class="cpsd-desc">Confirm submission to bypass IP restrictions for this user.</p>
+
+                <!-- Actions -->
+                <div class="cpsd-actions">
+                    <button type="button" class="cpsd-btn-discard" @onclick="Close">Cancel</button>
+                    <button type="button"
+                            class="cpsd-btn-submit"
+                            style="background-color: @(IsHajipur ? "#0405AB" : "#FF0000") !important;"
+                            @onclick="Confirm">
+                        Yes, Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnConfirm { get; set; }
+    [Parameter] public string Branch { get; set; } = "";
+
+    private bool isIconError = false;
+
+    private bool IsHajipur => ColorConstant.BranchFlag == 2 || string.Equals(Branch, "hajipur", StringComparison.OrdinalIgnoreCase);
+
+    private string GetIconPath()
+    {
+        return IsHajipur
+            ? "assets/image/bypass_ip_dialog_icon_hajipur.svg"
+            : "assets/image/bypass_ip_dialog_icon_santej.svg";
+    }
+
+    private void OnIconError()
+    {
+        isIconError = true;
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Confirm()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+        await OnConfirm.InvokeAsync();
+    }
+}
