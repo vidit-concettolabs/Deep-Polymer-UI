@@ -1,0 +1,50 @@
+@if (IsOpen)
+{
+    <div class="srd-overlay" @onclick="Close">
+        <div class="srd-modal" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="srd-header">
+                <h3 class="srd-title">Recommended</h3>
+                <button type="button" class="srd-close-btn" @onclick="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="srd-body">
+                <!-- 3 Column Grid -->
+                <div class="srd-grid">
+                    <div class="srd-item">
+                        <span class="srd-label">PMR Number</span>
+                        <span class="srd-value">PMR-002</span>
+                    </div>
+                    <div class="srd-item">
+                        <span class="srd-label">Colour Name</span>
+                        <span class="srd-value">Ocean Blue - A</span>
+                    </div>
+                    <div class="srd-item">
+                        <span class="srd-label">Colour Code</span>
+                        <span class="srd-value">OB-102</span>
+                    </div>
+                </div>
+
+                <!-- Note Section -->
+                <div class="srd-note-section">
+                    <span class="srd-label">Note</span>
+                    <p class="srd-note-text">
+                        Designed for automotive finishing applications to provide durable surface protection and premium color appearance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

@@ -1,0 +1,44 @@
+@if (IsOpen)
+{
+    <div class="cpsd-overlay" @onclick="Close">
+        <div class="cpsd-modal" @onclick:stopPropagation="true">
+            <button type="button" class="cpsd-close-btn" @onclick="Close">&times;</button>
+            
+            <div class="cpsd-body">
+                <!-- Icon -->
+                <div class="cpsd-icon-wrap">
+                    <img src="assets/image/submission-dialog_icon_santej.svg" alt="Confirm Submission" class="cpsd-icon" />
+                </div>
+
+                <!-- Title and Description -->
+                <h3 class="cpsd-title">Confirm Production Submission</h3>
+                <p class="cpsd-desc">Confirm submission to move this approved PMR into production processing.</p>
+
+                <!-- Buttons -->
+                <div class="cpsd-actions">
+                    <button type="button" class="cpsd-btn-discard" @onclick="Close">Discard Request</button>
+                    <button type="button" class="cpsd-btn-submit" @onclick="Confirm">Yes, Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnConfirm { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Confirm()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+        await OnConfirm.InvokeAsync();
+    }
+}

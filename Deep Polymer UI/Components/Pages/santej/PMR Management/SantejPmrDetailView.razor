@@ -22,10 +22,13 @@
             <!-- PMR Information Card -->
             <div class="spdv-card">
                 <div class="spdv-card-title-row">
-                    <h2 class="spdv-card-title">PMR Information</h2>
-                    <button class="spdv-info-badge-btn" type="button" title="View PMR Details" @onclick="OpenDetailsDialog">
-                        <img src="assets/image/information_icon_santej.svg" alt="Info" class="spdv-info-icon" />
-                    </button>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <h2 class="spdv-card-title">PMR Information</h2>
+                        <button class="spdv-info-badge-btn" type="button" title="View PMR Details" @onclick="OpenDetailsDialog">
+                            <img src="assets/image/information_icon_santej.svg" alt="Info" class="spdv-info-icon" />
+                        </button>
+                        <span class="status-badge status-costing-done" style="cursor: pointer;" @onclick="OpenRecommendedDialog">Recommended</span>
+                    </div>
                 </div>
 
                 <div class="spdv-info-grid">
@@ -303,11 +306,17 @@
     <!-- Santej Negotiation Dialog (opened via N icon) -->
     <SantejNegotiationDialog @bind-IsOpen="showNegotiationDialog" />
 
+    <!-- Confirm Production Submission Dialog -->
+    <Deep_Polymer_UI.Components.Pages.santej.AlertDialogs.ConfirmProductionSubmissionDialog @bind-IsOpen="showSubmissionDialog" />
+
+    <!-- Recommended Dialog -->
+    <RecommendedDialog @bind-IsOpen="showRecommendedDialog" />
+
     <!-- Bottom white card with 3 Action Buttons -->
     <div class="spdv-footer-card">
         <button class="spdv-btn-white" type="button">Send Back to Lab User</button>
         <button class="spdv-btn-black" type="button">Share Negotiated Rate to PMR User</button>
-        <button class="spdv-btn-red" type="button">Submit to Production User</button>
+        <button class="spdv-btn-red" type="button" @onclick="OpenSubmissionDialog">Submit to Production User</button>
     </div>
 
 </div>
@@ -318,6 +327,8 @@
 
     private bool showDetailsDialog = false;
     private bool showNegotiationDialog = false;
+    private bool showSubmissionDialog = false;
+    private bool showRecommendedDialog = false;
 
     private void OpenDetailsDialog()
     {
@@ -327,5 +338,15 @@
     private void OpenNegotiationDialog()
     {
         showNegotiationDialog = true;
+    }
+
+    private void OpenSubmissionDialog()
+    {
+        showSubmissionDialog = true;
+    }
+
+    private void OpenRecommendedDialog()
+    {
+        showRecommendedDialog = true;
     }
 }

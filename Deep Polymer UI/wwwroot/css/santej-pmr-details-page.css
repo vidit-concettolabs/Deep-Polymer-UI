@@ -672,3 +672,237 @@
     background-color: #F8F9FA;
     border-color: #D1D5DB;
 }
+
+/* ================================================================
+   CONFIRM PRODUCTION SUBMISSION DIALOG (cpsd-*)
+   ================================================================ */
+.cpsd-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    font-family: inherit;
+}
+
+.cpsd-modal {
+    background: #FFFFFF;
+    border-radius: 14px;
+    width: 440px;
+    max-width: 90vw;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    padding: 28px 28px 24px 28px;
+    box-sizing: border-box;
+    animation: cpsdFadeIn 0.2s ease-out;
+    text-align: center;
+}
+
+@keyframes cpsdFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.cpsd-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #6B7280;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+.cpsd-close-btn:hover { color: #111827; }
+
+.cpsd-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cpsd-icon-wrap {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.cpsd-icon {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+
+.cpsd-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.cpsd-desc {
+    font-size: 12.5px;
+    color: #9CA3AF;
+    margin: 0 0 24px 0;
+    line-height: 1.4;
+    max-width: 320px;
+}
+
+.cpsd-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.cpsd-btn-discard {
+    background-color: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #151515;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+    min-width: 130px;
+}
+.cpsd-btn-discard:hover {
+    background-color: #F9FAFB;
+    border-color: #9CA3AF;
+}
+
+.cpsd-btn-submit {
+    background-color: #FF0000;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    min-width: 130px;
+}
+.cpsd-btn-submit:hover {
+    background-color: #D90000;
+}
+
+/* ================================================================
+   SANTEJ RECOMMENDED DIALOG (srd-*)
+   ================================================================ */
+.srd-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    font-family: inherit;
+}
+
+.srd-modal {
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 460px;
+    max-width: 90vw;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+    border: 1px solid #E5E5EE;
+    overflow: hidden;
+    animation: srdFadeIn 0.2s ease-out;
+}
+
+@keyframes srdFadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.srd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid #E5E5EE;
+}
+
+.srd-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #151515;
+    margin: 0;
+}
+
+.srd-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #808080;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+.srd-close-btn:hover { color: #151515; }
+
+.srd-body {
+    padding: 18px 20px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.srd-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+    row-gap: 10px;
+    border-bottom: 1px solid #F0F0F5;
+    padding-bottom: 14px;
+}
+
+.srd-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.srd-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.srd-value {
+    font-size: 12px;
+    color: #808080;
+    font-weight: 400;
+}
+
+.srd-note-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.srd-note-text {
+    font-size: 12px;
+    color: #808080;
+    margin: 0;
+    line-height: 1.45;
+    font-weight: 400;
+}
