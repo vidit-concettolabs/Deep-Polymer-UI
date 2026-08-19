@@ -1,5 +1,6 @@
 @page "/reports/color-price-list"
 @using DeepPolymer.Constants
+@using Deep_Polymer_UI.Components.Pages.santej.AlertDialogs
 @rendermode InteractiveServer
 
 <div class="rpt-container">
@@ -11,7 +12,7 @@
             <p class="rpt-page-subtitle">View and manage product pricing organized by color, with detailed cost breakdowns and color variant information.</p>
         </div>
         <div class="cwpl-header-actions">
-            <button class="cwpl-btn-outline">
+            <button class="cwpl-btn-outline" type="button" @onclick="() => showUploadDialog = true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-linecap="round" stroke-linejoin="round"/>
                     <polyline points="7 10 12 15 17 10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -19,8 +20,8 @@
                 </svg>
                 import
             </button>
-            <button class="cwpl-btn-outline">Change Rate</button>
-            <button class="cwpl-btn-primary" style="background-color:@ColorConstant.PrimaryColor;">Add Rate</button>
+            <button class="cwpl-btn-outline" type="button" @onclick="() => showChangeRateDialog = true">Change Rate</button>
+            <button class="cwpl-btn-primary" type="button" style="background-color:@ColorConstant.PrimaryColor;" @onclick="() => showAddRateDialog = true">Add Rate</button>
         </div>
     </div>
 
@@ -126,13 +127,22 @@
                 </button>
             </nav>
         </div>
-    </div>
+</div>
+
+    <!-- Dialogs -->
+    <UploadDocumentDialog @bind-IsOpen="showUploadDialog" />
+    <AddRateDialog @bind-IsOpen="showAddRateDialog" />
+    <ChangeRateDialog @bind-IsOpen="showChangeRateDialog" />
 
 </div>
 
 @code {
     private string selectedReportBy = "pmrno";
     private string selectedFilterValue = "";
+
+    private bool showUploadDialog = false;
+    private bool showAddRateDialog = false;
+    private bool showChangeRateDialog = false;
 
     private void SelectReportBy(string option)
     {

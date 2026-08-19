@@ -1,0 +1,59 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card upload-doc-card" @onclick:stopPropagation="true">
+            <div class="dialog-header">
+                <h3 class="dialog-title">Upload Document</h3>
+                <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+            
+            <div class="dialog-body">
+                <div class="ud-outer-container">
+                    <div class="ud-header-bar">
+                        <span class="ud-header-title">Upload Document</span>
+                        <span class="ud-header-count">0 attached</span>
+                    </div>
+
+                    <div class="ud-dropzone">
+                        <svg class="ud-upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="7 9 12 4 17 9" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="12" y1="4" x2="12" y2="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="ud-drop-text">
+                            <span class="ud-highlight-text">Click to upload</span> or drag and drop
+                        </div>
+                        <div class="ud-subtext">
+                            PDF, DOCX, XLSX, PPTX, JPG/PNG (10–50 MB)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-footer">
+                <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                <button class="dialog-submit-btn red-btn" type="button" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}

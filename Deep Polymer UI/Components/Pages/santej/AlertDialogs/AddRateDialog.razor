@@ -1,0 +1,98 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card add-rate-card" @onclick:stopPropagation="true">
+            <div class="dialog-header">
+                <h3 class="dialog-title">Add Rate</h3>
+                <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+            
+            <div class="dialog-body">
+                <!-- Select Color Name -->
+                <div class="dialog-form-group">
+                    <label class="dialog-label">
+                        Select Color Name <span class="required-star">*</span>
+                    </label>
+                    <div class="dialog-select-wrapper">
+                        <select class="dialog-select" @bind="ColorName">
+                            <option value="" disabled selected>Color Name</option>
+                            <option value="Ocean Blue-A">Ocean Blue-A</option>
+                            <option value="Ruby Red">Ruby Red</option>
+                            <option value="Sunset Orange">Sunset Orange</option>
+                            <option value="Ocean Wave">Ocean Wave</option>
+                            <option value="Mountain Gray">Mountain Gray</option>
+                        </select>
+                        <span class="dialog-select-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Select Color Code -->
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Select Color Code</label>
+                    <input class="dialog-input" type="text" placeholder="Color Code" @bind="ColorCode" />
+                </div>
+
+                <!-- Enter Price -->
+                <div class="dialog-form-group">
+                    <label class="dialog-label">
+                        Enter Price <span class="required-star">*</span>
+                    </label>
+                    <input class="dialog-input" type="text" placeholder="Price" @bind="Price" />
+                </div>
+
+                <!-- Select PMR -->
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Select PMR</label>
+                    <div class="dialog-select-wrapper">
+                        <select class="dialog-select" @bind="PmrNo">
+                            <option value="" disabled selected>PMR</option>
+                            <option value="PMR-001">PMR-001</option>
+                            <option value="PMR-015">PMR-015</option>
+                            <option value="PMR-023">PMR-023</option>
+                            <option value="PMR-032">PMR-032</option>
+                        </select>
+                        <span class="dialog-select-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-footer">
+                <button class="dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                <button class="dialog-submit-btn red-btn" type="button" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private string ColorName { get; set; } = "";
+    private string ColorCode { get; set; } = "";
+    private string Price { get; set; } = "";
+    private string PmrNo { get; set; } = "";
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}
