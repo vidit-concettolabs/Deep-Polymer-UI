@@ -253,7 +253,7 @@
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 10.5px;
-    font-weight: 600;
+    font-weight: 500;
     min-width: 105px;
     width: 105px;
     height: 26px;
@@ -261,6 +261,7 @@
     line-height: 1;
     white-space: nowrap;
 }
+
 
 /* Custom Status Themes */
 .status-material-added {

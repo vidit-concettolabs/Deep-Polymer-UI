@@ -1,0 +1,193 @@
+@using Microsoft.AspNetCore.Components
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card santej-pmr-details-dialog" @onclick:stopPropagation>
+            <!-- Header -->
+            <div class="dialog-header spmrd-header">
+                <div class="spmrd-title-wrap">
+                    <h3 class="dialog-title">PMR Details - #@(string.IsNullOrEmpty(PmrNo) ? "3" : PmrNo)</h3>
+                    <span class="email-mkt-badge badge-costing-done">Costing Done</span>
+                </div>
+                <button type="button" class="dialog-close-btn" @onclick="Close" title="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="dialog-body spmrd-body">
+                <!-- 3-Column Info Grid -->
+                <div class="spmrd-info-grid">
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">PMR Number</span>
+                        <span class="spmrd-info-value">PMR-002</span>
+                    </div>
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Received From</span>
+                        <span class="spmrd-info-value">Dhruv Parmar</span>
+                    </div>
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Region</span>
+                        <span class="spmrd-info-value">Gujarat</span>
+                    </div>
+
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Sample Request Date</span>
+                        <span class="spmrd-info-value">14-05-2026</span>
+                    </div>
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Product Name</span>
+                        <span class="spmrd-info-value">Eco Resin Blend</span>
+                    </div>
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Customer Name</span>
+                        <span class="spmrd-info-value">Priya Mehta</span>
+                    </div>
+
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">City</span>
+                        <span class="spmrd-info-value">Ahmedabad</span>
+                    </div>
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Colour Name</span>
+                        <span class="spmrd-info-value">Leaf Green - A</span>
+                    </div>
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Submitted Date</span>
+                        <span class="spmrd-info-value">19-05-2026</span>
+                    </div>
+
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Target Price</span>
+                        <span class="spmrd-info-value">₹185/kg</span>
+                    </div>
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Monthly Quantity</span>
+                        <span class="spmrd-info-value">12,500 KG</span>
+                    </div>
+                    <div class="spmrd-info-item">
+                        <span class="spmrd-info-label">Application</span>
+                        <span class="spmrd-info-value">Automotive Plastic Components</span>
+                    </div>
+
+                    <div class="spmrd-info-item spmrd-col-span-full">
+                        <span class="spmrd-info-label">Process Formulation</span>
+                        <span class="spmrd-info-value">Injection Molding Compound</span>
+                    </div>
+                </div>
+
+                <!-- Card 1: Send Cost to Marketing -->
+                <div class="spmrd-card">
+                    <h4 class="spmrd-card-title">Send Cost to Marketing</h4>
+                    <p class="spmrd-card-subtitle">Share total raw material costing with the marketing team via email.</p>
+                    <div class="spmrd-cost-val">
+                        Total Cost (₹): <span class="spmrd-cost-bold">12,500</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Negotiation Timeline Stepper -->
+                <div class="spmrd-card">
+                    <h4 class="spmrd-card-title">Negotiation Timeline</h4>
+                    <div class="spmrd-stepper">
+                        <!-- Step 1: Completed -->
+                        <div class="spmrd-step completed">
+                            <div class="spmrd-step-icon">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFFFFF" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="spmrd-step-label">Waiting For Customer</span>
+                        </div>
+                        <div class="spmrd-step-line active"></div>
+
+                        <!-- Step 2: Completed / Active -->
+                        <div class="spmrd-step completed">
+                            <div class="spmrd-step-icon">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFFFFF" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="spmrd-step-label">Negotiation</span>
+                        </div>
+                        <div class="spmrd-step-line"></div>
+
+                        <!-- Step 3: Pending -->
+                        <div class="spmrd-step">
+                            <div class="spmrd-step-icon gray">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFFFFF" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="spmrd-step-label">Admin Approval</span>
+                        </div>
+                        <div class="spmrd-step-line"></div>
+
+                        <!-- Step 4: Pending -->
+                        <div class="spmrd-step">
+                            <div class="spmrd-step-icon gray">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFFFFF" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="spmrd-step-label">Revised Email Sent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Send Negotiation Request -->
+                <div class="spmrd-card">
+                    <h4 class="spmrd-card-title">Send Negotiation Request</h4>
+                    <p class="spmrd-card-subtitle">Enter the negotiated pricing details before sending them to the marketing team.</p>
+                    
+                    <div class="spmrd-cost-row">
+                        <div class="spmrd-cost-val">
+                            Total Cost (₹): <span class="spmrd-cost-bold">12,500</span>
+                        </div>
+                        <div class="spmrd-cost-val spmrd-cost-diff">
+                            Cost Difference (₹): <span class="spmrd-cost-diff-bold">1,000</span>
+                        </div>
+                    </div>
+
+                    <div class="spmrd-field-group">
+                        <label class="spmrd-field-label">Negotiated Cost (₹)</label>
+                        <input type="text" class="spmrd-field-input" value="11500" placeholder="11500" />
+                    </div>
+
+                    <div class="spmrd-field-group">
+                        <label class="spmrd-field-label">Negotiation Note</label>
+                        <input type="text" class="spmrd-field-input" placeholder="Negotiation Note" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="dialog-footer spmrd-footer">
+                <button type="button" class="spmrd-btn-approve" @onclick="Close">Approve</button>
+                <div class="spmrd-footer-right">
+                    <button type="button" class="spmrd-btn-email-mkt" @onclick="OpenEmailMarketing">Email to Marketing User</button>
+                    <button type="button" class="spmrd-btn-submit-admin" @onclick="Close">Submit Negotiation to Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<EmailToMarketingUserDialog @bind-IsOpen="showEmailMarketingDialog" />
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string PmrNo { get; set; } = "3";
+
+    private bool showEmailMarketingDialog = false;
+
+    private void OpenEmailMarketing()
+    {
+        showEmailMarketingDialog = true;
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

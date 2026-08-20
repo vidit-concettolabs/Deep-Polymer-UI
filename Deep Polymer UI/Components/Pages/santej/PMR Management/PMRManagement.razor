@@ -2,7 +2,9 @@
 @rendermode InteractiveServer
 
 @using DeepPolymer.Constants
+@using Deep_Polymer_UI.Components.Pages.santej.AlertDialogs
 @inject NavigationManager Navigation
+
 
 
 
@@ -20,10 +22,12 @@
             @if (ColorConstant.BranchFlag == 1 && ColorConstant.IsPmrGenerator)
             {
                 <div class="pmr-header-actions">
-                    <button type="button" class="pmr-btn-email">Email to Marketing User</button>
-                    <button type="button" class="pmr-btn-create">Create PMR</button>
+                    <button type="button" class="pmr-btn-email" @onclick="() => showEmailMarketingDialog = true">Email to Marketing User</button>
+                    <button type="button" class="pmr-btn-create" @onclick="() => showCreatePmrDialog = true">Create PMR</button>
                 </div>
             }
+
+
         </div>
 
         <!-- Filter Section -->
@@ -116,7 +120,7 @@
                     <tr>
                         <td>PMR-001</td>
                         <td>Ramesh Patel</td>
-                        <td><span class="product-link">HD Polymer Mix</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-001")'>HD Polymer Mix</span></td>
                         <td>Ocean Blue</td>
                         <td>OB-102</td>
                         <td>-</td>
@@ -125,7 +129,7 @@
                             <span class="status-badge status-material-added">Material Added</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-001" @onclick='() => OpenDetailPage("PMR-001")'>
+                            <button class="action-view-btn" type="button" title="View PMR-001" @onclick='() => OpenPmrDetailsDialog("PMR-001")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -138,7 +142,7 @@
                     <tr>
                         <td>PMR-002</td>
                         <td>Karan Desai</td>
-                        <td><span class="product-link">Flexi Compound</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-002")'>Flexi Compound</span></td>
                         <td>Dark Grey</td>
                         <td>SG-310</td>
                         <td>-</td>
@@ -147,7 +151,7 @@
                             <span class="status-badge status-submitted">Submitted</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-002" @onclick='() => OpenDetailPage("PMR-002")'>
+                            <button class="action-view-btn" type="button" title="View PMR-002" @onclick='() => OpenPmrDetailsDialog("PMR-002")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -160,7 +164,7 @@
                     <tr>
                         <td>PMR-003</td>
                         <td>Priya Mehta</td>
-                        <td><span class="product-link">Eco Resin Blend</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-003")'>Eco Resin Blend</span></td>
                         <td>Leaf Green</td>
                         <td>LG-118</td>
                         <td>&#8377;15900</td>
@@ -169,7 +173,7 @@
                             <span class="status-badge status-costing-done">Costing Done</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-003" @onclick='() => OpenDetailPage("PMR-003")'>
+                            <button class="action-view-btn" type="button" title="View PMR-003" @onclick='() => OpenPmrDetailsDialog("PMR-003")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -182,7 +186,7 @@
                     <tr>
                         <td>PMR-004</td>
                         <td>Nisha Joshi</td>
-                        <td><span class="product-link">Vibrant Coating</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-004")'>Vibrant Coating</span></td>
                         <td>Crimson Red</td>
                         <td>OB-102</td>
                         <td>&#8377;12500</td>
@@ -191,7 +195,7 @@
                             <span class="status-badge status-negotiating">Negotiating</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-004" @onclick='() => OpenDetailPage("PMR-004")'>
+                            <button class="action-view-btn" type="button" title="View PMR-004" @onclick='() => OpenPmrDetailsDialog("PMR-004")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -204,7 +208,7 @@
                     <tr>
                         <td>PMR-005</td>
                         <td>Vivek Trivedi</td>
-                        <td><span class="product-link">Thermal Shield</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-005")'>Thermal Shield</span></td>
                         <td>Steel Grey</td>
                         <td>SG-310</td>
                         <td>&#8377;20500</td>
@@ -213,7 +217,7 @@
                             <span class="status-badge status-price-approved">Price Approved</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-005" @onclick='() => OpenDetailPage("PMR-005")'>
+                            <button class="action-view-btn" type="button" title="View PMR-005" @onclick='() => OpenPmrDetailsDialog("PMR-005")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -226,7 +230,7 @@
                     <tr>
                         <td>PMR-006</td>
                         <td>Anjali Verma</td>
-                        <td><span class="product-link">Ultra Gloss Compound</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-006")'>Ultra Gloss Compound</span></td>
                         <td>Pearl White</td>
                         <td>PW-105</td>
                         <td>&#8377;14200</td>
@@ -235,7 +239,7 @@
                             <span class="status-badge status-material-added">Material Added</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-006" @onclick='() => OpenDetailPage("PMR-006")'>
+                            <button class="action-view-btn" type="button" title="View PMR-006" @onclick='() => OpenPmrDetailsDialog("PMR-006")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -248,7 +252,7 @@
                     <tr>
                         <td>PMR-007</td>
                         <td>Rahul Sharma</td>
-                        <td><span class="product-link">High Density Polymer</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-007")'>High Density Polymer</span></td>
                         <td>Sun Yellow</td>
                         <td>SY-402</td>
                         <td>&#8377;18600</td>
@@ -257,7 +261,7 @@
                             <span class="status-badge status-costing-done">Costing Done</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-007" @onclick='() => OpenDetailPage("PMR-007")'>
+                            <button class="action-view-btn" type="button" title="View PMR-007" @onclick='() => OpenPmrDetailsDialog("PMR-007")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -270,7 +274,7 @@
                     <tr>
                         <td>PMR-008</td>
                         <td>Sneha Kapoor</td>
-                        <td><span class="product-link">UV Resistant Masterbatch</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-008")'>UV Resistant Masterbatch</span></td>
                         <td>Royal Purple</td>
                         <td>RP-608</td>
                         <td>&#8377;16800</td>
@@ -279,7 +283,7 @@
                             <span class="status-badge status-submitted">Submitted</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-008" @onclick='() => OpenDetailPage("PMR-008")'>
+                            <button class="action-view-btn" type="button" title="View PMR-008" @onclick='() => OpenPmrDetailsDialog("PMR-008")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -292,7 +296,7 @@
                     <tr>
                         <td>PMR-009</td>
                         <td>Manish Gupta</td>
-                        <td><span class="product-link">Impact Modifier Blend</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-009")'>Impact Modifier Blend</span></td>
                         <td>Jet Black</td>
                         <td>JB-001</td>
                         <td>&#8377;22100</td>
@@ -301,7 +305,7 @@
                             <span class="status-badge status-price-approved">Price Approved</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-009" @onclick='() => OpenDetailPage("PMR-009")'>
+                            <button class="action-view-btn" type="button" title="View PMR-009" @onclick='() => OpenPmrDetailsDialog("PMR-009")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -314,7 +318,7 @@
                     <tr>
                         <td>PMR-010</td>
                         <td>Amit Shah</td>
-                        <td><span class="product-link">Scratch Resistant Finish</span></td>
+                        <td><span class="product-link" @onclick='() => OpenDetailPage("PMR-010")'>Scratch Resistant Finish</span></td>
                         <td>Metallic Silver</td>
                         <td>MS-223</td>
                         <td>&#8377;17250</td>
@@ -323,7 +327,7 @@
                             <span class="status-badge status-discarded">Discarded</span>
                         </td>
                         <td class="action-cell">
-                            <button class="action-view-btn" type="button" title="View PMR-010" @onclick='() => OpenDetailPage("PMR-010")'>
+                            <button class="action-view-btn" type="button" title="View PMR-010" @onclick='() => OpenPmrDetailsDialog("PMR-010")'>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                     <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -331,6 +335,7 @@
                             </button>
                         </td>
                     </tr>
+
                 </tbody>
             </table>
 
@@ -355,14 +360,30 @@
     </div>
 </div>
 
+<EmailToMarketingUserDialog @bind-IsOpen="showEmailMarketingDialog" />
+<SantejCreatePmrDialog @bind-IsOpen="showCreatePmrDialog" />
+<SantejPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@selectedPmrNo" />
+
 @code {
     private string selectedPmrNo = "PMR-001";
+    private bool showEmailMarketingDialog = false;
+    private bool showCreatePmrDialog = false;
+    private bool showPmrDetailsDialog = false;
+
+    private void OpenPmrDetailsDialog(string pmrNo = "PMR-001")
+    {
+        selectedPmrNo = pmrNo;
+        showPmrDetailsDialog = true;
+    }
 
     private void OpenDetailPage(string pmrNo = "PMR-001")
     {
         Navigation.NavigateTo($"/santej/pmr-detail-view/{pmrNo}");
     }
 }
+
+
+
 
 
 

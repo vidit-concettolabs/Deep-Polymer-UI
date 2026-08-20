@@ -1,0 +1,192 @@
+@using Microsoft.AspNetCore.Components
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card email-marketing-dialog" @onclick:stopPropagation>
+            <!-- Header -->
+            <div class="dialog-header">
+                <h3 class="dialog-title">Email to Marketing User</h3>
+                <button type="button" class="dialog-close-btn" @onclick="Close" title="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="dialog-body email-mkt-body">
+                <!-- 4 Search Dropdowns Bar -->
+                <div class="email-mkt-filter-bar">
+                    <div class="email-mkt-filter-item">
+                        <select class="email-mkt-select">
+                            <option selected disabled>Customer Name</option>
+                            <option>Ramesh Patel</option>
+                            <option>Karan Desai</option>
+                            <option>Priya Mehta</option>
+                            <option>Neha Joshi</option>
+                        </select>
+                        <span class="email-mkt-chevron">
+                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+
+                    <div class="email-mkt-filter-item">
+                        <select class="email-mkt-select">
+                            <option selected disabled>Search PMR</option>
+                            <option>PMR-001</option>
+                            <option>PMR-004</option>
+                            <option>PMR-005</option>
+                        </select>
+                        <span class="email-mkt-chevron">
+                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+
+                    <div class="email-mkt-filter-item">
+                        <select class="email-mkt-select">
+                            <option selected disabled>Colour Name</option>
+                            <option>Ocean Blue-A</option>
+                            <option>Dark Grey</option>
+                            <option>Leaf Green</option>
+                        </select>
+                        <span class="email-mkt-chevron">
+                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+
+                    <div class="email-mkt-filter-item">
+                        <select class="email-mkt-select">
+                            <option selected disabled>Colour Code</option>
+                            <option>OB-102</option>
+                            <option>LC-116</option>
+                            <option>SG-310</option>
+                        </select>
+                        <span class="email-mkt-chevron">
+                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Table Container with Header & Row Checkboxes -->
+                <div class="email-mkt-table-wrapper">
+                    <table class="email-mkt-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px; text-align: center;">
+                                    <input type="checkbox" class="email-mkt-checkbox"
+                                           checked="@isSelectAll"
+                                           @onchange="ToggleSelectAll" />
+                                </th>
+                                <th>PMR No.</th>
+                                <th>Customer Name</th>
+                                <th>Product Name</th>
+                                <th>Colour Name</th>
+                                <th>Colour Code</th>
+                                <th>Total Cost</th>
+                                <th>Submitted Date</th>
+                                <th style="text-align: center;">Request Status</th>
+                                <th>Pricing Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in pmrItems)
+                            {
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <input type="checkbox" class="email-mkt-checkbox"
+                                               checked="@item.IsSelected"
+                                               @onchange="(e) => ToggleItem(item, e)" />
+                                    </td>
+                                    <td>@item.PmrNo</td>
+                                    <td>@item.CustomerName</td>
+                                    <td>
+                                        <span class="email-mkt-prod-link">@item.ProductName</span>
+                                    </td>
+                                    <td>@item.ColourName</td>
+                                    <td>@item.ColourCode</td>
+                                    <td>@item.TotalCost</td>
+                                    <td>@item.SubmittedDate</td>
+                                    <td style="text-align: center;">
+                                        <span class="email-mkt-badge @item.StatusClass">@item.RequestStatus</span>
+                                    </td>
+                                    <td>@item.PricingStatus</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="dialog-footer flex-end">
+                <button type="button" class="dialog-btn cancel-hajipur" @onclick="Close">Cancel</button>
+                <button type="button" class="dialog-btn email-mkt-submit-btn" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private bool isSelectAll = false;
+
+    private class PmrRowItem
+    {
+        public bool IsSelected { get; set; }
+        public string PmrNo { get; set; } = "";
+        public string CustomerName { get; set; } = "";
+        public string ProductName { get; set; } = "";
+        public string ColourName { get; set; } = "";
+        public string ColourCode { get; set; } = "";
+        public string TotalCost { get; set; } = "";
+        public string SubmittedDate { get; set; } = "";
+        public string RequestStatus { get; set; } = "";
+        public string StatusClass { get; set; } = "";
+        public string PricingStatus { get; set; } = "";
+    }
+
+    private List<PmrRowItem> pmrItems = new()
+    {
+        new() { IsSelected = false, PmrNo = "PMR-001", CustomerName = "Ramesh Patel", ProductName = "HD Polymer Mix", ColourName = "Ocean Blue-A", ColourCode = "-", TotalCost = "-", SubmittedDate = "19-05-2026", RequestStatus = "Submitted", StatusClass = "badge-submitted", PricingStatus = "Price Approved" },
+        new() { IsSelected = false, PmrNo = "PMR-001", CustomerName = "Ramesh Patel", ProductName = "HD Polymer Mix", ColourName = "Ocean Blue-B", ColourCode = "-", TotalCost = "-", SubmittedDate = "19-05-2026", RequestStatus = "Submitted", StatusClass = "badge-submitted", PricingStatus = "Negotiation" },
+        new() { IsSelected = false, PmrNo = "PMR-001", CustomerName = "Ramesh Patel", ProductName = "HD Polymer Mix", ColourName = "Ocean Blue-C", ColourCode = "-", TotalCost = "-", SubmittedDate = "19-05-2026", RequestStatus = "Submitted", StatusClass = "badge-submitted", PricingStatus = "Negotiation" },
+        new() { IsSelected = false, PmrNo = "PMR-004", CustomerName = "Karan Desai", ProductName = "Flexi Compound", ColourName = "Dark Grey", ColourCode = "-", TotalCost = "-", SubmittedDate = "18-05-2026", RequestStatus = "Material Added", StatusClass = "badge-material-added", PricingStatus = "Price Approved" },
+        new() { IsSelected = false, PmrNo = "PMR-005", CustomerName = "Priya Mehta", ProductName = "Eco Resin Blend", ColourName = "Leaf Green", ColourCode = "LC-116", TotalCost = "₹15,900", SubmittedDate = "17-05-2026", RequestStatus = "Costing Done", StatusClass = "badge-costing-done", PricingStatus = "Negotiation" },
+        new() { IsSelected = false, PmrNo = "PMR-006", CustomerName = "Neha Joshi", ProductName = "Vibrant Coating", ColourName = "Crimson Red", ColourCode = "OB-102", TotalCost = "₹12,500", SubmittedDate = "18-05-2026", RequestStatus = "Negotiating", StatusClass = "badge-negotiating", PricingStatus = "Price Approved" },
+        new() { IsSelected = false, PmrNo = "PMR-007", CustomerName = "Vivek Trivedi", ProductName = "Thermal Shield", ColourName = "Steel Grey", ColourCode = "SG-310", TotalCost = "₹20,500", SubmittedDate = "19-05-2026", RequestStatus = "Price Approved", StatusClass = "badge-price-approved", PricingStatus = "Negotiation" },
+        new() { IsSelected = false, PmrNo = "PMR-008", CustomerName = "Dhruv Parmar", ProductName = "Biodegradable Blend", ColourName = "Natural Brown", ColourCode = "NB-405", TotalCost = "₹16,300", SubmittedDate = "19-05-2026", RequestStatus = "In Production", StatusClass = "badge-in-production", PricingStatus = "Price Approved" },
+        new() { IsSelected = false, PmrNo = "PMR-009", CustomerName = "Hitesh Shah", ProductName = "Clear View Resin", ColourName = "Crystal Clear", ColourCode = "CW-501", TotalCost = "₹21,800", SubmittedDate = "19-05-2026", RequestStatus = "Completed", StatusClass = "badge-completed", PricingStatus = "Negotiation" },
+        new() { IsSelected = false, PmrNo = "PMR-010", CustomerName = "Rahul Mehta", ProductName = "Lightweight Composite", ColourName = "Sky Blue", ColourCode = "SB-209", TotalCost = "₹28,400", SubmittedDate = "19-05-2026", RequestStatus = "Discarded", StatusClass = "badge-discarded", PricingStatus = "Price Approved" },
+        new() { IsSelected = false, PmrNo = "PMR-001", CustomerName = "Ramesh Patel", ProductName = "HD Polymer Mix", ColourName = "Ocean Blue-A", ColourCode = "-", TotalCost = "-", SubmittedDate = "19-05-2026", RequestStatus = "Submitted", StatusClass = "badge-submitted", PricingStatus = "Negotiation" }
+    };
+
+    private void ToggleSelectAll(ChangeEventArgs e)
+    {
+        isSelectAll = (bool)(e.Value ?? false);
+        foreach (var item in pmrItems)
+        {
+            item.IsSelected = isSelectAll;
+        }
+    }
+
+    private void ToggleItem(PmrRowItem item, ChangeEventArgs e)
+    {
+        item.IsSelected = (bool)(e.Value ?? false);
+        isSelectAll = pmrItems.All(x => x.IsSelected);
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        if (OnSubmit.HasDelegate)
+        {
+            await OnSubmit.InvokeAsync();
+        }
+        await Close();
+    }
+}

@@ -1,0 +1,148 @@
+@page "/santej/customer-management"
+@page "/santej/pmr-generator/customer-management"
+@page "/santej/admin/customer-management"
+@page "/masters/customer"
+@using DeepPolymer.Constants
+@rendermode InteractiveServer
+
+<PageTitle>Customer Management</PageTitle>
+
+<div class="cust-page-container">
+    <!-- Page Header (input_file_0.png) -->
+    <div class="cust-header-row">
+        <div>
+            <h1 class="cust-header-title">Customer Management</h1>
+            <p class="cust-header-desc">View, edit, and organize customer information efficiently.</p>
+        </div>
+        <button class="add-customer-btn santej-btn-red" type="button" @onclick="() => showAddDialog = true">Add Customer</button>
+    </div>
+
+    <!-- Filter / Search Row inside White Card Container -->
+    <div class="cust-filter-card">
+        <!-- Search Customer Name Dropdown -->
+        <div class="cust-filter-item">
+            <select class="cust-filter-select">
+                <option selected disabled>Search Customer Name</option>
+                <option>Ramesh Patel</option>
+                <option>Priya Mehta</option>
+                <option>Karan Desai</option>
+                <option>Neha Joshi</option>
+                <option>Vivek Trivedi</option>
+            </select>
+            <span class="cust-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <!-- Search Company Name Dropdown -->
+        <div class="cust-filter-item">
+            <select class="cust-filter-select">
+                <option selected disabled>Search Company Name</option>
+                <option>Shree Packaging Pvt Ltd</option>
+                <option>Nova Plastics Industries</option>
+                <option>Prime Polymer Solutions</option>
+                <option>EcoPack Innovations</option>
+                <option>GreenWrap Technologies</option>
+            </select>
+            <span class="cust-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+    </div>
+
+    <AddCustomerDialog @bind-IsOpen="showAddDialog" />
+
+    <!-- Customer Table Wrapper (10 Rows matching input_file_0.png) -->
+    <div class="cust-table-wrapper">
+        <table class="cust-table">
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Customer Name</th>
+                    <th style="text-align: left;">Company Name</th>
+                    <style style="display:none;"></style>
+                    <th style="text-align: left;">Email Address</th>
+                    <th style="text-align: left;">Contact Number</th>
+                    <th style="text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cust in customerList)
+                {
+                    <tr>
+                        <td style="text-align: left;">
+                            <span class="cust-name-link" @onclick="() => OpenCustomerDetails(cust.Id)">
+                                @cust.Name
+                            </span>
+                        </td>
+                        <td style="text-align: left;">@cust.Company</td>
+                        <td style="text-align: left;">@cust.Email</td>
+                        <td style="text-align: left;">@cust.Contact</td>
+                        <td style="text-align: center;">
+                            <div class="cust-actions-wrap">
+                                <button class="cust-view-btn" type="button" title="View Customer Details" @onclick="() => OpenCustomerDetails(cust.Id)">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Customer Details Dialog -->
+        <CustomerDetailsDialog @bind-IsOpen="showDetailsDialog" CustomerId="@selectedCustomerId" />
+
+        <!-- Table Footer / Pagination Row -->
+        <div class="cust-pagination-row">
+            <span class="cust-pagination-info">Showing 1-10 of 12 list</span>
+            <div class="cust-pagination-nav">
+                <button class="cust-pag-btn disabled" type="button" title="Previous Page">&lt;</button>
+                <button class="cust-pag-btn active" type="button">1</button>
+                <button class="cust-pag-btn" type="button">2</button>
+                <button class="cust-pag-btn" type="button" title="Next Page">&gt;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool showAddDialog = false;
+    private bool showDetailsDialog = false;
+    private string selectedCustomerId = "1";
+
+    private void OpenCustomerDetails(string id)
+    {
+        selectedCustomerId = id;
+        showDetailsDialog = true;
+    }
+
+    private record CustomerItem(string Id, string Name, string Company, string Email, string Contact);
+
+    private List<CustomerItem> customerList = new()
+    {
+        new("1", "Ramesh Patel", "Shree Packaging Pvt Ltd", "contact@shreepackaging.com", "+91 98765 43210"),
+        new("2", "Priya Mehta", "Nova Plastics Industries", "sales@novaplastics.in", "+91 98254 11876"),
+        new("3", "Karan Desai", "Prime Polymer Solutions", "info@primepolymer.com", "+91 98980 55421"),
+        new("4", "Neha Joshi", "EcoPack Innovations", "support@ecopackinnovations.com", "+91 98456 78901"),
+        new("5", "Vivek Trivedi", "GreenWrap Technologies", "hello@greenwraptech.com", "+91 97531 24680"),
+        new("6", "Dhruv Parmar", "FlexiPack Solutions", "contact@flexipacksolutions.com", "+91 99887 65432"),
+        new("7", "Hitesh Shah", "PackSmart Industries", "info@packsmartind.com", "+91 99000 12345"),
+        new("8", "Rahul Mehta", "BioBase Packaging", "service@biobasepack.com", "+91 99111 23456"),
+        new("9", "Pooja Patel", "SecureSeal Packaging", "sales@securesealpack.com", "+91 99222 34567"),
+        new("10", "Amit Shah", "OptiWrap Solutions", "contact@optiwrapsolutions.com", "+91 99333 45678")
+    };
+}
+

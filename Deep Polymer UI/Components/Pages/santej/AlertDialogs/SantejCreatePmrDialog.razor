@@ -1,0 +1,237 @@
+@using Microsoft.AspNetCore.Components
+@using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card santej-create-pmr-dialog" @onclick:stopPropagation>
+            <!-- Header -->
+            <div class="dialog-header">
+                <h3 class="dialog-title">Create PMR</h3>
+                <button type="button" class="dialog-close-btn" @onclick="Close" title="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="dialog-body scpmr-body">
+                <!-- Top Form Grid (3 columns) -->
+                <div class="scpmr-form-grid">
+                    <!-- PMR Number -->
+                    <div class="scpmr-form-group">
+                        <label class="scpmr-label">PMR Number <span class="req-star">*</span></label>
+                        <input type="text" class="scpmr-input" placeholder="PMR Number" @bind="pmrNumber" />
+                    </div>
+
+                    <!-- Received From -->
+                    <div class="scpmr-form-group">
+                        <label class="scpmr-label">Received From <span class="req-star">*</span></label>
+                        <input type="text" class="scpmr-input" placeholder="Received From" @bind="receivedFrom" />
+                    </div>
+
+                    <!-- Region -->
+                    <div class="scpmr-form-group">
+                        <label class="scpmr-label">Region <span class="req-star">*</span></label>
+                        <div class="scpmr-select-wrap">
+                            <select class="scpmr-select" @bind="region">
+                                <option value="" disabled selected>Region</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Delhi">Delhi</option>
+                            </select>
+                            <span class="scpmr-chevron">
+                                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Sample Request Date -->
+                    <div class="scpmr-form-group">
+                        <label class="scpmr-label">Sample Request Date <span class="req-star">*</span></label>
+                        <div class="scpmr-date-wrap">
+                            <input type="text" class="scpmr-input" placeholder="Request Date" @bind="requestDate" />
+                            <span class="scpmr-calendar-icon">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#9CA3AF" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Product Name -->
+                    <div class="scpmr-form-group">
+                        <label class="scpmr-label">Product Name <span class="req-star">*</span></label>
+                        <input type="text" class="scpmr-input" placeholder="Product Name" @bind="productName" />
+                    </div>
+
+                    <!-- Customer Name -->
+                    <div class="scpmr-form-group">
+                        <label class="scpmr-label">Customer Name <span class="req-star">*</span></label>
+                        <div class="scpmr-select-wrap">
+                            <select class="scpmr-select" @bind="customerName">
+                                <option value="" disabled selected>Select Customer</option>
+                                <option value="Ramesh Patel">Ramesh Patel</option>
+                                <option value="Priya Mehta">Priya Mehta</option>
+                                <option value="Karan Desai">Karan Desai</option>
+                            </select>
+                            <span class="scpmr-chevron">
+                                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- City -->
+                    <div class="scpmr-form-group">
+                        <label class="scpmr-label">City <span class="req-star">*</span></label>
+                        <div class="scpmr-select-wrap">
+                            <select class="scpmr-select" @bind="city">
+                                <option value="" disabled selected>City</option>
+                                <option value="Ahmedabad">Ahmedabad</option>
+                                <option value="Surat">Surat</option>
+                                <option value="Vadodara">Vadodara</option>
+                            </select>
+                            <span class="scpmr-chevron">
+                                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Color Info Card -->
+                <div class="scpmr-color-card">
+                    <div class="scpmr-color-header">
+                        <div>
+                            <h4 class="scpmr-color-title">Add Color Info</h4>
+                            <p class="scpmr-color-subtitle">Add color information used across PMR requests and raw material mapping.</p>
+                        </div>
+                        <button type="button" class="scpmr-btn-add-color" @onclick="AddColorRow">Add Color</button>
+                    </div>
+
+                    <!-- Color Table -->
+                    <div class="scpmr-color-table-wrapper">
+                        <table class="scpmr-color-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">Color Name</th>
+                                    <th style="width: 18%;">Target Price</th>
+                                    <th style="width: 18%;">Monthly Qty.</th>
+                                    <th style="width: 18%;">Application</th>
+                                    <th style="width: 18%;">Process Formulation</th>
+                                    <th style="width: 5%; text-align: center;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var colorItem in colorRows)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="scpmr-select-wrap">
+                                                <select class="scpmr-select" @bind="colorItem.ColorName">
+                                                    <option value="Ocean Blue-A">Ocean Blue-A</option>
+                                                    <option value="Ocean Blue-B">Ocean Blue-B</option>
+                                                    <option value="Dark Grey">Dark Grey</option>
+                                                </select>
+                                                <span class="scpmr-chevron">
+                                                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="scpmr-input" placeholder="Price" @bind="colorItem.TargetPrice" />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="scpmr-input" placeholder="Qty" @bind="colorItem.MonthlyQty" />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="scpmr-input" placeholder="Details" @bind="colorItem.Application" />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="scpmr-input" placeholder="Details" @bind="colorItem.ProcessFormulation" />
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <button type="button" class="scpmr-btn-delete" title="Remove Color" @onclick="() => RemoveColorRow(colorItem)">
+                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#9CA3AF" stroke-width="2">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="dialog-footer flex-end">
+                <button type="button" class="dialog-btn cancel-hajipur" @onclick="Close">Cancel</button>
+                <button type="button" class="dialog-btn santej-create-pmr-submit-btn" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+<HajipurPmrSubmittedSuccessDialog @bind-IsOpen="showSuccessDialog" />
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private bool showSuccessDialog = false;
+    private string pmrNumber = "";
+    private string receivedFrom = "";
+    private string region = "";
+    private string requestDate = "";
+    private string productName = "";
+    private string customerName = "";
+    private string city = "";
+
+    private class ColorRowModel
+    {
+        public string ColorName { get; set; } = "Ocean Blue-A";
+        public string TargetPrice { get; set; } = "";
+        public string MonthlyQty { get; set; } = "";
+        public string Application { get; set; } = "";
+        public string ProcessFormulation { get; set; } = "";
+    }
+
+    private List<ColorRowModel> colorRows = new()
+    {
+        new(),
+        new(),
+        new()
+    };
+
+    private void AddColorRow()
+    {
+        colorRows.Add(new());
+    }
+
+    private void RemoveColorRow(ColorRowModel item)
+    {
+        if (colorRows.Count > 1)
+        {
+            colorRows.Remove(item);
+        }
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        if (OnSubmit.HasDelegate)
+        {
+            await OnSubmit.InvokeAsync();
+        }
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+        showSuccessDialog = true;
+    }
+}

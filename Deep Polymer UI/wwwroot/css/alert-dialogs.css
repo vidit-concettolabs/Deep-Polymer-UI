@@ -59,9 +59,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 10px 16px;
     border-bottom: 1px solid #f1f5f9;
 }
+
 
 .dialog-title {
     font-size: 18px;
@@ -99,7 +100,10 @@
     flex-direction: column;
     gap: 16px;
     box-sizing: border-box;
+    max-height: 75vh;
+    overflow-y: auto;
 }
+
 
 .dialog-form-group {
     display: flex;
@@ -843,3 +847,723 @@
     line-height: 1.5;
     max-width: 320px;
 }
+
+/* ================================================================
+   EMAIL TO MARKETING USER DIALOG (input_file_0.png)
+   ================================================================ */
+.email-marketing-dialog {
+    width: 1100px;
+    max-width: 95vw;
+    border-radius: 12px;
+}
+
+.email-mkt-body {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.email-mkt-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.email-mkt-filter-item {
+    flex: 1;
+    position: relative;
+}
+
+.email-mkt-select {
+    width: 100%;
+    height: 36px;
+    padding: 0 28px 0 10px;
+    font-size: 12px;
+    color: #555555;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.email-mkt-chevron {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    color: #999999;
+}
+
+.email-mkt-chevron svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+.email-mkt-table-wrapper {
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    overflow-x: auto;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.email-mkt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.email-mkt-table th {
+    background-color: #FAFBFD;
+    color: #808080;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 10px 12px;
+    border-bottom: 1px solid #E5E7EB;
+    white-space: nowrap;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.email-mkt-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #F3F4F6;
+    color: #151515;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.email-mkt-table tbody tr:hover {
+    background-color: #F9FAFB;
+}
+
+.email-mkt-checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: #FF0000;
+    cursor: pointer;
+}
+
+.email-mkt-prod-link {
+    color: #151515;
+    text-decoration: underline;
+    text-decoration-color: #B0B0B0;
+    text-underline-offset: 3px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* Status Badges - PMR List Standard (105px x 26px, 10.5px font) */
+.email-mkt-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 105px;
+    height: 26px;
+    border-radius: 50px;
+    font-size: 10.5px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+
+
+
+.badge-submitted {
+    background-color: #FFF7ED;
+    border: 1px solid #FED7AA;
+    color: #F97316;
+}
+
+.badge-material-added {
+    background-color: #F3F4F6;
+    border: 1px solid #E5E7EB;
+    color: #6B7280;
+}
+
+.badge-costing-done {
+    background-color: #F3E8FF;
+    border: 1px solid #E9D5FF;
+    color: #9333EA;
+}
+
+.badge-negotiating {
+    background-color: #FEF3C7;
+    border: 1px solid #FDE68A;
+    color: #D97706;
+}
+
+.badge-price-approved {
+    background-color: #FCE7F3;
+    border: 1px solid #FBCFE8;
+    color: #EC4899;
+}
+
+.badge-in-production {
+    background-color: #FAE8FF;
+    border: 1px solid #F5D0FE;
+    color: #D946EF;
+}
+
+.badge-completed {
+    background-color: #DCFCE7;
+    border: 1px solid #BBF7D0;
+    color: #16A34A;
+}
+
+.badge-discarded {
+    background-color: #FEE2E2;
+    border: 1px solid #FECACA;
+    color: #EF4444;
+}
+
+.dialog-btn.email-mkt-submit-btn {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.12s;
+}
+
+.dialog-btn.santej-create-pmr-submit-btn:hover {
+    background-color: #D60000;
+}
+
+/* ================================================================
+   SANTEJ PMR DETAILS DIALOG (input_file_0.png)
+   ================================================================ */
+.santej-pmr-details-dialog {
+    width: 880px;
+    max-width: 95vw;
+    border-radius: 12px;
+}
+
+.spmrd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spmrd-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.spmrd-body {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+
+.spmrd-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 14px;
+    width: 100%;
+}
+
+.spmrd-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.spmrd-info-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #151515;
+    line-height: 1.3;
+}
+
+.spmrd-info-value {
+    font-size: 12.5px;
+    font-weight: 400;
+    color: #808080;
+    line-height: 1.4;
+    word-break: break-all;
+}
+
+.spmrd-col-span-full {
+    grid-column: span 3;
+}
+
+.spmrd-card {
+    background-color: #F8F9FA;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 14px 18px;
+    box-sizing: border-box;
+}
+
+.spmrd-card-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #151515;
+    margin: 0 0 4px 0;
+    line-height: 1.2;
+}
+
+.spmrd-card-subtitle {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: #808080;
+    margin: 0 0 10px 0;
+}
+
+.spmrd-cost-val {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #151515;
+}
+
+.spmrd-cost-bold {
+    font-size: 16px;
+    font-weight: 700;
+    color: #151515;
+    margin-left: 4px;
+}
+
+.spmrd-cost-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.spmrd-cost-diff {
+    font-size: 12.5px;
+    color: #6B7280;
+}
+
+.spmrd-cost-diff-bold {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FF0000;
+    margin-left: 4px;
+}
+
+.spmrd-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.spmrd-field-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.spmrd-field-input {
+    width: 100%;
+    height: 38px;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 0 12px;
+    font-size: 12.5px;
+    color: #151515;
+    background-color: #FFFFFF;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.15s;
+}
+
+.spmrd-field-input:focus {
+    border-color: #FF0000;
+}
+
+/* Stepper Timeline - Long Progress Lines */
+.spmrd-stepper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 14px;
+    width: 100%;
+    padding: 0 4px;
+    box-sizing: border-box;
+}
+
+.spmrd-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+}
+
+.spmrd-step-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #22C55E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spmrd-step-icon.gray {
+    background-color: #808080;
+}
+
+.spmrd-step-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #151515;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.spmrd-step-line {
+    flex: 1;
+    height: 2px;
+    background-color: #E2E8F0;
+    margin: 11px 8px 0 8px;
+    align-self: flex-start;
+}
+
+.spmrd-step-line.active {
+    background-color: #A7F3D0;
+}
+
+
+
+/* Footer Action Buttons */
+.dialog-footer.spmrd-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+}
+
+.spmrd-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.spmrd-btn-approve {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.12s;
+}
+
+.spmrd-btn-approve:hover {
+    background-color: #D60000;
+}
+
+.spmrd-btn-email-mkt {
+    background-color: #FFFFFF;
+    color: #151515;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.12s;
+}
+
+.spmrd-btn-email-mkt:hover {
+    background-color: #F8F9FA;
+}
+
+.spmrd-btn-submit-admin {
+    background-color: #151515;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.12s;
+}
+
+.spmrd-btn-submit-admin:hover {
+    background-color: #2D2D2D;
+}
+
+
+
+/* ================================================================
+   SANTEJ CREATE PMR DIALOG (input_file_0.png)
+   ================================================================ */
+.santej-create-pmr-dialog {
+    width: 980px;
+    max-width: 95vw;
+    border-radius: 12px;
+}
+
+.scpmr-body {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+
+.scpmr-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 18px;
+    row-gap: 14px;
+    width: 100%;
+}
+
+.scpmr-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.scpmr-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #151515;
+    line-height: 1.3;
+}
+
+.req-star {
+    color: #EF4444;
+    font-weight: 700;
+}
+
+.scpmr-input {
+    width: 100%;
+    height: 36px;
+    padding: 0 12px;
+    font-size: 12px;
+    color: #151515;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.15s;
+}
+
+.scpmr-input:focus {
+    border-color: #FF0000;
+}
+
+.scpmr-input::placeholder {
+    color: #9CA3AF;
+}
+
+.scpmr-select-wrap,
+.scpmr-date-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.scpmr-select {
+    width: 100%;
+    height: 36px;
+    padding: 0 28px 0 12px;
+    font-size: 12px;
+    color: #151515;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.scpmr-select:focus {
+    border-color: #FF0000;
+}
+
+.scpmr-chevron,
+.scpmr-calendar-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    color: #9CA3AF;
+}
+
+.scpmr-chevron svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* Color Card Section */
+.scpmr-color-card {
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #FFFFFF;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.scpmr-color-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #E5E7EB;
+    background-color: #FFFFFF;
+}
+
+.scpmr-color-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #151515;
+    margin: 0 0 2px 0;
+    line-height: 1.2;
+}
+
+.scpmr-color-subtitle {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: #808080;
+    margin: 0;
+}
+
+.scpmr-btn-add-color {
+    background-color: #FFFFFF;
+    color: #151515;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: inherit;
+}
+
+.scpmr-btn-add-color:hover {
+    background-color: #F8F9FA;
+    border-color: #CBD5E1;
+}
+
+.scpmr-color-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.scpmr-color-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.scpmr-color-table th {
+    background-color: #FAFBFD;
+    color: #808080;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 10px 12px;
+    border-bottom: 1px solid #E5E7EB;
+    white-space: nowrap;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.scpmr-color-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #F3F4F6;
+    vertical-align: middle;
+}
+
+.scpmr-btn-delete {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.12s;
+}
+
+.scpmr-btn-delete:hover {
+    background-color: #FEE2E2;
+}
+
+.scpmr-btn-delete:hover svg {
+    stroke: #EF4444;
+}
+
+.dialog-btn.santej-create-pmr-submit-btn {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.12s;
+}
+
+.dialog-btn.santej-create-pmr-submit-btn:hover {
+    background-color: #D60000;
+}
+

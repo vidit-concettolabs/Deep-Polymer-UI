@@ -24,13 +24,14 @@
             @if (ColorConstant.BranchFlag != 2)
             {
                 <!-- Santej PMR Generator: 2nd Menu is Customers -->
-                <a class="menu-item-link @(IsActive("masters/customer") ? "nav-active" : "")"
-                   href="masters/customer">
+                <a class="menu-item-link @(IsActive("santej/customer-management") || IsActive("masters/customer") ? "nav-active" : "")"
+                   href="santej/customer-management">
                     <span class="menu-icon">
                         <img src="assets/image/master.svg" class="nav-icon" alt="Customers" />
                     </span>
                     <span class="menu-text">Customers</span>
                 </a>
+
             }
         }
         else
@@ -137,16 +138,19 @@
             ? uri.Substring(baseUri.Length).TrimStart('/').ToLowerInvariant()
             : NavigationManager.ToBaseRelativePath(uri).TrimStart('/').ToLowerInvariant();
 
-        if (href == PmrHref.ToLowerInvariant() || href.Contains("pmr-management"))
+        if (href.Contains("pmr-management"))
         {
-            if (ColorConstant.BranchFlag == 2 && currentPath.StartsWith("hajipur"))
-                return true;
-            if (ColorConstant.BranchFlag != 2 && currentPath.StartsWith("santej"))
-                return true;
+            return currentPath.Contains("pmr-management") || currentPath.Contains("create-pmr") || currentPath.Contains("pmr-detail");
         }
 
-        return currentPath == href || currentPath.StartsWith(href + "/");
+        if (href.Contains("customer-management") || href.Contains("masters/customer"))
+        {
+            return currentPath.Contains("customer-management") || currentPath.Contains("masters/customer");
+        }
+
+        return currentPath == href.ToLowerInvariant() || currentPath.StartsWith(href.ToLowerInvariant() + "/");
     }
+
 
     private bool IsReportsActive =>
         IsActive("reports/pmr") || IsActive("reports/color-price-list");
