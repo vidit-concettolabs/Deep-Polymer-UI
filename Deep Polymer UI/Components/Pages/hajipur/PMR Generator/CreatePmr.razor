@@ -745,6 +745,157 @@
                     }
                 </div>
             }
+
+            <!-- Design Output Section (Inside Design Input Section Wrapper) -->
+            <div class="cpmr-design-output-card">
+                <!-- Section Header -->
+                <div class="cpmr-output-header">
+                    <h3 class="cpmr-output-title">Design Output</h3>
+                    <button type="button" class="cpmr-chevron-btn" title="Toggle Design Output" @onclick="ToggleDesignOutput">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="@(isDesignOutputCollapsed ? "transform: rotate(-90deg);" : "")">
+                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                @if (!isDesignOutputCollapsed)
+                {
+                    <!-- Sub-Tabs Row -->
+                    <div class="cpmr-output-subtabs">
+                        <button type="button" class="cpmr-output-subtab active">Product Details(Deep Polymers)</button>
+                        <button type="button" class="cpmr-output-subtab">Technical Development Details</button>
+                    </div>
+
+                    <!-- Table Wrapper -->
+                    <div class="cpmr-output-table-wrapper">
+                        <table class="cpmr-output-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%;">S. No.</th>
+                                    <th style="width: 18%;">Customer Sample(Ref. Name/Number)</th>
+                                    <th style="width: 14%;">Lab Ref. No.</th>
+                                    <th style="width: 11%;">Product Code</th>
+                                    <th style="width: 20%;">Product Name</th>
+                                    <th style="width: 8%;">% LDR</th>
+                                    <th style="width: 12%;">Sample Details</th>
+                                    <th style="width: 12%;">Sent Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BSPL/24/271-1</td>
+                                    <td>PMR/H/0267A-1</td>
+                                    <td>BE20-1166</td>
+                                    <td><span class="cpmr-product-tag">PET BKY Beige 20-1166</span></td>
+                                    <td>1.5%</td>
+                                    <td>3 POY</td>
+                                    <td>19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BSPL/24/271-1</td>
+                                    <td>PMR/H/0267A-1</td>
+                                    <td>BE20-1166</td>
+                                    <td><span class="cpmr-product-tag">PET BKY Beige 20-1166</span></td>
+                                    <td>1.5%</td>
+                                    <td>3 POY</td>
+                                    <td>19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BSPL/24/271-1</td>
+                                    <td>PMR/H/0267A-1</td>
+                                    <td>BE20-1166</td>
+                                    <td><span class="cpmr-product-tag">PET BKY Beige 20-1166</span></td>
+                                    <td>1.5%</td>
+                                    <td>3 POY</td>
+                                    <td>19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BSPL/24/271-1</td>
+                                    <td>PMR/H/0267A-1</td>
+                                    <td>BE20-1166</td>
+                                    <td><span class="cpmr-product-tag">PET BKY Beige 20-1166</span></td>
+                                    <td>1.5%</td>
+                                    <td>3 POY</td>
+                                    <td>19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BSPL/24/271-1</td>
+                                    <td>PMR/H/0267A-1</td>
+                                    <td>BE20-1166</td>
+                                    <td><span class="cpmr-product-tag">PET BKY Beige 20-1166</span></td>
+                                    <td>1.5%</td>
+                                    <td>3 POY</td>
+                                    <td>19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BSPL/24/271-1</td>
+                                    <td>PMR/H/0267A-1</td>
+                                    <td>BE20-1166</td>
+                                    <td><span class="cpmr-product-tag">PET BKY Beige 20-1166</span></td>
+                                    <td>1.5%</td>
+                                    <td>3 POY</td>
+                                    <td>19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BSPL/24/271-1</td>
+                                    <td>PMR/H/0267A-1</td>
+                                    <td>BE20-1166</td>
+                                    <td><span class="cpmr-product-tag">PET BKY Beige 20-1166</span></td>
+                                    <td>1.5%</td>
+                                    <td>3 POY</td>
+                                    <td>19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BSPL/24/271-1</td>
+                                    <td>PMR/H/0267A-1</td>
+                                    <td>BE20-1166</td>
+                                    <td><span class="cpmr-product-tag">PET BKY Beige 20-1166</span></td>
+                                    <td>1.5%</td>
+                                    <td>3 POY</td>
+                                    <td>19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BSPL/24/271-1</td>
+                                    <td>PMR/H/0267A-1</td>
+                                    <td>BE20-1166</td>
+                                    <td><span class="cpmr-product-tag">PET BKY Beige 20-1166</span></td>
+                                    <td>1.5%</td>
+                                    <td>3 POY</td>
+                                    <td>19-05-2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination Bar -->
+                    <div class="cpmr-output-pagination">
+                        <span class="cpmr-pagination-info">Showing 1-10 of 12 list</span>
+                        <div class="cpmr-pagination-nav">
+                            <button type="button" class="cpmr-page-btn" title="Previous Page">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button type="button" class="cpmr-page-btn active">1</button>
+                            <button type="button" class="cpmr-page-btn">2</button>
+                            <button type="button" class="cpmr-page-btn" title="Next Page">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     </div>
 
@@ -758,6 +909,7 @@
 <!-- PMR History Alert Dialog -->
 <PmrHistoryAlertDialog @bind-IsOpen="showPmrHistoryDialog" />
 
+
 @code {
     [Parameter] public EventCallback OnBack { get; set; }
 
@@ -769,6 +921,13 @@
     private DateTime requestDate = DateTime.Now;
     private string selectedOldPmr = "";
     private bool showPmrHistoryDialog = false;
+    private bool isDesignOutputCollapsed = false;
+
+    private void ToggleDesignOutput()
+    {
+        isDesignOutputCollapsed = !isDesignOutputCollapsed;
+    }
+
 
     private int designInputCount = 1;
     private HashSet<int> collapsedItems = new();
