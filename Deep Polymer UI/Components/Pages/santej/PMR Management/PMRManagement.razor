@@ -372,8 +372,15 @@
 
     private void OpenPmrDetailsDialog(string pmrNo = "PMR-001")
     {
-        selectedPmrNo = pmrNo;
-        showPmrDetailsDialog = true;
+        if (ColorConstant.IsAdmin)
+        {
+            Navigation.NavigateTo($"/santej/pmr-detail-view/{pmrNo}");
+        }
+        else
+        {
+            selectedPmrNo = pmrNo;
+            showPmrDetailsDialog = true;
+        }
     }
 
     private void OpenDetailPage(string pmrNo = "PMR-001")
@@ -381,6 +388,7 @@
         Navigation.NavigateTo($"/santej/pmr-detail-view/{pmrNo}");
     }
 }
+
 
 
 
