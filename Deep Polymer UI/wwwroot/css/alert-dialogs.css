@@ -609,3 +609,90 @@
     height: 32px;
 }
 
+/* =========================================
+   PMR HISTORY ALERT DIALOG STYLES
+   ========================================= */
+
+.pmr-history-dialog-card {
+    width: 380px;
+    max-width: 95vw;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.ph-dialog-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ph-dialog-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.ph-dialog-body {
+    padding: 16px 20px 20px 20px;
+}
+
+.ph-table-wrapper {
+    max-height: 240px;
+    overflow-y: auto;
+    border: 1px solid #f1f5f9;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+/* Custom scrollbar for PMR History dialog */
+.ph-table-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ph-table-wrapper::-webkit-scrollbar-track {
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.ph-table-wrapper::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 8px;
+}
+
+.ph-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.ph-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+}
+
+.ph-table th {
+    background-color: #fafafa;
+    color: #9ca3af;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+    .ph-table td {
+        padding: 14px 16px;
+        border-bottom: 1px solid #f3f4f6;
+        color: #151515;
+        font-weight: 400;
+        vertical-align: middle;
+    }
+
+.ph-table tr:last-child td {
+    border-bottom: none;
+}
+
+

@@ -1,0 +1,69 @@
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card pmr-history-dialog-card" @onclick:stopPropagation="true">
+            <div class="dialog-header ph-dialog-header">
+                <h3 class="dialog-title ph-dialog-title">PMR History</h3>
+                <button class="dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+
+            <div class="dialog-body ph-dialog-body">
+                <div class="ph-table-wrapper">
+                    <table class="ph-table">
+                        <thead>
+                            <tr>
+                                <th>PMR Number</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PMR-003</td>
+                                <td>17-05-2026</td>
+                            </tr>
+                            <tr>
+                                <td>PMR-003</td>
+                                <td>17-05-2026</td>
+                            </tr>
+                            <tr>
+                                <td>PMR-003</td>
+                                <td>17-05-2026</td>
+                            </tr>
+                            <tr>
+                                <td>PMR-003</td>
+                                <td>17-05-2026</td>
+                            </tr>
+                            <tr>
+                                <td>PMR-002</td>
+                                <td>12-05-2026</td>
+                            </tr>
+                            <tr>
+                                <td>PMR-002</td>
+                                <td>10-05-2026</td>
+                            </tr>
+                            <tr>
+                                <td>PMR-001</td>
+                                <td>05-05-2026</td>
+                            </tr>
+                            <tr>
+                                <td>PMR-001</td>
+                                <td>01-05-2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}
