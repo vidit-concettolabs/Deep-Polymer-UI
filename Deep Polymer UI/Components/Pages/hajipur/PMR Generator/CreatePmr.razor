@@ -1,4 +1,21 @@
+@page "/hajipur/create-pmr"
 @using DeepPolymer.Constants
+@using Microsoft.AspNetCore.Components.Sections
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<!-- Inject ← Back into the main header slot -->
+<SectionContent SectionName="header-back-slot">
+    <a class="header-back-btn" href="hajipur/pmr-management">
+        <svg viewBox="0 0 24 24">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Back
+    </a>
+</SectionContent>
+
+
+
 
 <div class="cpmr-container">
     <!-- Single Main White Card wrapping Customer Details & Design Input Section -->
@@ -966,8 +983,16 @@
 
     private async Task Close()
     {
-        await OnBack.InvokeAsync();
+        if (OnBack.HasDelegate)
+        {
+            await OnBack.InvokeAsync();
+        }
+        else
+        {
+            Navigation.NavigateTo("/hajipur/pmr-management");
+        }
     }
 }
+
 
 

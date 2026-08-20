@@ -199,9 +199,17 @@
     color: #16A34A;
 }
 
+.hpmr-tr-clickable {
+    cursor: pointer;
+}
+.hpmr-tr-clickable:hover {
+    background-color: #f9fafb;
+}
+
 /* =============================================
    ACTION BUTTON
    ============================================= */
+
 
 .hpmr-view-btn {
     display: inline-flex;

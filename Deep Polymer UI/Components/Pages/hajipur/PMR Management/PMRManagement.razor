@@ -1,22 +1,14 @@
 @page "/hajipur/pmr-management"
 @using DeepPolymer.Constants
+@inject NavigationManager Navigation
 @rendermode InteractiveServer
 
 <PageTitle>PMR Management</PageTitle>
 
 @if (ColorConstant.BranchFlag == 2)
 {
-    @if (showDetailPage)
-    {
-        <HajipurPmrDetailView PmrNo="@selectedPmrNo" OnBack="EventCallback.Factory.Create(this, BackToTable)" />
-    }
-    else if (showCreatePmrPage)
-    {
-        <Deep_Polymer_UI.Components.Pages.hajipur.PMR_Generator.CreatePmr OnBack="BackToTable" />
-    }
-    else
-    {
-        <div class="hpmr-container">
+    <div class="hpmr-container">
+
 
         <!-- Page Header -->
         <div class="pmr-header flex-header">
@@ -229,7 +221,7 @@
 
                 <tbody>
 
-                    <tr>
+                    <tr class="hpmr-tr-clickable" @onclick='() => OpenCustomerEmailPage("PMR-001")'>
                         <td>PMR-001</td>
                         <td>Ramesh Patel</td>
                         <td>Ocean Blue</td>
@@ -247,7 +239,9 @@
                             <button class="hpmr-view-btn"
                                     type="button"
                                     @onclick='() => OpenDetailPage("PMR-001")'
+                                    @onclick:stopPropagation="true"
                                     title="View PMR-001">
+
 
                                 <svg viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
@@ -679,17 +673,13 @@
 
         </div>
 
-        </div>
-    }
-
-    <!-- PMR Details Dialog -->
-    <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@selectedPmrNo" />
+        <!-- PMR Details Dialog -->
+        <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@selectedPmrNo" />
+    </div>
 }
 
 @code {
     private bool showDetailsDialog = false;
-    private bool showDetailPage = false;
-    private bool showCreatePmrPage = false;
     private string selectedPmrNo = "PMR-001";
 
     private void OpenDetailsDialog(string pmrNo = "1")
@@ -700,18 +690,16 @@
 
     private void OpenDetailPage(string pmrNo = "PMR-001")
     {
-        selectedPmrNo = pmrNo;
-        showDetailPage = true;
+        Navigation.NavigateTo($"/hajipur/pmr-detail-view/{pmrNo}");
+    }
+
+    private void OpenCustomerEmailPage(string pmrNo = "PMR-001")
+    {
+        Navigation.NavigateTo($"/hajipur/pmr-details/{pmrNo}");
     }
 
     private void OpenCreatePmrPage()
     {
-        showCreatePmrPage = true;
-    }
-
-    private void BackToTable()
-    {
-        showDetailPage = false;
-        showCreatePmrPage = false;
+        Navigation.NavigateTo("/hajipur/create-pmr");
     }
 }

@@ -137,13 +137,17 @@
             ? uri.Substring(baseUri.Length).TrimStart('/').ToLowerInvariant()
             : NavigationManager.ToBaseRelativePath(uri).TrimStart('/').ToLowerInvariant();
 
-        href = href.TrimStart('/').ToLowerInvariant();
-
-        if (string.IsNullOrEmpty(href))
-            return string.IsNullOrEmpty(currentPath);
+        if (href == PmrHref.ToLowerInvariant() || href.Contains("pmr-management"))
+        {
+            if (ColorConstant.BranchFlag == 2 && currentPath.StartsWith("hajipur"))
+                return true;
+            if (ColorConstant.BranchFlag != 2 && currentPath.StartsWith("santej"))
+                return true;
+        }
 
         return currentPath == href || currentPath.StartsWith(href + "/");
     }
+
 
     private bool IsReportsActive =>
         IsActive("reports/pmr") || IsActive("reports/color-price-list");
