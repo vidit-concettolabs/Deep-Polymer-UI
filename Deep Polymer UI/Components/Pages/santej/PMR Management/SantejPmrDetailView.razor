@@ -1,15 +1,21 @@
+@page "/santej/pmr-detail-view/{PmrNo}"
 @using Microsoft.AspNetCore.Components.Sections
 @using Deep_Polymer_UI.Components.Pages.hajipur.PMR_Management
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
 
 <!-- Inject ← Back into the main header slot -->
 <SectionContent SectionName="header-back-slot">
-    <button class="header-back-btn" type="button" @onclick="OnBack">
+    <a class="header-back-btn" href="santej/pmr-management">
         <svg viewBox="0 0 24 24">
             <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
         Back
-    </button>
+    </a>
 </SectionContent>
+
+
+
 
 <div class="spdv-page">
 

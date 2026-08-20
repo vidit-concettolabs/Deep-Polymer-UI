@@ -3,6 +3,8 @@
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
 
+
+
 <PageTitle>PMR Management</PageTitle>
 
 @if (ColorConstant.BranchFlag == 2)
@@ -221,7 +223,8 @@
 
                 <tbody>
 
-                    <tr class="hpmr-tr-clickable" @onclick='() => OpenCustomerEmailPage("PMR-001")'>
+                    <tr class="hpmr-tr-clickable" @onclick='() => OpenRowDetail("PMR-001")'>
+
                         <td>PMR-001</td>
                         <td>Ramesh Patel</td>
                         <td>Ocean Blue</td>
@@ -696,6 +699,18 @@
     private void OpenCustomerEmailPage(string pmrNo = "PMR-001")
     {
         Navigation.NavigateTo($"/hajipur/pmr-details/{pmrNo}");
+    }
+
+    private void OpenRowDetail(string pmrNo = "PMR-001")
+    {
+        if (ColorConstant.IsAdmin)
+        {
+            Navigation.NavigateTo($"/hajipur/pmr-detail-view/{pmrNo}");
+        }
+        else
+        {
+            Navigation.NavigateTo($"/hajipur/pmr-details/{pmrNo}");
+        }
     }
 
     private void OpenCreatePmrPage()

@@ -1,7 +1,9 @@
 @page "/hajipur/create-pmr"
 @using DeepPolymer.Constants
 @using Microsoft.AspNetCore.Components.Sections
+@using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
 @inject NavigationManager Navigation
+
 @rendermode InteractiveServer
 
 <!-- Inject ← Back into the main header slot -->
@@ -13,6 +15,8 @@
         Back
     </a>
 </SectionContent>
+
+
 
 
 
@@ -919,16 +923,30 @@
     <!-- Footer Submit Actions -->
     <div class="cpmr-submit-actions">
         <button type="button" class="cpmr-btn-cancel" @onclick="Close">Cancel</button>
-        <button type="button" class="cpmr-btn-submit" @onclick="Close">Submit Design Input</button>
+        <button type="button" class="cpmr-btn-submit" @onclick="OpenSuccessDialog">Submit Design Input</button>
     </div>
 </div>
 
 <!-- PMR History Alert Dialog -->
 <PmrHistoryAlertDialog @bind-IsOpen="showPmrHistoryDialog" />
+<HajipurPmrSubmittedSuccessDialog @bind-IsOpen="showSuccessDialog" OnOk="HandleSuccessOk" />
 
 
 @code {
     [Parameter] public EventCallback OnBack { get; set; }
+
+    private bool showSuccessDialog = false;
+
+    private void OpenSuccessDialog()
+    {
+        showSuccessDialog = true;
+    }
+
+    private void HandleSuccessOk()
+    {
+        Navigation.NavigateTo("/hajipur/pmr-management");
+    }
+
 
     private string customerName = "";
     private string customerCode = "";

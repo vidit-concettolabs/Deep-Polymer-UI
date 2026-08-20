@@ -2,16 +2,14 @@
 @rendermode InteractiveServer
 
 @using DeepPolymer.Constants
+@inject NavigationManager Navigation
+
+
 
 <PageTitle>PMR Management</PageTitle>
 
-@if (showDetailPage)
-{
-    <SantejPmrDetailView PmrNo="@selectedPmrNo" OnBack="BackToTable" />
-}
-else
-{
-    <div class="pmr-container">
+<div class="pmr-container">
+
         <!-- PMR Page Header -->
         <div class="pmr-header flex-header">
             <div>
@@ -354,22 +352,17 @@ else
                     </button>
                 </nav>
             </div>
-        </div>
     </div>
-}
+</div>
 
 @code {
-    private bool showDetailPage = false;
     private string selectedPmrNo = "PMR-001";
 
     private void OpenDetailPage(string pmrNo = "PMR-001")
     {
-        selectedPmrNo = pmrNo;
-        showDetailPage = true;
-    }
-
-    private void BackToTable()
-    {
-        showDetailPage = false;
+        Navigation.NavigateTo($"/santej/pmr-detail-view/{pmrNo}");
     }
 }
+
+
+

@@ -1,8 +1,9 @@
 @page "/hajipur/pmr-detail-view/{PmrNo}"
 @using Microsoft.AspNetCore.Components.Sections
+@using DeepPolymer.Constants
+@using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
-
 
 <!-- Inject ← Back into the main header slot -->
 <SectionContent SectionName="header-back-slot">
@@ -14,343 +15,374 @@
     </a>
 </SectionContent>
 
+@if (IsAdminView)
+{
+    <!-- ===== ADMIN VIEW (input_file_0.png) ===== -->
+    <div class="hpdv-page">
+        <!-- Main 2-Column Grid -->
+        <div class="hpdv-grid">
+            <!-- LEFT COLUMN -->
+            <div class="hpdv-left-col">
+                <!-- PMR Information Card -->
+                <div class="hpdv-card">
+                    <div class="hpdv-card-title-row">
+                        <div class="hpdv-title-wrap">
+                            <h2 class="hpdv-card-title">PMR Information</h2>
+                            <button class="hpdv-info-badge-btn" type="button" title="View PMR Details" @onclick="OpenDetailsDialog">
+                                <img src="assets/image/information_icon_hajipur.svg" alt="Info" class="hpdv-info-icon" />
+                            </button>
+                        </div>
+                    </div>
 
+                    <div class="hpdv-info-grid">
+                        <div class="hpdv-info-item">
+                            <span class="hpdv-info-label">PMR Number</span>
+                            <span class="hpdv-info-value">@(string.IsNullOrEmpty(PmrNo) ? "PMR-001" : PmrNo)</span>
+                        </div>
+                        <div class="hpdv-info-item">
+                            <span class="hpdv-info-label">Customer Name</span>
+                            <span class="hpdv-info-value">Ramesh Patel</span>
+                        </div>
+                        <div class="hpdv-info-item">
+                            <span class="hpdv-info-label">Colour Name</span>
+                            <span class="hpdv-info-value">Ocean Blue - A</span>
+                        </div>
+                        <div class="hpdv-info-item">
+                            <span class="hpdv-info-label">Colour Code</span>
+                            <span class="hpdv-info-value">OB-102</span>
+                        </div>
+                        <div class="hpdv-info-item">
+                            <span class="hpdv-info-label">City</span>
+                            <span class="hpdv-info-value">Ahmedabad</span>
+                        </div>
+                        <div class="hpdv-info-item">
+                            <span class="hpdv-info-label">Received From</span>
+                            <span class="hpdv-info-value">OB-102</span>
+                        </div>
+                        <div class="hpdv-info-item">
+                            <span class="hpdv-info-label">Region</span>
+                            <span class="hpdv-info-value">Gujarat</span>
+                        </div>
+                        <div class="hpdv-info-item">
+                            <span class="hpdv-info-label">Sample Request Date</span>
+                            <span class="hpdv-info-value">07.08.2024</span>
+                        </div>
+                    </div>
+                </div>
 
-<div class="hpdv-page">
-    <!-- ===== TOP CARD: PMR Information ===== -->
-    <div class="hpdv-card hpdv-top-info-card">
-        <div class="hpdv-card-title-row">
-            <div class="hpdv-title-wrap">
-                <h2 class="hpdv-card-title">PMR Information</h2>
-                <button class="hpdv-info-badge-btn" type="button" title="View PMR Details" @onclick="OpenDetailsDialog">
-                    <img src="assets/image/information_icon_hajipur.svg" alt="Info" class="hpdv-info-icon" />
-                </button>
-                <span class="hpdv-pill-tag">Design Input</span>
+                <!-- Raw Material Weights Card -->
+                <div class="hpdv-card hpdv-rm-card">
+                    <h2 class="hpdv-card-title">Raw Material Weights</h2>
+                    <p class="hpdv-card-subtitle">Add and manage raw material weights for the selected PMR.</p>
+
+                    <div class="hpdv-rm-table-wrap">
+                        <table class="hpdv-rm-table">
+                            <thead>
+                                <tr class="hpdv-tr-head">
+                                    <th class="hpdv-th hpdv-th-left hpdv-col-material">Raw Material</th>
+                                    <th class="hpdv-th hpdv-th-center hpdv-col-pct">
+                                        Percentage <img src="assets/image/edit_icon.svg" class="hpdv-edit-icon" alt="edit" />
+                                    </th>
+                                    <th class="hpdv-th hpdv-th-center hpdv-col-price">RM Price</th>
+                                    <th class="hpdv-th hpdv-th-center hpdv-col-cost">RM Cost/Kg</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    <tr>
+                                        <td class="hpdv-td">
+                                            <div class="hpdv-select-wrap">
+                                                <select class="hpdv-select">
+                                                    <option>Titanium Dioxide</option>
+                                                </select>
+                                                <span class="hpdv-chevron">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="hpdv-td hpdv-td-center">
+                                            <input class="hpdv-plain-val" value="3%" />
+                                        </td>
+                                        <td class="hpdv-td hpdv-td-center">
+                                            <input class="hpdv-plain-val" value="@(i % 2 == 0 ? "180.00" : "150.00")" />
+                                        </td>
+                                        <td class="hpdv-td hpdv-td-center">
+                                            <span class="hpdv-rm-cost-pill">@(i % 2 == 0 ? "3960.00" : "180.00")</span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Total Row -->
+                    <div class="hpdv-total-row">
+                        <span class="hpdv-total-label">Total Weight(kgs) &amp; Raw Material Cost(₹):</span>
+                        <div class="hpdv-total-pills">
+                            <span class="hpdv-total-pill-grey">24.00</span>
+                            <span class="hpdv-rm-cost-pill">3960.00</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- RIGHT COLUMN: Cost Summary Card -->
+            <div class="hpdv-right-col">
+                <div class="hpdv-card hpdv-cost-card">
+                    <h2 class="hpdv-card-title">Cost Summary</h2>
+                    <p class="hpdv-card-subtitle">Review the final product costing and additional charges before submission.</p>
 
+                    <div class="hpdv-cost-list">
+                        <div class="hpdv-cost-row">
+                            <span class="hpdv-cost-label">RMC:</span>
+                            <input class="hpdv-cost-input" value="20" />
+                        </div>
+                        <div class="hpdv-cost-row">
+                            <span class="hpdv-cost-label">Opp Cost(Rs/kg):</span>
+                            <span class="hpdv-cost-pill-blue">15503.84</span>
+                        </div>
+                        <div class="hpdv-cost-row">
+                            <span class="hpdv-cost-label">Profit/Margin:</span>
+                            <input class="hpdv-cost-plain-val" value="310.15" />
+                        </div>
+                        <div class="hpdv-cost-row">
+                            <span class="hpdv-cost-label">Min price:</span>
+                            <input class="hpdv-cost-plain-val" value="15000.00" />
+                        </div>
+                        <div class="hpdv-cost-row">
+                            <span class="hpdv-cost-label">Quoted Price:</span>
+                            <input class="hpdv-cost-plain-val" value="15000.00" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- BOTTOM FOOTER CARD -->
+        <div class="hpdv-footer-card">
+            <button type="button" class="hpdv-submit-btn" @onclick="OpenSuccessDialog">Submit to Production Head</button>
+        </div>
+    </div>
+}
+else
+{
+    <!-- ===== PMR GENERATOR / PMR ROLE VIEW (input_file_1.png) ===== -->
+    <div class="hpdv-page">
+        <!-- ===== TOP CARD: PMR Information ===== -->
+        <div class="hpdv-card hpdv-top-info-card">
+            <div class="hpdv-card-title-row">
+                <div class="hpdv-title-wrap">
+                    <h2 class="hpdv-card-title">PMR Information</h2>
+                    <button class="hpdv-info-badge-btn" type="button" title="View PMR Details" @onclick="OpenDetailsDialog">
+                        <img src="assets/image/information_icon_hajipur.svg" alt="Info" class="hpdv-info-icon" />
+                    </button>
+                    <span class="hpdv-pill-tag">Design Input</span>
+                </div>
+            </div>
 
-        <div class="hpdv-info-grid">
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">PMR Number</span>
-                <span class="hpdv-info-value">@(string.IsNullOrEmpty(PmrNo) ? "PMR-001" : PmrNo)</span>
+            <div class="hpdv-info-grid">
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">PMR Number</span>
+                    <span class="hpdv-info-value">@(string.IsNullOrEmpty(PmrNo) ? "PMR-001" : PmrNo)</span>
+                </div>
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">Colour Name</span>
+                    <span class="hpdv-info-value">Ocean Blue - A</span>
+                </div>
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">Colour Code</span>
+                    <span class="hpdv-info-value">OB-102</span>
+                </div>
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">Customer Name</span>
+                    <span class="hpdv-info-value">Ramesh Patel</span>
+                </div>
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">Customer Code</span>
+                    <span class="hpdv-info-value">OB-102</span>
+                </div>
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">City</span>
+                    <span class="hpdv-info-value">Ahmedabad</span>
+                </div>
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">Received From</span>
+                    <span class="hpdv-info-value">OB-102</span>
+                </div>
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">Region</span>
+                    <span class="hpdv-info-value">Gujarat</span>
+                </div>
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">Sample Request Date</span>
+                    <span class="hpdv-info-value">07.08.2024</span>
+                </div>
+                <div class="hpdv-info-item">
+                    <span class="hpdv-info-label">LDR %</span>
+                    <span class="hpdv-info-value">03%</span>
+                </div>
             </div>
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">Colour Name</span>
-                <span class="hpdv-info-value">Ocean Blue - A</span>
+        </div>
+
+        <!-- ===== BOTTOM SECTION: Side-by-Side Split View ===== -->
+        <div class="hpdv-split-layout">
+            <!-- LEFT COLUMN: Customer Details & Deep Planning Table -->
+            <div class="hpdv-split-left">
+                <div class="cpmr-table-wrapper">
+                    <table class="cpmr-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 20%;">Type</th>
+                                <th style="width: 40%;">Customer Details</th>
+                                <th style="width: 40%;">Deep Planning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cpmr-table-type-cell">Polymer</td>
+                                <td><div class="hpdv-readonly-box">Polyester (PET)</div></td>
+                                <td><div class="hpdv-readonly-box">Nylon (PA6)</div></td>
+                            </tr>
+                            <tr>
+                                <td class="cpmr-table-type-cell">POY Denier</td>
+                                <td><div class="hpdv-readonly-box">1500</div></td>
+                                <td><div class="hpdv-readonly-box">2000</div></td>
+                            </tr>
+                            <tr>
+                                <td class="cpmr-table-type-cell">Final Denier</td>
+                                <td><div class="hpdv-readonly-box">75D</div></td>
+                                <td><div class="hpdv-readonly-box">1000</div></td>
+                            </tr>
+                            <tr>
+                                <td class="cpmr-table-type-cell">Filaments</td>
+                                <td><div class="hpdv-readonly-box">75D</div></td>
+                                <td><div class="hpdv-readonly-box">1000</div></td>
+                            </tr>
+                            <tr>
+                                <td class="cpmr-table-type-cell">Cross-Sec.</td>
+                                <td><div class="hpdv-readonly-box">Round</div></td>
+                                <td><div class="hpdv-readonly-box">Trilobal</div></td>
+                            </tr>
+                            <tr>
+                                <td class="cpmr-table-type-cell">Yarn Structue</td>
+                                <td><div class="hpdv-readonly-box">DTY</div></td>
+                                <td><div class="hpdv-readonly-box">FDY</div></td>
+                            </tr>
+                            <tr>
+                                <td class="cpmr-table-type-cell">Sample requirement</td>
+                                <td><div class="hpdv-readonly-box">500 kg</div></td>
+                                <td><div class="hpdv-readonly-box">250 kg</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">Colour Code</span>
-                <span class="hpdv-info-value">OB-102</span>
-            </div>
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">Customer Name</span>
-                <span class="hpdv-info-value">Ramesh Patel</span>
-            </div>
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">Customer Code</span>
-                <span class="hpdv-info-value">OB-102</span>
-            </div>
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">City</span>
-                <span class="hpdv-info-value">Ahmedabad</span>
-            </div>
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">Received From</span>
-                <span class="hpdv-info-value">OB-102</span>
-            </div>
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">Region</span>
-                <span class="hpdv-info-value">Gujarat</span>
-            </div>
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">Sample Request Date</span>
-                <span class="hpdv-info-value">07.08.2024</span>
-            </div>
-            <div class="hpdv-info-item">
-                <span class="hpdv-info-label">LDR %</span>
-                <span class="hpdv-info-value">03%</span>
+
+            <!-- RIGHT COLUMN: Raw Material Weights Card -->
+            <div class="cpmr-raw-material-card">
+                <div class="cpmr-rm-header">
+                    <div>
+                        <h4 class="cpmr-rm-title">Raw Material Weights</h4>
+                        <p class="cpmr-rm-subtitle">Add and manage raw material weights for the selected PMR.</p>
+                    </div>
+                    <button type="button" class="cpmr-btn-add-material">Add Material</button>
+                </div>
+
+                <div class="cpmr-rm-table-wrapper">
+                    <table class="cpmr-rm-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 65%;">Raw Material</th>
+                                <th style="width: 25%;">Percent</th>
+                                <th style="width: 10%; text-align: center;"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @for (int i = 0; i < 6; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="cpmr-select-wrapper">
+                                            <select class="cpmr-select">
+                                                <option value="Titanium Dioxide" selected>Titanium Dioxide</option>
+                                                <option value="Calcium Carbonate">Calcium Carbonate</option>
+                                                <option value="Zinc Oxide">Zinc Oxide</option>
+                                                <option value="Carbon Black">Carbon Black</option>
+                                            </select>
+                                            <span class="cpmr-select-chevron">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="cpmr-input cpmr-rm-input" value="0.00" />
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <button type="button" class="cpmr-icon-btn cpmr-btn-delete-mat" title="Delete Material">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Warning Alert + Footer Buttons -->
+                <div class="cpmr-rm-footer">
+                    <div class="cpmr-warning-alert">
+                        <span class="cpmr-warning-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="cpmr-warning-text">
+                            Once submitted, you will not be able to view this data history. Please ensure all weights are accurate before submitting.
+                        </span>
+                    </div>
+
+                    <div class="cpmr-rm-actions">
+                        <button type="button" class="cpmr-btn-cancel" @onclick="Close">Cancel</button>
+                        <button type="button" class="cpmr-btn-submit" @onclick="OpenSuccessDialog">Submit</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+}
 
-    <!-- ===== BOTTOM SECTION: Side-by-Side Split View ===== -->
-    <div class="hpdv-split-layout">
-        <!-- LEFT COLUMN: Customer Details & Deep Planning Table -->
-        <div class="hpdv-split-left">
-            <div class="cpmr-table-wrapper">
-                <table class="cpmr-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 20%;">Type</th>
-                            <th style="width: 40%;">Customer Details</th>
-                            <th style="width: 40%;">Deep Planning</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="cpmr-table-type-cell">Polymer</td>
-                            <td><div class="hpdv-readonly-box">Polyester (PET)</div></td>
-                            <td><div class="hpdv-readonly-box">Nylon (PA6)</div></td>
-                        </tr>
-                        <tr>
-                            <td class="cpmr-table-type-cell">POY Denier</td>
-                            <td><div class="hpdv-readonly-box">1500</div></td>
-                            <td><div class="hpdv-readonly-box">2000</div></td>
-                        </tr>
-                        <tr>
-                            <td class="cpmr-table-type-cell">Final Denier</td>
-                            <td><div class="hpdv-readonly-box">75D</div></td>
-                            <td><div class="hpdv-readonly-box">1000</div></td>
-                        </tr>
-                        <tr>
-                            <td class="cpmr-table-type-cell">Filaments</td>
-                            <td><div class="hpdv-readonly-box">75D</div></td>
-                            <td><div class="hpdv-readonly-box">1000</div></td>
-                        </tr>
-                        <tr>
-                            <td class="cpmr-table-type-cell">Cross-Sec.</td>
-                            <td><div class="hpdv-readonly-box">Round</div></td>
-                            <td><div class="hpdv-readonly-box">Trilobal</div></td>
-                        </tr>
-                        <tr>
-                            <td class="cpmr-table-type-cell">Yarn Structue</td>
-                            <td><div class="hpdv-readonly-box">DTY</div></td>
-                            <td><div class="hpdv-readonly-box">FDY</div></td>
-                        </tr>
-                        <tr>
-                            <td class="cpmr-table-type-cell">Sample requirement</td>
-                            <td><div class="hpdv-readonly-box">500 kg</div></td>
-                            <td><div class="hpdv-readonly-box">250 kg</div></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- RIGHT COLUMN: Raw Material Weights Card -->
-        <div class="cpmr-raw-material-card">
-            <div class="cpmr-rm-header">
-                <div>
-                    <h4 class="cpmr-rm-title">Raw Material Weights</h4>
-                    <p class="cpmr-rm-subtitle">Add and manage raw material weights for the selected PMR.</p>
-                </div>
-                <button type="button" class="cpmr-btn-add-material">Add Material</button>
-            </div>
-
-            <div class="cpmr-rm-table-wrapper">
-                <table class="cpmr-rm-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 65%;">Raw Material</th>
-                            <th style="width: 25%;">Percent</th>
-                            <th style="width: 10%; text-align: center;"></th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="cpmr-select-wrapper">
-                                    <select class="cpmr-select">
-                                        <option value="Titanium Dioxide" selected>Titanium Dioxide</option>
-                                        <option value="Calcium Carbonate">Calcium Carbonate</option>
-                                        <option value="Zinc Oxide">Zinc Oxide</option>
-                                        <option value="Carbon Black">Carbon Black</option>
-                                    </select>
-                                    <span class="cpmr-select-chevron">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="text" class="cpmr-input cpmr-rm-input" value="0.00" />
-                            </td>
-                            <td style="text-align: center;">
-                                <button type="button" class="cpmr-icon-btn cpmr-btn-delete-mat" title="Delete Material">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="cpmr-select-wrapper">
-                                    <select class="cpmr-select">
-                                        <option value="Titanium Dioxide" selected>Titanium Dioxide</option>
-                                        <option value="Calcium Carbonate">Calcium Carbonate</option>
-                                        <option value="Zinc Oxide">Zinc Oxide</option>
-                                        <option value="Carbon Black">Carbon Black</option>
-                                    </select>
-                                    <span class="cpmr-select-chevron">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="text" class="cpmr-input cpmr-rm-input" value="0.00" />
-                            </td>
-                            <td style="text-align: center;">
-                                <button type="button" class="cpmr-icon-btn cpmr-btn-delete-mat" title="Delete Material">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="cpmr-select-wrapper">
-                                    <select class="cpmr-select">
-                                        <option value="Titanium Dioxide" selected>Titanium Dioxide</option>
-                                        <option value="Calcium Carbonate">Calcium Carbonate</option>
-                                        <option value="Zinc Oxide">Zinc Oxide</option>
-                                        <option value="Carbon Black">Carbon Black</option>
-                                    </select>
-                                    <span class="cpmr-select-chevron">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="text" class="cpmr-input cpmr-rm-input" value="0.00" />
-                            </td>
-                            <td style="text-align: center;">
-                                <button type="button" class="cpmr-icon-btn cpmr-btn-delete-mat" title="Delete Material">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="cpmr-select-wrapper">
-                                    <select class="cpmr-select">
-                                        <option value="Titanium Dioxide" selected>Titanium Dioxide</option>
-                                        <option value="Calcium Carbonate">Calcium Carbonate</option>
-                                        <option value="Zinc Oxide">Zinc Oxide</option>
-                                        <option value="Carbon Black">Carbon Black</option>
-                                    </select>
-                                    <span class="cpmr-select-chevron">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="text" class="cpmr-input cpmr-rm-input" value="0.00" />
-                            </td>
-                            <td style="text-align: center;">
-                                <button type="button" class="cpmr-icon-btn cpmr-btn-delete-mat" title="Delete Material">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="cpmr-select-wrapper">
-                                    <select class="cpmr-select">
-                                        <option value="Titanium Dioxide" selected>Titanium Dioxide</option>
-                                        <option value="Calcium Carbonate">Calcium Carbonate</option>
-                                        <option value="Zinc Oxide">Zinc Oxide</option>
-                                        <option value="Carbon Black">Carbon Black</option>
-                                    </select>
-                                    <span class="cpmr-select-chevron">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="text" class="cpmr-input cpmr-rm-input" value="0.00" />
-                            </td>
-                            <td style="text-align: center;">
-                                <button type="button" class="cpmr-icon-btn cpmr-btn-delete-mat" title="Delete Material">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="cpmr-select-wrapper">
-                                    <select class="cpmr-select">
-                                        <option value="Titanium Dioxide" selected>Titanium Dioxide</option>
-                                        <option value="Calcium Carbonate">Calcium Carbonate</option>
-                                        <option value="Zinc Oxide">Zinc Oxide</option>
-                                        <option value="Carbon Black">Carbon Black</option>
-                                    </select>
-                                    <span class="cpmr-select-chevron">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="text" class="cpmr-input cpmr-rm-input" value="0.00" />
-                            </td>
-                            <td style="text-align: center;">
-                                <button type="button" class="cpmr-icon-btn cpmr-btn-delete-mat" title="Delete Material">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Warning Alert + Footer Buttons -->
-            <div class="cpmr-rm-footer">
-                <div class="cpmr-warning-alert">
-                    <span class="cpmr-warning-icon">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span>
-                    <span class="cpmr-warning-text">
-                        Once submitted, you will not be able to view this data history. Please ensure all weights are accurate before submitting.
-                    </span>
-                </div>
-
-                <div class="cpmr-rm-actions">
-                    <button type="button" class="cpmr-btn-cancel" @onclick="Close">Cancel</button>
-                    <button type="button" class="cpmr-btn-submit" @onclick="Close">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PMR Details Dialog (opened via info icon) -->
-    <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@PmrNo" />
-</div>
+<!-- PMR Details Dialog (opened via info icon) -->
+<HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@PmrNo" />
+<HajipurPmrSubmittedSuccessDialog @bind-IsOpen="showSuccessDialog" OnOk="HandleSuccessOk" />
 
 @code {
     [Parameter] public string PmrNo { get; set; } = "PMR-001";
     [Parameter] public EventCallback OnBack { get; set; }
 
     private bool showDetailsDialog = false;
+    private bool showSuccessDialog = false;
+
+    private bool IsAdminView => Navigation.Uri.Contains("/admin/") || (ColorConstant.IsAdmin && !Navigation.Uri.Contains("/pmr-generator/"));
 
     private void OpenDetailsDialog()
     {
         showDetailsDialog = true;
+    }
+
+    private void OpenSuccessDialog()
+    {
+        showSuccessDialog = true;
+    }
+
+    private void HandleSuccessOk()
+    {
+        Navigation.NavigateTo("/hajipur/pmr-management");
     }
 
     private async Task HandleBack()
@@ -370,4 +402,3 @@
         await HandleBack();
     }
 }
-

@@ -1,0 +1,40 @@
+@using Microsoft.AspNetCore.Components
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card hajipur-success-dialog" @onclick:stopPropagation>
+            <!-- Header with Close Button -->
+            <div class="dialog-header-clean">
+                <button type="button" class="dialog-close-btn" @onclick="Close" title="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="dialog-body text-center-body">
+                <div class="dialog-success-icon-wrap">
+                    <img src="assets/image/submit_icon.svg" alt="PMR Submitted Successfully" class="dialog-success-img" />
+                </div>
+                <h3 class="dialog-success-title">PMR Submitted Successfully!</h3>
+                <p class="dialog-success-subtitle">
+                    Your product matching request has been created and submitted to the lab team.
+                </p>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnOk { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+        if (OnOk.HasDelegate)
+        {
+            await OnOk.InvokeAsync();
+        }
+    }
+}

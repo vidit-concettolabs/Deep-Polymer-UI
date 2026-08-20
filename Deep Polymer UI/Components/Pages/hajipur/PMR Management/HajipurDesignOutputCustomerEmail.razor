@@ -1,8 +1,8 @@
 @page "/hajipur/pmr-details/{PmrNo}"
 @using Microsoft.AspNetCore.Components.Sections
+@using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
-
 
 <!-- Inject ← Back into the main header slot -->
 <SectionContent SectionName="header-back-slot">
@@ -14,13 +14,11 @@
     </a>
 </SectionContent>
 
-
-
 <div class="hdo-page">
     <!-- Top Summary Card -->
     <div class="hdo-card">
-        <div class="hdo-card-header">
-            <div class="hdo-title-group">
+        <div class="hdo-card-title-row">
+            <div class="hdo-title-wrap">
                 <h2 class="hdo-card-title">Customer Details</h2>
                 <button class="hdo-info-badge-btn" type="button" title="View PMR Details" @onclick="OpenDetailsDialog">
                     <img src="assets/image/information_icon_hajipur.svg" alt="Info" class="hdo-info-icon" />
@@ -65,32 +63,31 @@
         </div>
     </div>
 
-    <!-- Tabs Navigation Bar -->
+    <!-- Navigation Tabs Bar -->
     <div class="hdo-tabs-bar">
-        <button type="button" class="hdo-tab @(activeTab == 0 ? "active" : "")" @onclick="() => SelectTab(0)">
+        <button type="button" class="hdo-tab-btn @(activeTab == 0 ? "active" : "")" @onclick="() => SelectTab(0)">
             Product Details(Deep Polymers)
         </button>
-        <button type="button" class="hdo-tab @(activeTab == 1 ? "active" : "")" @onclick="() => SelectTab(1)">
+        <button type="button" class="hdo-tab-btn @(activeTab == 1 ? "active" : "")" @onclick="() => SelectTab(1)">
             Technical Development Details
         </button>
     </div>
 
-    <!-- Tab Contents (No Outer Card Box) -->
+    <!-- Tab 0: Product Details (Deep Polymers) -->
     @if (activeTab == 0)
     {
-        <!-- Tab 0: Product Details(Deep Polymers) -->
         <div class="hdo-table-card">
-            <div class="hdo-table-wrapper">
+            <div class="hdo-table-responsive">
                 <table class="hdo-table">
                     <thead>
                         <tr>
                             <th style="width: 5%;">S. No.</th>
-                            <th style="width: 22%;">Customer Sample(Ref. Name/Number)</th>
-                            <th style="width: 16%;">Lab Ref. No.</th>
+                            <th style="width: 18%;">Customer Sample(Ref. Name/Number)</th>
+                            <th style="width: 15%;">Lab Ref. No.</th>
                             <th style="width: 12%;">Product Code</th>
-                            <th style="width: 20%;">Product Name</th>
-                            <th style="width: 7%;">% LDR</th>
-                            <th style="width: 8%;">Sample Details</th>
+                            <th style="width: 22%;">Product Name</th>
+                            <th style="width: 8%;">% LDR</th>
+                            <th style="width: 10%;">Sample Details</th>
                             <th style="width: 10%;">Sent Date</th>
                         </tr>
                     </thead>
@@ -102,7 +99,7 @@
                                 <td>BSPL/24/271-1</td>
                                 <td>PMR/H/0267A-1</td>
                                 <td>BE20-1166</td>
-                                <td><span class="hdo-product-tag">PET BKY Beige 20-1166</span></td>
+                                <td><span class="hdo-product-pill">PET BKY Beige 20-1166</span></td>
                                 <td>1.5%</td>
                                 <td>3 POY</td>
                                 <td>19-05-2026</td>
@@ -112,25 +109,25 @@
                 </table>
             </div>
 
-            <!-- Pagination Bar inside the same outer card box -->
+            <!-- Footer Pagination Row -->
             <div class="hdo-pagination">
                 <span class="hdo-pagination-info">Showing 1-10 of 12 list</span>
-                <div class="hdo-pagination-nav">
-                    <button type="button" class="hdo-page-btn">&lt;</button>
+                <div class="hdo-pagination-controls">
+                    <button type="button" class="hdo-page-nav-btn disabled">&lt;</button>
                     <button type="button" class="hdo-page-btn active">1</button>
                     <button type="button" class="hdo-page-btn">2</button>
-                    <button type="button" class="hdo-page-btn">&gt;</button>
+                    <button type="button" class="hdo-page-nav-btn">&gt;</button>
                 </div>
             </div>
         </div>
     }
 
-    else if (activeTab == 1)
+    <!-- Tab 1: Technical Development Details -->
+    @if (activeTab == 1)
     {
-        <!-- Tab 1: Technical Development Details -->
-        <div class="hdo-tab-content">
-            <div class="cpmr-table-wrapper" style="border-radius: 8px; overflow: hidden; background: #ffffff;">
-                <table class="cpmr-table">
+        <div class="hdo-table-card">
+            <div class="hdo-table-responsive">
+                <table class="hdo-tech-table">
                     <thead>
                         <tr>
                             <th style="width: 20%;">Type</th>
@@ -140,39 +137,39 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="cpmr-table-type-cell">Polymer</td>
-                            <td><div class="hpdv-readonly-box">Polyester (PET)</div></td>
-                            <td><div class="hpdv-readonly-box">Nylon (PA6)</div></td>
+                            <td class="hdo-tech-type-cell">Polymer</td>
+                            <td><input class="hdo-tech-input" value="Polyester (PET)" readonly /></td>
+                            <td><input class="hdo-tech-input" value="Nylon (PA6)" readonly /></td>
                         </tr>
                         <tr>
-                            <td class="cpmr-table-type-cell">POY Denier</td>
-                            <td><div class="hpdv-readonly-box">150D</div></td>
-                            <td><div class="hpdv-readonly-box">200D</div></td>
+                            <td class="hdo-tech-type-cell">POY Denier</td>
+                            <td><input class="hdo-tech-input" value="150D" readonly /></td>
+                            <td><input class="hdo-tech-input" value="200D" readonly /></td>
                         </tr>
                         <tr>
-                            <td class="cpmr-table-type-cell">Final Denier</td>
-                            <td><div class="hpdv-readonly-box">150D</div></td>
-                            <td><div class="hpdv-readonly-box">200D</div></td>
+                            <td class="hdo-tech-type-cell">Final Denier</td>
+                            <td><input class="hdo-tech-input" value="75D" readonly /></td>
+                            <td><input class="hdo-tech-input" value="100D" readonly /></td>
                         </tr>
                         <tr>
-                            <td class="cpmr-table-type-cell">Filaments</td>
-                            <td><div class="hpdv-readonly-box">75D</div></td>
-                            <td><div class="hpdv-readonly-box">100D</div></td>
+                            <td class="hdo-tech-type-cell">Filaments</td>
+                            <td><input class="hdo-tech-input" value="75D" readonly /></td>
+                            <td><input class="hdo-tech-input" value="100D" readonly /></td>
                         </tr>
                         <tr>
-                            <td class="cpmr-table-type-cell">Cross-Sec.</td>
-                            <td><div class="hpdv-readonly-box">Round</div></td>
-                            <td><div class="hpdv-readonly-box">Trilobal</div></td>
+                            <td class="hdo-tech-type-cell">Cross-Sec.</td>
+                            <td><input class="hdo-tech-input" value="Round" readonly /></td>
+                            <td><input class="hdo-tech-input" value="Trilobal" readonly /></td>
                         </tr>
                         <tr>
-                            <td class="cpmr-table-type-cell">Yarn Structue</td>
-                            <td><div class="hpdv-readonly-box">DTY</div></td>
-                            <td><div class="hpdv-readonly-box">FDY</div></td>
+                            <td class="hdo-tech-type-cell">Yarn Structure</td>
+                            <td><input class="hdo-tech-input" value="DTY" readonly /></td>
+                            <td><input class="hdo-tech-input" value="FDY" readonly /></td>
                         </tr>
                         <tr>
-                            <td class="cpmr-table-type-cell">Sample requirement</td>
-                            <td><div class="hpdv-readonly-box">500 kg</div></td>
-                            <td><div class="hpdv-readonly-box">250 kg</div></td>
+                            <td class="hdo-tech-type-cell">Sample Requirement</td>
+                            <td><input class="hdo-tech-input" value="500 kg" readonly /></td>
+                            <td><input class="hdo-tech-input" value="250 kg" readonly /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -181,18 +178,20 @@
             <!-- Action Buttons Footer -->
             <div class="hdo-tech-actions-bar">
                 <div class="hdo-tech-actions-left">
-                    <button type="button" class="hdo-btn-approved">Approved by Customer</button>
-                    <button type="button" class="hdo-btn-reject">Reject By Customer</button>
+                    <button type="button" class="hdo-btn-approved" @onclick="OpenSuccessDialog">Approved by Customer</button>
+                    <button type="button" class="hdo-btn-reject" @onclick="OpenCommentDialog">Reject By Customer</button>
                 </div>
                 <div class="hdo-tech-actions-right">
-                    <button type="button" class="hdo-btn-email">Email to Customer</button>
+                    <button type="button" class="hdo-btn-email" @onclick="OpenSuccessDialog">Email to Customer</button>
                 </div>
             </div>
         </div>
     }
 
-    <!-- PMR Details Dialog -->
+    <!-- Dialogs -->
     <HajipurPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@PmrNo" />
+    <HajipurAddCommentDialog @bind-IsOpen="showCommentDialog" OnSubmitComment="HandleCommentSubmitted" />
+    <HajipurPmrSubmittedSuccessDialog @bind-IsOpen="showSuccessDialog" OnOk="HandleSuccessOk" />
 </div>
 
 @code {
@@ -201,6 +200,8 @@
 
     private int activeTab = 0;
     private bool showDetailsDialog = false;
+    private bool showCommentDialog = false;
+    private bool showSuccessDialog = false;
 
     private void SelectTab(int index)
     {
@@ -210,6 +211,26 @@
     private void OpenDetailsDialog()
     {
         showDetailsDialog = true;
+    }
+
+    private void OpenCommentDialog()
+    {
+        showCommentDialog = true;
+    }
+
+    private void OpenSuccessDialog()
+    {
+        showSuccessDialog = true;
+    }
+
+    private void HandleCommentSubmitted(string comment)
+    {
+        // Handle comment submission
+    }
+
+    private void HandleSuccessOk()
+    {
+        Navigation.NavigateTo("/hajipur/pmr-management");
     }
 
     private async Task HandleBack()
@@ -224,4 +245,3 @@
         }
     }
 }
-

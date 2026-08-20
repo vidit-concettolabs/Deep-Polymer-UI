@@ -13,7 +13,7 @@
     min-height: calc(100vh - 78px);
 }
 
-/* Card */
+/* Top Summary Card */
 .hdo-card {
     background: #FFFFFF;
     border: 1px solid #E5E5EE;
@@ -22,14 +22,14 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-.hdo-card-header {
+.hdo-card-title-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
 }
 
-.hdo-title-group {
+.hdo-title-wrap {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -107,19 +107,20 @@
     word-break: break-all;
 }
 
-/* Tabs Navigation Bar */
+/* Subtabs Navigation Bar */
 .hdo-tabs-bar {
     display: flex;
     align-items: center;
     gap: 24px;
-    margin-top: 6px;
+    margin-top: 4px;
     border-bottom: 1px solid #E5E7EB;
     padding-left: 4px;
 }
 
-.hdo-tab {
+.hdo-tab-btn {
     background: transparent;
     border: none;
+    outline: none;
     padding: 10px 0;
     font-size: 13.5px;
     font-weight: 500;
@@ -130,23 +131,17 @@
     font-family: inherit;
 }
 
-.hdo-tab:hover {
+.hdo-tab-btn:hover {
     color: #111827;
 }
 
-.hdo-tab.active {
-    color: var(--primary-color, #0405ab);
+.hdo-tab-btn.active {
+    color: #0405AB;
     font-weight: 600;
-    border-bottom: 2px solid var(--primary-color, #0405ab);
+    border-bottom: 2px solid #0405AB;
 }
 
-.hdo-tab-content {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* Unified Card Box for Table + Pagination */
+/* Unified Card Container for Tables */
 .hdo-table-card {
     background: #FFFFFF;
     border: 1px solid #E5E5EE;
@@ -155,12 +150,13 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-.hdo-table-wrapper {
+.hdo-table-responsive {
     width: 100%;
     overflow-x: auto;
     background: #FFFFFF;
 }
 
+/* Product Details Table (Tab 0) */
 .hdo-table {
     width: 100%;
     border-collapse: collapse;
@@ -194,13 +190,13 @@
     background-color: #F9FAFB;
 }
 
-.hdo-product-tag {
+.hdo-product-pill {
     display: inline-block;
     background-color: #F0F2FF;
     color: #1E1B4B;
     font-weight: 500;
     font-size: 12.5px;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: 6px;
 }
 
@@ -213,16 +209,36 @@
     background-color: #FFFFFF;
 }
 
-
 .hdo-pagination-info {
     font-size: 12.5px;
     color: #808080;
 }
 
-.hdo-pagination-nav {
+.hdo-pagination-controls {
     display: flex;
     align-items: center;
     gap: 6px;
+}
+
+.hdo-page-nav-btn {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E5E7EB;
+    background-color: #FFFFFF;
+    color: #374151;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hdo-page-nav-btn.disabled {
+    color: #D1D5DB;
+    cursor: not-allowed;
 }
 
 .hdo-page-btn {
@@ -242,25 +258,83 @@
     padding: 0;
 }
 
-.hdo-page-btn:hover:not(.active) {
-    background-color: #F9FAFB;
-    border-color: #D1D5DB;
-}
-
 .hdo-page-btn.active {
-    background-color: var(--primary-color, #0405ab);
-    border-color: var(--primary-color, #0405ab);
+    background-color: #0405AB;
+    border-color: #0405AB;
     color: #FFFFFF;
 }
 
-/* Technical Development Details Action Bar */
+/* ================================================================
+   TECHNICAL DEVELOPMENT DETAILS TABLE (Tab 1)
+   ================================================================ */
+.hdo-tech-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    padding: 16px 20px;
+    box-sizing: border-box;
+}
+
+.hdo-tech-table th {
+    background-color: #EEF0FD;
+    color: #151515;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: left;
+    padding: 12px 16px;
+    border: none;
+    white-space: nowrap;
+}
+
+.hdo-tech-table th:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.hdo-tech-table th:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.hdo-tech-table td {
+    padding: 4px 10px;
+    vertical-align: middle;
+    border: none;
+}
+
+.hdo-tech-type-cell {
+    font-size: 13px;
+    font-weight: 500;
+    color: #151515;
+    white-space: nowrap;
+}
+
+.hdo-tech-input {
+    width: 100%;
+    height: 34px;
+    padding: 0 12px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #808080;
+    background-color: #F3F4F6;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* Action Buttons Footer Bar for Tab 1 */
 .hdo-tech-actions-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-top: 16px;
+    padding: 16px 20px;
+    background-color: #FFFFFF;
+    border-top: 1px solid #F0F1F5;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .hdo-tech-actions-left {
@@ -276,8 +350,8 @@
 
 .hdo-btn-approved {
     background-color: #FFFFFF;
-    color: #111827;
-    border: 1px solid #D1D5DB;
+    color: #151515;
+    border: 1px solid #E5E5EE;
     border-radius: 6px;
     padding: 10px 22px;
     font-size: 13px;
@@ -288,12 +362,12 @@
 }
 
 .hdo-btn-approved:hover {
-    background-color: #F9FAFB;
-    border-color: #9CA3AF;
+    background-color: #F8F9FA;
+    border-color: #CCCCCC;
 }
 
 .hdo-btn-reject {
-    background-color: #111827;
+    background-color: #0E131F;
     color: #FFFFFF;
     border: none;
     border-radius: 6px;
@@ -306,7 +380,7 @@
 }
 
 .hdo-btn-reject:hover {
-    background-color: #2D2D2D;
+    background-color: #1A2238;
 }
 
 .hdo-btn-email {
@@ -323,6 +397,5 @@
 }
 
 .hdo-btn-email:hover {
-    background-color: #03048a;
+    background-color: #03048A;
 }
-
