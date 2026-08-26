@@ -96,7 +96,7 @@
         // Navigate branch-wise (Hajipur vs Santej)
         string targetRoute = ColorConstant.BranchFlag == 2
             ? "/hajipur/pmr-management"
-            : "/santej/pmr-management";
+            : (ColorConstant.IsLabUser ? "/santej/lab-user/pmr-management" : "/santej/pmr-management");
             
         Navigation.NavigateTo(targetRoute);
     }

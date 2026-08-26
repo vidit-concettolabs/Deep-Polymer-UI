@@ -370,6 +370,14 @@
     private bool showCreatePmrDialog = false;
     private bool showPmrDetailsDialog = false;
 
+    protected override void OnInitialized()
+    {
+        if (ColorConstant.IsLabUser)
+        {
+            Navigation.NavigateTo("/santej/lab-user/pmr-management");
+        }
+    }
+
     private void OpenPmrDetailsDialog(string pmrNo = "PMR-001")
     {
         if (ColorConstant.IsAdmin)

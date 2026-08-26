@@ -1,0 +1,335 @@
+@page "/santej/lab-user/pmr-management"
+@rendermode InteractiveServer
+
+@using DeepPolymer.Constants
+@using Deep_Polymer_UI.Components.Pages.santej.AlertDialogs
+@inject NavigationManager Navigation
+
+<PageTitle>PMR Request List - Lab User</PageTitle>
+
+<div class="lab-pmr-container">
+
+    <!-- Page Header -->
+    <div class="lab-pmr-header">
+        <div>
+            <h1 class="lab-pmr-title">PMR Request List</h1>
+            <p class="lab-pmr-desc">View and process submitted product matching requests efficiently.</p>
+        </div>
+        <div class="lab-header-badges">
+            <span class="lab-stat-badge-revised">Revised by Admin <strong>01</strong></span>
+            <span class="lab-stat-badge-total">Total PMRs <strong>16</strong></span>
+        </div>
+    </div>
+
+    <!-- Filter Section (Static Controls) -->
+    <div class="lab-pmr-filter-row">
+        <div class="lab-filter-item">
+            <select class="lab-filter-select">
+                <option selected disabled>Search PMR</option>
+            </select>
+            <span class="lab-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="lab-filter-item">
+            <select class="lab-filter-select">
+                <option selected disabled>Search Customer Name</option>
+            </select>
+            <span class="lab-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="lab-filter-item">
+            <select class="lab-filter-select">
+                <option selected disabled>Search Product Name</option>
+            </select>
+            <span class="lab-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="lab-filter-item">
+            <select class="lab-filter-select">
+                <option selected disabled>Search Colour Name</option>
+            </select>
+            <span class="lab-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="lab-filter-item">
+            <select class="lab-filter-select">
+                <option selected disabled>Status</option>
+            </select>
+            <span class="lab-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+    </div>
+
+    <!-- PMR Table Section (Static HTML Rows) -->
+    <div class="lab-pmr-table-wrapper">
+        <table class="lab-pmr-table">
+            <thead>
+                <tr>
+                    <th>PMR No.</th>
+                    <th>Customer Name</th>
+                    <th>Product Name</th>
+                    <th>Colour Name</th>
+                    <th>Submitted Date</th>
+                    <th class="center-col">Request Status</th>
+                    <th class="center-col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 1 -->
+                <tr>
+                    <td>PMR-001</td>
+                    <td>Ramesh Patel</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-001")'>HD Polymer Mix</span></td>
+                    <td>Ocean Blue - A</td>
+                    <td>15-05-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-material-added">Material Added</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-001" @onclick='() => OpenDetailsDialog("PMR-001")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr>
+                    <td>PMR-002</td>
+                    <td>Karan Desai</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-002")'>Flexi Compound</span></td>
+                    <td>Dark Grey</td>
+                    <td>14-05-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-revised">Revised</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-002" @onclick='() => OpenDetailsDialog("PMR-002")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr>
+                    <td>PMR-003</td>
+                    <td>Priya Mehta</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-003")'>Eco Resin Blend</span></td>
+                    <td>Leaf Green</td>
+                    <td>14-05-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-costing-done">Costing Done</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-003" @onclick='() => OpenDetailsDialog("PMR-003")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr>
+                    <td>PMR-004</td>
+                    <td>Anjali Singh</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-004")'>Ultra Strong Vinyl</span></td>
+                    <td>Crimson Red</td>
+                    <td>13-06-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-negotiating">Negotiating</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-004" @onclick='() => OpenDetailsDialog("PMR-004")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr>
+                    <td>PMR-005</td>
+                    <td>Suresh Kumar</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-005")'>Weatherproof Solution</span></td>
+                    <td>Sky Blue</td>
+                    <td>12-06-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-material-added">Material Added</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-005" @onclick='() => OpenDetailsDialog("PMR-005")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 6 -->
+                <tr>
+                    <td>PMR-006</td>
+                    <td>Neha Sharma</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-006")'>Industrial Adhesive</span></td>
+                    <td>Charcoal Black</td>
+                    <td>11-06-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-in-production">In Production</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-006" @onclick='() => OpenDetailsDialog("PMR-006")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 7 -->
+                <tr>
+                    <td>PMR-007</td>
+                    <td>Vikram Rao</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-007")'>Thermal Insulation Foil</span></td>
+                    <td>Sunset Orange</td>
+                    <td>10-06-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-material-added">Material Added</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-007" @onclick='() => OpenDetailsDialog("PMR-007")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 8 -->
+                <tr>
+                    <td>PMR-008</td>
+                    <td>Deepak Joshi</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-008")'>High-Density Foam</span></td>
+                    <td>Emerald Green</td>
+                    <td>09-06-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-costing-done">Costing Done</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-008" @onclick='() => OpenDetailsDialog("PMR-008")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 9 -->
+                <tr>
+                    <td>PMR-009</td>
+                    <td>Sita Rani</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-009")'>Reinforced Plastic</span></td>
+                    <td>Ivory White</td>
+                    <td>08-06-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-price-approved">Price Approved</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-009" @onclick='() => OpenDetailsDialog("PMR-009")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 10 -->
+                <tr>
+                    <td>PMR-010</td>
+                    <td>Rajiv Nair</td>
+                    <td><span class="lab-product-link" @onclick='() => OpenDetailPage("PMR-010")'>Premium Composite</span></td>
+                    <td>Violet Purple</td>
+                    <td>07-06-2026</td>
+                    <td class="center-col">
+                        <span class="lab-status-badge lab-status-completed">Completed</span>
+                    </td>
+                    <td class="center-col">
+                        <button class="lab-action-btn" type="button" title="View PMR-010" @onclick='() => OpenDetailsDialog("PMR-010")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table Footer / Pagination -->
+        <div class="lab-pagination-row">
+            <div class="lab-pagination-info">Showing 1-10 of 12 list</div>
+            <div class="lab-pagination-nav">
+                <button type="button" class="lab-pagination-btn disabled">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button type="button" class="lab-pagination-btn active">1</button>
+                <button type="button" class="lab-pagination-btn">2</button>
+                <button type="button" class="lab-pagination-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<SantejPmrDetailsDialog @bind-IsOpen="showDetailsDialog" PmrNo="@selectedPmrNumber" />
+
+@code {
+    private bool showDetailsDialog = false;
+    private string selectedPmrNumber = "";
+
+    private void OpenDetailsDialog(string pmrNo)
+    {
+        Navigation.NavigateTo($"/santej/lab-user/pmr-detail/{pmrNo}");
+    }
+
+    private void OpenDetailPage(string pmrNo)
+    {
+        Navigation.NavigateTo($"/santej/lab-user/pmr-detail/{pmrNo}");
+    }
+}

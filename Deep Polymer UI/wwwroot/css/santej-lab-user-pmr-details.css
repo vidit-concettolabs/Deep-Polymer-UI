@@ -1,0 +1,478 @@
+/* Santej Lab User PMR Details Page Stylesheet */
+
+.lab-detail-page {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1A1A1A;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+/* Header */
+.lab-detail-header-block {
+    margin-bottom: 4px;
+}
+
+.lab-detail-header-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.lab-detail-header-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.lab-detail-header-subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    color: #9CA3AF;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Standard PMR Management Status Badges (Exact 105px x 26px, Vertically Centered) */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 12px;
+    border-radius: 12px;
+    font-size: 10.5px;
+    font-weight: 500;
+    min-width: 105px;
+    width: 105px;
+    height: 26px;
+    box-sizing: border-box;
+    line-height: 24px;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.status-submitted {
+    background-color: #FEF3E7;
+    border: 1px solid #FABB6B;
+    color: #F59E0B;
+}
+
+.status-lab-revised {
+    background-color: #D3E2FF;
+    border: 1px solid #3776EA;
+    color: #3776EA;
+}
+
+/* 2-Column Grid Layout */
+.lab-detail-main-grid {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .lab-detail-main-grid {
+        flex-direction: column;
+    }
+    .lab-left-info-card {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+}
+
+/* Left PMR Information Card */
+.lab-left-info-card {
+    flex: 0 0 240px;
+    width: 240px;
+    background-color: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.lab-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.lab-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.lab-info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.lab-info-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.lab-info-value {
+    font-size: 12.5px;
+    font-weight: 400;
+    color: #808080;
+    line-height: 1.4;
+}
+
+/* Right Main Content Card */
+.lab-right-content-card {
+    flex: 1;
+    background-color: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    padding: 20px 24px;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.lab-card-top-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.lab-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 2px 0;
+}
+
+.lab-card-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lab-toggle-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lab-toggle-label {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #333333;
+}
+
+/* Common Project Toggle Switch */
+.user-toggle {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.user-toggle input { opacity: 0; width: 0; height: 0; }
+
+.user-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background-color: #d1d5db;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.user-toggle input:checked + .user-toggle-slider { background-color: #22c55e; }
+
+.user-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 3px;
+    top: 3px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.user-toggle input:checked + .user-toggle-slider::before { transform: translateX(16px); }
+
+.lab-btn-add-material {
+    background-color: #FFFFFF;
+    border: 1px solid #D9E0E7;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1A1A1A;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.lab-btn-add-material:hover {
+    background-color: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+/* PMR Select & Note Inputs Row */
+.lab-pmr-inputs-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.lab-pmr-input-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.lab-pmr-input-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1A1A1A;
+}
+
+.lab-required-star {
+    color: #FF0000;
+}
+
+.lab-pmr-text-input {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 12.5px;
+    color: #333333;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.lab-pmr-text-input::placeholder {
+    color: #9CA3AF;
+}
+
+.lab-pmr-text-input:focus {
+    outline: none;
+    border-color: #CBD5E1;
+}
+
+/* Table Section with Header Background and Full Width Row Dividers */
+.lab-table-container {
+    background-color: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    padding: 0;
+}
+
+.lab-weights-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lab-weights-table thead {
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.lab-weights-table th {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #64748B;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.lab-weights-table td {
+    padding: 10px 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.lab-weights-table tr:last-child td {
+    border-bottom: none;
+}
+
+.lab-select-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.lab-material-select {
+    width: 100%;
+    height: 38px;
+    padding: 0 28px 0 12px;
+    font-size: 12.5px;
+    color: #333333;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.lab-select-chevron {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #94A3B8;
+    display: flex;
+    align-items: center;
+}
+
+.lab-select-chevron svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+.lab-input-old-weight {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 12.5px;
+    color: #555555;
+    background-color: #FAFAFA;
+    border: 1px solid #E5E5EE;
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: not-allowed;
+}
+
+.lab-input-formula-weight {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 12.5px;
+    color: #333333;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.lab-input-formula-weight:focus {
+    outline: none;
+    border-color: #CBD5E1;
+}
+
+.lab-btn-trash {
+    background: none;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    padding: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s ease;
+}
+
+.lab-btn-trash:hover {
+    color: #EF4444;
+}
+
+.lab-btn-trash svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* Bottom Actions & Warning Row with Full Width Top Divider Line */
+.lab-card-bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid #EAEAEA;
+    padding-top: 16px;
+    margin-top: 16px;
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.lab-warning-box {
+    background-color: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 11.5px;
+    color: #D97706;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.lab-warning-info-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.lab-action-buttons-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lab-btn-cancel-action {
+    background-color: #FFFFFF;
+    border: 1px solid #D9E0E7;
+    border-radius: 6px;
+    padding: 8px 18px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #1A1A1A;
+    cursor: pointer;
+    height: 36px;
+    transition: all 0.15s ease;
+}
+
+.lab-btn-cancel-action:hover {
+    background-color: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.lab-btn-submit-action {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    height: 36px;
+    transition: background-color 0.15s ease;
+}
+
+.lab-btn-submit-action:hover {
+    background-color: #CC0000;
+}

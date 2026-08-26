@@ -1,0 +1,246 @@
+@page "/santej/lab-user/pmr-detail/{PmrNo}"
+@page "/santej/lab-user/pmr-detail"
+@rendermode InteractiveServer
+
+@using Microsoft.AspNetCore.Components.Sections
+@inject NavigationManager Navigation
+
+<!-- Inject Back button into main layout header slot -->
+<SectionContent SectionName="header-back-slot">
+    <a class="header-back-btn" href="santej/lab-user/pmr-management">
+        <svg viewBox="0 0 24 24">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Back
+    </a>
+</SectionContent>
+
+<PageTitle>PMR Details - Lab User</PageTitle>
+
+<div class="lab-detail-page">
+    <!-- Header Block -->
+    <div class="lab-detail-header-block">
+        <div class="lab-detail-header-title-row">
+            <h1 class="lab-detail-header-title">Raw Material Weight Entry</h1>
+            <span class="status-badge status-submitted">Submitted</span>
+        </div>
+        <p class="lab-detail-header-subtitle">Record and manage raw material weight details accurately for production and inventory tracking.</p>
+    </div>
+
+    <!-- 2-Column Main Grid -->
+    <div class="lab-detail-main-grid">
+        <!-- LEFT COLUMN: PMR Information Card -->
+        <div class="lab-left-info-card">
+            <div class="lab-info-list">
+                <div class="lab-info-item">
+                    <span class="lab-info-label">PMR Number</span>
+                    <span class="lab-info-value">@(string.IsNullOrEmpty(PmrNo) ? "PMR-004" : PmrNo)</span>
+                </div>
+                <div class="lab-info-item">
+                    <span class="lab-info-label">Customer Name</span>
+                    <span class="lab-info-value">Aarav Chemicals</span>
+                </div>
+                <div class="lab-info-item">
+                    <span class="lab-info-label">Product Name</span>
+                    <span class="lab-info-value">Eco Resin Blend</span>
+                </div>
+                <div class="lab-info-item">
+                    <span class="lab-info-label">Colour Name</span>
+                    <span class="lab-info-value">Leaf Green - A</span>
+                </div>
+                <div class="lab-info-item">
+                    <span class="lab-info-label">Application</span>
+                    <span class="lab-info-value">Designed for electrical component manufacturing with reliable insulation, strength, and heat resistance.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Main Content Card -->
+        <div class="lab-right-content-card">
+            <!-- Card Top Header Row -->
+            <div class="lab-card-top-row">
+                <div>
+                    <h2 class="lab-card-title">Raw Material Weights</h2>
+                    <p class="lab-detail-header-subtitle">Add and manage raw material weights for the selected PMR.</p>
+                </div>
+
+                <div class="lab-card-header-actions">
+                    <div class="lab-toggle-group">
+                        <label class="user-toggle">
+                            <input type="checkbox" checked />
+                            <span class="user-toggle-slider"></span>
+                        </label>
+                        <span class="lab-toggle-label">Recommend PMR Number</span>
+                    </div>
+                    <button type="button" class="lab-btn-add-material">Add Material</button>
+                </div>
+            </div>
+
+            <!-- PMR Selection & Note Inputs Row -->
+            <div class="lab-pmr-inputs-row">
+                <div class="lab-pmr-input-col" style="flex: 0 0 32%;">
+                    <label class="lab-pmr-input-label">Select PMR Number <span class="lab-required-star">*</span></label>
+                    <div class="lab-select-wrap">
+                        <select class="lab-material-select">
+                            <option value="" disabled selected>Select PMR Number</option>
+                            <option value="PMR-001">PMR-001</option>
+                            <option value="PMR-002">PMR-002</option>
+                            <option value="PMR-003">PMR-003</option>
+                            <option value="PMR-004">PMR-004</option>
+                        </select>
+                        <span class="lab-select-chevron">
+                            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="lab-pmr-input-col" style="flex: 1;">
+                    <label class="lab-pmr-input-label">Note <span class="lab-required-star">*</span></label>
+                    <input type="text" class="lab-pmr-text-input" placeholder="Note" />
+                </div>
+            </div>
+
+            <!-- Table Section inside Bordered Container -->
+            <div class="lab-table-container">
+                <table class="lab-weights-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 46%;">Raw Material</th>
+                            <th style="width: 24%; text-align: center;">Old Weight(kgs)</th>
+                            <th style="width: 24%; text-align: center;">Formula Weight(kgs)</th>
+                            <th style="width: 6%; text-align: center;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Row 1 -->
+                        <tr>
+                            <td>
+                                <div class="lab-select-wrap">
+                                    <select class="lab-material-select">
+                                        <option selected>Titanium Dioxide</option>
+                                    </select>
+                                    <span class="lab-select-chevron">
+                                        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                </div>
+                            </td>
+                            <td><input type="text" class="lab-input-old-weight" value="1.25" readonly /></td>
+                            <td><input type="text" class="lab-input-formula-weight" value="1.25" /></td>
+                            <td style="text-align: center;">
+                                <button type="button" class="lab-btn-trash" title="Delete Row">
+                                    <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr>
+                            <td>
+                                <div class="lab-select-wrap">
+                                    <select class="lab-material-select">
+                                        <option selected>Titanium Dioxide</option>
+                                    </select>
+                                    <span class="lab-select-chevron">
+                                        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                </div>
+                            </td>
+                            <td><input type="text" class="lab-input-old-weight" value="3.50" readonly /></td>
+                            <td><input type="text" class="lab-input-formula-weight" value="3.50" /></td>
+                            <td style="text-align: center;">
+                                <button type="button" class="lab-btn-trash" title="Delete Row">
+                                    <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr>
+                            <td>
+                                <div class="lab-select-wrap">
+                                    <select class="lab-material-select">
+                                        <option selected>Titanium Dioxide</option>
+                                    </select>
+                                    <span class="lab-select-chevron">
+                                        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                </div>
+                            </td>
+                            <td><input type="text" class="lab-input-old-weight" value="2.25" readonly /></td>
+                            <td><input type="text" class="lab-input-formula-weight" value="2.25" /></td>
+                            <td style="text-align: center;">
+                                <button type="button" class="lab-btn-trash" title="Delete Row">
+                                    <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 4 -->
+                        <tr>
+                            <td>
+                                <div class="lab-select-wrap">
+                                    <select class="lab-material-select">
+                                        <option selected>Titanium Dioxide</option>
+                                    </select>
+                                    <span class="lab-select-chevron">
+                                        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                </div>
+                            </td>
+                            <td><input type="text" class="lab-input-old-weight" value="0.55" readonly /></td>
+                            <td><input type="text" class="lab-input-formula-weight" value="0.55" /></td>
+                            <td style="text-align: center;">
+                                <button type="button" class="lab-btn-trash" title="Delete Row">
+                                    <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 5 -->
+                        <tr>
+                            <td>
+                                <div class="lab-select-wrap">
+                                    <select class="lab-material-select">
+                                        <option selected>Titanium Dioxide</option>
+                                    </select>
+                                    <span class="lab-select-chevron">
+                                        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                </div>
+                            </td>
+                            <td><input type="text" class="lab-input-old-weight" value="0.95" readonly /></td>
+                            <td><input type="text" class="lab-input-formula-weight" value="0.95" /></td>
+                            <td style="text-align: center;">
+                                <button type="button" class="lab-btn-trash" title="Delete Row">
+                                    <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Card Bottom Row (Warning Box + Action Buttons) -->
+            <div class="lab-card-bottom-row">
+                <div class="lab-warning-box">
+                    <img src="assets/image/information_icon_santej.svg" alt="Info" class="lab-warning-info-icon" />
+                    <span>Once submitted, you will not be able to view this data history. Please ensure all weights are accurate before submitting.</span>
+                </div>
+
+                <div class="lab-action-buttons-group">
+                    <button type="button" class="lab-btn-cancel-action" @onclick="GoBack">Cancel</button>
+                    <button type="button" class="lab-btn-submit-action" @onclick="GoBack">Submit to Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string? PmrNo { get; set; }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/santej/lab-user/pmr-management");
+    }
+}
