@@ -3,16 +3,17 @@ namespace DeepPolymer.Constants;
 public static class ColorConstant
 {
     // 1 for Santej, 2 for Hajipur
-    public const int BranchFlag = 1;
+    public const int BranchFlag = 2;
 
-    // 1 for Admin, 2 for PMR Generator, 3 for Lab User, 4 for Production User
-    public const int RoleFlag = 3;
+    // 1 for Admin, 2 for PMR Generator, 3 for Lab User, 4 for Production User (Santej), 5 for Production Head (Hajipur)
+    public const int RoleFlag = 5;
 
     // Helper properties
     public static bool IsAdmin => RoleFlag == 1;
     public static bool IsPmrGenerator => RoleFlag == 2;
     public static bool IsLabUser => RoleFlag == 3;
     public static bool IsProductionUser => RoleFlag == 4;
+    public static bool IsProductionHead => RoleFlag == 5;
 
     // Santej Colors
     public const string SantejPrimaryColor = "#ff0000";

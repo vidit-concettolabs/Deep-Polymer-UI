@@ -23,6 +23,17 @@
         {
             <!-- Lab User & Production User Roles: Only PMR Management is visible -->
         }
+        else if (ColorConstant.IsProductionHead)
+        {
+            <!-- Production Head Role (Hajipur): Only PMR Management and Master's visible -->
+            <a class="menu-item-link @(IsActive("masters") ? "nav-active" : "")"
+               href="masters">
+                <span class="menu-icon">
+                    <img src="assets/image/master.svg" class="nav-icon" alt="Master's" />
+                </span>
+                <span class="menu-text">Master's</span>
+            </a>
+        }
         else if (ColorConstant.IsPmrGenerator)
         {
             @if (ColorConstant.BranchFlag != 2)
@@ -130,10 +141,12 @@
 @code {
     private bool reportsOpen = false;
 
-    private string PmrHref => ColorConstant.BranchFlag == 2
-        ? "hajipur/pmr-management"
-        : (ColorConstant.IsLabUser ? "santej/lab-user/pmr-management"
-           : (ColorConstant.IsProductionUser ? "santej/production-user/pmr-management" : "santej/pmr-management"));
+    private string PmrHref => ColorConstant.IsProductionHead
+        ? "hajipur/production-head/pmr-management"
+        : (ColorConstant.BranchFlag == 2
+           ? "hajipur/pmr-management"
+           : (ColorConstant.IsLabUser ? "santej/lab-user/pmr-management"
+              : (ColorConstant.IsProductionUser ? "santej/production-user/pmr-management" : "santej/pmr-management")));
 
     private bool IsActive(string href)
     {

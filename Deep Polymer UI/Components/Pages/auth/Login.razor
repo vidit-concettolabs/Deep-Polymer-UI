@@ -94,10 +94,12 @@
     private void HandleLogin()
     {
         // Navigate branch-wise (Hajipur vs Santej)
-        string targetRoute = ColorConstant.BranchFlag == 2
-            ? "/hajipur/pmr-management"
-            : (ColorConstant.IsLabUser ? "/santej/lab-user/pmr-management"
-               : (ColorConstant.IsProductionUser ? "/santej/production-user/pmr-management" : "/santej/pmr-management"));
+        string targetRoute = ColorConstant.IsProductionHead
+            ? "/hajipur/production-head/pmr-management"
+            : (ColorConstant.BranchFlag == 2
+               ? "/hajipur/pmr-management"
+               : (ColorConstant.IsLabUser ? "/santej/lab-user/pmr-management"
+                  : (ColorConstant.IsProductionUser ? "/santej/production-user/pmr-management" : "/santej/pmr-management")));
             
         Navigation.NavigateTo(targetRoute);
     }

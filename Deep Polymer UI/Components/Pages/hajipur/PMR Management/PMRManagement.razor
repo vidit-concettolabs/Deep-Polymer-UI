@@ -713,6 +713,14 @@
         }
     }
 
+    protected override void OnInitialized()
+    {
+        if (ColorConstant.IsProductionHead)
+        {
+            Navigation.NavigateTo("/hajipur/production-head/pmr-management");
+        }
+    }
+
     private void OpenCreatePmrPage()
     {
         Navigation.NavigateTo("/hajipur/create-pmr");

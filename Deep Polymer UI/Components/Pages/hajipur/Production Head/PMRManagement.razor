@@ -1,0 +1,407 @@
+@page "/hajipur/production-head/pmr-management"
+@rendermode InteractiveServer
+
+@using Deep_Polymer_UI.Components.Pages.hajipur.PMR_Management
+@inject NavigationManager Navigation
+
+<PageTitle>PMR Management - Hajipur</PageTitle>
+
+<div class="hajipur-prod-container">
+    <!-- Page Header -->
+    <div class="hajipur-prod-header">
+        <h1 class="hajipur-prod-title">PMR Management</h1>
+        <p class="hajipur-prod-desc">Manage, review, and process all PMR requests from a centralized admin panel.</p>
+    </div>
+
+    <!-- Filter Dropdowns Row (9 Dropdowns) -->
+    <div class="hajipur-prod-filter-row">
+        <!-- 1. PMR -->
+        <div class="hajipur-prod-select-wrapper">
+            <select class="hajipur-prod-filter-select">
+                <option value="" disabled selected>PMR</option>
+                <option value="PMR-001">PMR-001</option>
+                <option value="PMR-002">PMR-002</option>
+            </select>
+            <span class="hajipur-prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 2. Customer Name -->
+        <div class="hajipur-prod-select-wrapper">
+            <select class="hajipur-prod-filter-select">
+                <option value="" disabled selected>Customer Name</option>
+                <option value="Ramesh Patel">Ramesh Patel</option>
+                <option value="Anjali Verma">Anjali Verma</option>
+            </select>
+            <span class="hajipur-prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 3. Colour Name -->
+        <div class="hajipur-prod-select-wrapper">
+            <select class="hajipur-prod-filter-select">
+                <option value="" disabled selected>Colour Name</option>
+                <option value="Ocean Blue">Ocean Blue</option>
+                <option value="Sunset Orange">Sunset Orange</option>
+            </select>
+            <span class="hajipur-prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 4. Colour Code -->
+        <div class="hajipur-prod-select-wrapper">
+            <select class="hajipur-prod-filter-select">
+                <option value="" disabled selected>Colour Code</option>
+                <option value="NB-405">NB-405</option>
+                <option value="NB-406">NB-406</option>
+            </select>
+            <span class="hajipur-prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 5. Product Name -->
+        <div class="hajipur-prod-select-wrapper">
+            <select class="hajipur-prod-filter-select">
+                <option value="" disabled selected>Product Name</option>
+                <option value="PET BKY 20-1166">PET BKY 20-1166</option>
+                <option value="PET BKY 20-1167">PET BKY 20-1167</option>
+            </select>
+            <span class="hajipur-prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 6. Product Code -->
+        <div class="hajipur-prod-select-wrapper">
+            <select class="hajipur-prod-filter-select">
+                <option value="" disabled selected>Product Code</option>
+                <option value="BE20-1166">BE20-1166</option>
+                <option value="BE20-1187">BE20-1187</option>
+            </select>
+            <span class="hajipur-prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 7. Sample Type -->
+        <div class="hajipur-prod-select-wrapper">
+            <select class="hajipur-prod-filter-select">
+                <option value="" disabled selected>Sample Type</option>
+                <option value="Fabric">Fabric</option>
+                <option value="Yarn">Yarn</option>
+            </select>
+            <span class="hajipur-prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 8. LDR % -->
+        <div class="hajipur-prod-select-wrapper">
+            <select class="hajipur-prod-filter-select">
+                <option value="" disabled selected>LDR %</option>
+                <option value="3%">3%</option>
+                <option value="5%">5%</option>
+            </select>
+            <span class="hajipur-prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 9. Status -->
+        <div class="hajipur-prod-select-wrapper">
+            <select class="hajipur-prod-filter-select">
+                <option value="" disabled selected>Status</option>
+                <option value="Costing Done">Costing Done</option>
+                <option value="Negotiating">Negotiating</option>
+                <option value="Price Approved">Price Approved</option>
+            </select>
+            <span class="hajipur-prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="hajipur-prod-table-card">
+        <table class="hajipur-prod-table">
+            <thead>
+                <tr>
+                    <th style="width: 8%;">PMR No.</th>
+                    <th style="width: 13%;">Customer Name</th>
+                    <th style="width: 11%;">Colour Name</th>
+                    <th style="width: 10%;">Colour Code</th>
+                    <th style="width: 14%;">Product Name</th>
+                    <th style="width: 11%;">Product Code</th>
+                    <th style="width: 9%;">Sample Type</th>
+                    <th style="width: 6%;">LDR %</th>
+                    <th style="width: 12%; text-align: center;">Request Status</th>
+                    <th style="width: 6%; text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 1 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-001</td>
+                    <td>Ramesh Patel</td>
+                    <td>Ocean Blue</td>
+                    <td>NB-405</td>
+                    <td>PET BKY 20-1166</td>
+                    <td>BE20-1166</td>
+                    <td>Fabric</td>
+                    <td>3%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-costing-done">Costing Done</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-001")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-001</td>
+                    <td>Ramesh Patel</td>
+                    <td>Ocean Blue</td>
+                    <td>NB-405</td>
+                    <td>PET BKY 20-1166</td>
+                    <td>BE20-1166</td>
+                    <td>Fabric</td>
+                    <td>3%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-negotiating">Negotiating</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-001")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-002</td>
+                    <td>Anjali Verma</td>
+                    <td>Sunset Orange</td>
+                    <td>NB-406</td>
+                    <td>PET BKY 20-1167</td>
+                    <td>BE20-1187</td>
+                    <td>Fabric</td>
+                    <td>5%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-price-approved">Price Approved</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-002")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-003</td>
+                    <td>Kiran Desai</td>
+                    <td>Forest Green</td>
+                    <td>NB-407</td>
+                    <td>PET BKY 20-1201</td>
+                    <td>BE20-1201</td>
+                    <td>Fabric</td>
+                    <td>2%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-price-approved">Price Approved</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-003")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-004</td>
+                    <td>Sneha Kulkarni</td>
+                    <td>Crimson Red</td>
+                    <td>NB-408</td>
+                    <td>PET BKY 20-1223</td>
+                    <td>BE20-1223</td>
+                    <td>Fabric</td>
+                    <td>7%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-negotiating">Negotiating</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-004")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 6 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-001</td>
+                    <td>Ramesh Patel</td>
+                    <td>Ocean Blue</td>
+                    <td>NB-405</td>
+                    <td>PET BKY 20-1166</td>
+                    <td>BE20-1166</td>
+                    <td>Fabric</td>
+                    <td>3%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-costing-done">Costing Done</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-001")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 7 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-005</td>
+                    <td>Rahul Singh</td>
+                    <td>Midnight Black</td>
+                    <td>NB-409</td>
+                    <td>PET BKY 20-1245</td>
+                    <td>BE20-1245</td>
+                    <td>Fabric</td>
+                    <td>4%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-price-approved">Price Approved</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-005")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 8 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-006</td>
+                    <td>Priya Nair</td>
+                    <td>Lavender Purple</td>
+                    <td>NB-410</td>
+                    <td>PET BKY 20-1267</td>
+                    <td>BE20-1267</td>
+                    <td>Fabric</td>
+                    <td>6%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-costing-done">Costing Done</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-006")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 9 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-007</td>
+                    <td>Vikram Joshi</td>
+                    <td>Sky Grey</td>
+                    <td>NB-411</td>
+                    <td>PET BKY 20-1289</td>
+                    <td>BE20-1289</td>
+                    <td>Fabric</td>
+                    <td>3%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-negotiating">Negotiating</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-007")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 10 -->
+                <tr>
+                    <td class="hajipur-prod-pmr-no">PMR-008</td>
+                    <td>Meera Rao</td>
+                    <td>Golden Yellow</td>
+                    <td>NB-412</td>
+                    <td>PET BKY 20-1300</td>
+                    <td>BE20-1300</td>
+                    <td>Fabric</td>
+                    <td>8%</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-price-approved">Price Approved</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("PMR-008")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table Pagination Footer -->
+        <div class="hajipur-prod-pagination-row">
+            <span class="hajipur-prod-pagination-info">Showing 1-10 of 12 list</span>
+            <nav class="hajipur-prod-pagination-nav">
+                <button class="hajipur-prod-pagination-btn" type="button" title="Previous Page" disabled>
+                    <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="hajipur-prod-pagination-btn active" type="button">1</button>
+                <button class="hajipur-prod-pagination-btn" type="button">2</button>
+                <button class="hajipur-prod-pagination-btn" type="button" title="Next Page">
+                    <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Details Dialog Modal -->
+<HajipurPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@selectedPmrNo" />
+
+@code {
+    private bool showPmrDetailsDialog = false;
+    private string selectedPmrNo = "PMR-001";
+
+    private void ViewPmrDetails(string pmrNo)
+    {
+        selectedPmrNo = pmrNo;
+        showPmrDetailsDialog = true;
+    }
+}
