@@ -376,6 +376,10 @@
         {
             Navigation.NavigateTo("/santej/lab-user/pmr-management");
         }
+        else if (ColorConstant.IsProductionUser)
+        {
+            Navigation.NavigateTo("/santej/production-user/pmr-management");
+        }
     }
 
     private void OpenPmrDetailsDialog(string pmrNo = "PMR-001")

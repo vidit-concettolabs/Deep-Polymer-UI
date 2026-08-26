@@ -1,0 +1,357 @@
+@page "/santej/production-user/pmr-management"
+@rendermode InteractiveServer
+
+@using Deep_Polymer_UI.Components.Pages.santej.AlertDialogs
+@inject NavigationManager Navigation
+
+<PageTitle>Production Requests - Santej</PageTitle>
+
+<div class="prod-container">
+    <!-- Page Header -->
+    <div class="prod-header">
+        <h1 class="prod-title">Production Requests</h1>
+        <p class="prod-desc">View approved PMRs, manage production workflows, and update request status.</p>
+    </div>
+
+    <!-- Filter Dropdowns Row (6 Dropdowns in Card Container) -->
+    <div class="prod-filter-row">
+        <!-- 1. PMR No. -->
+        <div class="prod-select-wrapper">
+            <select class="prod-filter-select">
+                <option value="" disabled selected>PMR No.</option>
+                <option value="PMR-1001">PMR-1001</option>
+                <option value="PMR-1002">PMR-1002</option>
+                <option value="PMR-1003">PMR-1003</option>
+            </select>
+            <span class="prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 2. Customer Name -->
+        <div class="prod-select-wrapper">
+            <select class="prod-filter-select">
+                <option value="" disabled selected>Customer Name</option>
+                <option value="Ramesh Patel">Ramesh Patel</option>
+                <option value="Karan Desai">Karan Desai</option>
+            </select>
+            <span class="prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 3. Product Name -->
+        <div class="prod-select-wrapper">
+            <select class="prod-filter-select">
+                <option value="" disabled selected>Product Name</option>
+                <option value="HD Polymer Mix">HD Polymer Mix</option>
+                <option value="Flexi Compound">Flexi Compound</option>
+            </select>
+            <span class="prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 4. Colour Name -->
+        <div class="prod-select-wrapper">
+            <select class="prod-filter-select">
+                <option value="" disabled selected>Colour Name</option>
+                <option value="Ocean Blue">Ocean Blue</option>
+                <option value="Jet Black">Jet Black</option>
+            </select>
+            <span class="prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 5. Colour Code -->
+        <div class="prod-select-wrapper">
+            <select class="prod-filter-select">
+                <option value="" disabled selected>Colour Code</option>
+                <option value="BL-101">BL-101</option>
+                <option value="BK-310">BK-310</option>
+            </select>
+            <span class="prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+
+        <!-- 6. Select Status -->
+        <div class="prod-select-wrapper">
+            <select class="prod-filter-select">
+                <option value="" disabled selected>Select Status</option>
+                <option value="In Production">In Production</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <span class="prod-select-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="prod-table-card">
+        <table class="prod-table">
+            <thead>
+                <tr>
+                    <th style="width: 11%;">PMR No.</th>
+                    <th style="width: 11%;">Date</th>
+                    <th style="width: 15%;">Customer Name</th>
+                    <th style="width: 16%;">Product Name</th>
+                    <th style="width: 18%;">Colour Details</th>
+                    <th style="width: 13%;">Monthly Quantity</th>
+                    <th style="width: 11%; text-align: center;">Status</th>
+                    <th style="width: 5%; text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 1 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1001")'>PMR-1001</td>
+                    <td>12-05-2026</td>
+                    <td>Ramesh Patel</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1001")'>HD Polymer Mix</td>
+                    <td>Ocean Blue (BL-101)</td>
+                    <td>12,500 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-in-production">In Production</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("1")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1002")'>PMR-1002</td>
+                    <td>11-05-2026</td>
+                    <td>Karan Desai</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1002")'>Flexi Compound</td>
+                    <td>Jet Black (BK-310)</td>
+                    <td>8,000 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-completed">Completed</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("2")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1003")'>PMR-1003</td>
+                    <td>10-05-2026</td>
+                    <td>Anita Sharma</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1003")'>Eco-Friendly Resin</td>
+                    <td>Forest Green (GR-205)</td>
+                    <td>15,000 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-in-production">In Production</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("3")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1004")'>PMR-1004</td>
+                    <td>09-05-2026</td>
+                    <td>Rajesh Kumar</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1004")'>Thermo Plastic</td>
+                    <td>Crimson Red (RD-450)</td>
+                    <td>10,000 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-completed">Completed</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("4")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1005")'>PMR-1005</td>
+                    <td>08-05-2026</td>
+                    <td>Meera Singh</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1005")'>UV Stable Coating</td>
+                    <td>Ocean Teal (TL-802)</td>
+                    <td>6,500 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-in-production">In Production</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("5")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 6 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1006")'>PMR-1006</td>
+                    <td>07-05-2026</td>
+                    <td>Suresh Verma</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1006")'>High Impact Polymer</td>
+                    <td>Cobalt Blue (BL-202)</td>
+                    <td>20,000 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-completed">Completed</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("6")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 7 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1007")'>PMR-1007</td>
+                    <td>06-05-2026</td>
+                    <td>Nisha Joshi</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1007")'>Biodegradable</td>
+                    <td>Moss Green (GR-110)</td>
+                    <td>5,000 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-in-production">In Production</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("7")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 8 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1008")'>PMR-1008</td>
+                    <td>05-05-2026</td>
+                    <td>Vikram Mehta</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1008")'>Reinforced</td>
+                    <td>Golden Yellow (YL-220)</td>
+                    <td>12,000 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-completed">Completed</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("8")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 9 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1009")'>PMR-1009</td>
+                    <td>04-05-2026</td>
+                    <td>Avni Patel</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1009")'>Flexible Film</td>
+                    <td>Violet Purple (PR-305)</td>
+                    <td>9,500 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-in-production">In Production</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("9")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Row 10 -->
+                <tr>
+                    <td class="prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1010")'>PMR-1010</td>
+                    <td>03-05-2026</td>
+                    <td>Rahul Bansal</td>
+                    <td style="cursor: pointer;" @onclick='() => OpenRecommendedDialog("PMR-1010")'>Conductive Polymer</td>
+                    <td>Silver Grey (GY-410)</td>
+                    <td>11,000 KG</td>
+                    <td style="text-align: center;">
+                        <span class="status-badge status-completed">Completed</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="button" class="action-view-btn" title="View PMR Details" @onclick='() => ViewPmrDetails("10")'>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table Pagination Footer -->
+        <div class="prod-pagination-row">
+            <span class="prod-pagination-info">Showing 1-10 of 12 list</span>
+            <nav class="prod-pagination-nav">
+                <button class="prod-pagination-btn" type="button" title="Previous Page" disabled>
+                    <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="prod-pagination-btn active" type="button">1</button>
+                <button class="prod-pagination-btn" type="button">2</button>
+                <button class="prod-pagination-btn" type="button" title="Next Page">
+                    <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Dialogs -->
+<SantejProductionPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@selectedPmrNo" />
+<ProductionRecommendedDialog @bind-IsOpen="showRecommendedDialog" PmrNo="@selectedPmrNo" />
+
+@code {
+    private bool showPmrDetailsDialog = false;
+    private bool showRecommendedDialog = false;
+    private string selectedPmrNo = "1";
+
+    private void ViewPmrDetails(string pmrNo)
+    {
+        selectedPmrNo = pmrNo;
+        showPmrDetailsDialog = true;
+    }
+
+    private void OpenRecommendedDialog(string pmrNo)
+    {
+        selectedPmrNo = pmrNo;
+        showRecommendedDialog = true;
+    }
+}

@@ -19,9 +19,9 @@
             <span class="menu-text">PMR Management</span>
         </a>
 
-        @if (ColorConstant.IsLabUser)
+        @if (ColorConstant.IsLabUser || ColorConstant.IsProductionUser)
         {
-            <!-- Lab User Role: Only PMR Management is visible -->
+            <!-- Lab User & Production User Roles: Only PMR Management is visible -->
         }
         else if (ColorConstant.IsPmrGenerator)
         {
@@ -132,7 +132,8 @@
 
     private string PmrHref => ColorConstant.BranchFlag == 2
         ? "hajipur/pmr-management"
-        : (ColorConstant.IsLabUser ? "santej/lab-user/pmr-management" : "santej/pmr-management");
+        : (ColorConstant.IsLabUser ? "santej/lab-user/pmr-management"
+           : (ColorConstant.IsProductionUser ? "santej/production-user/pmr-management" : "santej/pmr-management"));
 
     private bool IsActive(string href)
     {

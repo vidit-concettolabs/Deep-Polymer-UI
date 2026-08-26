@@ -1,0 +1,171 @@
+@using Microsoft.AspNetCore.Components
+
+@if (IsOpen)
+{
+    <div class="dialog-overlay" @onclick="Close">
+        <div class="dialog-card prod-pmr-details-dialog" @onclick:stopPropagation>
+            <!-- Dialog Header -->
+            <div class="dialog-header prod-dialog-header">
+                <div class="prod-dialog-title-wrap">
+                    <h3 class="dialog-title">PMR Details - #@(string.IsNullOrEmpty(PmrNo) ? "1" : PmrNo)</h3>
+                    <span class="status-badge status-in-production">In Production</span>
+                </div>
+                <button type="button" class="dialog-close-btn" @onclick="Close" title="Close">&times;</button>
+            </div>
+
+            <!-- Dialog Body -->
+            <div class="dialog-body prod-dialog-body">
+                <!-- Section 1: Product Code Number Entry Card -->
+                <div class="prod-code-box">
+                    <label class="prod-code-label">Product Code Number</label>
+                    <div class="prod-code-input-row">
+                        <input type="text" class="prod-code-input" placeholder="Enter product code (e.g. HC-QB102-2026)" />
+                        <button type="button" class="prod-btn-save-code">Save Code</button>
+                    </div>
+                </div>
+
+                <!-- Section 2: 3-Column PMR Information Grid -->
+                <div class="prod-info-grid">
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">PMR Number</span>
+                        <span class="prod-info-value">@(string.IsNullOrEmpty(PmrNo) ? "PMR-001" : PmrNo)</span>
+                    </div>
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Received From</span>
+                        <span class="prod-info-value">Vivek Patel</span>
+                    </div>
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Region</span>
+                        <span class="prod-info-value">Gujarat</span>
+                    </div>
+
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Sample Request Date</span>
+                        <span class="prod-info-value">15-05-2026</span>
+                    </div>
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Product Name</span>
+                        <span class="prod-info-value">HD Polymer Mix</span>
+                    </div>
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Customer Name</span>
+                        <span class="prod-info-value">Ramesh Patel</span>
+                    </div>
+
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">City</span>
+                        <span class="prod-info-value">Ahmedabad</span>
+                    </div>
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Colour Name</span>
+                        <span class="prod-info-value">Ocean Blue - A</span>
+                    </div>
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Submitted Date</span>
+                        <span class="prod-info-value">19-05-2026</span>
+                    </div>
+
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Target Price</span>
+                        <span class="prod-info-value">&#8377;185/kg</span>
+                    </div>
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Monthly Quantity</span>
+                        <span class="prod-info-value">12,500 KG</span>
+                    </div>
+                    <div class="prod-info-item">
+                        <span class="prod-info-label">Application</span>
+                        <span class="prod-info-value">Automotive Plastic Components</span>
+                    </div>
+
+                    <div class="prod-info-item" style="grid-column: 1 / -1; border-bottom: 1px solid #F1F5F9; padding-bottom: 10px;">
+                        <span class="prod-info-label">Process Formulation</span>
+                        <span class="prod-info-value">Injection Molding Compound</span>
+                    </div>
+                </div>
+
+                <!-- Section 3: Raw Material Weights Card (Grey Outer Box) -->
+                <div class="prod-rm-weights-card">
+                    <div class="prod-rm-header-row">
+                        <div>
+                            <h4 class="prod-rm-title">Raw Material Weights</h4>
+                            <p class="prod-rm-subtitle">Add and manage raw material weights for the selected PMR.</p>
+                        </div>
+                        <div class="prod-rm-controls">
+                            <!-- Toggle switch (same as other pages) -->
+                            <label class="user-toggle">
+                                <input type="checkbox" checked />
+                                <span class="user-toggle-slider"></span>
+                            </label>
+                            <span class="prod-toggle-text">Change Weight</span>
+                            <span class="prod-recommended-pill">Recommended</span>
+                        </div>
+                    </div>
+
+                    <div class="prod-rm-table-wrapper">
+                        <table class="prod-rm-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 45%;">Raw Material</th>
+                                    <th style="width: 25%; text-align: center;">Formula Weight(kgs)</th>
+                                    <th style="width: 30%; text-align: center;">New Formula Weight(kgs)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 400;">Polypropylene Resin</td>
+                                    <td style="text-align: center; font-weight: 400;">45 KG</td>
+                                    <td><input type="text" class="prod-weight-input" placeholder="New weight" /></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 400;">Titanium Dioxide</td>
+                                    <td style="text-align: center; font-weight: 400;">12 KG</td>
+                                    <td><input type="text" class="prod-weight-input" placeholder="New weight" /></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 400;">Carbon Black</td>
+                                    <td style="text-align: center; font-weight: 400;">8 KG</td>
+                                    <td><input type="text" class="prod-weight-input" placeholder="New weight" /></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 400;">UV Stabilizer</td>
+                                    <td style="text-align: center; font-weight: 400;">3 KG</td>
+                                    <td><input type="text" class="prod-weight-input" placeholder="New weight" /></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 400;">Calcium Carbonate</td>
+                                    <td style="text-align: center; font-weight: 400;">20 KG</td>
+                                    <td><input type="text" class="prod-weight-input" placeholder="New weight" /></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td style="font-weight: 700; color: #1A1A1A;">All</td>
+                                    <td colspan="2" style="font-weight: 700; color: #1A1A1A; text-align: right; padding-right: 40px;">88 KG</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialog Footer -->
+            <div class="dialog-footer prod-dialog-footer">
+                <button type="button" class="prod-btn-close" @onclick="Close">Close</button>
+                <button type="button" class="prod-btn-submit-admin" @onclick="Close">Submit to Admin</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string? PmrNo { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}
