@@ -1,0 +1,132 @@
+@using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
+
+@if (IsOpen)
+{
+    <div class="hph-dialog-overlay" @onclick="Close">
+        <div class="hph-dialog-card hph-codification-card" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="hph-dialog-header">
+                <h3 class="hph-dialog-title">Codification</h3>
+                <button class="hph-dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="hph-dialog-body">
+                <div class="hph-cod-table-wrap">
+                    <table class="hph-cod-table">
+                        <thead>
+                            <tr class="hph-cod-tr-head">
+                                <th class="hph-cod-th">PMR Number</th>
+                                <th class="hph-cod-th">Colour Name</th>
+                                <th class="hph-cod-th">Colour Code</th>
+                                <th class="hph-cod-th">Sample Color Name</th>
+                                <th class="hph-cod-th">Product Code</th>
+                                <th class="hph-cod-th">Product Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1 -->
+                            <tr class="hph-cod-tr">
+                                <td class="hph-cod-td">PMR-001 - A</td>
+                                <td class="hph-cod-td">Ocean Blue - A</td>
+                                <td class="hph-cod-td">OB-102</td>
+                                <td class="hph-cod-td">Description</td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="BE20-1166" />
+                                </td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="PET BKY Beige 20-1166" />
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="hph-cod-tr">
+                                <td class="hph-cod-td">PMR-001 - B</td>
+                                <td class="hph-cod-td">Ocean Blue - A</td>
+                                <td class="hph-cod-td">OB-102</td>
+                                <td class="hph-cod-td">Description</td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="BE20-1166" />
+                                </td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="PET BKY Beige 20-1166" />
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="hph-cod-tr">
+                                <td class="hph-cod-td">PMR-001 - C</td>
+                                <td class="hph-cod-td">Ocean Blue - A</td>
+                                <td class="hph-cod-td">OB-102</td>
+                                <td class="hph-cod-td">Description</td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="BE20-1166" />
+                                </td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="PET BKY Beige 20-1166" />
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="hph-cod-tr">
+                                <td class="hph-cod-td">PMR-001 - D</td>
+                                <td class="hph-cod-td">Ocean Blue - A</td>
+                                <td class="hph-cod-td">OB-102</td>
+                                <td class="hph-cod-td">Description</td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="BE20-1166" />
+                                </td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="PET BKY Beige 20-1166" />
+                                </td>
+                            </tr>
+                            <!-- Row 5 -->
+                            <tr class="hph-cod-tr">
+                                <td class="hph-cod-td">PMR-001 - E</td>
+                                <td class="hph-cod-td">Ocean Blue - A</td>
+                                <td class="hph-cod-td">OB-102</td>
+                                <td class="hph-cod-td">Description</td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="BE20-1166" />
+                                </td>
+                                <td class="hph-cod-td">
+                                    <input type="text" class="hph-cod-input" value="PET BKY Beige 20-1166" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="hph-dialog-footer">
+                <button class="hph-dialog-submit-pmr-btn" type="button" @onclick="OpenConfirmDialog">Submit to PMR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Codification Modal -->
+    <HajipurConfirmCodificationDialog @bind-IsOpen="showConfirmDialog" OnConfirm="HandleConfirm" />
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private bool showConfirmDialog = false;
+
+    private void OpenConfirmDialog()
+    {
+        showConfirmDialog = true;
+    }
+
+    private async Task HandleConfirm()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

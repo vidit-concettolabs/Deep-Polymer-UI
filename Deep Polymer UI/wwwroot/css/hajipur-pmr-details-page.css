@@ -299,7 +299,7 @@ input.hpdv-plain-val,
     align-items: center;
     justify-content: center;
     height: 28px;
-    width: 80px;
+    width: 105px;
     padding: 0 8px;
     font-size: 12px;
     color: #808080;
@@ -326,7 +326,7 @@ input.hpdv-plain-val:focus {
     align-items: center;
     justify-content: flex-end;
     height: 28px;
-    width: 80px;
+    width: 105px;
     padding: 0 10px;
     font-size: 12px;
     font-weight: 600;
@@ -371,7 +371,7 @@ input.hpdv-plain-val:focus {
     align-items: center;
     justify-content: flex-end;
     height: 28px;
-    width: 80px;
+    width: 105px;
     padding: 0 10px;
     font-size: 12px;
     font-weight: 500;

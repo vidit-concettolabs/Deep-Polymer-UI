@@ -1,0 +1,194 @@
+@if (IsOpen)
+{
+    <div class="hph-dialog-overlay" @onclick="Close">
+        <div class="hph-dialog-card hph-upload-po-card" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="hph-dialog-header">
+                <h3 class="hph-dialog-title">Upload Document</h3>
+                <button class="hph-dialog-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="hph-dialog-body">
+                <!-- Upload Box -->
+                <div class="hph-up-box">
+                    <div class="hph-up-header-bar">
+                        <span class="hph-up-header-title">Upload Document</span>
+                        <span class="hph-up-header-count">3 attached</span>
+                    </div>
+
+                    <!-- Dropzone -->
+                    <div class="hph-up-dropzone">
+                        <svg class="hph-up-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="7 9 12 4 17 9" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="12" y1="4" x2="12" y2="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="hph-up-text">
+                            <span class="hph-up-blue-link">Click to upload</span> or drag and drop
+                        </div>
+                        <div class="hph-up-subtext">
+                            PDF, DOCX, XLSX, PPTX, JPG/PNG (10–50 MB)
+                        </div>
+                    </div>
+
+                    <!-- Attached Files List -->
+                    <div class="hph-up-files-list">
+                        <!-- File 1 -->
+                        <div class="hph-up-file-item">
+                            <div class="hph-up-file-left">
+                                <div class="hph-up-file-icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#5046E5" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="hph-up-file-info">
+                                    <span class="hph-up-file-name">Workplace Safety Policy v2.1</span>
+                                    <span class="hph-up-file-size">20.2 MB</span>
+                                </div>
+                            </div>
+                            <button class="hph-up-file-delete-btn" type="button" title="Delete">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2">
+                                    <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- File 2 -->
+                        <div class="hph-up-file-item">
+                            <div class="hph-up-file-left">
+                                <div class="hph-up-file-icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#5046E5" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="hph-up-file-info">
+                                    <span class="hph-up-file-name">Emergency Response Plan 2025</span>
+                                    <span class="hph-up-file-size">11 MB</span>
+                                </div>
+                            </div>
+                            <button class="hph-up-file-delete-btn" type="button" title="Delete">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2">
+                                    <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- File 3 -->
+                        <div class="hph-up-file-item">
+                            <div class="hph-up-file-left">
+                                <div class="hph-up-file-icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#5046E5" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="hph-up-file-info">
+                                    <span class="hph-up-file-name">Incident Reporting Procedure Document</span>
+                                    <span class="hph-up-file-size">25 MB</span>
+                                </div>
+                            </div>
+                            <button class="hph-up-file-delete-btn" type="button" title="Delete">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2">
+                                    <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Selection Rows -->
+                <div class="hph-up-user-rows">
+                    <!-- Row 1: PMR -->
+                    <div class="hph-up-user-row">
+                        <label class="hph-up-checkbox-label">
+                            <input type="checkbox" checked class="hph-up-checkbox" />
+                            <span>PMR</span>
+                        </label>
+                        <div class="hph-up-select-wrap">
+                            <select class="hph-up-select">
+                                <option selected disabled>Select User</option>
+                                <option>User 1</option>
+                                <option>User 2</option>
+                            </select>
+                            <span class="hph-up-select-chevron">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Production -->
+                    <div class="hph-up-user-row">
+                        <label class="hph-up-checkbox-label">
+                            <input type="checkbox" checked class="hph-up-checkbox" />
+                            <span>Production</span>
+                        </label>
+                        <div class="hph-up-select-wrap">
+                            <select class="hph-up-select">
+                                <option selected disabled>Select User</option>
+                                <option>User 1</option>
+                                <option>User 2</option>
+                            </select>
+                            <span class="hph-up-select-chevron">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Dispatch -->
+                    <div class="hph-up-user-row">
+                        <label class="hph-up-checkbox-label">
+                            <input type="checkbox" checked class="hph-up-checkbox" />
+                            <span>Dispatch</span>
+                        </label>
+                        <div class="hph-up-select-wrap">
+                            <select class="hph-up-select">
+                                <option selected disabled>Select User</option>
+                                <option>User 1</option>
+                                <option>User 2</option>
+                            </select>
+                            <span class="hph-up-select-chevron">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="hph-dialog-footer">
+                <button class="hph-dialog-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                <button class="hph-dialog-submit-btn" type="button" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}

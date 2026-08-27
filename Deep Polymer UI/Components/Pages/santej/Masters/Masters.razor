@@ -104,7 +104,18 @@
     </div>
 </div>
 
+@using DeepPolymer.Constants
+@inject NavigationManager NavigationManager
+
 @code {
     private bool showAddDialog = false;
     private bool showDetailsDialog = false;
+
+    protected override void OnInitialized()
+    {
+        if (ColorConstant.IsProductionHead)
+        {
+            NavigationManager.NavigateTo("masters/raw-material");
+        }
+    }
 }

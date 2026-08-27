@@ -1,0 +1,230 @@
+@page "/hajipur/production-head/pmr-detail-view/{PmrNo}"
+@page "/hajipur/production-head/pmr-detail-view"
+@using Microsoft.AspNetCore.Components.Sections
+@using Deep_Polymer_UI.Components.Pages.hajipur.PMR_Management
+@using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<!-- Inject ← Back into the main header slot -->
+<SectionContent SectionName="header-back-slot">
+    <a class="header-back-btn" href="hajipur/production-head/pmr-management">
+        <svg viewBox="0 0 24 24">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Back
+    </a>
+</SectionContent>
+
+<div class="hpdv-page">
+    <!-- Main 2-Column Grid -->
+    <div class="hpdv-grid">
+        <!-- LEFT COLUMN -->
+        <div class="hpdv-left-col">
+            <!-- PMR Information Card -->
+            <div class="hpdv-card">
+                <div class="hpdv-card-title-row">
+                    <div class="hpdv-title-wrap">
+                        <h2 class="hpdv-card-title">PMR Information</h2>
+                        <button class="hpdv-info-badge-btn" type="button" title="View PMR Details" @onclick="OpenPmrDetailsDialog">
+                            <img src="assets/image/information_icon_hajipur.svg" alt="Info" class="hpdv-info-icon" />
+                        </button>
+                        <span class="hpdv-codification-tag">Codification</span>
+                    </div>
+                </div>
+
+                <div class="hpdv-info-grid">
+                    <div class="hpdv-info-item">
+                        <span class="hpdv-info-label">PMR Number</span>
+                        <span class="hpdv-info-value">@(string.IsNullOrEmpty(PmrNo) ? "PMR-001" : PmrNo)</span>
+                    </div>
+                    <div class="hpdv-info-item">
+                        <span class="hpdv-info-label">Customer Name</span>
+                        <span class="hpdv-info-value">Ramesh Patel</span>
+                    </div>
+                    <div class="hpdv-info-item">
+                        <span class="hpdv-info-label">Colour Name</span>
+                        <span class="hpdv-info-value">Ocean Blue - A</span>
+                    </div>
+                    <div class="hpdv-info-item">
+                        <span class="hpdv-info-label">Colour Code</span>
+                        <span class="hpdv-info-value">OB-102</span>
+                    </div>
+                    <div class="hpdv-info-item">
+                        <span class="hpdv-info-label">City</span>
+                        <span class="hpdv-info-value">Ahmedabad</span>
+                    </div>
+                    <div class="hpdv-info-item">
+                        <span class="hpdv-info-label">Received From</span>
+                        <span class="hpdv-info-value">OB-102</span>
+                    </div>
+                    <div class="hpdv-info-item">
+                        <span class="hpdv-info-label">Region</span>
+                        <span class="hpdv-info-value">Gujarat</span>
+                    </div>
+                    <div class="hpdv-info-item">
+                        <span class="hpdv-info-label">Sample Request Date</span>
+                        <span class="hpdv-info-value">07.08.2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Raw Material Weights Card (Identical to Hajipur Admin PMR Details View) -->
+            <div class="hpdv-card hpdv-rm-card">
+                <h2 class="hpdv-card-title">Raw Material Weights</h2>
+                <p class="hpdv-card-subtitle">Add and manage raw material weights for the selected PMR.</p>
+
+                <div class="hpdv-rm-table-wrap">
+                    <table class="hpdv-rm-table">
+                        <thead>
+                            <tr class="hpdv-tr-head">
+                                <th class="hpdv-th hpdv-th-left hpdv-col-material">Raw Material</th>
+                                <th class="hpdv-th hpdv-th-center hpdv-col-weight">
+                                    Formula Weight(kgs) <img src="assets/image/edit.svg" class="hpdv-edit-icon" alt="edit" />
+                                </th>
+                                <th class="hpdv-th hpdv-th-center hpdv-col-pct">
+                                    Percentage <img src="assets/image/edit.svg" class="hpdv-edit-icon" alt="edit" />
+                                </th>
+                                <th class="hpdv-th hpdv-th-center hpdv-col-price">RM Price</th>
+                                <th class="hpdv-th hpdv-th-center hpdv-col-cost">RM Cost/Kg</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < 5; i++)
+                            {
+                                <tr class="hpdv-tr">
+                                    <td class="hpdv-td">
+                                        <div class="hpdv-select-wrap">
+                                            <select class="hpdv-select">
+                                                <option selected>Titanium Dioxide</option>
+                                                <option>Calcium Carbonate</option>
+                                                <option>Zinc Oxide</option>
+                                                <option>Carbon Black</option>
+                                            </select>
+                                            <span class="hpdv-chevron">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="hpdv-td hpdv-td-center">
+                                        <input class="hpdv-plain-val" value="@(i % 2 == 0 ? "22.22" : "15.00")" />
+                                    </td>
+                                    <td class="hpdv-td hpdv-td-center">
+                                        <input class="hpdv-plain-val" value="3%" />
+                                    </td>
+                                    <td class="hpdv-td hpdv-td-center">
+                                        <input class="hpdv-plain-val" value="@(i % 2 == 0 ? "180.00" : "150.00")" />
+                                    </td>
+                                    <td class="hpdv-td hpdv-td-center">
+                                        <span class="hpdv-rm-cost-pill">@(i % 2 == 0 ? "3960.00" : "180.00")</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Total Row -->
+                <div class="hpdv-total-row">
+                    <span class="hpdv-total-label">Total Weight(kgs) &amp; Raw Material Cost(₹):</span>
+                    <div class="hpdv-total-pills">
+                        <span class="hpdv-total-pill-grey">24.00</span>
+                        <span class="hpdv-rm-cost-pill">3960.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Cost Summary Card -->
+        <div class="hpdv-right-col">
+            <div class="hpdv-card hpdv-cost-card">
+                <div class="hpdv-card-title-row hpdv-cost-title-row">
+                    <div class="hpdv-title-wrap" style="display: flex; align-items: center; gap: 6px;">
+                        <h2 class="hpdv-card-title">Cost Summary</h2>
+                        <button class="hpdv-icon-btn" type="button" title="Negotiation" @onclick="OpenNegotiationDialog">
+                            <img src="assets/image/negotiation_icon.svg" alt="N" class="hpdv-action-icon" style="width: 18px; height: 18px;" />
+                        </button>
+                    </div>
+                </div>
+                <p class="hpdv-card-subtitle">Review the final product costing and additional charges before submission.</p>
+
+                <div class="hpdv-cost-list" style="gap: 16px; margin-top: 8px;">
+                    <div class="hpdv-cost-row">
+                        <span class="hpdv-cost-label">Minimum Price:</span>
+                        <input class="hpdv-cost-input-gray" value="15000.00" readonly />
+                    </div>
+                    <div class="hpdv-cost-row">
+                        <span class="hpdv-cost-label">Quoted Price:</span>
+                        <input class="hpdv-cost-input-gray" value="15000.00" readonly />
+                    </div>
+                    <div class="hpdv-cost-row">
+                        <span class="hpdv-cost-label">Selling Price:</span>
+                        <input class="hpdv-cost-input-white" value="15000.00" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM FOOTER CARD CONTAINER (Matching rounded upper cards) -->
+    <div class="hpdv-card hph-footer-card">
+        <div class="hph-footer-left">
+            <button type="button" class="hph-btn-black" @onclick="OpenUploadPoDialog">Upload PO</button>
+            <button type="button" class="hph-btn-black">Upload Formulation</button>
+        </div>
+        <div class="hph-footer-center">
+            <button type="button" class="hph-btn-outline">Submit to Admin</button>
+        </div>
+        <div class="hph-footer-right">
+            <button type="button" class="hph-btn-blue-marketing" @onclick="OpenCodificationDialog">Submit to Marketing User</button>
+        </div>
+    </div>
+</div>
+
+<!-- Negotiation Dialog Modal -->
+<HajipurNegotiationDialog @bind-IsOpen="showNegotiationDialog" />
+<HajipurPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@PmrNo" />
+<HajipurUploadPoDialog @bind-IsOpen="showUploadPoDialog" />
+<HajipurCodificationDialog @bind-IsOpen="showCodificationDialog" />
+
+@code {
+    [Parameter] public string PmrNo { get; set; } = "PMR-001";
+    [Parameter] public EventCallback OnBack { get; set; }
+
+    private bool showNegotiationDialog = false;
+    private bool showPmrDetailsDialog = false;
+    private bool showUploadPoDialog = false;
+    private bool showCodificationDialog = false;
+
+    private void OpenNegotiationDialog()
+    {
+        showNegotiationDialog = true;
+    }
+
+    private void OpenPmrDetailsDialog()
+    {
+        showPmrDetailsDialog = true;
+    }
+
+    private void OpenUploadPoDialog()
+    {
+        showUploadPoDialog = true;
+    }
+
+    private void OpenCodificationDialog()
+    {
+        showCodificationDialog = true;
+    }
+
+    private async Task HandleBack()
+    {
+        if (OnBack.HasDelegate)
+        {
+            await OnBack.InvokeAsync();
+        }
+        else
+        {
+            Navigation.NavigateTo("/hajipur/production-head/pmr-management");
+        }
+    }
+}

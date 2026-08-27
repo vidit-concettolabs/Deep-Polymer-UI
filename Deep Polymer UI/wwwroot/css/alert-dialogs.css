@@ -1922,4 +1922,498 @@
     margin: 0;
     line-height: 1.45;
 }
+
+/* ==========================================================================
+   Hajipur Production Head Dialogs (Upload PO & Codification Modals)
+   ========================================================================== */
+.hph-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.hph-upload-po-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 480px;
+    max-width: 92vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.hph-codification-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 820px;
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.hph-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #F0F0F5;
+}
+
+.hph-dialog-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hph-dialog-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.hph-dialog-body {
+    padding: 18px 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Upload PO Box Container */
+.hph-up-box {
+    border: 1px solid #EBEBEE;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.hph-up-header-bar {
+    background-color: #F7F7FD;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #EBEBEE;
+}
+
+.hph-up-header-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hph-up-header-count {
+    font-size: 11px;
+    color: #8E8EA9;
+}
+
+.hph-up-dropzone {
+    border: 1px dashed #D6D6E0;
+    border-radius: 8px;
+    margin: 12px;
+    padding: 18px 12px;
+    text-align: center;
+    background-color: #FAFAFD;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.hph-up-icon {
+    width: 24px;
+    height: 24px;
+    color: #4338CA;
+    margin-bottom: 4px;
+}
+
+.hph-up-text {
+    font-size: 12px;
+    color: #666666;
+}
+
+.hph-up-blue-link {
+    color: #0000D1;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.hph-up-subtext {
+    font-size: 11px;
+    color: #999999;
+}
+
+.hph-up-files-list {
+    padding: 0 12px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 175px;
+    overflow-y: auto;
+}
+
+.hph-up-file-item {
+    border: 1px solid #EEEEEF;
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+}
+
+.hph-up-file-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hph-up-file-icon-box {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background-color: #EEECFE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hph-up-file-icon-box svg {
+    width: 18px;
+    height: 18px;
+}
+
+.hph-up-file-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.hph-up-file-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hph-up-file-size {
+    font-size: 11px;
+    color: #999999;
+}
+
+.hph-up-file-delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hph-up-file-delete-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.hph-up-user-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.hph-up-user-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hph-up-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #151515;
+    cursor: pointer;
+}
+
+.hph-up-checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: #0000D1;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.hph-up-select-wrap {
+    position: relative;
+    width: 220px;
+}
+
+.hph-up-select {
+    width: 100%;
+    height: 36px;
+    padding: 0 30px 0 12px;
+    border: 1px solid #E2E2E8;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #888888;
+    background-color: #FFFFFF;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.hph-up-select-chevron {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 14px;
+    height: 14px;
+    color: #888888;
+}
+
+.hph-up-select-chevron svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 2;
+}
+
+/* Codification Table Styles */
+.hph-cod-table-wrap {
+    border: 1px solid #F0F0F5;
+    border-radius: 8px;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 145px;
+    background-color: #FFFFFF;
+}
+
+.hph-cod-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    text-align: left;
+}
+
+.hph-cod-tr-head {
+    background-color: #F8F9FA;
+    border-bottom: 1px solid #F0F0F5;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.hph-cod-th {
+    padding: 10px 12px;
+    font-weight: 500;
+    color: #808080;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.hph-cod-tr {
+    border-bottom: 1px solid #F5F5F8;
+}
+
+.hph-cod-tr:last-child {
+    border-bottom: none;
+}
+
+.hph-cod-td {
+    padding: 10px 12px;
+    color: #151515;
+    font-size: 12px;
+    font-weight: 400;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.hph-cod-bold {
+    font-weight: 600;
+}
+
+.hph-cod-input {
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid #EBEBEE;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #888888;
+    background-color: #FFFFFF;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.hph-cod-input:focus {
+    border-color: #3449D8;
+    color: #151515;
+}
+
+.hph-dialog-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 20px;
+    border-top: 1px solid #F0F0F5;
+    background-color: #FFFFFF;
+}
+
+.hph-dialog-cancel-btn {
+    height: 36px;
+    padding: 0 18px;
+    border: 1px solid #E2E2E8;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    color: #151515;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.hph-dialog-submit-btn {
+    height: 36px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 6px;
+    background-color: #0000D1;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.hph-dialog-submit-btn:hover {
+    background-color: #0000B3;
+}
+
+.hph-dialog-submit-pmr-btn {
+    height: 36px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #151515;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hph-dialog-submit-pmr-btn:hover {
+    background-color: #000000;
+}
+
+/* Confirm Codification Dialog Styles */
+.hph-confirm-codification-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 440px;
+    max-width: 92vw;
+    padding: 24px 28px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.hph-confirm-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #666666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.hph-confirm-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hph-confirm-title {
+    margin: 12px 0 8px 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hph-confirm-desc {
+    font-size: 12.5px;
+    color: #999999;
+    line-height: 1.45;
+    margin: 0 0 24px 0;
+    max-width: 380px;
+}
+
+.hph-confirm-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+}
+
+.hph-confirm-cancel-btn {
+    height: 38px;
+    padding: 0 24px;
+    border: 1px solid #E2E2E8;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    color: #151515;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hph-confirm-cancel-btn:hover {
+    background-color: #F8F9FA;
+}
+
+.hph-confirm-okay-btn {
+    height: 38px;
+    padding: 0 28px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primary-color, #0405AB);
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.hph-confirm-okay-btn:hover {
+    opacity: 0.9;
+}
 

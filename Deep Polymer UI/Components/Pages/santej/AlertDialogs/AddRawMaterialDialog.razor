@@ -10,6 +10,23 @@
             </div>
             <div class="dialog-body">
 
+                <!-- Colour Name -->
+                <div class="dialog-form-group">
+                    <label class="dialog-label">Colour Name <span class="required-star">*</span></label>
+                    <div class="dialog-select-wrap" style="position: relative;">
+                        <select class="dialog-input dialog-select" @bind="ColourName" style="appearance: none; -webkit-appearance: none; padding-right: 30px; width: 100%;">
+                            <option value="" disabled selected>Colour Name</option>
+                            <option value="Ocean Blue - A">Ocean Blue - A</option>
+                            <option value="Ocean Blue - B">Ocean Blue - B</option>
+                        </select>
+                        <span class="dialog-select-chevron" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #888888;">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
                 <!-- Material Name -->
                 <div class="dialog-form-group">
                     <label class="dialog-label">Material Name <span class="required-star">*</span></label>
@@ -39,6 +56,7 @@
     [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
     [Parameter] public EventCallback OnSubmit { get; set; }
 
+    private string ColourName { get; set; } = "";
     private string MaterialName { get; set; } = "";
     private string Rate { get; set; } = "";
 

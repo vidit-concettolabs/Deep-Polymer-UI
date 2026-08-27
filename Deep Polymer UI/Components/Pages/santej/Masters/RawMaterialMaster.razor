@@ -1,91 +1,222 @@
 @page "/masters/raw-material"
+@using DeepPolymer.Constants
 @rendermode InteractiveServer
 
 <div class="masters-container">
-    <!-- Top Tabs Row -->
-    <MastersTabs ActiveTab="raw-material" />
-
-    <!-- Filter/Search Section -->
-    <div class="masters-filter-row">
-        <div class="filter-spacer"></div>
-        
-        <!-- Search Material Dropdown -->
-        <div class="filter-item">
-            <select class="filter-select">
-                <option selected disabled>Search Material</option>
-            </select>
-            <span class="filter-chevron">
-                <svg viewBox="0 0 24 24">
-                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </span>
-        </div>
-
-        <!-- Add Material Button -->
-        <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add Material</button>
-    </div>
-
-    <AddRawMaterialDialog @bind-IsOpen="showAddDialog" />
-
-    <!-- Material Table Wrapper -->
-    <div class="masters-table-wrapper">
-        <table class="masters-table">
-            <thead>
-                <tr>
-                    <th class="text-start">Material Name</th>
-                    <th>Rate(₹)</th>
-                    <th>Updated Date</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-start">ANTIOXIDENT-B215</td>
-                    <td>280.00</td>
-                    <td>11-05-2026</td>
-                    <td>
-                        <div class="actions-container">
-                            <button class="action-edit-btn" type="button" title="Edit Material">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                            <button class="action-delete-btn" type="button" title="Delete Material">
-                                <svg viewBox="0 0 24 24">
-                                    <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
-                                    <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Table Footer / Pagination Row -->
-        <div class="masters-pagination-row">
-            <span class="pagination-info">Showing 1-10 of 12 list</span>
-            <div class="pagination-nav">
-                <button class="pagination-btn disabled" type="button" title="Previous Page">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+    @if (ColorConstant.BranchFlag == 2 || ColorConstant.IsProductionHead)
+    {
+        <!-- Hajipur / Production Head Header Design (Transparent Background, No White Card) -->
+        <div class="rmm-top-header">
+            <div class="rmm-title-area">
+                <h2 class="rmm-title">Raw Material Master</h2>
+                <p class="rmm-subtitle">Manage raw material data and pricing for all existing and new PMRs.</p>
+            </div>
+            <div class="rmm-header-actions">
+                <button class="rmm-import-btn" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="rmm-import-icon">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="7 10 12 15 17 10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="12" y1="15" x2="12" y2="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
+                    Import
                 </button>
-                <button class="pagination-btn active" type="button">1</button>
-                <button class="pagination-btn" type="button">2</button>
-                <button class="pagination-btn" type="button" title="Next Page">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
+                <button class="add-customer-btn rmm-add-btn" type="button" @onclick="() => showAddDialog = true">Add Material</button>
             </div>
         </div>
-    </div>
+
+        <!-- Search Bar Row (Separate White Card Section) -->
+        <div class="rmm-search-row">
+            <div class="filter-item rmm-search-select-wrap">
+                <select class="filter-select">
+                    <option selected disabled>Search Material</option>
+                </select>
+                <span class="filter-chevron">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+
+        <!-- Add Raw Material Dialog Modal -->
+        <AddRawMaterialDialog @bind-IsOpen="showAddDialog" />
+
+        <!-- Material Table Wrapper -->
+        <div class="masters-table-wrapper">
+            <table class="masters-table rmm-table">
+                <thead>
+                    <tr>
+                        <th class="text-start">Material Name</th>
+                        <th class="text-start">Colour Name</th>
+                        <th class="text-start">Rate(₹)</th>
+                        <th class="text-start">Updated Date</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in materials)
+                    {
+                        <tr>
+                            <td class="text-start">@item.MaterialName</td>
+                            <td class="text-start">@item.ColourName</td>
+                            <td class="text-start">@item.Rate</td>
+                            <td class="text-start">@item.UpdatedDate</td>
+                            <td>
+                                <div class="actions-container">
+                                    <button class="action-edit-btn" type="button" title="Edit Material">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-delete-btn" type="button" title="Delete Material">
+                                        <svg viewBox="0 0 24 24">
+                                            <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
+                                            <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                            <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Table Footer / Pagination Row -->
+            <div class="masters-pagination-row">
+                <span class="pagination-info">Showing 1-10 of 12 list</span>
+                <div class="pagination-nav">
+                    <button class="pagination-btn disabled" type="button" title="Previous Page">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="pagination-btn active" type="button">1</button>
+                    <button class="pagination-btn" type="button">2</button>
+                    <button class="pagination-btn" type="button" title="Next Page">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Standard Masters Tabs -->
+        <MastersTabs ActiveTab="raw-material" />
+
+        <!-- Filter/Search Section -->
+        <div class="masters-filter-row">
+            <div class="filter-spacer"></div>
+
+            <div class="filter-item">
+                <select class="filter-select">
+                    <option selected disabled>Search Material</option>
+                </select>
+                <span class="filter-chevron">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+
+            <button class="add-customer-btn" type="button" @onclick="() => showAddDialog = true">Add Material</button>
+        </div>
+
+        <!-- Add Raw Material Dialog Modal -->
+        <AddRawMaterialDialog @bind-IsOpen="showAddDialog" />
+
+        <!-- Material Table Wrapper -->
+        <div class="masters-table-wrapper">
+            <table class="masters-table rmm-table">
+                <thead>
+                    <tr>
+                        <th class="text-start">Material Name</th>
+                        <th class="text-start">Colour Name</th>
+                        <th class="text-start">Rate(₹)</th>
+                        <th class="text-start">Updated Date</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in materials)
+                    {
+                        <tr>
+                            <td class="text-start">@item.MaterialName</td>
+                            <td class="text-start">@item.ColourName</td>
+                            <td class="text-start">@item.Rate</td>
+                            <td class="text-start">@item.UpdatedDate</td>
+                            <td>
+                                <div class="actions-container">
+                                    <button class="action-edit-btn" type="button" title="Edit Material">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-delete-btn" type="button" title="Delete Material">
+                                        <svg viewBox="0 0 24 24">
+                                            <polyline points="3 6 5 6 21 6" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round" stroke-linejoin="round" />
+                                            <line x1="10" y1="11" x2="10" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                            <line x1="14" y1="11" x2="14" y2="17" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Table Footer / Pagination Row -->
+            <div class="masters-pagination-row">
+                <span class="pagination-info">Showing 1-10 of 12 list</span>
+                <div class="pagination-nav">
+                    <button class="pagination-btn disabled" type="button" title="Previous Page">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="pagination-btn active" type="button">1</button>
+                    <button class="pagination-btn" type="button">2</button>
+                    <button class="pagination-btn" type="button" title="Next Page">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
 @code {
     private bool showAddDialog = false;
+
+    private class RawMaterialItem
+    {
+        public string MaterialName { get; set; } = "";
+        public string ColourName { get; set; } = "";
+        public string Rate { get; set; } = "";
+        public string UpdatedDate { get; set; } = "";
+    }
+
+    private List<RawMaterialItem> materials = new()
+    {
+        new RawMaterialItem { MaterialName = "ANTIOXIDENT-B215", ColourName = "Ocean Blue - A", Rate = "280.00", UpdatedDate = "11-05-2026" },
+        new RawMaterialItem { MaterialName = "ANTIOXIDENT-B 225", ColourName = "Ocean Blue - A", Rate = "285.00", UpdatedDate = "26-04-2026" },
+        new RawMaterialItem { MaterialName = "ANTIOXIDENT-KINOX30", ColourName = "Ocean Blue - A", Rate = "669.18", UpdatedDate = "15-04-2026" },
+        new RawMaterialItem { MaterialName = "ANTI OXIDENT-RACINT GRUNELES", ColourName = "Ocean Blue - A", Rate = "211.00", UpdatedDate = "02-03-2026" },
+        new RawMaterialItem { MaterialName = "ANTIOXIDENT-CYBERA", ColourName = "Ocean Blue - A", Rate = "300.50", UpdatedDate = "20-06-2026" },
+        new RawMaterialItem { MaterialName = "ANTIOXIDENT-OMEGA-9", ColourName = "Ocean Blue - A", Rate = "450.75", UpdatedDate = "09-07-2026" },
+        new RawMaterialItem { MaterialName = "ANTIOXIDENT-ZENITH", ColourName = "Ocean Blue - A", Rate = "520.00", UpdatedDate = "18-08-2026" },
+        new RawMaterialItem { MaterialName = "ANTIOXIDENT-NEUTRA-B", ColourName = "Ocean Blue - A", Rate = "395.80", UpdatedDate = "05-09-2026" },
+        new RawMaterialItem { MaterialName = "ANTIOXIDENT-PREMIER-5", ColourName = "Ocean Blue - A", Rate = "675.00", UpdatedDate = "12-10-2026" },
+        new RawMaterialItem { MaterialName = "ANTIOXIDENT-ULTRA-SHIELD", ColourName = "Ocean Blue - A", Rate = "399.99", UpdatedDate = "27-11-2026" }
+    };
 }

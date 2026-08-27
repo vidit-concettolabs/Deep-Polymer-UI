@@ -145,7 +145,7 @@
             <tbody>
                 <!-- Row 1 -->
                 <tr>
-                    <td class="hajipur-prod-pmr-no">PMR-001</td>
+                    <td class="hajipur-prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenDialog("PMR-001")'>PMR-001</td>
                     <td>Ramesh Patel</td>
                     <td>Ocean Blue</td>
                     <td>NB-405</td>
@@ -191,7 +191,7 @@
 
                 <!-- Row 3 -->
                 <tr>
-                    <td class="hajipur-prod-pmr-no">PMR-002</td>
+                    <td class="hajipur-prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenDialog("PMR-002")'>PMR-002</td>
                     <td>Anjali Verma</td>
                     <td>Sunset Orange</td>
                     <td>NB-406</td>
@@ -214,7 +214,7 @@
 
                 <!-- Row 4 -->
                 <tr>
-                    <td class="hajipur-prod-pmr-no">PMR-003</td>
+                    <td class="hajipur-prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenDialog("PMR-003")'>PMR-003</td>
                     <td>Kiran Desai</td>
                     <td>Forest Green</td>
                     <td>NB-407</td>
@@ -237,7 +237,7 @@
 
                 <!-- Row 5 -->
                 <tr>
-                    <td class="hajipur-prod-pmr-no">PMR-004</td>
+                    <td class="hajipur-prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenDialog("PMR-004")'>PMR-004</td>
                     <td>Sneha Kulkarni</td>
                     <td>Crimson Red</td>
                     <td>NB-408</td>
@@ -283,7 +283,7 @@
 
                 <!-- Row 7 -->
                 <tr>
-                    <td class="hajipur-prod-pmr-no">PMR-005</td>
+                    <td class="hajipur-prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenDialog("PMR-005")'>PMR-005</td>
                     <td>Rahul Singh</td>
                     <td>Midnight Black</td>
                     <td>NB-409</td>
@@ -306,7 +306,7 @@
 
                 <!-- Row 8 -->
                 <tr>
-                    <td class="hajipur-prod-pmr-no">PMR-006</td>
+                    <td class="hajipur-prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenDialog("PMR-006")'>PMR-006</td>
                     <td>Priya Nair</td>
                     <td>Lavender Purple</td>
                     <td>NB-410</td>
@@ -329,7 +329,7 @@
 
                 <!-- Row 9 -->
                 <tr>
-                    <td class="hajipur-prod-pmr-no">PMR-007</td>
+                    <td class="hajipur-prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenDialog("PMR-007")'>PMR-007</td>
                     <td>Vikram Joshi</td>
                     <td>Sky Grey</td>
                     <td>NB-411</td>
@@ -352,7 +352,7 @@
 
                 <!-- Row 10 -->
                 <tr>
-                    <td class="hajipur-prod-pmr-no">PMR-008</td>
+                    <td class="hajipur-prod-pmr-no" style="cursor: pointer;" @onclick='() => OpenDialog("PMR-008")'>PMR-008</td>
                     <td>Meera Rao</td>
                     <td>Golden Yellow</td>
                     <td>NB-412</td>
@@ -392,16 +392,21 @@
     </div>
 </div>
 
-<!-- Details Dialog Modal -->
-<HajipurPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@selectedPmrNo" />
+<!-- PMR Details Dialog Modal -->
+<HajipurPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@selectedDialogPmrNo" />
 
 @code {
     private bool showPmrDetailsDialog = false;
-    private string selectedPmrNo = "PMR-001";
+    private string selectedDialogPmrNo = "1";
+
+    private void OpenDialog(string pmrNo)
+    {
+        selectedDialogPmrNo = pmrNo.Replace("PMR-", "");
+        showPmrDetailsDialog = true;
+    }
 
     private void ViewPmrDetails(string pmrNo)
     {
-        selectedPmrNo = pmrNo;
-        showPmrDetailsDialog = true;
+        Navigation.NavigateTo($"hajipur/production-head/pmr-detail-view/{pmrNo}");
     }
 }

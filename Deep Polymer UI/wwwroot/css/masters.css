@@ -512,3 +512,99 @@
     background-color: #F8F9FA;
     border-color: #D1D5DB;
 }
+
+/* ==========================================================================
+   Raw Material Master Screen Styles (rmm-*)
+   ========================================================================== */
+.rmm-top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0 12px 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+.rmm-title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rmm-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.rmm-subtitle {
+    margin: 0;
+    font-size: 13px;
+    color: #808080;
+}
+
+.rmm-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rmm-import-btn {
+    height: 38px;
+    padding: 0 18px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E2E8;
+    border-radius: 6px;
+    color: #151515;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.15s;
+}
+
+.rmm-import-btn:hover {
+    background-color: #F8F9FA;
+}
+
+.rmm-import-icon {
+    width: 15px;
+    height: 15px;
+    color: #151515;
+}
+
+.rmm-add-btn {
+    height: 38px;
+    padding: 0 22px;
+    background-color: var(--primary-color, #0405AB) !important;
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.rmm-add-btn:hover {
+    opacity: 0.9;
+}
+
+.rmm-search-row {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #FFFFFF;
+    padding: 12px 16px;
+    border: 1px solid #E1E5EA;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.rmm-search-select-wrap {
+    width: 240px;
+}

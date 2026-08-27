@@ -1,0 +1,41 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="hph-dialog-overlay" @onclick="Close">
+        <div class="hph-dialog-card hph-confirm-codification-card" @onclick:stopPropagation="true">
+            <button class="hph-confirm-close-btn" type="button" @onclick="Close">&times;</button>
+
+            <div class="hph-confirm-body">
+                <h3 class="hph-confirm-title">Confirm Codification</h3>
+                <p class="hph-confirm-desc">
+                    Please ensure your codification is complete and accurate before proceeding. Once confirmed, you may not be able to make further changes.
+                </p>
+
+                <div class="hph-confirm-actions">
+                    <button class="hph-confirm-cancel-btn" type="button" @onclick="Close">Cancel</button>
+                    <button class="hph-confirm-okay-btn" type="button" @onclick="Confirm">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnConfirm { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Confirm()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+        await OnConfirm.InvokeAsync();
+    }
+}
