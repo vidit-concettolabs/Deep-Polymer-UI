@@ -2416,4 +2416,136 @@
 .hph-confirm-okay-btn:hover {
     opacity: 0.9;
 }
+
+/* Hajipur Dispatch User PMR Details Dialog Styles (hdpd-*) */
+.hdpd-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 780px;
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.hdpd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 1px solid #F0F0F5;
+}
+
+.hdpd-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hdpd-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hdpd-status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 12px;
+    background-color: #FFF0F0;
+    border: 1px solid #FFC2C2;
+    color: #F04438;
+    font-size: 11.5px;
+    font-weight: 500;
+    border-radius: 14px;
+}
+
+.hdpd-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.hdpd-body {
+    padding: 22px;
+    overflow-y: auto;
+}
+
+.hdpd-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 28px;
+    row-gap: 20px;
+}
+
+.hdpd-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid #F5F5F8;
+    padding-bottom: 12px;
+}
+
+.hdpd-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hdpd-value {
+    font-size: 13px;
+    color: #808080;
+    font-weight: 400;
+}
+
+.hdpd-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-top: 1px solid #F0F0F5;
+    background-color: #FFFFFF;
+}
+
+.hdpd-btn-completed {
+    height: 38px;
+    padding: 0 20px;
+    background-color: #151515;
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hdpd-btn-completed:hover {
+    background-color: #000000;
+}
+
+.hdpd-btn-upload-invoice {
+    height: 38px;
+    padding: 0 24px;
+    background-color: var(--primary-color, #0405AB);
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.hdpd-btn-upload-invoice:hover {
+    opacity: 0.9;
+}
 

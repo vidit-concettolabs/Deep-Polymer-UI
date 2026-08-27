@@ -1,0 +1,195 @@
+@page "/hajipur/dispatch-user/pmr-management"
+@using DeepPolymer.Constants
+@using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
+@using Deep_Polymer_UI.Components.Pages.hajipur.PMR_Management
+@rendermode InteractiveServer
+
+<div class="hpd-container">
+    <!-- Header Title Section -->
+    <div class="hpd-top-header">
+        <h2 class="hpd-title">Dispatch Requests</h2>
+        <p class="hpd-subtitle">View approved PMRs, manage production workflows, and update request status.</p>
+    </div>
+
+    <!-- Filter Bar Row (6 Dropdowns) -->
+    <div class="hpd-filter-row">
+        <div class="hpd-filter-item">
+            <select class="hpd-filter-select">
+                <option selected disabled>Search PMR</option>
+            </select>
+            <span class="hpd-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="hpd-filter-item">
+            <select class="hpd-filter-select">
+                <option selected disabled>Customer Name</option>
+            </select>
+            <span class="hpd-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="hpd-filter-item">
+            <select class="hpd-filter-select">
+                <option selected disabled>Colour Name</option>
+            </select>
+            <span class="hpd-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="hpd-filter-item">
+            <select class="hpd-filter-select">
+                <option selected disabled>Colour Code</option>
+            </select>
+            <span class="hpd-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="hpd-filter-item">
+            <select class="hpd-filter-select">
+                <option selected disabled>Sample Type</option>
+            </select>
+            <span class="hpd-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="hpd-filter-item">
+            <select class="hpd-filter-select">
+                <option selected disabled>Status</option>
+            </select>
+            <span class="hpd-filter-chevron">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+    </div>
+
+    <!-- PMR Details Dialog Modal for Dispatch User -->
+    <HajipurDispatchPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@selectedDialogPmrNo" />
+
+    <!-- PMR Table Wrapper -->
+    <div class="hpd-table-wrapper">
+        <table class="hpd-table">
+            <thead>
+                <tr>
+                    <th class="text-start">PMR No.</th>
+                    <th class="text-start">Customer Name</th>
+                    <th class="text-start">Colour Name</th>
+                    <th class="text-start">Colour Code</th>
+                    <th class="text-start">Sample Type</th>
+                    <th class="text-center">Sample Sent Date</th>
+                    <th class="text-center">Request Status</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in dispatchList)
+                {
+                    <tr>
+                        <td class="text-start">
+                            <span class="hpd-pmr-no-link" @onclick="() => OpenPmrDetailsDialog(item.PmrNo)">@item.PmrNo</span>
+                        </td>
+                        <td class="text-start">@item.CustomerName</td>
+                        <td class="text-start">@item.ColourName</td>
+                        <td class="text-start">@item.ColourCode</td>
+                        <td class="text-start">@item.SampleType</td>
+                        <td class="text-center">@item.SampleSentDate</td>
+                        <td class="text-center">
+                            <span class="hpd-status-pill @GetStatusClass(item.RequestStatus)">
+                                @item.RequestStatus
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick="() => OpenPmrDetailsDialog(item.PmrNo)">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Pagination Row -->
+        <div class="hpd-pagination-row">
+            <span class="hpd-pagination-info">Showing 1-10 of 12 list</span>
+            <div class="hpd-pagination-nav">
+                <button class="hpd-pagination-btn disabled" type="button" title="Previous Page">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button class="hpd-pagination-btn active" type="button">1</button>
+                <button class="hpd-pagination-btn" type="button">2</button>
+                <button class="hpd-pagination-btn" type="button" title="Next Page">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool showPmrDetailsDialog = false;
+    private string selectedDialogPmrNo = "PMR-001";
+
+    private void OpenPmrDetailsDialog(string pmrNo)
+    {
+        selectedDialogPmrNo = pmrNo;
+        showPmrDetailsDialog = true;
+    }
+
+    private string GetStatusClass(string status) => status switch
+    {
+        "Dispatched" => "hpd-status-dispatched",
+        "Completed" => "hpd-status-completed",
+        "Invoice Sent" => "hpd-status-invoice-sent",
+        _ => "hpd-status-completed"
+    };
+
+    private class DispatchItem
+    {
+        public string PmrNo { get; set; } = "";
+        public string CustomerName { get; set; } = "";
+        public string ColourName { get; set; } = "";
+        public string ColourCode { get; set; } = "";
+        public string SampleType { get; set; } = "";
+        public string SampleSentDate { get; set; } = "";
+        public string RequestStatus { get; set; } = "";
+    }
+
+    private List<DispatchItem> dispatchList = new()
+    {
+        new DispatchItem { PmrNo = "PMR-001", CustomerName = "Ramesh Patel", ColourName = "Ocean Blue - A", ColourCode = "NB-405", SampleType = "Fabric", SampleSentDate = "19-05-2026", RequestStatus = "Dispatched" },
+        new DispatchItem { PmrNo = "PMR-002", CustomerName = "Anjali Verma", ColourName = "Sky Blue - B", ColourCode = "NB-406", SampleType = "Textile", SampleSentDate = "20-06-2026", RequestStatus = "Completed" },
+        new DispatchItem { PmrNo = "PMR-003", CustomerName = "Ravi Singh", ColourName = "Crimson Red - C", ColourCode = "NB-412", SampleType = "Fabric", SampleSentDate = "15-07-2026", RequestStatus = "Invoice Sent" },
+        new DispatchItem { PmrNo = "PMR-004", CustomerName = "Sonia Patel", ColourName = "Emerald Green - E", ColourCode = "NB-415", SampleType = "Material", SampleSentDate = "05-08-2026", RequestStatus = "Invoice Sent" },
+        new DispatchItem { PmrNo = "PMR-005", CustomerName = "Karan Mehta", ColourName = "Sunset Orange - S", ColourCode = "NB-421", SampleType = "Cloth", SampleSentDate = "22-09-2026", RequestStatus = "Completed" },
+        new DispatchItem { PmrNo = "PMR-006", CustomerName = "Neha Gupta", ColourName = "Lavender Purple - L", ColourCode = "NB-430", SampleType = "Textile Type", SampleSentDate = "10-10-2026", RequestStatus = "Invoice Sent" },
+        new DispatchItem { PmrNo = "PMR-007", CustomerName = "Amit Joshi", ColourName = "Ocean Blue - D", ColourCode = "NB-437", SampleType = "Fiber", SampleSentDate = "18-11-2026", RequestStatus = "Completed" },
+        new DispatchItem { PmrNo = "PMR-008", CustomerName = "Priya Sharma", ColourName = "Mint Green - M", ColourCode = "NB-442", SampleType = "Weave", SampleSentDate = "29-11-2026", RequestStatus = "Invoice Sent" },
+        new DispatchItem { PmrNo = "PMR-009", CustomerName = "Vikram Desai", ColourName = "Golden Yellow - G", ColourCode = "NB-450", SampleType = "Pattern", SampleSentDate = "12-12-2026", RequestStatus = "Completed" },
+        new DispatchItem { PmrNo = "PMR-010", CustomerName = "Anita Rao", ColourName = "Blush Pink - B", ColourCode = "NB-455", SampleType = "Texture", SampleSentDate = "20-12-2026", RequestStatus = "Invoice Sent" },
+        new DispatchItem { PmrNo = "PMR-011", CustomerName = "Suresh Nair", ColourName = "Charcoal Grey - C", ColourCode = "NB-460", SampleType = "Composition", SampleSentDate = "28-12-2026", RequestStatus = "Completed" }
+    };
+}

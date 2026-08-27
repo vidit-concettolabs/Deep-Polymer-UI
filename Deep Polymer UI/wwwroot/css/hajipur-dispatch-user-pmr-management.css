@@ -1,0 +1,405 @@
+/* ==========================================================================
+   Hajipur Dispatch User PMR Management Screen Styles (hpd-*)
+   ========================================================================== */
+
+.hpd-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+.hpd-top-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 4px 0;
+}
+
+.hpd-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hpd-subtitle {
+    margin: 0;
+    font-size: 13px;
+    color: #808080;
+}
+
+/* Filter Row (6 Columns) */
+.hpd-filter-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    background-color: #FFFFFF;
+    padding: 12px 16px;
+    border: 1px solid #E1E5EA;
+    border-radius: 6px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.hpd-filter-item {
+    position: relative;
+    width: 100%;
+}
+
+.hpd-filter-select {
+    width: 100%;
+    height: 36px;
+    padding: 0 28px 0 10px;
+    font-size: 12px;
+    color: #888888;
+    background-color: #FFFFFF;
+    border: 1px solid #E1E5EA;
+    border-radius: 6px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.hpd-filter-select:focus {
+    outline: none;
+    border-color: #CBD5E1;
+}
+
+.hpd-filter-chevron {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    color: #999999;
+}
+
+.hpd-filter-chevron svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+}
+
+/* Table Wrapper */
+.hpd-table-wrapper {
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    border: 1px solid #E1E5EA;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.hpd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.hpd-table th {
+    background-color: #F8FAFC;
+    color: #808080;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-bottom: 1px solid #E1E5EA;
+    white-space: nowrap;
+    height: 44px;
+    box-sizing: border-box;
+    font-size: 11.5px;
+}
+
+.hpd-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #F1F5F9;
+    color: #151515;
+    white-space: nowrap;
+    vertical-align: middle;
+    height: 48px;
+    box-sizing: border-box;
+}
+
+.hpd-table tr:last-child td {
+    border-bottom: none;
+}
+
+.hpd-pmr-no-link {
+    color: #151515;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.hpd-pmr-no-link:hover {
+    color: #0405AB;
+}
+
+/* Status Badges */
+.hpd-status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3px 14px;
+    border-radius: 14px;
+    font-size: 11px;
+    font-weight: 500;
+    min-width: 105px;
+    height: 25px;
+    box-sizing: border-box;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* Status Colors matching reference image */
+.hpd-status-dispatched {
+    background-color: #F9FFCE;
+    border: 1px solid #8B9D05;
+    color: #8B9D05;
+}
+
+.hpd-status-completed {
+    background-color: #E8F6ED;
+    border: 1px solid #16A34A;
+    color: #16A34A;
+}
+
+.hpd-status-invoice-sent {
+    background-color: #F0F0FF;
+    border: 1px solid #5959FF;
+    color: #5959FF;
+}
+
+/* Eye Action Button */
+.hpd-action-view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid #E2E2E8;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+    box-sizing: border-box;
+}
+
+.hpd-action-view-btn:hover {
+    background-color: #FEE2E2;
+    border-color: #F87171;
+}
+
+.hpd-action-view-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: #EF4444;
+    stroke-width: 2;
+}
+
+/* Pagination Footer */
+.hpd-pagination-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background-color: #FFFFFF;
+    border-top: 1px solid #E1E5EA;
+    box-sizing: border-box;
+}
+
+.hpd-pagination-info {
+    font-size: 11.5px;
+    color: #94A3B8;
+    font-weight: 500;
+}
+
+.hpd-pagination-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.hpd-pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #1A1A1A;
+    background-color: #FFFFFF;
+    border: 1px solid #D9E0E7;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+}
+
+.hpd-pagination-btn:hover:not(.active):not(.disabled) {
+    background-color: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.hpd-pagination-btn.active {
+    background-color: #0405AB;
+    border-color: #0405AB;
+    color: #FFFFFF;
+}
+
+.hpd-pagination-btn.disabled {
+    color: #CBD5E1;
+    border-color: #E2E8F0;
+    cursor: not-allowed;
+}
+
+.hpd-pagination-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+}
+
+/* Hajipur Dispatch User PMR Details Dialog Styles (hdpd-*) */
+.hdpd-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 780px;
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.hdpd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 1px solid #F0F0F5;
+}
+
+.hdpd-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hdpd-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hdpd-status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 12px;
+    background-color: #FFF0F0;
+    border: 1px solid #FFC2C2;
+    color: #F04438;
+    font-size: 11.5px;
+    font-weight: 500;
+    border-radius: 14px;
+}
+
+.hdpd-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.hdpd-body {
+    padding: 22px;
+    overflow-y: auto;
+}
+
+.hdpd-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 28px;
+    row-gap: 20px;
+}
+
+.hdpd-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid #F5F5F8;
+    padding-bottom: 12px;
+}
+
+.hdpd-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hdpd-value {
+    font-size: 13px;
+    color: #808080;
+    font-weight: 400;
+}
+
+.hdpd-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-top: 1px solid #F0F0F5;
+    background-color: #FFFFFF;
+}
+
+.hdpd-btn-completed {
+    height: 38px;
+    padding: 0 20px;
+    background-color: #151515;
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hdpd-btn-completed:hover {
+    background-color: #000000;
+}
+
+.hdpd-btn-upload-invoice {
+    height: 38px;
+    padding: 0 24px;
+    background-color: var(--primary-color, #0405AB);
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.hdpd-btn-upload-invoice:hover {
+    opacity: 0.9;
+}

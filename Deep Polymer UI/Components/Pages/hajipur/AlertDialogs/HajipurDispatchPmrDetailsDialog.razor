@@ -1,0 +1,96 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="hph-dialog-overlay" @onclick="Close">
+        <div class="hph-dialog-card hdpd-card" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="hdpd-header">
+                <div class="hdpd-header-left">
+                    <h3 class="hdpd-title">PMR Details - #1</h3>
+                    <span class="hdpd-status-pill">In Production</span>
+                </div>
+                <button class="hdpd-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="hdpd-body">
+                <div class="hdpd-grid">
+                    <!-- Row 1 -->
+                    <div class="hdpd-item">
+                        <span class="hdpd-label">PMR Number</span>
+                        <span class="hdpd-value">@PmrNo</span>
+                    </div>
+                    <div class="hdpd-item">
+                        <span class="hdpd-label">Customer Name</span>
+                        <span class="hdpd-value">Ramesh Patel</span>
+                    </div>
+                    <div class="hdpd-item">
+                        <span class="hdpd-label">Colour Name</span>
+                        <span class="hdpd-value">Ocean Blue - A</span>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="hdpd-item">
+                        <span class="hdpd-label">Colour Code</span>
+                        <span class="hdpd-value">OB-102</span>
+                    </div>
+                    <div class="hdpd-item">
+                        <span class="hdpd-label">City</span>
+                        <span class="hdpd-value">Ahmedabad</span>
+                    </div>
+                    <div class="hdpd-item">
+                        <span class="hdpd-label">Received From</span>
+                        <span class="hdpd-value">Priya Mehta</span>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="hdpd-item">
+                        <span class="hdpd-label">Region</span>
+                        <span class="hdpd-value">Gujarat</span>
+                    </div>
+                    <div class="hdpd-item">
+                        <span class="hdpd-label">Sample Request Date</span>
+                        <span class="hdpd-value">07.08.2024</span>
+                    </div>
+                    <div class="hdpd-item"></div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="hdpd-footer">
+                <button class="hdpd-btn-completed" type="button" @onclick="MarkCompleted">Mark As Completed</button>
+                <button class="hdpd-btn-upload-invoice" type="button" @onclick="OpenUploadInvoice">Upload Invoice</button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Upload Document Modal -->
+<HajipurUploadPoDialog @bind-IsOpen="showUploadInvoiceDialog" />
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string PmrNo { get; set; } = "PMR-001";
+    [Parameter] public EventCallback OnCompleted { get; set; }
+
+    private bool showUploadInvoiceDialog = false;
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task MarkCompleted()
+    {
+        await OnCompleted.InvokeAsync();
+        await Close();
+    }
+
+    private void OpenUploadInvoice()
+    {
+        showUploadInvoiceDialog = true;
+    }
+}

@@ -715,7 +715,11 @@
 
     protected override void OnInitialized()
     {
-        if (ColorConstant.IsProductionHead)
+        if (ColorConstant.IsDispatchUser)
+        {
+            Navigation.NavigateTo("/hajipur/dispatch-user/pmr-management");
+        }
+        else if (ColorConstant.IsProductionHead)
         {
             Navigation.NavigateTo("/hajipur/production-head/pmr-management");
         }
