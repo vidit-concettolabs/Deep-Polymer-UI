@@ -5,8 +5,8 @@ public static class ColorConstant
     // 1 for Santej, 2 for Hajipur
     public const int BranchFlag = 2;
 
-    // 1 for Admin, 2 for PMR Generator, 3 for Lab User, 4 for Production User (Santej), 5 for Production Head (Hajipur), 6 for Dispatch User (Hajipur)
-    public const int RoleFlag = 6;
+    // 1 for Admin, 2 for PMR Generator, 3 for Lab User, 4 for Production User (Santej), 5 for Production Head (Hajipur), 6 for Dispatch User (Hajipur), 7 for Marketing User (Hajipur)
+    public const int RoleFlag = 8;
 
     // Helper properties
     public static bool IsAdmin => RoleFlag == 1;
@@ -15,6 +15,8 @@ public static class ColorConstant
     public static bool IsProductionUser => RoleFlag == 4;
     public static bool IsProductionHead => RoleFlag == 5;
     public static bool IsDispatchUser => RoleFlag == 6;
+    public static bool IsMarketingUser => RoleFlag == 7;
+    public static bool IsHajipurProductionUser => RoleFlag == 8;
 
     // Santej Colors
     public const string SantejPrimaryColor = "#ff0000";

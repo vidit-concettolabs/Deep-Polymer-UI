@@ -1,0 +1,145 @@
+@using Microsoft.AspNetCore.Components
+
+@if (IsOpen)
+{
+    <div class="hph-dialog-overlay" @onclick="Close">
+        <div class="hph-dialog-card hmpd-card" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="hmpd-header">
+                <div class="hmpd-title-wrap">
+                    <h3 class="hmpd-title">PMR Details - #@(string.IsNullOrEmpty(PmrNo) ? "3" : PmrNo)</h3>
+                    <span class="status-badge status-costing-done">Costing Done</span>
+                </div>
+                <button type="button" class="hmpd-close-btn" @onclick="Close" title="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="hmpd-body">
+                <!-- 3-Column Info Grid -->
+                <div class="hmpd-info-grid">
+                    <div class="hmpd-info-item">
+                        <span class="hmpd-info-label">PMR Number</span>
+                        <span class="hmpd-info-value">PMR-001</span>
+                    </div>
+                    <div class="hmpd-info-item">
+                        <span class="hmpd-info-label">Customer Name</span>
+                        <span class="hmpd-info-value">Ramesh Patel</span>
+                    </div>
+                    <div class="hmpd-info-item">
+                        <span class="hmpd-info-label">Colour Name</span>
+                        <span class="hmpd-info-value">Ocean Blue - A</span>
+                    </div>
+
+                    <div class="hmpd-info-item">
+                        <span class="hmpd-info-label">Colour Code</span>
+                        <span class="hmpd-info-value">OB-102</span>
+                    </div>
+                    <div class="hmpd-info-item">
+                        <span class="hmpd-info-label">City</span>
+                        <span class="hmpd-info-value">Ahmedabad</span>
+                    </div>
+                    <div class="hmpd-info-item">
+                        <span class="hmpd-info-label">Received From</span>
+                        <span class="hmpd-info-value">Priya Mehta</span>
+                    </div>
+
+                    <div class="hmpd-info-item">
+                        <span class="hmpd-info-label">Region</span>
+                        <span class="hmpd-info-value">Gujarat</span>
+                    </div>
+                    <div class="hmpd-info-item">
+                        <span class="hmpd-info-label">Sample Request Date</span>
+                        <span class="hmpd-info-value">07.08.2024</span>
+                    </div>
+                    <div class="hmpd-info-item"></div>
+                </div>
+
+                <!-- Card 1: Send Cost to Customer -->
+                <div class="hmpd-card-box">
+                    <h4 class="hmpd-box-title">Send Cost to Customer</h4>
+                    <p class="hmpd-box-subtitle">Share total raw material costing with the marketing team via email.</p>
+                    <div class="hmpd-cost-val">
+                        Total Cost (₹): <span class="hmpd-cost-bold">12,500</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Negotiation Timeline Stepper -->
+                <div class="hmpd-card-box">
+                    <h4 class="hmpd-box-title">Negotiation Timeline</h4>
+                    <div class="hmpd-stepper">
+                        <!-- Step 1: Completed -->
+                        <div class="hmpd-step completed">
+                            <div class="hmpd-step-icon">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFFFFF" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="hmpd-step-label">Waiting For Customer</span>
+                        </div>
+                        <div class="hmpd-step-line active"></div>
+
+                        <!-- Step 2: Completed -->
+                        <div class="hmpd-step completed">
+                            <div class="hmpd-step-icon">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFFFFF" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="hmpd-step-label">Negotiation</span>
+                        </div>
+                        <div class="hmpd-step-line"></div>
+
+                        <!-- Step 3: Pending -->
+                        <div class="hmpd-step">
+                            <div class="hmpd-step-icon gray">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFFFFF" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="hmpd-step-label">Admin Approval</span>
+                        </div>
+                        <div class="hmpd-step-line"></div>
+
+                        <!-- Step 4: Pending -->
+                        <div class="hmpd-step">
+                            <div class="hmpd-step-icon gray">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFFFFF" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="hmpd-step-label">Revised Email Sent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="hmpd-footer">
+                <button type="button" class="hmpd-btn-email-customer" @onclick="HandleEmailCustomer">Email to Customer User</button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Email to Customer User Dialog Modal -->
+<HajipurEmailToCustomerUserDialog @bind-IsOpen="showEmailCustomerDialog" PmrNo="@PmrNo" />
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string PmrNo { get; set; } = "PMR-001";
+    [Parameter] public EventCallback OnEmailCustomer { get; set; }
+
+    private bool showEmailCustomerDialog = false;
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private void HandleEmailCustomer()
+    {
+        showEmailCustomerDialog = true;
+    }
+}

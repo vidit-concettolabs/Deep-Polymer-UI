@@ -70,35 +70,246 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var cust in customerList)
-                {
-                    <tr>
-                        <td style="text-align: left;">
-                            <span class="cust-name-link" @onclick="() => OpenCustomerDetails(cust.Id)">
-                                @cust.Name
-                            </span>
-                        </td>
-                        <td style="text-align: left;">@cust.Company</td>
-                        <td style="text-align: left;">@cust.Email</td>
-                        <td style="text-align: left;">@cust.Contact</td>
-                        <td style="text-align: center;">
-                            <div class="cust-actions-wrap">
-                                <button class="cust-view-btn" type="button" title="View Customer Details" @onclick="() => OpenCustomerDetails(cust.Id)">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                                <button class="cust-edit-btn" type="button" title="Edit Customer Details">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                }
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("1")'>Ramesh Patel</span>
+                    </td>
+                    <td style="text-align: left;">Shree Packaging Pvt Ltd</td>
+                    <td style="text-align: left;">contact@shreepackaging.com</td>
+                    <td style="text-align: left;">+91 98765 43210</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("1")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("2")'>Priya Mehta</span>
+                    </td>
+                    <td style="text-align: left;">Nova Plastics Industries</td>
+                    <td style="text-align: left;">sales@novaplastics.in</td>
+                    <td style="text-align: left;">+91 98254 11876</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("2")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("3")'>Karan Desai</span>
+                    </td>
+                    <td style="text-align: left;">Prime Polymer Solutions</td>
+                    <td style="text-align: left;">info@primepolymer.com</td>
+                    <td style="text-align: left;">+91 98980 55421</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("3")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("4")'>Neha Joshi</span>
+                    </td>
+                    <td style="text-align: left;">EcoPack Innovations</td>
+                    <td style="text-align: left;">support@ecopackinnovations.com</td>
+                    <td style="text-align: left;">+91 98456 78901</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("4")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("5")'>Vivek Trivedi</span>
+                    </td>
+                    <td style="text-align: left;">GreenWrap Technologies</td>
+                    <td style="text-align: left;">hello@greenwraptech.com</td>
+                    <td style="text-align: left;">+91 97531 24680</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("5")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("6")'>Dhruv Parmar</span>
+                    </td>
+                    <td style="text-align: left;">FlexiPack Solutions</td>
+                    <td style="text-align: left;">contact@flexipacksolutions.com</td>
+                    <td style="text-align: left;">+91 99887 65432</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("6")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("7")'>Hitesh Shah</span>
+                    </td>
+                    <td style="text-align: left;">PackSmart Industries</td>
+                    <td style="text-align: left;">info@packsmartind.com</td>
+                    <td style="text-align: left;">+91 99000 12345</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("7")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("8")'>Rahul Mehta</span>
+                    </td>
+                    <td style="text-align: left;">BioBase Packaging</td>
+                    <td style="text-align: left;">service@biobasepack.com</td>
+                    <td style="text-align: left;">+91 99111 23456</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("8")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("9")'>Pooja Patel</span>
+                    </td>
+                    <td style="text-align: left;">SecureSeal Packaging</td>
+                    <td style="text-align: left;">sales@securesealpack.com</td>
+                    <td style="text-align: left;">+91 99222 34567</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("9")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="cust-name-link" @onclick='() => OpenCustomerDetails("10")'>Amit Shah</span>
+                    </td>
+                    <td style="text-align: left;">OptiWrap Solutions</td>
+                    <td style="text-align: left;">contact@optiwrapsolutions.com</td>
+                    <td style="text-align: left;">+91 99333 45678</td>
+                    <td style="text-align: center;">
+                        <div class="cust-actions-wrap">
+                            <button class="cust-view-btn" type="button" title="View Customer Details" @onclick='() => OpenCustomerDetails("10")'>
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="cust-edit-btn" type="button" title="Edit Customer Details">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -128,21 +339,5 @@
         selectedCustomerId = id;
         showDetailsDialog = true;
     }
-
-    private record CustomerItem(string Id, string Name, string Company, string Email, string Contact);
-
-    private List<CustomerItem> customerList = new()
-    {
-        new("1", "Ramesh Patel", "Shree Packaging Pvt Ltd", "contact@shreepackaging.com", "+91 98765 43210"),
-        new("2", "Priya Mehta", "Nova Plastics Industries", "sales@novaplastics.in", "+91 98254 11876"),
-        new("3", "Karan Desai", "Prime Polymer Solutions", "info@primepolymer.com", "+91 98980 55421"),
-        new("4", "Neha Joshi", "EcoPack Innovations", "support@ecopackinnovations.com", "+91 98456 78901"),
-        new("5", "Vivek Trivedi", "GreenWrap Technologies", "hello@greenwraptech.com", "+91 97531 24680"),
-        new("6", "Dhruv Parmar", "FlexiPack Solutions", "contact@flexipacksolutions.com", "+91 99887 65432"),
-        new("7", "Hitesh Shah", "PackSmart Industries", "info@packsmartind.com", "+91 99000 12345"),
-        new("8", "Rahul Mehta", "BioBase Packaging", "service@biobasepack.com", "+91 99111 23456"),
-        new("9", "Pooja Patel", "SecureSeal Packaging", "sales@securesealpack.com", "+91 99222 34567"),
-        new("10", "Amit Shah", "OptiWrap Solutions", "contact@optiwrapsolutions.com", "+91 99333 45678")
-    };
 }
 

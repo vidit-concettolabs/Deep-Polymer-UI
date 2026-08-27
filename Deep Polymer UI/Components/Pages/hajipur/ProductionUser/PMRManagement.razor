@@ -1,0 +1,379 @@
+@page "/hajipur/production-user/pmr-management"
+@using DeepPolymer.Constants
+@using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<div class="hpu-container">
+    <!-- Top Header -->
+    <div class="hpu-top-header">
+        <div class="hpu-title-area">
+            <h2 class="hpu-title">Production Requests</h2>
+            <p class="hpu-subtitle">View approved PMRs, manage production workflows, and update request status.</p>
+        </div>
+    </div>
+
+    <!-- 9 Filter Dropdowns Row -->
+    <div class="hpu-filter-row">
+        <div class="hpu-filter-item">
+            <select class="hpu-filter-select">
+                <option selected disabled>PMR</option>
+                <option>PMR-001</option>
+                <option>PMR-002</option>
+                <option>PMR-003</option>
+            </select>
+            <span class="hpu-filter-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+        </div>
+
+        <div class="hpu-filter-item">
+            <select class="hpu-filter-select">
+                <option selected disabled>Customer Name</option>
+                <option>Ramesh Patel</option>
+                <option>Anjali Verma</option>
+                <option>Kiran Desai</option>
+            </select>
+            <span class="hpu-filter-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+        </div>
+
+        <div class="hpu-filter-item">
+            <select class="hpu-filter-select">
+                <option selected disabled>Colour Name</option>
+                <option>Ocean Blue</option>
+                <option>Sunset Orange</option>
+                <option>Forest Green</option>
+            </select>
+            <span class="hpu-filter-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+        </div>
+
+        <div class="hpu-filter-item">
+            <select class="hpu-filter-select">
+                <option selected disabled>Colour Code</option>
+                <option>NB-405</option>
+                <option>NB-406</option>
+                <option>NB-407</option>
+            </select>
+            <span class="hpu-filter-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+        </div>
+
+        <div class="hpu-filter-item">
+            <select class="hpu-filter-select">
+                <option selected disabled>Product Name</option>
+                <option>PET BKY 20-1166</option>
+                <option>PET BKY 20-1187</option>
+            </select>
+            <span class="hpu-filter-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+        </div>
+
+        <div class="hpu-filter-item">
+            <select class="hpu-filter-select">
+                <option selected disabled>Product Code</option>
+                <option>BE20-1166</option>
+                <option>BE20-1187</option>
+            </select>
+            <span class="hpu-filter-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+        </div>
+
+        <div class="hpu-filter-item">
+            <select class="hpu-filter-select">
+                <option selected disabled>Sample Type</option>
+                <option>Fabric</option>
+                <option>Yarn</option>
+            </select>
+            <span class="hpu-filter-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+        </div>
+
+        <div class="hpu-filter-item">
+            <select class="hpu-filter-select">
+                <option selected disabled>LDR %</option>
+                <option>1%</option>
+                <option>3%</option>
+                <option>5%</option>
+            </select>
+            <span class="hpu-filter-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+        </div>
+
+        <div class="hpu-filter-item">
+            <select class="hpu-filter-select">
+                <option selected disabled>Status</option>
+                <option>In Production</option>
+                <option>Dispatched</option>
+            </select>
+            <span class="hpu-filter-chevron">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+        </div>
+    </div>
+
+    <!-- PMR Details Dialog Modal -->
+    <HajipurProductionPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@selectedDialogPmrNo" />
+
+    <!-- Table Section -->
+    <div class="hpu-table-wrapper">
+        <table class="hpu-table">
+            <thead>
+                <tr>
+                    <th class="text-start">PMR No.</th>
+                    <th class="text-start">Customer Name</th>
+                    <th class="text-start">Colour Name</th>
+                    <th class="text-start">Colour Code</th>
+                    <th class="text-start">Product Name</th>
+                    <th class="text-start">Product Code</th>
+                    <th class="text-start">Sample Type</th>
+                    <th class="text-center">LDR %</th>
+                    <th class="text-center">Request Status</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-001</td>
+                    <td class="text-start">Ramesh Patel</td>
+                    <td class="text-start">Ocean Blue</td>
+                    <td class="text-start">NB-405</td>
+                    <td class="text-start">PET BKY 20-1166</td>
+                    <td class="text-start">BE20-1166</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">3%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-in-production">In Production</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-001")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-001</td>
+                    <td class="text-start">Ramesh Patel</td>
+                    <td class="text-start">Ocean Blue</td>
+                    <td class="text-start">NB-405</td>
+                    <td class="text-start">PET BKY 20-1166</td>
+                    <td class="text-start">BE20-1166</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">3%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-dispatched">Dispatched</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-001")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-002</td>
+                    <td class="text-start">Anjali Verma</td>
+                    <td class="text-start">Sunset Orange</td>
+                    <td class="text-start">NB-406</td>
+                    <td class="text-start">PET BKY 20-1187</td>
+                    <td class="text-start">BE20-1187</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">5%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-in-production">In Production</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-002")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-003</td>
+                    <td class="text-start">Kiran Desai</td>
+                    <td class="text-start">Forest Green</td>
+                    <td class="text-start">NB-407</td>
+                    <td class="text-start">PET BKY 20-1201</td>
+                    <td class="text-start">BE20-1201</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">2%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-dispatched">Dispatched</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-003")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-004</td>
+                    <td class="text-start">Sneha Kulkarni</td>
+                    <td class="text-start">Crimson Red</td>
+                    <td class="text-start">NB-408</td>
+                    <td class="text-start">PET BKY 20-1223</td>
+                    <td class="text-start">BE20-1223</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">7%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-in-production">In Production</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-004")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-001</td>
+                    <td class="text-start">Ramesh Patel</td>
+                    <td class="text-start">Ocean Blue</td>
+                    <td class="text-start">NB-405</td>
+                    <td class="text-start">PET BKY 20-1166</td>
+                    <td class="text-start">BE20-1166</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">3%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-dispatched">Dispatched</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-001")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-005</td>
+                    <td class="text-start">Rahul Singh</td>
+                    <td class="text-start">Midnight Black</td>
+                    <td class="text-start">NB-409</td>
+                    <td class="text-start">PET BKY 20-1245</td>
+                    <td class="text-start">BE20-1245</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">4%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-in-production">In Production</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-005")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-006</td>
+                    <td class="text-start">Priya Nair</td>
+                    <td class="text-start">Lavender Purple</td>
+                    <td class="text-start">NB-410</td>
+                    <td class="text-start">PET BKY 20-1267</td>
+                    <td class="text-start">BE20-1267</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">6%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-dispatched">Dispatched</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-006")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-007</td>
+                    <td class="text-start">Vikram Joshi</td>
+                    <td class="text-start">Sky Grey</td>
+                    <td class="text-start">NB-411</td>
+                    <td class="text-start">PET BKY 20-1289</td>
+                    <td class="text-start">BE20-1289</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">3%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-in-production">In Production</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-007")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-start hpu-pmr-no">PMR-008</td>
+                    <td class="text-start">Meera Rao</td>
+                    <td class="text-start">Golden Yellow</td>
+                    <td class="text-start">NB-412</td>
+                    <td class="text-start">PET BKY 20-1300</td>
+                    <td class="text-start">BE20-1300</td>
+                    <td class="text-start">Fabric</td>
+                    <td class="text-center">8%</td>
+                    <td class="text-center">
+                        <span class="hpu-status-badge hpu-status-dispatched">Dispatched</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="hpu-eye-btn" type="button" @onclick='() => OpenPmrDetailsDialog("PMR-008")' title="View Details">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination Row -->
+        <div class="hpu-pagination-row">
+            <span class="hpu-pagination-info">Showing 1-10 of 12 list</span>
+            <div class="hpu-pagination-nav">
+                <button class="hpu-pagination-btn disabled" type="button">&lt;</button>
+                <button class="hpu-pagination-btn active" type="button">1</button>
+                <button class="hpu-pagination-btn" type="button">2</button>
+                <button class="hpu-pagination-btn" type="button">&gt;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool showPmrDetailsDialog = false;
+    private string selectedDialogPmrNo = "PMR-001";
+
+    private void OpenPmrDetailsDialog(string pmrNo)
+    {
+        selectedDialogPmrNo = pmrNo;
+        showPmrDetailsDialog = true;
+    }
+}

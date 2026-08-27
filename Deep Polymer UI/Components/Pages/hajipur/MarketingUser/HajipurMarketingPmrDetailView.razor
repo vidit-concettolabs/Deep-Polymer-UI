@@ -1,0 +1,407 @@
+@page "/hajipur/marketing-user/pmr-details/{PmrNo}"
+@page "/hajipur/marketing-user/pmr-details"
+@using Microsoft.AspNetCore.Components.Sections
+@using DeepPolymer.Constants
+@using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<!-- Inject ← Back into the main header slot -->
+<SectionContent SectionName="header-back-slot">
+    <a class="header-back-btn" href="hajipur/marketing-user/pmr-management">
+        <svg viewBox="0 0 24 24">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Back
+    </a>
+</SectionContent>
+
+<div class="hmd-container">
+    <!-- Single Main PMR Details Card -->
+    <div class="hmd-card">
+        
+        <!-- Scrollable Body Content -->
+        <div class="hmd-card-body">
+            <!-- Header -->
+            <div class="hmd-card-header">
+                <h2 class="hmd-title">PMR Details - #3</h2>
+                <span class="status-badge status-costing-done">Costing Done</span>
+            </div>
+
+            <!-- Top Grid (PMR Specs + Send Negotiation Request) -->
+            <div class="hmd-top-grid">
+                <!-- Left Column: PMR Information Grid -->
+                <div class="hmd-left-specs">
+                    <div class="hmd-specs-grid">
+                        <div class="hmd-spec-item">
+                            <span class="hmd-spec-label">PMR Number</span>
+                            <span class="hmd-spec-value">@(string.IsNullOrEmpty(PmrNo) ? "PMR-001" : PmrNo)</span>
+                        </div>
+                        <div class="hmd-spec-item">
+                            <span class="hmd-spec-label">Customer Name</span>
+                            <span class="hmd-spec-value">Ramesh Patel</span>
+                        </div>
+
+                        <div class="hmd-spec-item">
+                            <span class="hmd-spec-label">Colour Name</span>
+                            <span class="hmd-spec-value">Ocean Blue - A</span>
+                        </div>
+                        <div class="hmd-spec-item">
+                            <span class="hmd-spec-label">Colour Code</span>
+                            <span class="hmd-spec-value">OB-102</span>
+                        </div>
+
+                        <div class="hmd-spec-item">
+                            <span class="hmd-spec-label">City</span>
+                            <span class="hmd-spec-value">Ahmedabad</span>
+                        </div>
+                        <div class="hmd-spec-item">
+                            <span class="hmd-spec-label">Received From</span>
+                            <span class="hmd-spec-value">Priya Mehta</span>
+                        </div>
+
+                        <div class="hmd-spec-item">
+                            <span class="hmd-spec-label">Region</span>
+                            <span class="hmd-spec-value">Gujarat</span>
+                        </div>
+                        <div class="hmd-spec-item">
+                            <span class="hmd-spec-label">Sample Request Date</span>
+                            <span class="hmd-spec-value">07.08.2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Send Negotiation Request Card -->
+                <div class="hmd-right-neg-card">
+                    <h3 class="hmd-neg-title">Send Negotiation Request</h3>
+                    <p class="hmd-neg-subtitle">Enter the negotiated pricing details before sending them to the marketing team.</p>
+
+                    <!-- Total Cost Summary Box -->
+                    <div class="hmd-cost-banner">
+                        <div class="hmd-cost-left">
+                            <span class="hmd-cost-label">Total Cost</span>
+                            <span class="hmd-cost-val">₹12,500</span>
+                        </div>
+                        <div class="hmd-cost-right">
+                            <span class="hmd-diff-label">Cost Difference:</span>
+                            <span class="hmd-diff-val">₹1,000 <span class="hmd-saved-tag">(Saved)</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Input Fields -->
+                    <div class="hmd-form-group">
+                        <label class="hmd-form-label">Negotiated Cost (₹)</label>
+                        <input class="hmd-form-input" type="text" value="11500" placeholder="Enter Negotiated Cost" />
+                    </div>
+
+                    <div class="hmd-form-group">
+                        <label class="hmd-form-label">Negotiation Note</label>
+                        <textarea class="hmd-form-textarea" placeholder="Negotiation Note"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Spacer -->
+            <div class="hmd-section-spacer"></div>
+
+            <!-- Middle Section: Negotiation Timeline Box -->
+            <div class="hmd-timeline-box">
+                <h3 class="hmd-section-title">Negotiation Timeline</h3>
+                
+                <div class="hmd-stepper-wrapper">
+                    <div class="hmd-stepper">
+                        <!-- Step 1: Active/Completed -->
+                        <div class="hmd-step completed">
+                            <div class="hmd-step-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="hmd-step-label">Waiting For Customer</span>
+                        </div>
+
+                        <div class="hmd-step-line active"></div>
+
+                        <!-- Step 2: Active/Completed -->
+                        <div class="hmd-step completed">
+                            <div class="hmd-step-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="hmd-step-label">Revised Email Sent</span>
+                        </div>
+
+                        <div class="hmd-step-line"></div>
+
+                        <!-- Step 3: Pending -->
+                        <div class="hmd-step pending">
+                            <div class="hmd-step-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="hmd-step-label">Negotiation</span>
+                        </div>
+
+                        <div class="hmd-step-line"></div>
+
+                        <!-- Step 4: Pending -->
+                        <div class="hmd-step pending">
+                            <div class="hmd-step-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="hmd-step-label">Admin Approval</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Divider Line below Timeline Box -->
+            <div class="hmd-section-divider"></div>
+
+            <!-- Bottom Section: Design Output -->
+            <div class="hmd-section-block">
+                <h3 class="hmd-section-title">Design Output</h3>
+
+                <!-- Sub Tabs -->
+                <div class="hmd-sub-tabs">
+                    <button class="hmd-sub-tab @(activeDesignTab == 1 ? "active" : "")" type="button" @onclick="() => SetDesignTab(1)">
+                        Product Details(Deep Polymers)
+                    </button>
+                    <button class="hmd-sub-tab @(activeDesignTab == 2 ? "active" : "")" type="button" @onclick="() => SetDesignTab(2)">
+                        Technical Development Details
+                    </button>
+                </div>
+
+                @if (activeDesignTab == 1)
+                {
+                    <!-- Tab 1 Content: Product Details Table -->
+                    <div class="hmd-table-wrapper">
+                        <table class="hmd-table">
+                            <thead>
+                                <tr>
+                                    <th class="text-start">S. No.</th>
+                                    <th class="text-start">Customer Sample(Ref. Name/Number)</th>
+                                    <th class="text-start">Lab Ref. No.</th>
+                                    <th class="text-start">Product Code</th>
+                                    <th class="text-start">Product Name</th>
+                                    <th class="text-center">% LDR</th>
+                                    <th class="text-center">Sample Details</th>
+                                    <th class="text-center">Sent Date</th>
+                                </tr>
+                            </thead>
+                             <tbody>
+                                <tr>
+                                    <td class="text-start">1</td>
+                                    <td class="text-start">BSPL/24/271-1</td>
+                                    <td class="text-start">PMR/H/0267A-1</td>
+                                    <td class="text-start">BE20-1166</td>
+                                    <td class="text-start">
+                                        <span class="hmd-product-name-pill">PET BKY Beige 20-1166</span>
+                                    </td>
+                                    <td class="text-center">1.5%</td>
+                                    <td class="text-center">3 POY</td>
+                                    <td class="text-center">19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">2</td>
+                                    <td class="text-start">BSPL/24/271-1</td>
+                                    <td class="text-start">PMR/H/0267A-1</td>
+                                    <td class="text-start">BE20-1166</td>
+                                    <td class="text-start">
+                                        <span class="hmd-product-name-pill">PET BKY Beige 20-1166</span>
+                                    </td>
+                                    <td class="text-center">1.5%</td>
+                                    <td class="text-center">3 POY</td>
+                                    <td class="text-center">19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">3</td>
+                                    <td class="text-start">BSPL/24/271-1</td>
+                                    <td class="text-start">PMR/H/0267A-1</td>
+                                    <td class="text-start">BE20-1166</td>
+                                    <td class="text-start">
+                                        <span class="hmd-product-name-pill">PET BKY Beige 20-1166</span>
+                                    </td>
+                                    <td class="text-center">1.5%</td>
+                                    <td class="text-center">3 POY</td>
+                                    <td class="text-center">19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">4</td>
+                                    <td class="text-start">BSPL/24/271-1</td>
+                                    <td class="text-start">PMR/H/0267A-1</td>
+                                    <td class="text-start">BE20-1166</td>
+                                    <td class="text-start">
+                                        <span class="hmd-product-name-pill">PET BKY Beige 20-1166</span>
+                                    </td>
+                                    <td class="text-center">1.5%</td>
+                                    <td class="text-center">3 POY</td>
+                                    <td class="text-center">19-05-2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">5</td>
+                                    <td class="text-start">BSPL/24/271-1</td>
+                                    <td class="text-start">PMR/H/0267A-1</td>
+                                    <td class="text-start">BE20-1166</td>
+                                    <td class="text-start">
+                                        <span class="hmd-product-name-pill">PET BKY Beige 20-1166</span>
+                                    </td>
+                                    <td class="text-center">1.5%</td>
+                                    <td class="text-center">3 POY</td>
+                                    <td class="text-center">19-05-2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Pagination Footer -->
+                        <div class="hmd-pagination-row">
+                            <span class="hmd-pagination-info">Showing 1-10 of 12 list</span>
+                            <div class="hmd-pagination-nav">
+                                <button class="hmd-pagination-btn disabled" type="button" title="Previous Page">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <button class="hmd-pagination-btn active" type="button">1</button>
+                                <button class="hmd-pagination-btn" type="button">2</button>
+                                <button class="hmd-pagination-btn" type="button" title="Next Page">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <!-- Tab 2 Content: Technical Development Details Grid -->
+                    <div class="hmd-tech-wrapper">
+                        <table class="hmd-tech-table">
+                            <thead>
+                                <tr>
+                                    <th class="hmd-tech-th-type">Type</th>
+                                    <th class="hmd-tech-th-col">Customer Details</th>
+                                    <th class="hmd-tech-th-col">Deep Planning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="hmd-tech-td-type">Polymer</td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">Polyester (PET)</div>
+                                    </td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">Nylon (PA6)</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="hmd-tech-td-type">POY Denier</td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">150D</div>
+                                    </td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">200D</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="hmd-tech-td-type">Final Denier</td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">150D</div>
+                                    </td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">200D</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="hmd-tech-td-type">Filaments</td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">75D</div>
+                                    </td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">100D</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="hmd-tech-td-type">Cross-Sec.</td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">Round</div>
+                                    </td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">Trilobal</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="hmd-tech-td-type">Yarn Structue</td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">DTY</div>
+                                    </td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">FDY</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="hmd-tech-td-type">Sample requirement</td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">500 kg</div>
+                                    </td>
+                                    <td class="hmd-tech-td-val">
+                                        <div class="hmd-tech-val-pill">250 kg</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Fixed Non-Scrollable Footer Actions Bar -->
+        <div class="hmd-fixed-footer">
+            <div class="hmd-footer-left">
+                <button class="hmd-btn-approved" type="button" @onclick="HandleApprovedByCustomer">
+                    Approved By Customer
+                </button>
+            </div>
+            <div class="hmd-footer-right">
+                <button class="hmd-btn-email-customer" type="button" @onclick="HandleEmailToCustomer">
+                    Email to Customer User
+                </button>
+                <button class="hmd-btn-submit-prod" type="button" @onclick="HandleSubmitToProductionHead">
+                    Submit To Production Head
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@code {
+    [Parameter] public string PmrNo { get; set; } = "PMR-001";
+
+    private int activeDesignTab = 1; // 1 for Product Details, 2 for Technical Development
+
+    private void SetDesignTab(int tabIndex)
+    {
+        activeDesignTab = tabIndex;
+    }
+
+    private void HandleApprovedByCustomer()
+    {
+        // Action logic
+    }
+
+    private void HandleEmailToCustomer()
+    {
+        // Action logic
+    }
+
+    private void HandleSubmitToProductionHead()
+    {
+        Navigation.NavigateTo("/hajipur/marketing-user/pmr-management");
+    }
+}

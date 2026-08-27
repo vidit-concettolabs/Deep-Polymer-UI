@@ -105,7 +105,7 @@
                             <h4 class="scpmr-color-title">Add Color Info</h4>
                             <p class="scpmr-color-subtitle">Add color information used across PMR requests and raw material mapping.</p>
                         </div>
-                        <button type="button" class="scpmr-btn-add-color" @onclick="AddColorRow">Add Color</button>
+                        <button type="button" class="scpmr-btn-add-color">Add Color</button>
                     </div>
 
                     <!-- Color Table -->
@@ -122,42 +122,105 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var colorItem in colorRows)
-                                {
-                                    <tr>
-                                        <td>
-                                            <div class="scpmr-select-wrap">
-                                                <select class="scpmr-select" @bind="colorItem.ColorName">
-                                                    <option value="Ocean Blue-A">Ocean Blue-A</option>
-                                                    <option value="Ocean Blue-B">Ocean Blue-B</option>
-                                                    <option value="Dark Grey">Dark Grey</option>
-                                                </select>
-                                                <span class="scpmr-chevron">
-                                                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                                </span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <input type="text" class="scpmr-input" placeholder="Price" @bind="colorItem.TargetPrice" />
-                                        </td>
-                                        <td>
-                                            <input type="text" class="scpmr-input" placeholder="Qty" @bind="colorItem.MonthlyQty" />
-                                        </td>
-                                        <td>
-                                            <input type="text" class="scpmr-input" placeholder="Details" @bind="colorItem.Application" />
-                                        </td>
-                                        <td>
-                                            <input type="text" class="scpmr-input" placeholder="Details" @bind="colorItem.ProcessFormulation" />
-                                        </td>
-                                        <td style="text-align: center;">
-                                            <button type="button" class="scpmr-btn-delete" title="Remove Color" @onclick="() => RemoveColorRow(colorItem)">
-                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#9CA3AF" stroke-width="2">
-                                                    <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                }
+                                <tr>
+                                    <td>
+                                        <div class="scpmr-select-wrap">
+                                            <select class="scpmr-select">
+                                                <option value="Ocean Blue-A" selected>Ocean Blue-A</option>
+                                                <option value="Ocean Blue-B">Ocean Blue-B</option>
+                                                <option value="Dark Grey">Dark Grey</option>
+                                            </select>
+                                            <span class="scpmr-chevron">
+                                                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Price" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Qty" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Details" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Details" />
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <button type="button" class="scpmr-btn-delete" title="Remove Color">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#9CA3AF" stroke-width="2">
+                                                <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="scpmr-select-wrap">
+                                            <select class="scpmr-select">
+                                                <option value="Ocean Blue-A">Ocean Blue-A</option>
+                                                <option value="Ocean Blue-B" selected>Ocean Blue-B</option>
+                                                <option value="Dark Grey">Dark Grey</option>
+                                            </select>
+                                            <span class="scpmr-chevron">
+                                                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Price" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Qty" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Details" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Details" />
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <button type="button" class="scpmr-btn-delete" title="Remove Color">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#9CA3AF" stroke-width="2">
+                                                <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="scpmr-select-wrap">
+                                            <select class="scpmr-select">
+                                                <option value="Ocean Blue-A">Ocean Blue-A</option>
+                                                <option value="Ocean Blue-B">Ocean Blue-B</option>
+                                                <option value="Dark Grey" selected>Dark Grey</option>
+                                            </select>
+                                            <span class="scpmr-chevron">
+                                                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Price" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Qty" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Details" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="scpmr-input" placeholder="Details" />
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <button type="button" class="scpmr-btn-delete" title="Remove Color">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#9CA3AF" stroke-width="2">
+                                                <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -188,35 +251,6 @@
     private string productName = "";
     private string customerName = "";
     private string city = "";
-
-    private class ColorRowModel
-    {
-        public string ColorName { get; set; } = "Ocean Blue-A";
-        public string TargetPrice { get; set; } = "";
-        public string MonthlyQty { get; set; } = "";
-        public string Application { get; set; } = "";
-        public string ProcessFormulation { get; set; } = "";
-    }
-
-    private List<ColorRowModel> colorRows = new()
-    {
-        new(),
-        new(),
-        new()
-    };
-
-    private void AddColorRow()
-    {
-        colorRows.Add(new());
-    }
-
-    private void RemoveColorRow(ColorRowModel item)
-    {
-        if (colorRows.Count > 1)
-        {
-            colorRows.Remove(item);
-        }
-    }
 
     private async Task Close()
     {

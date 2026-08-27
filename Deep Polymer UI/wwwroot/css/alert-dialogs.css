@@ -2548,4 +2548,801 @@
 .hdpd-btn-upload-invoice:hover {
     opacity: 0.9;
 }
+
+/* Hajipur Marketing User PMR Details Modal Dialog Styles (hmpd-*) */
+.hmpd-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 780px;
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.hmpd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 1px solid #F0F0F5;
+}
+
+.hmpd-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hmpd-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hmpd-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.hmpd-body {
+    padding: 22px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.hmpd-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 28px;
+    row-gap: 14px;
+}
+
+.hmpd-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid #F5F5F8;
+    padding-bottom: 10px;
+}
+
+.hmpd-info-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hmpd-info-value {
+    font-size: 13px;
+    color: #808080;
+    font-weight: 400;
+}
+
+.hmpd-card-box {
+    background-color: #F8F8FC;
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hmpd-box-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hmpd-box-subtitle {
+    margin: 0;
+    font-size: 11.5px;
+    color: #808080;
+}
+
+.hmpd-cost-val {
+    font-size: 13px;
+    color: #151515;
+    margin-top: 4px;
+}
+
+.hmpd-cost-bold {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.hmpd-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 12px 10px 4px 10px;
+}
+
+.hmpd-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    z-index: 2;
+}
+
+.hmpd-step-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #12B76A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hmpd-step-icon.gray {
+    background-color: #98A2B3;
+}
+
+.hmpd-step-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #151515;
+    white-space: nowrap;
+}
+
+.hmpd-step-line {
+    flex: 1;
+    height: 2px;
+    background-color: #E2E8F0;
+    margin: 0 8px;
+    position: relative;
+    top: -10px;
+}
+
+.hmpd-step-line.active {
+    background-color: #12B76A;
+}
+
+.hmpd-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 14px 22px;
+    border-top: 1px solid #F0F0F5;
+    background-color: #FFFFFF;
+}
+
+.hmpd-btn-email-customer {
+    height: 38px;
+    padding: 0 24px;
+    background-color: #151515;
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hmpd-btn-email-customer:hover {
+    background-color: #000000;
+}
+
+/* Hajipur Email To Customer User Modal Dialog Styles (hecu-*) */
+.hecu-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 920px;
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.hecu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 1px solid #F0F0F5;
+}
+
+.hecu-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hecu-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.hecu-body {
+    padding: 20px 22px;
+    overflow-y: auto;
+}
+
+.hecu-table-wrapper {
+    border: 1px solid #E1E5EA;
+    border-radius: 6px;
+    overflow-x: auto;
+    max-height: 220px;
+    overflow-y: auto;
+    background-color: #FFFFFF;
+}
+
+.hecu-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.hecu-table th {
+    background-color: #F8FAFC;
+    color: #808080;
+    font-weight: 500;
+    padding: 10px 12px;
+    border-bottom: 1px solid #E1E5EA;
+    white-space: nowrap;
+    height: 42px;
+    box-sizing: border-box;
+    font-size: 11.5px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.hecu-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #F1F5F9;
+    color: #151515;
+    white-space: nowrap;
+    vertical-align: middle;
+    height: 46px;
+    box-sizing: border-box;
+}
+
+.hecu-table tr:last-child td {
+    border-bottom: none;
+}
+
+.hecu-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--primary-color, #0405AB);
+}
+
+.hecu-product-link {
+    color: #151515;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.hecu-product-link:hover {
+    color: #0405AB;
+}
+
+.hecu-status-approved {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 12px;
+    background-color: #FFE6F2;
+    border: 1px solid #F783AC;
+    color: #D6336C;
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 14px;
+    white-space: nowrap;
+}
+
+.hecu-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 14px 22px;
+    border-top: 1px solid #F0F0F5;
+    background-color: #FFFFFF;
+}
+
+.hecu-btn-submit {
+    height: 36px;
+    padding: 0 26px;
+    background-color: #151515;
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hecu-btn-submit:hover {
+    background-color: #000000;
+}
+
+/* Hajipur Select User Modal Dialog Styles (hsud-*) */
+.hsud-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 480px;
+    max-width: 92vw;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.hsud-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #F0F0F5;
+}
+
+.hsud-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hsud-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.hsud-body {
+    padding: 20px;
+}
+
+.hsud-select {
+    height: 40px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid #E1E5EA;
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+.hsud-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 14px 20px;
+    border-top: 1px solid #F0F0F5;
+    background-color: #FFFFFF;
+}
+
+.hsud-cancel-btn {
+    height: 38px;
+    padding: 0 22px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    color: #151515;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hsud-cancel-btn:hover {
+    background-color: #F8FAFC;
+}
+
+.hsud-submit-btn {
+    height: 38px;
+    padding: 0 24px;
+    background-color: var(--primary-color, #0405AB);
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.hsud-submit-btn:hover {
+    opacity: 0.9;
+}
+
+.hecu-btn-submit:hover {
+    background-color: #000000;
+}
+
+/* Hajipur Production User PMR Details Dialog Styles (hpud-*) */
+.hpud-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 760px;
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.hpud-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid #F0F0F5;
+}
+
+.hpud-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hpud-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hpud-status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 12px;
+    background-color: #FBE9E9;
+    border: 1px solid #E87F7F;
+    color: #DC2626;
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 14px;
+}
+
+.hpud-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.hpud-body {
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hpud-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 28px;
+    row-gap: 18px;
+}
+
+.hpud-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid #F5F5F8;
+    padding-bottom: 12px;
+}
+
+.hpud-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hpud-value {
+    font-size: 13px;
+    color: #808080;
+    font-weight: 400;
+}
+
+.hpud-rm-card {
+    background-color: #F6F7FE;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hpud-rm-title {
+    margin: 0 0 2px 0;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.hpud-rm-subtitle {
+    margin: 0;
+    font-size: 11.5px;
+    color: #94A3B8;
+    font-weight: 400;
+}
+
+.hpud-rm-table-wrapper {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.hpud-rm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.hpud-rm-table th {
+    padding: 10px 16px;
+    background-color: #FAFAFC;
+    color: #808080;
+    font-size: 11.5px;
+    font-weight: 500;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.hpud-rm-table td {
+    padding: 11px 16px;
+    color: #1E293B;
+    font-weight: 500;
+    font-size: 12px;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.hpud-rm-table tr:last-child td {
+    border-bottom: none;
+}
+
+.hpud-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-top: 1px solid #F0F0F5;
+    background-color: #FFFFFF;
+}
+
+.hpud-btn-download {
+    height: 38px;
+    padding: 0 18px;
+    background-color: #151515;
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hpud-btn-download:hover {
+    background-color: #000000;
+}
+
+.hpud-btn-submit {
+    height: 38px;
+    padding: 0 24px;
+    background-color: #0405AB;
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.hpud-btn-submit:hover {
+    opacity: 0.9;
+}
+
+/* Hajipur Download PO & Formulation Document Dialog Styles (hdpfd-*) */
+.hdpfd-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    width: 580px;
+    max-width: 92vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.hdpfd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.hdpfd-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hdpfd-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.hdpfd-btn-download-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #0405AB;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.hdpfd-btn-download-all:hover {
+    opacity: 0.9;
+}
+
+.hdpfd-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #64748B;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.hdpfd-tabs-row {
+    display: flex;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 0 24px;
+    gap: 24px;
+}
+
+.hdpfd-tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 4px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #94A3B8;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s ease;
+}
+
+.hdpfd-tab-btn:hover {
+    color: #0405AB;
+}
+
+.hdpfd-tab-btn.active {
+    color: #0405AB;
+    border-bottom-color: #0405AB;
+}
+
+.hdpfd-body {
+    padding: 20px 24px 24px 24px;
+    overflow-y: auto;
+}
+
+.hdpfd-doc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.hdpfd-doc-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 16px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    transition: border-color 0.15s;
+}
+
+.hdpfd-doc-item:hover {
+    border-color: #CBD5E1;
+}
+
+.hdpfd-doc-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hdpfd-doc-icon-box {
+    width: 36px;
+    height: 36px;
+    background-color: #EEF2FF;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4F46E5;
+    flex-shrink: 0;
+}
+
+.hdpfd-doc-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.hdpfd-doc-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #151515;
+}
+
+.hdpfd-doc-size {
+    font-size: 11.5px;
+    color: #94A3B8;
+    font-weight: 400;
+}
+
+.hdpfd-doc-download-btn {
+    background: none;
+    border: none;
+    color: #4F46E5;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.15s;
+}
+
+.hdpfd-doc-download-btn:hover {
+    background-color: #EEF2FF;
+}
+
+
 

@@ -1,78 +1,87 @@
-@page "/hajipur/dispatch-user/pmr-management"
+@page "/hajipur/marketing-user/pmr-management"
 @using DeepPolymer.Constants
 @using Deep_Polymer_UI.Components.Pages.hajipur.AlertDialogs
 @using Deep_Polymer_UI.Components.Pages.hajipur.PMR_Management
+@using Deep_Polymer_UI.Components.Pages.santej.AlertDialogs
+@inject NavigationManager Navigation
 @rendermode InteractiveServer
 
-<div class="hpd-container">
-    <!-- Header Title Section -->
-    <div class="hpd-top-header">
-        <h2 class="hpd-title">Dispatch Requests</h2>
-        <p class="hpd-subtitle">View approved PMRs, manage production workflows, and update request status.</p>
+<div class="hmu-container">
+    <!-- Header Title Section with Right Action Button -->
+    <div class="hmu-top-header">
+        <div class="hmu-title-area">
+            <h2 class="hmu-title">PMR Request List</h2>
+            <p class="hmu-subtitle">View and process submitted product matching requests efficiently.</p>
+        </div>
+        <div class="hmu-header-actions">
+            <button class="hmu-email-btn" type="button" @onclick="NavigateToCustomerEmailPage">
+                Email to Marketing User
+            </button>
+        </div>
     </div>
 
     <!-- Filter Bar Row (6 Dropdowns) -->
-    <div class="hpd-filter-row">
-        <div class="hpd-filter-item">
-            <select class="hpd-filter-select">
+    <div class="hmu-filter-row">
+        <div class="hmu-filter-item">
+            <select class="hmu-filter-select">
                 <option selected disabled>Search PMR</option>
             </select>
-            <span class="hpd-filter-chevron">
+            <span class="hmu-filter-chevron">
                 <svg viewBox="0 0 24 24">
                     <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
         </div>
 
-        <div class="hpd-filter-item">
-            <select class="hpd-filter-select">
+        <div class="hmu-filter-item">
+            <select class="hmu-filter-select">
                 <option selected disabled>Customer Name</option>
             </select>
-            <span class="hpd-filter-chevron">
+            <span class="hmu-filter-chevron">
                 <svg viewBox="0 0 24 24">
                     <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
         </div>
 
-        <div class="hpd-filter-item">
-            <select class="hpd-filter-select">
+        <div class="hmu-filter-item">
+            <select class="hmu-filter-select">
                 <option selected disabled>Colour Name</option>
             </select>
-            <span class="hpd-filter-chevron">
+            <span class="hmu-filter-chevron">
                 <svg viewBox="0 0 24 24">
                     <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
         </div>
 
-        <div class="hpd-filter-item">
-            <select class="hpd-filter-select">
+        <div class="hmu-filter-item">
+            <select class="hmu-filter-select">
                 <option selected disabled>Colour Code</option>
             </select>
-            <span class="hpd-filter-chevron">
+            <span class="hmu-filter-chevron">
                 <svg viewBox="0 0 24 24">
                     <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
         </div>
 
-        <div class="hpd-filter-item">
-            <select class="hpd-filter-select">
+        <div class="hmu-filter-item">
+            <select class="hmu-filter-select">
                 <option selected disabled>Sample Type</option>
             </select>
-            <span class="hpd-filter-chevron">
+            <span class="hmu-filter-chevron">
                 <svg viewBox="0 0 24 24">
                     <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
         </div>
 
-        <div class="hpd-filter-item">
-            <select class="hpd-filter-select">
+        <div class="hmu-filter-item">
+            <select class="hmu-filter-select">
                 <option selected disabled>Status</option>
             </select>
-            <span class="hpd-filter-chevron">
+            <span class="hmu-filter-chevron">
                 <svg viewBox="0 0 24 24">
                     <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -80,12 +89,15 @@
         </div>
     </div>
 
-    <!-- PMR Details Dialog Modal for Dispatch User -->
-    <HajipurDispatchPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@selectedDialogPmrNo" />
+    <!-- PMR Details Dialog Modal for Marketing User -->
+    <HajipurMarketingPmrDetailsDialog @bind-IsOpen="showPmrDetailsDialog" PmrNo="@selectedDialogPmrNo" />
+
+    <!-- Email to Marketing User Dialog Modal -->
+    <EmailToMarketingUserDialog @bind-IsOpen="showEmailMarketingDialog" />
 
     <!-- PMR Table Wrapper -->
-    <div class="hpd-table-wrapper">
-        <table class="hpd-table">
+    <div class="hmu-table-wrapper">
+        <table class="hmu-table">
             <thead>
                 <tr>
                     <th class="text-start">PMR No.</th>
@@ -101,18 +113,18 @@
             <tbody>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-001")'>PMR-001</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-001")'>PMR-001</span>
                     </td>
                     <td class="text-start">Ramesh Patel</td>
-                    <td class="text-start">Ocean Blue - A</td>
+                    <td class="text-start">Ocean Blue-A</td>
                     <td class="text-start">NB-405</td>
                     <td class="text-start">Fabric</td>
                     <td class="text-center">19-05-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-dispatched">Dispatched</span>
+                        <span class="status-badge status-costing-done">Costing Done</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-001")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-001")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -122,18 +134,18 @@
                 </tr>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-002")'>PMR-002</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-002")'>PMR-002</span>
                     </td>
                     <td class="text-start">Anjali Verma</td>
-                    <td class="text-start">Sky Blue - B</td>
+                    <td class="text-start">Sky Blue-B</td>
                     <td class="text-start">NB-406</td>
                     <td class="text-start">Textile</td>
                     <td class="text-center">20-06-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-completed">Completed</span>
+                        <span class="status-badge status-negotiating">Negotiating</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-002")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-002")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -143,18 +155,18 @@
                 </tr>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-003")'>PMR-003</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-003")'>PMR-003</span>
                     </td>
                     <td class="text-start">Ravi Singh</td>
-                    <td class="text-start">Crimson Red - C</td>
+                    <td class="text-start">Crimson Red-C</td>
                     <td class="text-start">NB-412</td>
                     <td class="text-start">Fabric</td>
                     <td class="text-center">15-07-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-invoice-sent">Invoice Sent</span>
+                        <span class="status-badge status-costing-done">Costing Done</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-003")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-003")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -164,18 +176,18 @@
                 </tr>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-004")'>PMR-004</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-004")'>PMR-004</span>
                     </td>
                     <td class="text-start">Sonia Patel</td>
-                    <td class="text-start">Emerald Green - E</td>
+                    <td class="text-start">Emerald Green-E</td>
                     <td class="text-start">NB-415</td>
                     <td class="text-start">Material</td>
                     <td class="text-center">05-08-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-invoice-sent">Invoice Sent</span>
+                        <span class="status-badge status-negotiating">Negotiating</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-004")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-004")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -185,18 +197,18 @@
                 </tr>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-005")'>PMR-005</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-005")'>PMR-005</span>
                     </td>
                     <td class="text-start">Karan Mehta</td>
-                    <td class="text-start">Sunset Orange - S</td>
+                    <td class="text-start">Sunset Orange-S</td>
                     <td class="text-start">NB-421</td>
                     <td class="text-start">Cloth</td>
                     <td class="text-center">22-09-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-completed">Completed</span>
+                        <span class="status-badge status-costing-done">Costing Done</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-005")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-005")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -206,18 +218,18 @@
                 </tr>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-006")'>PMR-006</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-006")'>PMR-006</span>
                     </td>
                     <td class="text-start">Neha Gupta</td>
-                    <td class="text-start">Lavender Purple - L</td>
+                    <td class="text-start">Lavender Purple-L</td>
                     <td class="text-start">NB-430</td>
                     <td class="text-start">Textile Type</td>
                     <td class="text-center">10-10-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-invoice-sent">Invoice Sent</span>
+                        <span class="status-badge status-negotiating">Negotiating</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-006")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-006")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -227,18 +239,18 @@
                 </tr>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-007")'>PMR-007</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-007")'>PMR-007</span>
                     </td>
                     <td class="text-start">Amit Joshi</td>
-                    <td class="text-start">Ocean Blue - D</td>
+                    <td class="text-start">Ocean Blue-D</td>
                     <td class="text-start">NB-437</td>
                     <td class="text-start">Fiber</td>
                     <td class="text-center">18-11-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-completed">Completed</span>
+                        <span class="status-badge status-costing-done">Costing Done</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-007")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-007")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -248,18 +260,18 @@
                 </tr>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-008")'>PMR-008</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-008")'>PMR-008</span>
                     </td>
                     <td class="text-start">Priya Sharma</td>
-                    <td class="text-start">Mint Green - M</td>
+                    <td class="text-start">Mint Green-M</td>
                     <td class="text-start">NB-442</td>
                     <td class="text-start">Weave</td>
                     <td class="text-center">29-11-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-invoice-sent">Invoice Sent</span>
+                        <span class="status-badge status-negotiating">Negotiating</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-008")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-008")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -269,18 +281,18 @@
                 </tr>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-009")'>PMR-009</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-009")'>PMR-009</span>
                     </td>
                     <td class="text-start">Vikram Desai</td>
-                    <td class="text-start">Golden Yellow - G</td>
+                    <td class="text-start">Golden Yellow-G</td>
                     <td class="text-start">NB-450</td>
                     <td class="text-start">Pattern</td>
                     <td class="text-center">12-12-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-completed">Completed</span>
+                        <span class="status-badge status-costing-done">Costing Done</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-009")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-009")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -290,18 +302,18 @@
                 </tr>
                 <tr>
                     <td class="text-start">
-                        <span class="hpd-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-010")'>PMR-010</span>
+                        <span class="hmu-pmr-no-link" @onclick='() => OpenPmrDetailsDialog("PMR-010")'>PMR-010</span>
                     </td>
                     <td class="text-start">Anita Rao</td>
-                    <td class="text-start">Blush Pink - B</td>
+                    <td class="text-start">Blush Pink-B</td>
                     <td class="text-start">NB-455</td>
                     <td class="text-start">Texture</td>
                     <td class="text-center">20-12-2026</td>
                     <td class="text-center">
-                        <span class="hpd-status-pill hpd-status-invoice-sent">Invoice Sent</span>
+                        <span class="status-badge status-negotiating">Negotiating</span>
                     </td>
                     <td class="text-center">
-                        <button class="hpd-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-010")'>
+                        <button class="hmu-action-view-btn" type="button" title="View PMR Details" @onclick='() => OpenPmrDetailsDialog("PMR-010")'>
                             <svg viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -313,17 +325,17 @@
         </table>
 
         <!-- Pagination Row -->
-        <div class="hpd-pagination-row">
-            <span class="hpd-pagination-info">Showing 1-10 of 12 list</span>
-            <div class="hpd-pagination-nav">
-                <button class="hpd-pagination-btn disabled" type="button" title="Previous Page">
+        <div class="hmu-pagination-row">
+            <span class="hmu-pagination-info">Showing 1-10 of 12 list</span>
+            <div class="hmu-pagination-nav">
+                <button class="hmu-pagination-btn disabled" type="button" title="Previous Page">
                     <svg viewBox="0 0 24 24">
                         <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </button>
-                <button class="hpd-pagination-btn active" type="button">1</button>
-                <button class="hpd-pagination-btn" type="button">2</button>
-                <button class="hpd-pagination-btn" type="button" title="Next Page">
+                <button class="hmu-pagination-btn active" type="button">1</button>
+                <button class="hmu-pagination-btn" type="button">2</button>
+                <button class="hmu-pagination-btn" type="button" title="Next Page">
                     <svg viewBox="0 0 24 24">
                         <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
@@ -335,11 +347,17 @@
 
 @code {
     private bool showPmrDetailsDialog = false;
+    private bool showEmailMarketingDialog = false;
     private string selectedDialogPmrNo = "PMR-001";
 
     private void OpenPmrDetailsDialog(string pmrNo)
     {
         selectedDialogPmrNo = pmrNo;
         showPmrDetailsDialog = true;
+    }
+
+    private void NavigateToCustomerEmailPage()
+    {
+        showEmailMarketingDialog = true;
     }
 }

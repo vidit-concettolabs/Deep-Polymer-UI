@@ -1,0 +1,146 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="hph-dialog-overlay" @onclick="Close">
+        <div class="hpud-card" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="hpud-header">
+                <div class="hpud-header-left">
+                    <h3 class="hpud-title">PMR Details - #@(GetFormattedPmrNo(PmrNo))</h3>
+                    <span class="hpud-status-pill">In Production</span>
+                </div>
+                <button class="hpud-close-btn" type="button" @onclick="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="hpud-body">
+                <div class="hpud-grid">
+                    <!-- Row 1 -->
+                    <div class="hpud-item">
+                        <span class="hpud-label">PMR Number</span>
+                        <span class="hpud-value">@PmrNo</span>
+                    </div>
+                    <div class="hpud-item">
+                        <span class="hpud-label">Customer Name</span>
+                        <span class="hpud-value">Ramesh Patel</span>
+                    </div>
+                    <div class="hpud-item">
+                        <span class="hpud-label">Colour Name</span>
+                        <span class="hpud-value">Ocean Blue - A</span>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="hpud-item">
+                        <span class="hpud-label">Colour Code</span>
+                        <span class="hpud-value">OB-102</span>
+                    </div>
+                    <div class="hpud-item">
+                        <span class="hpud-label">City</span>
+                        <span class="hpud-value">Ahmedabad</span>
+                    </div>
+                    <div class="hpud-item">
+                        <span class="hpud-label">Received From</span>
+                        <span class="hpud-value">Priya Mehta</span>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="hpud-item">
+                        <span class="hpud-label">Region</span>
+                        <span class="hpud-value">Gujarat</span>
+                    </div>
+                    <div class="hpud-item">
+                        <span class="hpud-label">Sample Request Date</span>
+                        <span class="hpud-value">07.08.2024</span>
+                    </div>
+                    <div class="hpud-item"></div>
+                </div>
+
+                <!-- Raw Material Weights Card -->
+                <div class="hpud-rm-card">
+                    <div class="hpud-rm-header">
+                        <h4 class="hpud-rm-title">Raw Material Weights</h4>
+                        <p class="hpud-rm-subtitle">View raw material weights for the selected PMR.</p>
+                    </div>
+
+                    <div class="hpud-rm-table-wrapper">
+                        <table class="hpud-rm-table">
+                            <thead>
+                                <tr>
+                                    <th class="text-start">Raw Material</th>
+                                    <th class="text-end">Percent</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-start">Polypropylene Resin</td>
+                                    <td class="text-end">10%</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">Titanium Dioxide</td>
+                                    <td class="text-end">10%</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">Carbon Black</td>
+                                    <td class="text-end">10%</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">UV Stabilizer</td>
+                                    <td class="text-end">10%</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">Calcium Carbonate</td>
+                                    <td class="text-end">10%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="hpud-footer">
+                <button class="hpud-btn-download" type="button" @onclick="OpenDownloadDialog">Download PO & Formulation Document</button>
+                <button class="hpud-btn-submit" type="button" @onclick="SubmitToDispatch">Submit to Dispatch</button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Download PO & Formulation Document Modal -->
+<HajipurDownloadPoFormulationDialog @bind-IsOpen="showDownloadDialog" />
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string PmrNo { get; set; } = "PMR-001";
+    [Parameter] public EventCallback OnSubmitToDispatch { get; set; }
+    [Parameter] public EventCallback OnDownloadDocument { get; set; }
+
+    private bool showDownloadDialog = false;
+
+    private string GetFormattedPmrNo(string input)
+    {
+        if (string.IsNullOrEmpty(input)) return "1";
+        var cleaned = input.Replace("PMR-00", "").Replace("PMR-0", "").Replace("PMR-", "");
+        return string.IsNullOrEmpty(cleaned) ? "1" : cleaned;
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task SubmitToDispatch()
+    {
+        await OnSubmitToDispatch.InvokeAsync();
+        await Close();
+    }
+
+    private async Task OpenDownloadDialog()
+    {
+        showDownloadDialog = true;
+        await OnDownloadDocument.InvokeAsync();
+    }
+}

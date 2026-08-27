@@ -1,0 +1,153 @@
+@using Microsoft.AspNetCore.Components
+
+@if (IsOpen)
+{
+    <div class="hph-dialog-overlay" @onclick="Close">
+        <div class="hph-dialog-card hecu-card" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="hecu-header">
+                <h3 class="hecu-title">Email to Marketing User - @(string.IsNullOrEmpty(PmrNo) ? "PMR-001" : PmrNo)</h3>
+                <button type="button" class="hecu-close-btn" @onclick="Close" title="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="hecu-body">
+                <div class="hecu-table-wrapper">
+                    <table class="hecu-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px; text-align: center;">
+                                    <input type="checkbox" class="hecu-checkbox" @bind="selectAll" />
+                                </th>
+                                <th class="text-start">Lab Ref. No.</th>
+                                <th class="text-start">Product Name</th>
+                                <th class="text-start">Product Code</th>
+                                <th class="text-start">Developed Product Details</th>
+                                <th class="text-center">% LDR</th>
+                                <th class="text-center">Basic price</th>
+                                <th class="text-start">CC</th>
+                                <th class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="hecu-checkbox" />
+                                </td>
+                                <td class="text-start">PMR-001 - A</td>
+                                <td class="text-start">
+                                    <span class="hecu-product-link">HD Polymer Mix</span>
+                                </td>
+                                <td class="text-start">OB-102</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">3%</td>
+                                <td class="text-center">₹12,500</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">
+                                    <span class="hecu-status-approved">Customer Approved</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="hecu-checkbox" />
+                                </td>
+                                <td class="text-start">PMR-001 - B</td>
+                                <td class="text-start">
+                                    <span class="hecu-product-link">HD Polymer Mix</span>
+                                </td>
+                                <td class="text-start">OB-102</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">3%</td>
+                                <td class="text-center">₹12,500</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">
+                                    <span class="hecu-status-approved">Customer Approved</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="hecu-checkbox" />
+                                </td>
+                                <td class="text-start">PMR-001 - C</td>
+                                <td class="text-start">
+                                    <span class="hecu-product-link">HD Polymer Mix</span>
+                                </td>
+                                <td class="text-start">OB-102</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">3%</td>
+                                <td class="text-center">₹12,500</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">
+                                    <span class="hecu-status-approved">Customer Approved</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="hecu-checkbox" />
+                                </td>
+                                <td class="text-start">PMR-001 - D</td>
+                                <td class="text-start">
+                                    <span class="hecu-product-link">HD Polymer Mix</span>
+                                </td>
+                                <td class="text-start">OB-102</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">3%</td>
+                                <td class="text-center">₹12,500</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">
+                                    <span class="hecu-status-approved">Customer Approved</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="hecu-checkbox" />
+                                </td>
+                                <td class="text-start">PMR-001 - E</td>
+                                <td class="text-start">
+                                    <span class="hecu-product-link">HD Polymer Mix</span>
+                                </td>
+                                <td class="text-start">OB-102</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">3%</td>
+                                <td class="text-center">₹12,500</td>
+                                <td class="text-start">Description</td>
+                                <td class="text-center">
+                                    <span class="hecu-status-approved">Customer Approved</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="hecu-footer">
+                <button type="button" class="hecu-btn-submit" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Select User Dialog Modal -->
+<HajipurSelectUserDialog @bind-IsOpen="showSelectUserDialog" />
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string PmrNo { get; set; } = "PMR-001";
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private bool selectAll = false;
+    private bool showSelectUserDialog = false;
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private void Submit()
+    {
+        showSelectUserDialog = true;
+    }
+}

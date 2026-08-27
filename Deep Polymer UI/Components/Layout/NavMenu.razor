@@ -19,9 +19,9 @@
             <span class="menu-text">PMR Management</span>
         </a>
 
-        @if (ColorConstant.IsLabUser || ColorConstant.IsProductionUser || ColorConstant.IsDispatchUser)
+        @if (ColorConstant.IsLabUser || ColorConstant.IsProductionUser || ColorConstant.IsDispatchUser || ColorConstant.IsMarketingUser || ColorConstant.IsHajipurProductionUser)
         {
-            <!-- Lab User, Production User & Dispatch User Roles: Only PMR Management is visible -->
+            <!-- Lab User, Production User, Dispatch User, Marketing User & Hajipur Production User Roles: Only PMR Management is visible -->
         }
         else if (ColorConstant.IsProductionHead)
         {
@@ -141,14 +141,18 @@
 @code {
     private bool reportsOpen = false;
 
-    private string PmrHref => ColorConstant.IsDispatchUser
-        ? "hajipur/dispatch-user/pmr-management"
-        : (ColorConstant.IsProductionHead
-           ? "hajipur/production-head/pmr-management"
-           : (ColorConstant.BranchFlag == 2
-              ? "hajipur/pmr-management"
-              : (ColorConstant.IsLabUser ? "santej/lab-user/pmr-management"
-                 : (ColorConstant.IsProductionUser ? "santej/production-user/pmr-management" : "santej/pmr-management"))));
+    private string PmrHref => ColorConstant.IsHajipurProductionUser
+        ? "hajipur/production-user/pmr-management"
+        : (ColorConstant.IsMarketingUser
+           ? "hajipur/marketing-user/pmr-management"
+           : (ColorConstant.IsDispatchUser
+              ? "hajipur/dispatch-user/pmr-management"
+              : (ColorConstant.IsProductionHead
+                 ? "hajipur/production-head/pmr-management"
+                 : (ColorConstant.BranchFlag == 2
+                    ? "hajipur/pmr-management"
+                    : (ColorConstant.IsLabUser ? "santej/lab-user/pmr-management"
+                       : (ColorConstant.IsProductionUser ? "santej/production-user/pmr-management" : "santej/pmr-management"))))));
 
     private bool IsActive(string href)
     {

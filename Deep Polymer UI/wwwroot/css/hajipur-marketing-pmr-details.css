@@ -1,0 +1,560 @@
+/* ==========================================================================
+   Hajipur Marketing User PMR Details Page Styles (hmd-*)
+   ========================================================================== */
+
+.hmd-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+}
+
+/* Card Container */
+.hmd-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #E1E5EA;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Scrollable Card Body */
+.hmd-card-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.hmd-section-spacer {
+    height: 26px;
+    width: 100%;
+}
+
+.hmd-section-divider {
+    height: 1px;
+    background-color: #E1E5EA;
+    margin: 24px 0;
+    width: 100%;
+}
+
+.hmd-timeline-box {
+    border: 1px solid #E1E5EA;
+    border-radius: 8px;
+    padding: 18px 22px;
+    background-color: #FAFAFA;
+    box-sizing: border-box;
+    margin-top: 28px;
+}
+
+.hmd-section-block {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Row */
+.hmd-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.hmd-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #151515;
+}
+
+/* Top 2-Column Grid (~52% Left, ~48% Right) */
+.hmd-top-grid {
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* Left PMR Information Specs (2 cols x 4 rows) */
+.hmd-left-specs {
+    display: flex;
+    flex-direction: column;
+}
+
+.hmd-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 28px;
+    row-gap: 14px;
+}
+
+.hmd-spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid #F0F0F5;
+    padding-bottom: 10px;
+}
+
+.hmd-spec-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hmd-spec-value {
+    font-size: 13px;
+    color: #808080;
+    font-weight: 400;
+}
+
+/* Right Send Negotiation Request Card */
+.hmd-right-neg-card {
+    background-color: #F8F8FC;
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.hmd-neg-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hmd-neg-subtitle {
+    margin: -6px 0 2px 0;
+    font-size: 11.5px;
+    color: #808080;
+    line-height: 1.4;
+}
+
+/* Total Cost Summary Box */
+.hmd-cost-banner {
+    background-color: #FFFFFF;
+    border: 1px solid #EAEAEF;
+    border-radius: 6px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hmd-cost-left, .hmd-cost-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hmd-cost-label, .hmd-diff-label {
+    font-size: 11px;
+    color: #808080;
+}
+
+.hmd-cost-val {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #151515;
+}
+
+.hmd-diff-val {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #0405AB;
+}
+
+.hmd-saved-tag {
+    font-size: 11px;
+    font-weight: 400;
+    color: #0405AB;
+}
+
+/* Form Controls */
+.hmd-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hmd-form-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hmd-form-input {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 12.5px;
+    color: #333333;
+    background-color: #FFFFFF;
+    border: 1px solid #E1E5EA;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.hmd-form-textarea {
+    width: 100%;
+    height: 60px;
+    padding: 8px 12px;
+    font-size: 12.5px;
+    color: #333333;
+    background-color: #FFFFFF;
+    border: 1px solid #E1E5EA;
+    border-radius: 6px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.hmd-form-input:focus, .hmd-form-textarea:focus {
+    outline: none;
+    border-color: #CBD5E1;
+}
+
+/* Section Titles */
+.hmd-section-title {
+    margin: 0 0 14px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #151515;
+}
+
+/* Stepper Timeline */
+.hmd-stepper-wrapper {
+    padding: 12px 10px 4px 10px;
+}
+
+.hmd-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.hmd-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.hmd-step-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #888888;
+    color: #FFFFFF;
+}
+
+.hmd-step.completed .hmd-step-icon {
+    background-color: #12B76A;
+}
+
+.hmd-step.pending .hmd-step-icon {
+    background-color: #98A2B3;
+}
+
+.hmd-step-icon svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+}
+
+.hmd-step-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #151515;
+    white-space: nowrap;
+}
+
+.hmd-step-line {
+    flex: 1;
+    height: 2px;
+    background-color: #E2E8F0;
+    position: relative;
+    top: -12px;
+}
+
+.hmd-step-line.active {
+    background-color: #12B76A;
+}
+
+/* Sub Tabs */
+.hmd-sub-tabs {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px solid #E1E5EA;
+    margin-bottom: 14px;
+}
+
+.hmd-sub-tab {
+    background: none;
+    border: none;
+    padding: 8px 0 10px 0;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #808080;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.hmd-sub-tab.active {
+    color: #0405AB;
+    font-weight: 600;
+    border-bottom-color: #0405AB;
+}
+
+/* Design Output Table (Tab 1) */
+.hmd-table-wrapper {
+    border: 1px solid #E1E5EA;
+    border-radius: 6px;
+    overflow-x: auto;
+    background-color: #FFFFFF;
+}
+
+.hmd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.hmd-table th {
+    background-color: #F8FAFC;
+    color: #808080;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-bottom: 1px solid #E1E5EA;
+    white-space: nowrap;
+    height: 42px;
+    box-sizing: border-box;
+    font-size: 11.5px;
+}
+
+.hmd-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #F1F5F9;
+    color: #151515;
+    white-space: nowrap;
+    vertical-align: middle;
+    height: 46px;
+    box-sizing: border-box;
+}
+
+.hmd-product-name-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: #F4F3FF;
+    border-radius: 4px;
+    color: #151515;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Technical Development Details Table (Tab 2) */
+.hmd-tech-wrapper {
+    border: 1px solid #E1E5EA;
+    border-radius: 6px;
+    overflow-x: auto;
+    background-color: #FFFFFF;
+}
+
+.hmd-tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.hmd-tech-table th {
+    background-color: #EBEBFF;
+    color: #151515;
+    font-weight: 700;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 12px;
+    border-bottom: 1px solid #E1E5EA;
+}
+
+.hmd-tech-th-type {
+    width: 22%;
+}
+
+.hmd-tech-th-col {
+    width: 39%;
+}
+
+.hmd-tech-table td {
+    padding: 8px 16px;
+    border-bottom: 1px solid #F5F5F8;
+    vertical-align: middle;
+}
+
+.hmd-tech-td-type {
+    font-size: 12px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.hmd-tech-val-pill {
+    background-color: #F5F5F7;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #666666;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+/* Fixed Non-Scrollable Footer Action Bar */
+.hmd-fixed-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px;
+    border-top: 1px solid #E1E5EA;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.hmd-footer-left, .hmd-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hmd-btn-approved {
+    height: 38px;
+    padding: 0 20px;
+    background-color: #0405AB;
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.hmd-btn-approved:hover {
+    opacity: 0.9;
+}
+
+.hmd-btn-email-customer {
+    height: 38px;
+    padding: 0 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    border-radius: 6px;
+    color: #151515;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hmd-btn-email-customer:hover {
+    background-color: #F8FAFC;
+}
+
+.hmd-btn-submit-prod {
+    height: 38px;
+    padding: 0 22px;
+    background-color: #151515;
+    border: none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.hmd-btn-submit-prod:hover {
+    background-color: #000000;
+}
+
+/* Pagination Footer Styles */
+.hmd-pagination-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background-color: #FFFFFF;
+    border-top: 1px solid #E1E5EA;
+    box-sizing: border-box;
+}
+
+.hmd-pagination-info {
+    font-size: 11.5px;
+    color: #94A3B8;
+    font-weight: 500;
+}
+
+.hmd-pagination-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.hmd-pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #1A1A1A;
+    background-color: #FFFFFF;
+    border: 1px solid #D9E0E7;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+}
+
+.hmd-pagination-btn:hover:not(.active):not(.disabled) {
+    background-color: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.hmd-pagination-btn.active {
+    background-color: #0405AB;
+    border-color: #0405AB;
+    color: #FFFFFF;
+}
+
+.hmd-pagination-btn.disabled {
+    color: #CBD5E1;
+    border-color: #E2E8F0;
+    cursor: not-allowed;
+}
+
+.hmd-pagination-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+}

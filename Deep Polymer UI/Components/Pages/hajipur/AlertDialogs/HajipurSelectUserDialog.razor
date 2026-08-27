@@ -1,0 +1,61 @@
+@using DeepPolymer.Constants
+
+@if (IsOpen)
+{
+    <div class="hph-dialog-overlay" @onclick="Close">
+        <div class="hph-dialog-card hsud-card" @onclick:stopPropagation="true">
+            <!-- Header -->
+            <div class="hsud-header">
+                <h3 class="hsud-title">Select User</h3>
+                <button type="button" class="hsud-close-btn" @onclick="Close" title="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="hsud-body">
+                <div class="dialog-form-group">
+                    <label class="dialog-label">User <span class="required-star">*</span></label>
+                    <div class="hsud-select-wrap" style="position: relative; width: 100%;">
+                        <select class="dialog-input filter-select hsud-select" @bind="SelectedUser" style="padding-right: 32px; width: 100%;">
+                            <option value="" disabled selected>Select</option>
+                            <option value="Dhruv Parmar">Dhruv Parmar</option>
+                            <option value="Ramesh Patel">Ramesh Patel</option>
+                            <option value="Priya Mehta">Priya Mehta</option>
+                            <option value="Karan Desai">Karan Desai</option>
+                        </select>
+                        <span class="hsud-select-chevron" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999999; display: flex; align-items: center;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="hsud-footer">
+                <button type="button" class="hsud-cancel-btn" @onclick="Close">Cancel</button>
+                <button type="button" class="hsud-submit-btn" style="background-color: var(--primary-color, #0405AB);" @onclick="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private string SelectedUser { get; set; } = "";
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Submit()
+    {
+        await OnSubmit.InvokeAsync();
+        await Close();
+    }
+}

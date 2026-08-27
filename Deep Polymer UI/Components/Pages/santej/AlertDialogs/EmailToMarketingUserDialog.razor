@@ -70,9 +70,7 @@
                         <thead>
                             <tr>
                                 <th style="width: 40px; text-align: center;">
-                                    <input type="checkbox" class="email-mkt-checkbox"
-                                           checked="@isSelectAll"
-                                           @onchange="ToggleSelectAll" />
+                                    <input type="checkbox" class="email-mkt-checkbox" />
                                 </th>
                                 <th>PMR No.</th>
                                 <th>Customer Name</th>
@@ -86,29 +84,132 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in pmrItems)
-                            {
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <input type="checkbox" class="email-mkt-checkbox"
-                                               checked="@item.IsSelected"
-                                               @onchange="(e) => ToggleItem(item, e)" />
-                                    </td>
-                                    <td>@item.PmrNo</td>
-                                    <td>@item.CustomerName</td>
-                                    <td>
-                                        <span class="email-mkt-prod-link">@item.ProductName</span>
-                                    </td>
-                                    <td>@item.ColourName</td>
-                                    <td>@item.ColourCode</td>
-                                    <td>@item.TotalCost</td>
-                                    <td>@item.SubmittedDate</td>
-                                    <td style="text-align: center;">
-                                        <span class="email-mkt-badge @item.StatusClass">@item.RequestStatus</span>
-                                    </td>
-                                    <td>@item.PricingStatus</td>
-                                </tr>
-                            }
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="email-mkt-checkbox" />
+                                </td>
+                                <td>PMR-001</td>
+                                <td>Ramesh Patel</td>
+                                <td>
+                                    <span class="email-mkt-prod-link">HD Polymer Mix</span>
+                                </td>
+                                <td>Ocean Blue-A</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>19-05-2026</td>
+                                <td style="text-align: center;">
+                                    <span class="email-mkt-badge badge-submitted">Submitted</span>
+                                </td>
+                                <td>Price Approved</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="email-mkt-checkbox" />
+                                </td>
+                                <td>PMR-001</td>
+                                <td>Ramesh Patel</td>
+                                <td>
+                                    <span class="email-mkt-prod-link">HD Polymer Mix</span>
+                                </td>
+                                <td>Ocean Blue-B</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>19-05-2026</td>
+                                <td style="text-align: center;">
+                                    <span class="email-mkt-badge badge-submitted">Submitted</span>
+                                </td>
+                                <td>Negotiation</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="email-mkt-checkbox" />
+                                </td>
+                                <td>PMR-001</td>
+                                <td>Ramesh Patel</td>
+                                <td>
+                                    <span class="email-mkt-prod-link">HD Polymer Mix</span>
+                                </td>
+                                <td>Ocean Blue-C</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>19-05-2026</td>
+                                <td style="text-align: center;">
+                                    <span class="email-mkt-badge badge-submitted">Submitted</span>
+                                </td>
+                                <td>Negotiation</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="email-mkt-checkbox" />
+                                </td>
+                                <td>PMR-004</td>
+                                <td>Karan Desai</td>
+                                <td>
+                                    <span class="email-mkt-prod-link">Flexi Compound</span>
+                                </td>
+                                <td>Dark Grey</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>18-05-2026</td>
+                                <td style="text-align: center;">
+                                    <span class="email-mkt-badge badge-material-added">Material Added</span>
+                                </td>
+                                <td>Price Approved</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="email-mkt-checkbox" />
+                                </td>
+                                <td>PMR-005</td>
+                                <td>Priya Mehta</td>
+                                <td>
+                                    <span class="email-mkt-prod-link">Eco Resin Blend</span>
+                                </td>
+                                <td>Leaf Green</td>
+                                <td>LC-116</td>
+                                <td>₹15,900</td>
+                                <td>17-05-2026</td>
+                                <td style="text-align: center;">
+                                    <span class="email-mkt-badge badge-costing-done">Costing Done</span>
+                                </td>
+                                <td>Negotiation</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="email-mkt-checkbox" />
+                                </td>
+                                <td>PMR-006</td>
+                                <td>Neha Joshi</td>
+                                <td>
+                                    <span class="email-mkt-prod-link">Vibrant Coating</span>
+                                </td>
+                                <td>Crimson Red</td>
+                                <td>OB-102</td>
+                                <td>₹12,500</td>
+                                <td>18-05-2026</td>
+                                <td style="text-align: center;">
+                                    <span class="email-mkt-badge badge-negotiating">Negotiating</span>
+                                </td>
+                                <td>Price Approved</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="email-mkt-checkbox" />
+                                </td>
+                                <td>PMR-007</td>
+                                <td>Vivek Trivedi</td>
+                                <td>
+                                    <span class="email-mkt-prod-link">Thermal Shield</span>
+                                </td>
+                                <td>Steel Grey</td>
+                                <td>SG-310</td>
+                                <td>₹20,500</td>
+                                <td>19-05-2026</td>
+                                <td style="text-align: center;">
+                                    <span class="email-mkt-badge badge-price-approved">Price Approved</span>
+                                </td>
+                                <td>Negotiation</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -129,51 +230,6 @@
     [Parameter] public EventCallback OnSubmit { get; set; }
 
     private bool isSelectAll = false;
-
-    private class PmrRowItem
-    {
-        public bool IsSelected { get; set; }
-        public string PmrNo { get; set; } = "";
-        public string CustomerName { get; set; } = "";
-        public string ProductName { get; set; } = "";
-        public string ColourName { get; set; } = "";
-        public string ColourCode { get; set; } = "";
-        public string TotalCost { get; set; } = "";
-        public string SubmittedDate { get; set; } = "";
-        public string RequestStatus { get; set; } = "";
-        public string StatusClass { get; set; } = "";
-        public string PricingStatus { get; set; } = "";
-    }
-
-    private List<PmrRowItem> pmrItems = new()
-    {
-        new() { IsSelected = false, PmrNo = "PMR-001", CustomerName = "Ramesh Patel", ProductName = "HD Polymer Mix", ColourName = "Ocean Blue-A", ColourCode = "-", TotalCost = "-", SubmittedDate = "19-05-2026", RequestStatus = "Submitted", StatusClass = "badge-submitted", PricingStatus = "Price Approved" },
-        new() { IsSelected = false, PmrNo = "PMR-001", CustomerName = "Ramesh Patel", ProductName = "HD Polymer Mix", ColourName = "Ocean Blue-B", ColourCode = "-", TotalCost = "-", SubmittedDate = "19-05-2026", RequestStatus = "Submitted", StatusClass = "badge-submitted", PricingStatus = "Negotiation" },
-        new() { IsSelected = false, PmrNo = "PMR-001", CustomerName = "Ramesh Patel", ProductName = "HD Polymer Mix", ColourName = "Ocean Blue-C", ColourCode = "-", TotalCost = "-", SubmittedDate = "19-05-2026", RequestStatus = "Submitted", StatusClass = "badge-submitted", PricingStatus = "Negotiation" },
-        new() { IsSelected = false, PmrNo = "PMR-004", CustomerName = "Karan Desai", ProductName = "Flexi Compound", ColourName = "Dark Grey", ColourCode = "-", TotalCost = "-", SubmittedDate = "18-05-2026", RequestStatus = "Material Added", StatusClass = "badge-material-added", PricingStatus = "Price Approved" },
-        new() { IsSelected = false, PmrNo = "PMR-005", CustomerName = "Priya Mehta", ProductName = "Eco Resin Blend", ColourName = "Leaf Green", ColourCode = "LC-116", TotalCost = "₹15,900", SubmittedDate = "17-05-2026", RequestStatus = "Costing Done", StatusClass = "badge-costing-done", PricingStatus = "Negotiation" },
-        new() { IsSelected = false, PmrNo = "PMR-006", CustomerName = "Neha Joshi", ProductName = "Vibrant Coating", ColourName = "Crimson Red", ColourCode = "OB-102", TotalCost = "₹12,500", SubmittedDate = "18-05-2026", RequestStatus = "Negotiating", StatusClass = "badge-negotiating", PricingStatus = "Price Approved" },
-        new() { IsSelected = false, PmrNo = "PMR-007", CustomerName = "Vivek Trivedi", ProductName = "Thermal Shield", ColourName = "Steel Grey", ColourCode = "SG-310", TotalCost = "₹20,500", SubmittedDate = "19-05-2026", RequestStatus = "Price Approved", StatusClass = "badge-price-approved", PricingStatus = "Negotiation" },
-        new() { IsSelected = false, PmrNo = "PMR-008", CustomerName = "Dhruv Parmar", ProductName = "Biodegradable Blend", ColourName = "Natural Brown", ColourCode = "NB-405", TotalCost = "₹16,300", SubmittedDate = "19-05-2026", RequestStatus = "In Production", StatusClass = "badge-in-production", PricingStatus = "Price Approved" },
-        new() { IsSelected = false, PmrNo = "PMR-009", CustomerName = "Hitesh Shah", ProductName = "Clear View Resin", ColourName = "Crystal Clear", ColourCode = "CW-501", TotalCost = "₹21,800", SubmittedDate = "19-05-2026", RequestStatus = "Completed", StatusClass = "badge-completed", PricingStatus = "Negotiation" },
-        new() { IsSelected = false, PmrNo = "PMR-010", CustomerName = "Rahul Mehta", ProductName = "Lightweight Composite", ColourName = "Sky Blue", ColourCode = "SB-209", TotalCost = "₹28,400", SubmittedDate = "19-05-2026", RequestStatus = "Discarded", StatusClass = "badge-discarded", PricingStatus = "Price Approved" },
-        new() { IsSelected = false, PmrNo = "PMR-001", CustomerName = "Ramesh Patel", ProductName = "HD Polymer Mix", ColourName = "Ocean Blue-A", ColourCode = "-", TotalCost = "-", SubmittedDate = "19-05-2026", RequestStatus = "Submitted", StatusClass = "badge-submitted", PricingStatus = "Negotiation" }
-    };
-
-    private void ToggleSelectAll(ChangeEventArgs e)
-    {
-        isSelectAll = (bool)(e.Value ?? false);
-        foreach (var item in pmrItems)
-        {
-            item.IsSelected = isSelectAll;
-        }
-    }
-
-    private void ToggleItem(PmrRowItem item, ChangeEventArgs e)
-    {
-        item.IsSelected = (bool)(e.Value ?? false);
-        isSelectAll = pmrItems.All(x => x.IsSelected);
-    }
 
     private async Task Close()
     {
